@@ -1,0 +1,281 @@
+#fig_use_case {
+	max-width:500px;
+}
+
+#img_use_case {
+	max-width:450px;
+}
+
+@media screen and (max-width: 650px) {
+  #fig_use_case {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #img_use_case {
+    max-width: 98%;
+  }
+}
+
+#fig_arss_activitate {
+	max-width:1000px;
+}
+
+#img_arss_activitate {
+	max-width:950px;
+}
+
+@media screen and (max-width: 1600px) {
+  #fig_arss_activitate {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  #img_arss_activitate {
+    max-width: 98%;
+  }
+}
+
+
+#fig_pasi_ar {
+	max-width:700px;
+}
+
+#img_pasi_ar {
+	max-width:550px;
+}
+
+@media screen and (max-width: 650px) {
+  #fig_pasi_ar {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #img_pasi_ar {
+    max-width: 98%;
+  }
+}
+
+#fig_secvente_sapare {
+	max-width:700px;
+}
+
+#img_secvente_sapare {
+	max-width:550px;
+}
+
+@media screen and (max-width: 650px) {
+  #fig_secvente_sapare {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #img_secvente_sapare {
+    max-width: 98%;
+  }
+}
+
+
+@media screen and (min-width: 500px) {
+  #fig_poza4_ar {
+    max-width: 98%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #fig_poza5_ar {
+    max-width: 98%;
+  }
+}
+
+
+@media screen and (min-width: 701px) {
+  #fig_executie_checker1 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  #fig_executie_checker3 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  #img_executie_checker1 {
+    max-height: 350px;
+    //max-width: 400px;
+    max-width:96%;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  #img_executie_checker3 {
+    max-height: 325.18px;
+    //max-width: 400px;
+    max-width: 80%; 
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #fig_executie_checker1 {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #fig_executie_checker3 {
+    max-width: 60%;
+  }
+}
+
+    @media screen and (max-width: 700px) {
+        #fig_container_checker {
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
+
+
+
+@media screen and (min-width: 500px) {
+  #fig_executie_ar3 {
+    max-width: 98%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #fig_executie_ar2 {
+    max-width: 98%;
+  }
+}
+
+
+
+
+#fig_executie_generator1 {
+	max-width:600px;
+}
+
+#img_executie_generator1 {
+	max-width:450px;
+}
+
+@media screen and (max-width: 650px) {
+  #fig_executie_generator1 {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #img_executie_generator1 {
+    max-width: 98%;
+  }
+}
+
+
+#fig_fisier_pro {
+	max-width:650px;
+}
+
+#img_fisier_pro {
+	max-width:600px;
+}
+
+@media screen and (max-width: 710px) {
+  #fig_fisier_pro {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  #img_fisier_pro {
+    max-width: 98%;
+  }
+}
+
+
+#fig_poza12_ar {
+    float:right; 
+    margin-left:20px;
+}
+
+@media screen and (max-width: 800px) {
+  #fig_poza12_ar {
+    float:none; 
+    margin:auto;
+  }
+}
+
+
+#fig_warpPerspective3 {
+    float:left; 
+    margin-right:40px;
+}
+
+@media screen and (max-width: 800px) {
+  #fig_warpPerspective3 {
+	display:none;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  #fig_warpPerspective3_2 {
+	display:none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #fig_warpPerspective3_2 {
+    float:none; 
+    margin:auto;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  #par1 {
+	margin-top:6%;
+  }
+}
+
+#fig_grila_goala {
+    float:right; 
+    margin-left:20px;
+}
+
+@media screen and (max-width: 700px) {
+  #fig_grila_goala {
+    float:none; 
+    margin:auto;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  #img_grila_goala {
+	width: 250px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #img_grila_goala {
+	max-width: 60%;
+  }
+}
+
+#fig_qcombobox {
+    float:right; 
+    margin-left:20px;
+}
+
+@media screen and (max-width: 760px) {
+  #fig_qcombobox {
+    float:none; 
+    margin:auto;
+    width:60%;
+  }
+}

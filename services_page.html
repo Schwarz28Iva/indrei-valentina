@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Servicii</title>
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/blog_cards.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+   <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="javascript/script_navbar.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .content {
+			max-width: 1050px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+			margin-top: 100px;
+            margin-bottom: 40px;
+            font-size: 2.0em;
+            color: #444;
+        }
+
+        .service-card {
+			display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+
+        .service-icon {
+            font-size: 2.5em;
+            //color: #007bff;
+			color: #7300ff;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .service-content h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .service-content p {
+            margin: 0px;
+            color: #666;
+        }
+
+        .notice {
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #fffbe6;
+            border-left: 5px solid #ff9800;
+            font-style: italic;
+            text-align: center;
+			font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .service-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .service-icon {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+	<header>
+	  <div class="container">
+
+		<div class="logo">
+		  <h1 class="animate-charcter">INDREI VALENTINA</h1>
+		</div>
+
+		<nav id="myTopnav">
+		  <a href="home_page.html">HOME</a>
+		  <a href="about_me.html">ABOUT ME</a>
+		  <a href="#">SERVICES</a>
+		  <a href="projects.html">PROJECTS</a>
+		  <a href="contact_page.html">CONTACT</a>
+		  
+		  <a href="javascript:void(0);" class="icon" onclick="openNav()">
+			<i class="fa fa-bars"></i>
+		  </a>
+		</nav>
+	  </div>
+	  
+	    <!-- Language Switch Button outside the container -->
+  <div class="language-switch-container">
+    <a href="services_page_eng.html" class="language-switch">
+      <img src="https://flagcdn.com/16x12/gb.png" alt="EN flag"> EN
+    </a>
+  </div>
+
+	</header>
+
+<!--
+  <p class="quote"> - Unleashing My Journey through Innovation - </p>
+  -->
+
+      <div class="content" style="margin-top: 100px;">
+        <!--<h1>Serviciile Oferite</h1> -->
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="service-content">
+                <h2>Dezvoltare Web</h2>
+                <p>Construiesc site-uri web atractive și responsive, punând accent pe design curat și funcționalitate eficientă.</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-desktop"></i>
+            </div>
+            <div class="service-content">
+                <h2>Dezvoltare Aplicații Desktop</h2>
+                <p>Creez aplicații desktop personalizate care să răspundă nevoilor tale, cu interfețe intuitive și funcționalități robuste.</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-pencil-ruler"></i>
+            </div>
+            <div class="service-content">
+                <h2>UI/UX Design</h2>
+                <p>Design intuitiv și estetic, centrat pe experiența utilizatorului, pentru a asigura o interacțiune plăcută între utilizator și produs.</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="service-content">
+                <h2>Mentorat</h2>
+                <p>Ofer meditații pentru ciclul preuniversitar și universitar, sau consultații pentru cei care au nevoie de îndrumare.</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <div class="service-content">
+                <h2>Alte Servicii IT</h2>
+                <p>Realizez task-uri IT variate, de la mici optimizări la soluționarea problemelor de programare.</p>
+            </div>
+        </div>
+        <div class="notice">
+            <p>Notă: Sunt un dezvoltator junior, iar prețurile reflectă acest lucru. Voi accepta doar proiectele pentru care mă simt pregătită să ofer o soluție de calitate.</p>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

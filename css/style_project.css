@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+  float: left;
+  width: 25%;
+  position: absolute;
+}
+
+/* Right column */
+.rightcolumn {
+  float: right;
+  width: 70%;
+margin-left: 30%; /* Adjust the margin to match the width of the left column */
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 40px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+  @media (max-width: 900px) {
+    .card {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .card {
+      padding: 10px;
+    }
+  }
+
+.row {
+margin-top: 5%;  margin-left: 5%; margin-right: 5%;
+}
+
+  @media screen and (max-width: 750px) {
+    .row {
+      margin-top: 5%;
+      margin-left: 0%;
+      margin-right: 0%;
+    }
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1200px) {
+  .rightcolumn {
+    width: 100%;
+    margin-left: 0%;
+    position: static;
+    padding: 0;
+  }
+
+  .leftcolumn {
+    display:none;
+}
+}
+
+
+  .float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 2%;
+    right: 2%;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #4d4d4d;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  -webkit-transition: transform .5s;
+     -moz-transition: transform .5s;
+       -o-transition: transform .5s;
+          transition: transform .5s;
+  }
+
+
+.float.active:hover, .float:hover {
+  -webkit-transform: scale(1.2);
+     -moz-transform: scale(1.2);
+       -o-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+@media screen and (min-width: 1200px) {
+  .float {
+    display:none;
+}
+}
+
+  @media (max-width: 768px) {
+    .float {
+      width: 50px;
+      height: 50px;
+      bottom: 2%;
+      right: 3%;
+      font-size: 25px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .float {
+      width: 40px;
+      height: 40px;
+      bottom: 2%;
+      right: 3%;
+      font-size: 20px;
+    }
+  }

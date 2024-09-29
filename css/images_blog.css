@@ -1,0 +1,61 @@
+#fig_image12 {
+	max-width:750px;
+}
+
+#img_image12 {
+	max-width:700px;
+}
+
+@media screen and (max-width: 820px) {
+  #fig_image12 {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  #img_image12 {
+    max-width: 98%;
+  }
+}
+
+
+#fig_image13 {
+	max-width:550px;
+}
+
+#img_image13 {
+	max-width:500px;
+}
+
+@media screen and (max-width: 600px) {
+  #fig_image13 {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #img_image13 {
+    max-width: 98%;
+  }
+}
+
+
+#fig_image6 {
+	max-width:450px;
+}
+
+#img_image6 {
+	max-width:400px;
+}
+
+@media screen and (max-width: 500px) {
+  #fig_image6 {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #img_image6 {
+    max-width: 98%;
+  }
+}

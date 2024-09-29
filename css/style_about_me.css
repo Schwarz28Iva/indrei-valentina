@@ -1,0 +1,334 @@
+    .about-me-panel {
+      background-color: #f2f2f2;
+      position: relative; /* Schimbare la relative pentru a permite extinderea */
+      margin: 120px auto 10px auto; /* Distanțe față de top și bottom */
+      /*width: 1000px;*/
+	width: 1050px;
+      min-height: 450px; /* Înălțime minimă */
+      border-radius: 8px;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column; /* Schimbare pentru a permite adăugarea de elemente pe verticală */
+      align-items: center; /* Centrare pe verticală */
+      justify-content: center; /* Centrare pe orizontală */
+      overflow: hidden; /* Prevenirea depășirii conținutului */
+    }
+
+
+    .card {
+      margin: 15px;
+      margin-bottom: 0px;
+      display: flex;
+      align-items: center; /* Centrare pe verticală */
+    }
+
+    .portrait {
+      width: 300px;
+      margin-right: 20px;
+    }
+
+    .text-content {
+      flex: 1;
+      text-align: justify;
+    }
+
+    .additional-text {
+      margin: 15px;
+      margin-top: 0px;
+      width: calc(100% - 30px); /* Asigură respectarea marginilor */
+      text-align: justify;
+    }
+
+    @media (max-width: 1140px) {
+      .about-me-panel {
+        width: 90%;
+        height: auto; /* Permite extinderea pe verticală */
+	margin-top: 100px; /* Ajustare margin-top pentru rezoluții mai mici */
+      }
+
+      .card {
+        flex-direction: row; /* Asigură layout orizontal */
+        align-items: center; /* Centrare pe verticală */
+        height: auto; /* Permite extinderea pe verticală */
+      }
+
+      .portrait {
+        align-items: center; /* Centrare pe verticală */
+      }
+
+      .text-content,
+      .additional-text {
+        max-width: 100%; /* Lățime maximă pentru text */
+      }
+    }
+
+    @media (max-width: 850px) {
+      .about-me-panel {
+        width: 90%;
+        height: auto; /* Permite extinderea pe verticală */
+        margin: 90px auto 0px auto; /* Margine de 20px de sus și 10px de jos */
+      }
+
+      .card {
+        flex-direction: column; /* Schimbare layout pe verticală */
+        width: 100%; /* Asigură că card-ul nu iese din panel */
+      }
+
+      .portrait {
+        align-items: center; /* Centrare pe verticală */
+	/*margin-bottom: 20px;*/ /* Spațiere sub imagine */
+	margin-right: 0px;
+      }
+
+      .text-content {
+        max-width: 100%; /* Lățime maximă pentru text */
+	margin: 15px;
+        margin-bottom: 0px;
+      }
+
+      .additional-text {
+        max-width: 100%; /* Lățime maximă pentru text */
+	margin: 15px;
+        margin-top: 0px;
+      }
+
+    }
+
+    @media (max-width: 550px) {
+      .about-me-panel {
+        width: 100%;
+        height: auto; /* Permite extinderea pe verticală */
+        margin: 90px auto 0px auto; /* Margine de 20px de sus și 10px de jos */
+      }
+    }
+
+
+/* SOFT SKILLS */
+
+.skills-list {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.skills-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.skills-list li {
+    flex-wrap: wrap;
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.skills-list li i {
+    font-size: 20px;
+    width: 25px;
+    margin-right: 10px;
+    color: #7300ff;
+}
+
+.skills-list li:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.015);
+}
+
+.skills-list li:not(:last-child) { 
+    margin-bottom: 5px;  
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .skills-list li {
+        padding: 10px 5px;
+    }
+
+    .skills-list li b, .skills-list li span {
+        display: inline;
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    /*.skills-list {
+        padding: 0 10px;
+    }*/
+
+    .skills-list li {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+
+/* IMPARTIREA PE TAB-URI */
+.tabs {
+width:95%; margin-bottom:20px;
+}
+
+@media (max-width: 450px) {
+   .tabs {    
+	width: 100%;
+  }
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    background-color: #e4e1fc;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 5px solid #7300ff;
+    font-weight: bold;
+    font-size: 12.5px;
+}
+
+.tab-button.active {
+    background-color: #7300ff;
+    color: white;
+}
+
+.tab-button:hover {
+    background-color: #c9c4f5;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.5s;
+background-color: white;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
+
+/* CERTIFICARI */
+
+.certifications {
+    /*
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    */
+}
+
+.certifications h2 {
+    color: #444;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.certifications ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.certifications li {
+    padding: 10px;
+    border-left: 4px solid #7300ff;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+background-color: #f9f9f9;
+}
+
+
+.certifications li:hover {
+    background-color: #f0f8ff;
+transform: scale(1.015);
+transition: transform 0.3s;
+}
+
+
+/* Competențe de bază sau intermediare */
+
+.second-skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.second-skill-card {
+    background: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 190px;
+    transition: transform 0.3s;
+}
+
+.tehnologii {
+    margin: 0;
+    padding: 0;
+    font-size:14px;
+    //text-align: justify;
+    color: #555;
+}
+
+.skill-title {
+    font-size: 16px;
+    margin: 0;
+    font-weight: bold;
+}
+
+        .second-skill-card:hover {
+transform: scale(1.01);
+background-color: #f0f8ff;
+        }
+
+@media (max-width: 859px) {
+   .second-skill-card {    
+	width: 25%;
+  }
+
+@media (max-width: 650px) {
+   .second-skill-card {    
+	width: 40%;
+  }
+}
+
+@media (max-width: 456px) {
+   .second-skill-card {    
+	width: 38%;
+  }
+}
+
+@media (max-width: 400px) {
+   .second-skill-card {    
+	width: 100%;
+  }
+}
+
+/* PANA LA rezolutia de 320 */

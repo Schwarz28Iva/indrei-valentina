@@ -1,0 +1,199 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #000000;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+header nav a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  transition: color 0.3s, background-color 0.3s;
+  padding: 20px 20px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  width: auto;
+  text-align: center;
+}
+
+header nav a:hover {
+  color: #055a8c;
+  background-color: #d5f1ff;
+}
+
+
+header nav a.icon {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  header nav a {
+    display: none;
+  }
+
+  header nav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      background-color: rgb(255, 255, 255);
+      opacity: 0.95;
+      transition: 0.5s;
+      display: block;
+    }
+
+    .overlay-content {
+      position: relative;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #000000;
+      display: block;
+      transition: 0.3s;
+	  
+      position: relative;
+      top: 25%;
+      text-align: center;
+    }
+
+    .overlay a:hover, .overlay a:focus {
+      color: #f1f1f1;
+    }
+
+    .overlay .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      font-size: 60px;
+      color: #818181;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .overlay .closebtn:hover, .overlay .closebtn:focus {
+      color: #f1f1f1;
+    }
+
+
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+
+
+/* Language switch container styling */
+.language-switch-container {
+  position: absolute;
+  right: 35px; /* Adjust the distance from the right */
+  top: 15px; /* Adjust this value based on your header height */
+  z-index: 10; /* Ensure it appears above other elements */
+}
+
+/* Style the language switch link */
+.language-switch {
+  background-color: #fff; /* Background color */
+  padding: 5px 10px; /* Padding for the button */
+  display: flex; /* Align items */
+  align-items: center; /* Center items vertically */
+  text-decoration: none;
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Optional: Add some hover effects */
+.language-switch:hover {
+  background-color: #d5f1ff; /* Change background on hover */
+}
+
+
+@media screen and (max-width: 1550px) {
+	.language-switch-container {
+	  right: 0px; /* Adjust the distance from the right */
+	}
+}
+
+@media screen and (max-width: 1330px) {
+	.language-switch-container {
+	   top: 64px; /* Adjust this value based on your header height */
+	}
+}
+
+/* Under 800px, hide the language switch container by default */
+@media screen and (max-width: 800px) {
+  .language-switch-container {
+    display: none;
+  }
+}
+
+/* When under 800px and overlay/nav is open, show the language switch container */
+@media screen and (max-width: 800px) {
+  .nav-open .language-switch-container,
+  .overlay-toc-visible .language-switch-container {
+    display: flex; /* Or block depending on your design */
+    position: fixed;
+    left: 50%;
+    right: auto;
+    top: calc(50% + 200px); /* Center 100px below */
+    transform: translateX(-50%);
+    z-index: 9999; /* Make sure it's on top */
+  }
+  .language-switch {
+    background-color: transparent;
+  }
+}

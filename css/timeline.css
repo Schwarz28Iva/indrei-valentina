@@ -1,0 +1,130 @@
+/* styles.css */
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+    //margin-top: 20px;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #ddd;
+    left: 40px;
+    margin-left: -1.5px;
+}
+
+.timeline-item {
+    margin: 20px 0;
+    position: relative;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 26px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border: 2px solid #7300ff;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-content {
+    margin-left: 65px;
+    //background:#fff;
+  //background:#f5f5f5;
+background: #f9f9f9;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    max-width: calc(100% - 90px); /* Ajustare lățime */
+    margin-right: 20px; /* Adăugare margine dreapta */
+}
+
+.timeline-date {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.timeline-title {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.timeline-subtitle {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: #333;
+    text-align: justify;
+}
+
+.timeline-content:hover {
+    //transform: translateY(-5px);
+    //background: #f5f5f5;
+transform: scale(1.015);
+background-color: #f0f8ff;
+transition: transform 0.3s;
+}
+
+
+
+
+@media (max-width: 750px) {
+
+.timeline:before {
+    left: 10px;
+}
+
+.timeline-icon {
+    left: -3px;
+    width: 21px;
+    height: 21px;
+}
+
+.timeline-item {
+
+}
+
+.timeline-content {
+    margin-left: 30px;
+    max-width: calc(100% - 10px);
+    margin-right: 0px;
+}
+
+}
+
+@media (max-width: 550px) {
+
+.timeline:before {
+    left: -3px;
+}
+
+.timeline-icon {
+    left: -15px;
+    width: 20px;
+    height: 20px;
+}
+
+.timeline-item {
+
+}
+
+.timeline-content {
+    margin-left: 16px;
+    max-width: calc(100% - 10px);
+    margin-right: 0px;
+}
+
+}

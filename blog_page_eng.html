@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Machine Learning: A Student's Notes</title>
+  <link rel="stylesheet" href="css/style_project.css">
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/project_card.css">
+  <link rel="stylesheet" href="css/table_of_contents.css">
+  <link rel="stylesheet" href="css/overlay_toc.css">
+  <link rel="stylesheet" href="css/images_blog.css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <script src="javascript/script_navbar.js"></script>
+  <script src="javascript/toc.js"></script>
+ 
+  
+  <link rel="stylesheet" href="prism_library/prism.css" />
+  <script src="prism_library/prism.js"></script>
+
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+
+
+    .figure-container {
+        display: flex;
+        justify-content: center;
+    }
+/*
+    .figure-container > figure {
+        margin: 0;
+    }
+*/
+    @media screen and (max-width: 500px) {
+        .figure-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        figure {
+            width: 100%;
+            //margin-bottom: 20px;
+        }
+    }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+  //vertical-align:middle;
+  //float: left;
+}
+
+figure {
+  //display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+  font-style: oblique;
+  color: #6e6d6d;
+}
+
+@media screen and (max-width: 750px) {
+  img {
+    max-width: 90%;
+  }
+}
+
+figcaption {
+	text-align:center;
+	max-width: 100%;
+}
+
+
+
+.code-snippet {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.code-header {
+  background-color: #f5f5f5;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.technology {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+  .copy-button {
+    padding: 5px 10px;
+    background-color: #86B2EC;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .copy-button:hover {
+    background-color: #65A3FF;
+  }
+
+pre {
+  margin: 0;
+  padding: 10px;
+}
+
+
+
+
+    .accordion-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      position: relative;
+	  font-family: 'Roboto', sans-serif;
+    }
+
+    .accordion-btn::after {
+      content: '\25BC'; /* Săgeata în jos */
+      font-size: 12px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .accordion-btn.active::after {
+      content: '\25B2'; /* Săgeata în sus */
+    }
+
+    .panel {
+      display: none;
+      background-color: #f1f1f1;
+      overflow: hidden;
+    }
+
+    .panel a {
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      color: #444;
+    }
+
+    .panel a:hover {
+      background-color: #d5f1ff;
+    }
+	
+
+
+  .mathjax-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+@media only screen and (max-width: 600px) {
+  .mathjax-container {
+    font-size: 80%;
+  }
+} 
+ 
+.subsection-title {
+  font-size: 20px;
+  scroll-margin-top: 80px;
+  font-weight: bold;
+  //border-bottom: 2px solid turquoise;
+}
+
+.subsection-title:after {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    width: 200px; 
+    border-bottom: 2px solid turquoise;
+}
+
+@media screen and (max-width: 750px) {
+	.subsection-title:after {
+		width: 150px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.subsection-title {
+		font-size: 18px;
+	}
+}
+
+
+@media only screen and (max-width: 600px) {
+  .code-snippet {
+    font-size: 14px; /* Smaller font for smaller screens */
+    width: 100%; /* Maximize width */
+    margin-left: 0; /* Remove indentation */
+    padding-left: 0;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  ul, ol {
+    padding-left: 20px; /* Reduce the indentation */
+  }
+}
+
+</style>
+
+
+<script>
+  function copyCode(button) {
+    const code = button.parentNode.nextElementSibling.querySelector('code');
+    const text = code.textContent;
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy code';
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error('Failed to copy code:', error);
+      });
+  }
+</script>
+
+
+</head>
+<body style="height: 100vh;">
+	<header>
+	  <div class="container">
+
+		<div class="logo">
+		  <h4 style="font-size: 24px; margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;" class="animate-charcter">INDREI VALENTINA</h4>
+		</div>
+
+		<nav id="myTopnav">
+		  <a href="home_page.html">HOME</a>
+		  <a href="about_me.html">ABOUT ME</a>
+		  <a href="services_page.html">SERVICES</a>
+		  <a href="projects.html">PROJECTS</a>
+		  <a href="contact_page.html">CONTACT</a>
+		  
+		  <a href="javascript:void(0);" class="icon" onclick="openNav()">
+			<i class="fa fa-bars"></i>
+		  </a>
+		</nav>
+	  </div>
+	  
+	    <!-- Language Switch Button outside the container -->
+  <div class="language-switch-container">
+    <a href="blog_page.html" class="language-switch">
+      <img src="https://flagcdn.com/16x12/ro.png" alt="RO flag"> RO
+    </a>
+  </div>	  
+	  
+	</header>
+	
+	
+	
+	
+	
+  <div class="blog-card first">
+    <div class="meta">
+      <div class="photo" style="background-image: url(photos/ProjectsPage/blog.jpg)"></div>
+    </div>
+    <div class="description">
+      <h1>Machine Learning: A Student's Notes</h1>
+      <h2 style="color: #4f4f4f;">A Comprehensive Guide for Beginners</h1>
+      <p>
+	  What began as a messy collection of personal notes eventually grew as I mentored other students.
+	  I soon realized it had the potential to evolve into a comprehensive guide.
+	  This article is the result of refining and expanding those notes for a broader audience, 
+	  who most likely have the same questions I struggled with when I started.
+	  </p>
+	</div>
+  </div>
+	
+	
+	
+
+  <div class="row">
+	  <div id="leftcolumn" class="leftcolumn">
+		<div class="card">
+		
+		  <h4 style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Cuprins</h4>
+		  
+		    <nav id="toc"> 
+			</nav>
+		
+		
+		</div>
+		
+	  </div>
+	  
+	  
+	  <div class="rightcolumn" style="margin-bottom: 3.8%;">
+		<div class="card">
+		  
+	<main style="word-wrap: break-word; text-align: justify;">
+	
+                <figure id="fig_image12">
+                    <img id="img_image12" src="imagini_blog/image12.png">
+                    <figcaption>The connection between encountered subdomains/concepts</figcaption>
+                </figure>
+
+                <h1 id="obiective-19">What is Machine Learning?</h1>
+                <p><strong>Machine Learning (ML)</strong> is a branch of <strong>Artificial Intelligence (AI)</strong> that focuses on using data and algorithms to mimic how humans learn, gradually improving its accuracy. Through machine learning, software applications become more precise in predicting outcomes without being explicitly programmed to do so. It works by exploring data and identifying patterns, requiring minimal human intervention. One could say that computers learn to think in a manner similar to how humans do: by learning and improving results from past experiences.</p>
+
+                <p>When we talk about <strong>data</strong> in the context of machine learning, we refer to the raw materials and information that algorithms use to learn and make decisions. This data can be structured or unstructured and can come from a variety of sources, including texts, images, sounds, or numerical data. Additionally, data can be processed and transformed to be used in machine learning algorithms.</p>
+
+                <p>To have meaning and utility, data is often accompanied by <strong>labels</strong> or additional information that indicates the significance or classification of each record. These labels are essential for training and evaluating <strong>machine learning models</strong> because they provide reference points for the correctness of the predictions and classifications made by algorithms.</p>
+
+                <p>In conclusion, data and labels represent the foundational pillars of machine learning, providing the raw material and necessary context for building and training models capable of offering accurate and relevant results.</p>
+      
+                <h1 id="obiective-19">Important Definitions and Concepts</h1>
+                <p><b>Dataset:</b> Represents the collection of information used for training, validating, and testing machine learning models. A dataset consists of examples and associated labels. The dataset is generally divided into two categories:</p>
+                <ul>
+                    <li><b>Training Set:</b> A subset of data used to train the model.</li>
+                    <li><b>Testing Set:</b> A separate subset of data used to evaluate the model's performance.</li>
+                    <li><b>Validation Set (optional):</b> A subset used for adjusting the model's parameters and monitoring its performance during training.</li>
+                </ul>
+                <p><b>Labels:</b> These are the pieces of information associated with each example in the dataset, indicating the desired response. In supervised learning, the machine learns to make predictions based on the provided labels.</p>
+                <p><b>Model:</b> A machine learning model is the result of training an algorithm on a dataset. The model is capable of making predictions based on new data.</p>
+                <p>Let's understand how the concepts of dataset, labels, and model apply in a practical machine learning scenario.</p>
+
+                <b style="font-size:18px">Example: Fraud Detection in Financial Transactions</b>
+                <ol>
+                    <li>
+                        <b>Dataset:</b>
+                        <ul>
+                            <li>Our dataset consists of a history of financial transactions made by users.</li>
+                            <li>Each record in the dataset contains information about the transaction, such as the amount, location, time, type of transaction, etc.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Labels:</b>
+                        <ul>
+                            <li>Each transaction in our dataset is labeled as "fraudulent" or "non-fraudulent."</li>
+                            <li>Labels are assigned based on investigations and subsequent validations conducted by experts or fraud detection systems.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Training Set:</b>
+                        <ul>
+                            <li>Our training subset contains part of the transaction history, along with the corresponding labels.</li>
+                            <li>This dataset is used to train the model to identify patterns and signals that might indicate a fraudulent transaction.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Testing Set:</b>
+                        <ul>
+                            <li>Our testing subset contains another part of the transaction history, along with the corresponding labels.</li>
+                            <li>This data is used to evaluate the model's performance in correctly detecting fraudulent transactions on new data.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Model:</b>
+                        <ul>
+                            <li>Our machine learning model is an algorithm that learns to distinguish between fraudulent and non-fraudulent transactions based on the characteristics and patterns identified in the training set.</li>
+                            <li>This model can be built using various techniques (such as decision trees, random forest, or deep learning).</li>
+                            <li>After training, the model is capable of receiving details about a transaction and determining whether it is likely to be fraudulent or not, based on the knowledge gained during training.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p>Even though we've discussed datasets, labels, and models, we must remember that the quality of the data we use and how we prepare it will directly influence the results we obtain. Thus, to successfully implement examples like fraud detection in financial transactions, it is essential to first focus on <b>data preprocessing</b> properly.</p>
+                <p><b>Data preprocessing</b> is a critical step needed before introducing the data into machine learning algorithms, contributing to the creation of more accurate and robust models. This stage involves applying procedures such as cleaning, standardizing, normalizing, and transforming the data, resulting in the elimination of noise and inconsistencies from our datasets. Through these operations, we ensure that the data is properly prepared and can be efficiently used in our machine learning models.</p>
+				
+				<h1 id="obiective-19">How to Implement an ML Project?</h1>
+<p>At this point, we have the necessary foundation to understand the process of implementing a machine learning project. I will structure the implementation process into a series of well-defined steps, designed to act as a template for future projects.</p>
+<ol>
+    <li>
+        <b>Defining the problem</b>
+        <p>We can consider the first step as defining the problem. It is important to clearly understand the problem we aim to solve. Objectives, identifying the necessary and available resources, problem-solving methods, etc., should be established.</p>
+    </li>
+    <li>
+        <b>Data collection and preparation</b>
+        <p>We start by identifying and locating relevant data sources for the problem we want to solve. Data sources may include existing databases, public datasets, online data sources, or internally collected data. Once the data is collected, the next step is preprocessing. Make sure the data is properly prepared. The final step of this stage is to split the dataset into training, testing, and, possibly, validation sets.</p>
+    </li>
+    <li>
+        <b>Choosing the right algorithm</b>
+        <p>Choosing the right algorithm involves understanding the nature of the problem and exploring different available algorithms, adapting them to the characteristics and requirements of the dataset. It is essential to select an algorithm that best fits the problem type, the size, and the complexity of the data, considering the available resources and the desired performance.</p>
+    </li>
+    <li>
+        <b>Training the model</b>
+        <p>Use the training data in the chosen algorithm to train the model. This involves adjusting the algorithm's parameters to minimize error or maximize the model's performance, depending on the relevant metrics. During training, it is beneficial to monitor the model's performance on the validation set to avoid overfitting and adjust the model's parameters accordingly.</p>
+    </li>
+    <li>
+        <b>Evaluating the model's performance</b>
+        <p>The trained model is applied to the test set to evaluate its performance on new, unseen data. This gives us an objective evaluation of the model's ability to generalize to new data. Further evaluation can be performed using performance metrics such as accuracy, precision, recall, or other problem-specific metrics (e.g., R-squared for regression and AUC/ROC curves for classification). These metrics provide detailed insights into the model's performance and its ability to solve the given problem.</p>
+    </li>
+    <li>
+        <b>Optimizing the model</b>
+        <p>Most likely, you will not achieve the desired results on the first try. Don't be discouraged! Model optimization is an iterative process, full of challenges and learning opportunities. Repeated attempts and adjustments are a defining part of this process. To successfully tackle these challenges, it's important to remain open to experimentation and be persistent in seeking solutions.</p>
+        <p>Depending on the model's performance, you can adjust hyperparameters, change the algorithm, or even use different preprocessing techniques to improve performance.</p>
+        <p><b>CONCLUSION:</b> We can say that steps 3, 4, 5, and possibly even 2, are part of a repetitive do-while cycle that will stop when the model achieves satisfactory performance.</p>
+        <p><b>Note:</b> This doesn't mean you always have to go through all the steps again. The issue doesn't always stem from data preprocessing or the chosen algorithm. Sometimes, just a minor parameter change during the model training step can be the solution. The steps are re-implemented in order from the point of modification.</p>
+    </li>
+    <li>
+        <b>Deploying the model</b>
+        <p>The model is ready for use. If necessary, deploy the model into production to be used in real applications. Make sure the model is properly integrated into the existing infrastructure and that it works as expected. Don't forget that regular monitoring and maintenance of the model are recommended to maintain or improve performance.</p>
+    </li>
+</ol>
+
+<figure id="fig_image13">
+    <img id="img_image13" src="imagini_blog/image13.png">
+</figure>
+
+<p>The previous steps constitute a more detailed explanation of the implementation process, aiming to form good practices. Memorizing these steps can be simplified by summarizing them into four main ideas:</p>
+<ol><b>
+    <li>Data preprocessing</li>
+    <li>Training the model</li>
+    <li>Testing the model</li>
+    <li>Deploying the model</li>
+</b></ol>
+
+<h1 id="obiective-19">Overfitting and Underfitting</h1>
+<p>In the process of implementing a machine learning project, all those steps aim to develop an efficient model. However, certain issues can still arise that affect the model's performance, even after following all the steps correctly. This highlights the importance of understanding phenomena such as <b>overfitting</b> and <b>underfitting</b>, which can significantly impact the model's performance and require careful attention to manage them effectively.</p>
+<p>Overfitting and underfitting are two important concepts in machine learning and are closely related to a model's performance. Balancing between overfitting and underfitting is essential for developing an efficient and accurate machine learning model.</p>
+
+<b style="font-size:18px">Overfitting</b>
+<ul>
+    <li>Simply put, it means the model fits too well to the training set but doesn't generalize well to new data.</li>
+    <li>Overfitting occurs when a machine learning model is too complex for the training data. In this situation, the model learns and memorizes the noise and variability in the training set, rather than identifying and learning the significant correlations.</li>
+    <li><i>Example: The model learned to count cats only from large and clear images, and when it sees smaller or blurry images, it makes many mistakes. It has become too specialized and cannot generalize to all situations.</i></li>
+    <li><b>Solution:</b> Simplifying the model or using regularization techniques to prevent the model from learning noise from the data and focus on the underlying patterns.</li>
+</ul>
+
+<b style="font-size:18px">Underfitting</b>
+<ul>
+    <li>Simply put, it means the model doesn't fit the training set well enough and doesn't generalize correctly.</li>
+    <li>Underfitting occurs when a machine learning model is too simple to capture the correlations in the training data. Essentially, the model cannot learn enough about the training data to make accurate predictions.</li>
+    <li><i>Example: The model learned to count cats only from simple black-and-white images, and when it sees colored and complex images, it cannot correctly identify them. It hasn't learned enough to handle real-life situations.</i></li>
+    <li><b>Solution:</b> Increasing the model's complexity or adding more relevant and diverse features to allow the model to capture the correlations in the data better.</li>
+</ul>
+<h1 id="obiective-19">Types of Machine Learning</h1>
+<div class="accordion">
+  <button class="accordion-btn">Section Contents</button>
+  <div class="panel">
+    <a href="#subsection1">Supervised Learning</a>
+    <a href="#subsection2">Unsupervised Learning</a>
+    <a href="#subsection3">Semi-supervised Learning</a>
+    <a href="#subsection4">Reinforcement Learning</a>
+  </div>
+</div>
+
+<p>In machine learning, training/learning algorithms are classified into different types of learning based on how they extract knowledge from the training data and use it to make predictions or decisions in the future. The knowledge we've accumulated so far will help us understand the differences between the types of learning and how they influence the performance of the algorithms.</p>
+
+<p><b>The main types of machine learning:</b></p>
+<ol><b>
+    <li>Supervised Learning</li>
+    <li>Unsupervised Learning</li>
+    <li>Semi-supervised Learning</li>
+    <li>Reinforcement Learning</li>
+</b></ol>
+
+<p>By exploring them, we can gain a broader perspective on how algorithms process information and how they can be applied in various fields. This chapter is worth dedicating more time to. A detailed understanding and differentiation of the types of learning in machine learning is essential for correctly selecting algorithms in various scenarios.</p>
+
+<b class="subsection-title" id="subsection1">Supervised Learning</b>
+<ul>
+    <li><b>Definition:</b> The algorithm is trained using a labeled dataset, which contains input examples along with the desired outputs associated with them. The goal is to learn the relationships between the inputs and known outputs so that it can make correct predictions on new data.</li>
+    <li><b>Example:</b> Training an algorithm to recognize handwritten digits. The training dataset contains images of digits and corresponding labels for each digit. The algorithm learns to correctly match the features in the training images with the corresponding digits. Other examples: face recognition, classifying emails as spam or non-spam, medical diagnosis based on images.</li>
+    <li><b>Dataset characteristics:</b> Uses labeled datasets where each example has a corresponding input and output (known).</li>
+    <li><b>Objective:</b> The algorithm is trained to learn the correlations between input data and corresponding outputs so that it can make accurate predictions on new data.</li>
+    <li><b>Applications:</b> It is widely used in classification and regression tasks.</li>
+    <li><b>Advantages:</b>
+        <ul>
+            <li><b>High Accuracy:</b> The model can make accurate predictions on new data similar to the examples in the training set.</li>
+            <li><b>Wide Applicability:</b> Suitable for a wide range of problems.</li>
+        </ul>
+    </li>
+    <li><b>Disadvantages:</b>
+        <ul>
+            <li><b>Need for Labeled Data:</b> Requires a large labeled dataset, which can be costly or difficult in some fields.</li>
+            <li><b>Prone to Overfitting:</b> May tend to overtrain on the training set and not generalize well on new data that contains previously unseen patterns.</li>
+        </ul>
+    </li>
+    <li><b>Notes:</b> The model is dependent on the quality and accuracy of the labeled data available for training.</li>
+    <li><b>Examples of algorithms:</b>
+        <ul>
+            <li>Regression:
+                <ul>
+                    <li>Linear Regression</li>
+                </ul>
+            </li>
+            <li>Classification:
+                <ul>
+                    <li>Naive Bayes</li>
+                </ul>
+            </li>
+            <li>Both:
+                <ul>
+                    <li>Support Vector Machine (SVM)</li>
+                    <li>Decision Tree</li>
+                    <li>Random Forest</li>
+                    <li>K-Nearest Neighbors (KNN)</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<b class="subsection-title" id="subsection2">Unsupervised Learning</b>
+<ul>
+    <li><b>Definition:</b> The algorithm is exposed to unlabeled data. The goal is to discover hidden structures, patterns, or relationships within the data without any prior knowledge of the desired outcomes.</li>
+    <li><b>Example:</b> Clustering documents in a digital library based on their content similarities. The algorithm identifies groups of documents that share common characteristics, thereby facilitating the organization and management of information. Possible identified groups: technology, arts, news, etc. Other examples: market segmentation in marketing, automatic grouping of documents, and data analysis for discovering new insights.</li>
+    <li><b>Dataset characteristics:</b> Relies on unlabeled datasets without any prior knowledge of the desired output.</li>
+    <li><b>Objective:</b> The algorithms must discover the structures and relationships within the unlabeled datasets on their own.</li>
+    <li><b>Applications:</b> Used for clustering, segmentation, dimensionality reduction, data analysis.</li>
+    <li><b>Advantages:</b>
+        <ul>
+            <li><b>No Need for Labeled Data:</b> Training costs are reduced, and data preparation is simplified, making it ideal for large and unstructured datasets.</li>
+            <li><b>Discovery of Hidden Structures:</b> Can identify patterns and relationships that may be unnoticed or underestimated by humans, or too complex to be detected manually. This capability is particularly useful in research and data exploration across various fields.</li>
+        </ul>
+    </li>
+    <li><b>Disadvantages:</b>
+        <ul>
+            <li><b>Subjective Interpretation:</b> The interpretation of discovered groups or structures can be subjective and depends on the user's perspective.</li>
+            <li><b>Evaluation Difficulties:</b> Evaluating performance can be more challenging than in supervised learning, as there are no clear labels.</li>
+        </ul>
+    </li>
+    <li><b>Notes:</b>
+        <ul>
+            <li>Clustering algorithms can organize documents into groups based on their similarities, but they do not automatically generate titles or keywords for each group. It is the user's responsibility to interpret the clustering results and provide relevant titles or keywords for each cluster.</li>
+            <li>Unsupervised learning is used for research purposes, such as clustering or anomaly detection, and is not intended for prediction.</li>
+        </ul>
+    </li>
+    <li><b>Examples of algorithms:</b>
+        <ul>
+            <li>Clustering:
+                <ul>
+                    <li>K-Means</li>
+                    <li>Hierarchical Clustering</li>
+                </ul>
+            </li>
+            <li>Dimensionality reduction:
+                <ul>
+                    <li>Principal Component Analysis (PCA)</li>
+                </ul>
+            </li>
+            <li>Association:
+                <ul>
+                    <li>Apriori</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<b class="subsection-title" id="subsection3">Semi-supervised Learning</b>
+<ul>
+    <li><b>Definition:</b> This approach combines elements of supervised and unsupervised learning, using a partially labeled dataset.</li>
+    <li><b>Example:</b> We want to cluster a dataset containing images of various animals, but only the images of dogs and cats are labeled. The model learns from these labels to make general distinctions between species, applying the knowledge to the unlabeled data and trying to group the other animal species based on identified similarities. Other examples: voice recognition, automatic translation, and sentiment analysis.</li>
+    <li><b>Dataset characteristics:</b> A combination of both, using labeled and unlabeled data in the training process.</li>
+    <li><b>Objective:</b> The algorithm tries to capitalize on the limited information provided by the labeled data to improve the overall performance of the model.</li>
+    <li><b>Applications:</b> Used when there is a mix of labeled and unlabeled data, and we want to benefit from both types of information for training models.</li>
+    <li><b>Advantages:</b>
+        <ul>
+            <li><b>Efficient Labeling Process:</b> Useful when full data labeling is costly or time-consuming.</li>
+            <li><b>Superior Performance:</b> Can often achieve higher accuracy than supervised learning in cases with limited labeled data, as the ability to use unlabeled data to improve supervised learning algorithms reduces the risk of overfitting and promotes better model generalization.</li>
+        </ul>
+    </li>
+    <li><b>Disadvantages:</b>
+        <ul>
+            <li><b>Dependence on Labeled Data Quality:</b> The model's performance still depends on the quality of the available labeled data.</li>
+            <li><b>Additional Complexity:</b> Managing both labeled and unlabeled data can add complexity to model training and evaluation.</li>
+        </ul>
+    </li>
+    <li><b>Notes:</b> Proper selection of labeled data is important to maximize model performance and avoid introducing bias.</li>
+    <li><b>Examples of algorithms:</b>
+        <ul>
+            <li>Classification:
+                <ul>
+                    <li>Label Propagation</li>
+                    <li>Semi-Supervised SVM</li>
+                </ul>
+            </li>
+            <li>Clustering:
+                <ul>
+                    <li>Semi-Supervised K-Means</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<b class="subsection-title" id="subsection4">Reinforcement Learning</b>
+<ul>
+    <li><b>Definition:</b> Involves decision-making in an interactive environment, receiving rewards or penalties based on the actions taken. The goal is for the agent to discover optimal strategies to achieve the best results.</li>
+    <li><b>Example:</b> Teaching an artificial intelligence algorithm to drive an autonomous vehicle. The algorithm receives positive rewards for actions such as maintaining a constant speed and following traffic rules, while receiving penalties for unsafe actions or breaking the rules. Other examples: strategy games, robotic control, resource optimization in power grids.</li>
+    <li><b>Dataset characteristics:</b> Does not use traditionally labeled datasets, relying instead on a decision-making system based on rewards and penalties.</li>
+    <li><b>Objective:</b> The agent learns to maximize rewards and minimize penalties by exploring and adapting its behavior based on the environment's responses.</li>
+    <li><b>Applications:</b> Suitable for problems involving adaptation to changing environments, real-time data, or sequential decision-making.</li>
+    <li><b>Advantages:</b>
+        <ul>
+            <li><b>Result-Oriented Approach:</b> The agent learns to maximize rewards, which can lead to the development of efficient strategies.</li>
+            <li><b>Performance Optimization Over Time:</b> Agents can continuously improve their skills and adjust their strategies to achieve better results as they gain experience.</li>
+        </ul>
+    </li>
+    <li><b>Disadvantages:</b>
+        <ul>
+            <li><b>Challenges in Defining Rewards:</b> Defining an appropriate reward system can be difficult and may influence the model's performance, making it impractical for simple problems.</li>
+            <li><b>High Resource Requirements:</b> May require significant computational resources and extended training time.</li>
+        </ul>
+    </li>
+    <li><b>Notes:</b> Prone to exploiting the reward system. This refers to situations where the agent learns to maximize rewards in a way that does not align with the objectives or values desired by the system's designers.</li>
+    <li><b>Examples of algorithms:</b>
+        <ul>
+            <li>Value-based:
+                <ul>
+                    <li>Q-Learning</li>
+                    <li>Deep Q-Networks (DQN)</li>
+                </ul>
+            </li>
+            <li>Policy-based:
+                <ul>
+                    <li>Policy Gradient</li>
+                    <li>SARSA</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p>For a more efficient visualization of the differences between the types of machine learning, I will add a table with the information presented above.</p>
+
+<figure id="fig_image6">
+    <img id="img_image6" src="imagini_blog/tabel.png">
+</figure>
+
+<h1 id="obiective-19">Machine Learning Libraries</h1>
+<p>In machine learning, libraries are essential tools that facilitate the development, implementation, and use of machine learning algorithms. They are crucial for reducing the time and effort needed to implement machine learning algorithms by providing predefined functions and optimized data structures. Here are some of the most popular libraries used in machine learning:</p>
+
+<ol>
+    <li><b>Scikit-learn (sklearn)</b>
+        <ul>
+            <li><b>Used for:</b> Implementing machine learning algorithms.</li>
+            <li><b>Provides:</b> A wide variety of machine learning algorithms, including classification, regression, clustering, and more.</li>
+            <li><b>Description:</b> Simple and consistent interface that is easy to learn and use, suitable for both beginners and experts.</li>
+        </ul>
+    </li>
+    <li><b>TensorFlow</b>
+        <ul>
+            <li><b>Used for:</b> Building and training artificial neural networks in large-scale applications.</li>
+            <li><b>Provides:</b> A powerful ecosystem of tools and resources for developing, training, and deploying deep learning models.</li>
+            <li><b>Description:</b> Flexible and scalable. It can be used for a wide range of applications, from image recognition to natural language processing.</li>
+        </ul>
+    </li>
+    <li><b>PyTorch</b>
+        <ul>
+            <li><b>Used for:</b> Building and training artificial neural networks, with a focus on research.</li>
+            <li><b>Provides:</b> A dynamic workflow, allowing users to define and modify models in real time.</li>
+            <li><b>Description:</b> Simple and flexible syntax. It is based on the concept of tensors, making it easy to work with multidimensional data and build complex neural network models. This facilitates experimentation and efficient prototyping.</li>
+        </ul>
+    </li>
+    <li><b>Keras</b>
+        <ul>
+            <li><b>Used for:</b> Quickly building and training artificial neural networks, with a focus on ease of use and a simplified model design approach.</li>
+            <li><b>Provides:</b> Compatibility with other popular deep learning libraries, such as TensorFlow. It allows the use of these libraries' functionalities in a familiar and easy-to-use environment.</li>
+            <li><b>Description:</b> Easy to use with a high level of abstraction. It allows users to build and train neural networks with minimal code.</li>
+        </ul>
+    </li>
+    <li><b>Pandas</b>
+        <ul>
+            <li><b>Used for:</b> Data processing and analysis.</li>
+            <li><b>Provides:</b> Flexible and powerful data structures for efficient data manipulation.</li>
+            <li><b>Description:</b> While not exclusively for machine learning, it is essential for data processing and analysis.</li>
+        </ul>
+    </li>
+</ol>
+
+<p>In addition to these libraries, depending on the specific direction you want to take, it might be beneficial to explore other libraries specialized in your field of interest. Here are some of them:</p>
+
+<ol>
+    <li><b>NumPy</b>
+        <ul>
+            <li><b>Used for:</b> Scientific computing.</li>
+            <li><b>Provides:</b> Support for working with matrices and multidimensional arrays.</li>
+        </ul>
+    </li>
+    <li><b>Matplotlib</b>
+        <ul>
+            <li><b>Used for:</b> Data visualization.</li>
+            <li><b>Provides:</b> Basic functionalities for creating graphs and charts.</li>
+        </ul>
+    </li>
+    <li><b>SciPy</b>
+        <ul>
+            <li><b>Used for:</b> Advanced scientific computing.</li>
+            <li><b>Provides:</b> Additional functionalities for scientific computing, including optimization, statistics, numerical integration, and more.</li>
+        </ul>
+    </li>
+    <li><b>NLTK (Natural Language Toolkit)</b>
+        <ul>
+            <li><b>Used for:</b> Natural language processing.</li>
+            <li><b>Provides:</b> A wide set of tools and resources for working with text and analyzing natural language.</li>
+        </ul>
+    </li>
+    <li><b>OpenCV</b>
+        <ul>
+            <li><b>Used for:</b> Image processing.</li>
+            <li><b>Provides:</b> Tools and functionalities for manipulating and analyzing images.</li>
+        </ul>
+    </li>
+</ol>
+
+<h1 id="obiective-19">Basic Functions</h1>
+<div class="accordion">
+    <button class="accordion-btn">Section Table of Contents</button>
+    <div class="panel">
+        <a href="#subsection11">Essential Functions for Building a Project</a>
+        <a href="#subsection12">Functions for Data Analysis with Pandas</a>
+        <a href="#subsection13">Functions for Data Visualization with Matplotlib</a>
+    </div>
+</div>
+
+<p>Now that we are familiar with the fundamental concepts in machine learning, we can move on to the practical part. I will begin by presenting the basic functions that can be considered (almost) indispensable for any ML project.</p>
+
+<b class="subsection-title" id="subsection11">Essential Functions for Building a Project</b>
+<ul>
+    <li><b>Loading the Dataset</b>
+        <p>Using functions such as <code>pd.read_csv()</code>, <code>pd.read_excel()</code>, <code>pd.read_sql()</code>, <code>pd.read_json()</code> to load data into a usable data structure (for example, a DataFrame in pandas).</p>
+
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import pandas as pd
+
+# Loading the dataset from a CSV file
+data = pd.read_csv('dataset.csv')
+
+# Displaying the first few rows of the dataset
+print(data.head())
+                </code>
+            </pre>
+        </div>
+    </li>
+
+    <li><b>Splitting the Dataset</b>
+        <p>Using <code>train_test_split()</code> to split the dataset into training and testing sets. You can also opt to split into training, validation, and testing sets.</p>
+
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+from sklearn.model_selection import train_test_split
+
+# Splitting the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Displaying the dimensions of the training and testing sets
+print("Training set dimensions:", X_train.shape, y_train.shape)
+print("Testing set dimensions:", X_test.shape, y_test.shape)
+                </code>
+            </pre>
+        </div>
+    </li>
+
+    <li><b>Training the Model</b>
+        <p>Using the <code>fit()</code> method to train the model on the training data. We can also mention <code>fit_transform()</code>, which simultaneously handles training and transforming data (requiring a compatible data preprocessor).</p>
+
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+from sklearn.linear_model import LogisticRegression
+
+# Initializing the Logistic Regression model
+model = LogisticRegression()
+
+# Training the model on the training dataset
+model.fit(X_train, y_train)
+                </code>
+            </pre>
+        </div>
+    </li>
+
+    <li><b>Making Predictions Using the Model</b>
+        <p>Using the <code>predict()</code> or <code>predict_proba()</code> method to make predictions based on the input data.</p>
+
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+# Making predictions on the testing dataset
+y_pred = model.predict(X_test)
+
+# Displaying the predictions
+print(y_pred)
+                </code>
+            </pre>
+        </div>
+    </li>
+
+    <li><b>Saving the Model</b>
+        <p>Using <code>joblib.dump()</code> or <code>pickle.dump()</code> to save the model into a specified file for future use.</p>
+
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import joblib
+
+# Saving the model to a file
+joblib.dump(model, 'model.pkl')
+                </code>
+            </pre>
+        </div>
+    </li>
+
+    <li><b>Loading the Model</b>
+        <p>Using <code>joblib.load()</code> or <code>pickle.load()</code> to load the model from the respective file.</p>
+
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+# Loading the model from a file
+loaded_model = joblib.load('model.pkl')
+                </code>
+            </pre>
+        </div>
+    </li>
+</ul>
+
+<b class="subsection-title" id="subsection12">Functions for Data Analysis with Pandas</b>
+<ul>
+    <li><code>head()</code>: Displays the first few rows of the DataFrame.</li>
+    <li><code>tail()</code>: Displays the last few rows of the DataFrame.</li>
+    <li><code>info()</code>: Provides information about the DataFrame, including data types and the number of non-null values.</li>
+    <li><code>describe()</code>: Provides basic statistics for each numeric column in the DataFrame.</li>
+    <li><code>shape</code>: Returns a tuple indicating the number of rows and columns in the DataFrame.</li>
+    <li><code>columns</code>: Returns the list of column names in the DataFrame.</li>
+    <li><code>index</code>: Returns the row labels of the DataFrame.</li>
+    <li><code>dtypes</code>: Returns the data types of each column in the DataFrame.</li>
+    <li><code>isnull()</code>: Returns a boolean mask indicating if values are null.</li>
+    <li><code>sum()</code>: Calculates the sum of values for each column.</li>
+    <li><code>mean()</code>: Calculates the mean of values for each column.</li>
+    <li><code>median()</code>: Calculates the median of values for each column.</li>
+    <li><code>unique()</code>: Returns the unique values from a series.</li>
+    <li><code>value_counts()</code>: Counts the occurrences of each value in a series.</li>
+    <li><code>groupby()</code>: Allows grouping data based on certain criteria.</li>
+    <li><code>pivot_table()</code>: Creates a pivot table from a DataFrame.</li>
+    <li><code>corr()</code>: Calculates the correlation matrix between numeric columns.</li>
+    <li><code>plot()</code>: Allows data visualization in the form of plots using Matplotlib or other visualization libraries.</li>
+    <li><code>nunique()</code>: Counts the number of unique values for each column in the DataFrame.</li>
+    <li><code>sample()</code>: Returns a random selection of rows from the DataFrame.</li>
+</ul>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+import pandas as pd
+
+# Creating a sample DataFrame
+data = {'A': [1, 2, 3, 4, 5],
+        'B': ['a', 'b', 'c', 'd', 'e'],
+        'C': [True, False, True, False, True]}
+
+df = pd.DataFrame(data)
+
+# The dataset looks like this
+#    A   B   C
+# 0  1   a  True
+# 1  2   b  False
+# 2  3   c  True
+# 3  4   d  False
+# 4  5   e  True
+
+
+# Using the shape method to get the DataFrame's dimensions
+print("DataFrame dimensions:", df.shape)  # (5, 3)
+
+# Using the columns method to get the list of column names
+print("Column names:", df.columns)  # Index(['A', 'B', 'C'], dtype='object')
+
+# Using the index method to get the row labels
+print("Row labels:", df.index)  # RangeIndex(start=0, stop=5, step=1)
+
+# Using the dtypes method to get the data types of each column
+print("Data types of columns:")
+print(df.dtypes)
+        </code>
+    </pre>
+</div>
+
+<b class="subsection-title" id="subsection13">Functions for Data Visualization with Matplotlib</b>
+<ul>
+    <li><b>Creating a Line Plot:</b> Line plots are useful for observing trends and changes in your data. For example, suppose we have data about temperature throughout the day by hour.</li>
+    <div class="code-snippet">
+        <div class="code-header">
+            <b class="technology">Python</b>
+            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+        </div>
+        <pre>
+            <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Example: Hours in a day
+hours = [0, 3, 6, 9, 12, 15, 18, 21, 24]
+
+# Temperatures associated with each hour
+temperature = [6, 6, 8, 10, 10, 14, 16, 14, 10]
+
+# Creating the line plot
+plt.plot(hours, temperature)
+
+# Adding labels and title
+plt.xlabel('Hour of the Day')
+plt.ylabel('Temperature (°C)')
+plt.title('Temperature Throughout the Day')
+
+# Displaying the plot
+plt.show()
+            </code>
+        </pre>
+    </div>
+
+    <figure id="fig_image6">
+        <img id="img_image6" src="imagini_blog/image8.png">
+    </figure>
+
+    <li><b>Creating a Scatter Plot:</b> Scatter plots are useful for observing relationships between two variables. For example, suppose we have data about the height and weight of people.</li>
+    <div class="code-snippet">
+        <div class="code-header">
+            <b class="technology">Python</b>
+            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+        </div>
+        <pre>
+            <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Example data
+height = [160, 165, 170, 175, 180]
+weight = [60, 65, 70, 75, 80]
+
+# Creating the scatter plot
+plt.scatter(height, weight)
+
+# Adding labels and title
+plt.xlabel('Height (cm)')
+plt.ylabel('Weight (kg)')
+plt.title('Relationship Between Height and Weight')
+
+# Displaying the plot
+plt.show()
+            </code>
+        </pre>
+    </div>
+
+    <figure id="fig_image6">
+        <img id="img_image6" src="imagini_blog/image1.png">
+    </figure>
+
+    <li><b>Creating a Histogram:</b> A histogram is used to display the distribution of a single variable. For example, suppose we have data about people's ages.</li>
+    <div class="code-snippet">
+        <div class="code-header">
+            <b class="technology">Python</b>
+            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+        </div>
+        <pre>
+            <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Example data
+ages = [22, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]
+
+# Creating the histogram
+plt.hist(ages, bins=5, edgecolor='black')
+
+# Adding labels and title
+plt.xlabel('Age')
+plt.ylabel('Number of People')
+plt.title('Age Distribution')
+
+# Displaying the plot
+plt.show()
+            </code>
+        </pre>
+    </div>
+
+    <figure id="fig_image6">
+        <img id="img_image6" src="imagini_blog/image3.png">
+    </figure>
+
+    <li><b>Creating a Bar Chart:</b> Bar charts are useful for comparing quantities across different categories. For example, suppose we have data on the number of sales for different products over a period of time.</li>
+    <div class="code-snippet">
+        <div class="code-header">
+            <b class="technology">Python</b>
+            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+        </div>
+        <pre>
+            <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Products and their sales numbers over a certain period
+products = ['Laptop', 'Phone', 'Tablet', 'TV', 'Camera']
+sales = [300, 500, 200, 400, 250]  # sales for each product
+
+# Creating the bar chart
+plt.bar(products, sales, color='skyblue')
+
+# Adding labels and title
+plt.xlabel('Products')
+plt.ylabel('Number of Sales')
+plt.title('Sales Numbers for Different Products')
+
+# Displaying the chart
+plt.show()
+            </code>
+        </pre>
+    </div>
+
+    <figure id="fig_image6">
+        <img id="img_image6" src="imagini_blog/image9.png">
+    </figure>
+
+    <li><b>Creating a Pie Chart:</b> Pie charts are useful for showing proportions between different categories. For example, representing market share percentages of different companies in an industry.</li>
+    <div class="code-snippet">
+        <div class="code-header">
+            <b class="technology">Python</b>
+            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+        </div>
+        <pre>
+            <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Companies and their market shares
+companies = ['Apple', 'Samsung', 'Huawei', 'Xiaomi', 'Google']
+percentages = [40, 25, 15, 10, 10]  # market shares for each company
+
+# Creating the pie chart
+plt.pie(percentages, labels=companies, autopct='%1.1f%%', startangle=140)
+
+# Adding the title
+plt.title('Market Shares of Companies in the Industry')
+
+# Displaying the chart
+plt.show()
+            </code>
+        </pre>
+    </div>
+
+    <figure id="fig_image6">
+        <img id="img_image6" src="imagini_blog/image11.png">
+    </figure>
+
+    <li><b>Adding Legends:</b> Legends are useful for clarifying plots with multiple data series or identifying different categories in a plot.</li>
+    <div class="code-snippet">
+        <div class="code-header">
+            <b class="technology">Python</b>
+            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+        </div>
+        <pre>
+            <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Example data
+x = [1, 2, 3, 4, 5]
+y1 = [10, 15, 13, 18, 16]
+y2 = [8, 12, 11, 16, 14]
+
+# Creating line plots for two data series
+plt.plot(x, y1, label='Series 1')
+plt.plot(x, y2, label='Series 2')
+
+# Adding the legend
+plt.legend()
+
+# Adding labels and title
+plt.xlabel('Time')
+plt.ylabel('Values')
+plt.title('Two Data Series')
+
+# Displaying the plot
+plt.show()
+            </code>
+        </pre>
+    </div>
+
+    <figure id="fig_image6">
+        <img id="img_image6" src="imagini_blog/image6.png">
+    </figure>
+
+    <li>It is helpful to know that Matplotlib also allows:
+        <ul>
+            <li>customizing the appearance of plots</li>
+            <li>saving and exporting plots</li>
+            <li>working with subplots</li>
+        </ul>
+    </li>
+</ul>
+
+<h1 id="obiective-19">Data Preprocessing Operations</h1>
+<div class="accordion">
+    <button class="accordion-btn">Section Table of Contents</button>
+    <div class="panel">
+        <a href="#subsection31">Data Cleaning</a>
+        <a href="#subsection32">Handling Outliers</a>
+        <a href="#subsection33">Data Rescaling</a>
+        <a href="#subsection34">Categorical Variable Encoding</a>
+        <a href="#subsection35">Feature Extraction</a>
+        <a href="#subsection36">Data Sampling</a>
+    </div>
+</div>
+
+<p class="subsection-title" id="subsection31">1. Data Cleaning</p>
+<ul>
+    <li>Data cleaning involves identifying and addressing various data quality issues that could distort the model's results.</li>
+    <li>This may include: removing or replacing missing values, correcting errors and inconsistencies, removing duplicates.</li>
+    <li>Examples of functions:
+        <ul>
+            <li><code>isnull()</code>: Checks if there are any null values in the DataFrame.</li>
+            <li><code>fillna()</code>: Fills missing values with a specified value or a calculated statistic (such as the mean). A similar function is <code>SimpleImputer()</code> from the <code>sklearn.preprocessing</code> module in the scikit-learn library.</li>
+            <li><code>dropna()</code>: Drops rows or columns containing null values.</li>
+            <li><code>duplicated()</code>: Identifies duplicate rows in the DataFrame.</li>
+            <li><code>drop_duplicates()</code>: Removes duplicate rows from the DataFrame.</li>
+            <li><code>replace()</code>: Replaces values in the DataFrame.</li>
+            <li><code>drop()</code>: Drops rows or columns from the DataFrame.</li>
+            <li><code>interpolate()</code>: Estimates missing values in a data series based on known values from the same series.</li>
+        </ul>
+    </li>
+</ul>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+import pandas as pd
+import numpy as np
+
+# Creating an example DataFrame with null and duplicate values
+data = pd.DataFrame({
+    'A': [1, 2, np.nan, 4, 5],
+    'B': ['a', 'b', 'c', 'd', 'a']
+})
+
+# The dataset looks like this
+#      A    B
+# 0  1.0    a
+# 1  2.0    b
+# 2  NaN    c
+# 3  4.0    d
+# 4  5.0    a
+
+# isnull(): Checks if there are any null values in the DataFrame.
+print(data.isnull())
+
+# fillna(): Fills missing values with a specific value or a calculated statistic
+data_filled = data.fillna(0)  # Fill missing values with 0
+print(data_filled)
+
+# dropna(): Drops rows or columns containing null values.
+data_dropped = data.dropna()  # Drops rows containing null values
+print(data_dropped)
+
+# duplicated(): Identifies duplicate rows in the DataFrame.
+print(data.duplicated())
+
+# drop_duplicates(): Removes duplicate rows from the DataFrame.
+data_no_duplicates = data.drop_duplicates()
+print(data_no_duplicates)
+
+# replace(): Replaces values in the DataFrame.
+data_replaced = data.replace({'a': 'x', 'b': 'y'})
+print(data_replaced)
+
+# drop(): Drops rows or columns from the DataFrame.
+data_dropped_rows = data.drop(index=[1, 3])  # Drops rows with indices 1 and 3
+data_dropped_columns = data.drop(columns=['A'])  # Drops the 'A' column
+print(data_dropped_rows)
+print(data_dropped_columns)
+
+# interpolate(): This method is used to estimate missing values in a data series, based on known values from the same series.
+data_interpolated = data.interpolate(method='linear') # Fills missing values
+print(data_interpolated)
+
+        </code>
+    </pre>
+</div>
+
+<p>Function Results:</p>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+# Initial DataFrame
+     A    B
+0  1.0    a
+1  2.0    b
+2  NaN    c
+3  4.0    d
+4  5.0    a
+
+# isnull(): Checks if there are any null values in the DataFrame.
+False      False
+False      False
+True       False
+False      False
+False      False
+
+# fillna(): Fills missing values with a specific value or a calculated statistic
+     A  B
+0  1.0  a
+1  2.0  b
+2  0.0  c
+3  4.0  d
+4  5.0  a
+
+# dropna(): Drops rows or columns containing null values.
+     A  B
+0  1.0  a
+1  2.0  b
+3  4.0  d
+4  5.0  a
+
+# duplicated(): Identifies duplicate rows in the DataFrame.
+0    False
+1    False
+2    False
+3    False
+4    False
+dtype: bool
+
+# drop_duplicates(): Removes duplicate rows from the DataFrame.
+     A  B
+0  1.0  a
+1  2.0  b
+2  NaN  c
+3  4.0  d
+4  5.0  a
+
+# replace(): Replaces values in the DataFrame.
+     A  B
+0  1.0  x
+1  2.0  y
+2  NaN  c
+3  4.0  d
+4  5.0  x
+
+# drop(): Drops rows or columns from the DataFrame.
+     A  B
+0  1.0  a
+2  NaN  c
+4  5.0  a
+   B
+0  a
+1  b
+2  c
+3  d
+4  a
+
+# interpolate(): This method is used to estimate missing values in a data series, based on known values from the same series.
+     A  B
+0  1.0  a
+1  2.0  b
+2  3.0  c
+3  4.0  d
+4  5.0  a
+        </code>
+    </pre>
+</div>
+
+<b class="subsection-title" id="subsection32">2. Handling Outliers</b>
+<ul>
+    <li>Handling outliers can be considered part of the data cleaning process.</li>
+    <li>An outlier is a value that is extremely different from the other values in the dataset and can distort analysis or models.</li>
+    <li>The operation may include removing them from the dataset, transforming them into more realistic values, or using specific outlier analysis techniques.</li>
+    <li>The most commonly used methods for handling outliers are IQR and Z-score.</li>
+</ul>
+
+<p>Interquartile Range (IQR) is a measure of data dispersion, defined as the difference between the median value of the upper half (the 75th percentile) and the median value of the lower half (the 25th percentile) of a dataset. Essentially, IQR is the difference between Q3 and Q1. In this method, a data point is considered an outlier if it is located more than 1.5 * IQR or 3 * IQR away. These values, 1.5 and 3, are used as standard thresholds. The 1.5 * IQR rule is used to identify “mild” or “moderate” outliers, and the 3 * IQR rule is used to identify “extreme” outliers. Values that are smaller than the lower bound (Q1 - chosen_threshold * IQR) or larger than the upper bound (Q3 + chosen_threshold * IQR) are considered potential outliers.</p>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+# Identifying outliers in a column and removing them
+Q1 = data['age'].quantile(0.25)
+Q3 = data['age'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+data = data[(data['age'] >= lower_bound) & (data['age'] <= upper_bound)]
+        </code>
+    </pre>
+</div>
+
+<p>Z-score is a measure of how many standard deviations a value is from the mean of a dataset. This method is explained in detail in the following topic, standardization. A data point is considered an outlier if its Z-score is greater than 3 or less than -3.</p>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+import pandas as pd
+import numpy as np
+from scipy.stats import zscore
+
+# Creating an example DataFrame
+data = pd.DataFrame({
+    'A': [1, 2, 2, 3, 4, 5, 6, 100],  # The last value (100) is an outlier
+    'B': [10, 20, 30, 40, 50, 60, 70, 80]
+})
+
+# Calculating the Z-score
+data['Z_A'] = zscore(data['A'])
+
+# Identifying outliers (values with a Z-score greater than 3 or less than -3)
+outliers = data[np.abs(data['Z_A']) > 3]
+
+print(data)
+print(outliers)
+        </code>
+    </pre>
+</div>
+<b class="subsection-title" id="subsection33">3. Rescaling Data</b>
+<ul>
+    <li>Rescaling (or data scaling) ensures that all features have the same magnitude or range, facilitating their comparison or analysis.</li>
+    <li>Sometimes, data may require rescaling or transformation to meet the specific requirements of algorithms or optimize their performance.</li>
+    <li>This process involves adjusting the dimensions of the data to bring them into a certain range or a form compatible with the machine learning algorithm you are using. Essentially, it ensures that the data is brought to a common scale or standard form.</li>
+</ul>
+
+<b>a) Standardization</b>
+<ul>
+    <li>The most common method is the <strong>Z-Score</strong>, mentioned earlier. Z-score can handle both data standardization and outlier detection simultaneously.</li>
+    <li>This method involves transforming the data so that it has a mean of zero and a standard deviation of one. In other words, it involves centering the data around zero and scaling it so that it has a common variation (same scale/dispersion), while maintaining the shape of the distribution.</li>
+    <li>It is useful when the data distribution is normal or approximately normal (bell-shaped), for algorithms that require data on the same scale, and for data with different measurement units.</li>
+</ul>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b>Formula for standardization</b>
+    </div>
+    <pre>
+    <code class="language-math">
+        z = (x - μ) / σ
+        where:
+        - x is the original value,
+        - μ is the mean of the values,
+        - σ is the standard deviation of the values.
+    </code>
+    </pre>
+</div>
+
+<ul>
+    <li><strong>Zero mean:</strong> The mean (or arithmetic average) represents the sum of all values divided by the total number of values. When we apply standardization and want the mean to be zero, it means that the average value of the feature will be reduced to zero by adjusting each value.</li>
+    <li><strong>Standard deviation of one:</strong> The standard deviation measures the dispersion or variability of the data. A standard deviation of one means that the data's dispersion is adjusted so that most data falls within the range of -1 to 1, with variability around this range.</li>
+    <li><i><strong>Example:</strong>
+        <p>Let's assume we have the following dataset representing the number of hours per week that different teenagers spend playing video games: [10,8,12,7,9]. First, we calculate the arithmetic mean, which is 9.2. We then adjust the dataset to a mean of zero by subtracting the mean (9.2) from each value in the dataset, resulting in [0.8,-1.2,2.8,-2.2,-0.2]. This means that the mean of the values is now zero.</p>
+
+        <p>Next, we calculate the standard deviation using the following formula:</p>
+        <p>$$ \sigma = \sqrt{\frac{\sum{(x_i - \mu)^2}}{N}} $$</p>
+        <p><i>where \( \sigma \) is the standard deviation, \( x_i \) are the individual values in the dataset, \( \mu \) is the mean of the dataset, and \( N \) is the total number of values in the dataset.</i></p>
+
+        Therefore, the standard deviation for the original dataset is approximately 1.836.
+
+        <div class="mathjax-container">
+            <p>$$Mean(\mu) = \frac{(10 + 8 + 12 + 7 + 9)}{5} = 9.2 $$</p>
+            <p>$$StandardDeviation(\sigma) = \sqrt{\frac{(10 - 9.2)^2 + (8 - 9.2)^2 + (12 - 9.2)^2 + (7 - 9.2)^2 + (9 - 9.2)^2}{5}} \approx 1.72 $$</p>
+        </div>
+
+        <p>We then apply the standardization formula to each value. After standardization, the values will be: [0.47, -0.70, 1.63, -1.28, -0.12].</p>
+    </i></li>
+</ul>
+
+<b>b) Normalization</b>
+<ul>
+    <li>Normalization adjusts the <strong>scale</strong> of the data to fit within a specific range, such as [0, 1] or [-1, 1], while maintaining the relative proportions between values. The most common method is <strong>MinMax Scaling</strong>.</li>
+    <li>It is useful when the amplitude of values in a feature is variable (not normally distributed) or when there are extreme values. Simply put, it is useful when we have wide ranges and in problems that rely on specific intervals.</li>
+</ul>
+
+<div class="code-snippet">
+    <div class="code-header">
+       <b>Formula for normalization</b>
+    </div>
+    <pre>
+    <code class="language-math">
+    x' = (x - min(x)) / (max(x) - min(x))
+    where:
+    x = the original value,
+    min(x) = the minimum value in the dataset,
+    max(x) = the maximum value in the dataset.
+    </code>
+    </pre>
+</div>
+
+<ul>
+    <li><i><strong>Example:</strong> Let's say we have the salaries of employees, which range from 30,000 to 100,000 dollars. If someone earns 70,000 dollars, the normalized value will be:</i></li>
+</ul>
+
+<div class="code-snippet">
+    <pre>
+    <code class="language-math">
+    x' = (70,000 - 30,000) / (100,000 - 30,000) = 70,000 / 40,000 ≈ 0.57
+    </code>
+    </pre>
+</div>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
+# Standardizing data using a function from a different library for the Z-score method
+scaler = StandardScaler()
+data_scaled = scaler.fit_transform(data)
+
+# Normalizing data
+scaler = MinMaxScaler()
+data_normalized = scaler.fit_transform(data)
+        </code>
+    </pre>
+</div>
+
+<b class="subsection-title" id="subsection34">4. Encoding Categorical Variables</b>
+<ul>
+    <li>This involves transforming categorical (non-numeric) variables into a numeric format so that they can be understood and processed by algorithms, as machine learning algorithms generally work with numerical data.</li>
+    <li>Categorical variables are features of data that can take discrete and non-numeric values, such as a person's gender or the type of car.</li>
+    <li>The most common methods are <strong>Label Encoding</strong> and <strong>One-Hot Encoding</strong>.</li>
+</ul>
+
+<b>a) Label Encoding</b>
+<ul>
+    <li>Each unique value in a categorical variable is replaced with an integer.</li>
+    <li>This method can create an artificial order between categories.</li>
+    <li><i><strong>Example:</strong> We have a dataset with the categorical variable "color": "red," "blue," "green." After applying the algorithm, "red" becomes 0, "blue" becomes 1, and "green" becomes 2.</i></li>
+</ul>
+
+<b>b) One-Hot Encoding</b>
+<ul>
+    <li>For each unique value in a categorical variable, a new binary variable (0 or 1) is created. Thus, for each data record, only one of the binary variables is activated (1) to indicate the categorical value of that record.</li>
+    <li>This method eliminates assumptions about the relational order between categories.</li>
+    <li><i><strong>Example:</strong> Using the same dataset "color": "red," "blue," "green." After applying the algorithm, "red" becomes [1, 0, 0], "blue" becomes [0, 1, 0], and "green" becomes [0, 0, 1].</i></li>
+</ul>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+# Label Encoding for a categorical variable
+label_encoder = LabelEncoder()
+data['gender_encoded'] = label_encoder.fit_transform(data['gender'])
+
+# One-Hot Encoding for categorical variables
+data_encoded = pd.get_dummies(data, columns=['education', 'occupation'])
+        </code>
+    </pre>
+</div>    
+
+<b class="subsection-title" id="subsection35">5. Feature Extraction</b>
+<ul>
+    <li>This involves <strong>identifying and selecting</strong> relevant features from the dataset.</li>
+    <li>Features are traits or attributes of the data that describe the elements in a dataset. These can vary, such as length, width, color, or any other relevant attribute of the data.</li>
+    <li>By selecting and transforming the data appropriately, we can remove noise, reduce the size of the data, and highlight relevant information, leading to more accurate and efficient models.</li>
+</ul>
+
+<b>Examples of methods:</b>
+<ul>
+    <li><strong>SelectKBest:</strong> Selects the best features based on a statistical test.</li>
+    <li><strong>SelectFromModel:</strong> Selects important features based on a model (e.g., a linear model with coefficients).</li>
+    <li><strong>RFE (Recursive Feature Elimination):</strong> Selects relevant features by recursively eliminating the least important ones.</li>
+    <li><strong>PCA (Principal Component Analysis):</strong> Reduces the dimensionality of the data and is used for feature extraction.</li>
+</ul>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+from sklearn.feature_selection import SelectKBest, f_classif
+
+# Selecting the best 5 features using the ANOVA test
+selector = SelectKBest(score_func=f_classif, k=5)
+X_selected = selector.fit_transform(X, y)
+        </code>
+    </pre>
+</div>    
+<b class="subsection-title" id="subsection36">6. Data Sampling</b>
+<ul>
+    <li>Data sampling is the process of selecting a subset (or more) from a larger dataset. This subset is used to train, validate, or test machine learning models.</li>
+    <li>It helps in obtaining more generalized models (performing better on new data), correcting imbalances (disproportionate quantity of examples for certain classes or categories), and reducing the size of the dataset.</li>
+</ul>
+
+<b>The main sampling methods are:</b>
+<ul>
+    <li><strong>Simple random sampling:</strong> Randomly selects examples from the entire dataset without any preference for specific examples.</li>
+    <li><strong>Stratified sampling:</strong> Ensures that the relative proportions of classes or other important categories are preserved in the resulting sample. This is useful when the dataset is imbalanced.</li>
+</ul>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+from sklearn.model_selection import train_test_split, StratifiedShuffleSplit
+
+# Simple random sampling
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Stratified sampling
+stratified_split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+for train_index, test_index in stratified_split.split(X, y):
+    X_train, X_test = X[train_index], X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+        </code>
+    </pre>
+</div>    
+
+<h1 id="obiective-19">Parameters and Hyperparameters</h1>
+<div class="accordion">
+    <button class="accordion-btn">Section Contents</button>
+    <div class="panel">
+      <a href="#subsection41">Parameters</a>
+      <a href="#subsection42">Hyperparameters</a>
+    </div>
+</div>
+
+<p>Optimizing a machine learning model involves adjusting <b>parameters and hyperparameters</b> to find those values that allow the model to predict as much of the training data correctly while also generalizing well to new data. Choosing the right optimization algorithm depends on the type of problem and the nature of the data.</p>
+
+<p>Parameters and hyperparameters are two distinct concepts in the context of machine learning.</p>
+
+<b class="subsection-title" id="subsection41">Parameters</b>
+<p>Parameters are internal variables that are adjusted during the model's training process. These are the characteristics that the model learns from the training data to make predictions or classifications.</p>
+<p>Examples of parameters:</p>
+<ul>
+    <li>In linear regression, the parameters are the coefficients determined during the model's training, representing the weights associated with each input feature.</li>
+    <li>In a neural network, the parameters are the weights associated with each connection between neurons, along with the biases associated with each neuron.</li>
+    <li>In probabilistic classification, the parameters are the probabilities associated with the different output classes or categories.</li>
+</ul>
+<p>There are several parameter optimization algorithms, but the most important to mention is <b>Gradient Descent</b>, which is one of the most widely used and versatile parameter optimization algorithms. The fundamental principle is to use the gradient of the cost function to guide the adjustment of a model's parameters in the direction that minimizes the cost function.</p>
+<p>The gradient of the cost function indicates the direction in which the cost function increases the fastest. Therefore, in gradient-based optimization algorithms, the model's parameters are adjusted in the opposite direction of the cost function's gradient to try to minimize the cost function.</p>
+
+<p><b>There are three main types of Gradient Descent:</b></p>
+<ul>
+    <li><b>Batch Gradient Descent (BGD)</b>
+        <ul>
+            <li>Calculates the gradient of the cost function using all examples in the training dataset at each iteration and updates the model's parameters.</li>
+            <li>Precisely and stably reaches the global minimum of the cost function.</li>
+            <li>It can be slower compared to SGD and Mini-BGD due to the need to calculate the gradient for the entire dataset at each iteration.</li>
+            <li>Recommended for small and medium datasets.</li>
+        </ul>
+    </li>
+    <li><b>Stochastic Gradient Descent (SGD)</b>
+        <ul>
+            <li>The gradient of the cost function is calculated for a randomly chosen training example at each iteration. The model's parameters are updated using the gradient calculated for each individual example.</li>
+            <li>This process can reach a satisfactory solution or a minimum of the cost function faster (leading to faster model convergence).</li>
+            <li>It can be more unpredictable and fluctuating than BGD because parameter updates are made based on the gradient calculated for a single training example at each iteration.</li>
+            <li>Suitable for large datasets.</li>
+        </ul>
+    </li>
+    <li><b>Mini-Batch Gradient Descent</b>
+        <ul>
+            <li>The training dataset is divided into small, fixed-size batches (mini-batches). In each iteration, a random mini-batch is selected from the training dataset. The cost function is calculated for this mini-batch, and the gradient of the cost function is calculated with respect to the model's parameters. The model's parameters are then updated using the gradient calculated for that mini-batch.</li>
+            <li>A combination of BGD's efficiency and SGD's agility.</li>
+            <li>It's worth noting that the mini-batch size can influence the algorithm's performance and should be chosen appropriately.</li>
+            <li>Suitable for medium and large datasets without requiring as many resources as BGD.</li>
+        </ul>
+    </li>
+</ul>
+<p>Most models have a default parameter optimization algorithm selected, and some models allow users to choose the algorithm. Meanwhile, there are models that do not involve parameter optimization algorithms in the traditional sense. In some cases, manually implementing optimization algorithms may be an option, but it is not always practical or feasible. It is important to consult the specific model or library documentation to understand what is possible and how it can be done.</p>
+
+<b class="subsection-title" id="subsection42">Hyperparameters</b>
+<p>Hyperparameters are external variables that control the training process itself. They are not directly adjusted during training but must be manually set before training begins. They influence the behavior and performance of the model.</p>
+
+<p><i>Note:</i> The process of hyperparameter optimization is a trial-and-error activity that involves experimenting with different combinations of values and evaluating the resulting model's performance on a validation dataset.</p>
+
+<p>Here are some common hyperparameters and their roles:</p>
+<ul>
+    <li><b>Learning Rate:</b> The learning rate controls how much the model’s parameters are adjusted at each step (iteration) of training.</li>
+    <li><b>Number of Epochs:</b> An epoch represents one complete pass over the entire training dataset to update the model’s parameters. The number of epochs determines how many iterations of training will be performed.</li>
+    <li><b>Batch Size:</b> The batch size is the number of training examples used in a single iteration of training. Choosing the batch size can affect the training speed and model stability.</li>
+    <li><b>Model Architecture:</b> Hyperparameters related to the model architecture can include the number of hidden layers, the number of neurons in each layer, the activation function, etc.</li>
+    <li><b>Regularization:</b> Regularization hyperparameters, such as L1 or L2 regularization factors, are used to prevent model overfitting.</li>
+    <li><b>Loss Function:</b> This is a function used to evaluate how well the model fits the training data. Choosing the loss function is an important hyperparameter because it determines which models are preferred during training.</li>
+</ul>
+
+<p>The first four hyperparameters are specific to neural networks. We will cover them in more detail in another article.</p>
+
+<p>Example of using hyperparameters:</p>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+# Defining a logistic regression model
+model = LogisticRegression(C=1.0, penalty='l2', solver='liblinear')
+        </code>
+    </pre>
+</div>
+
+In this example, the hyperparameters for logistic regression include:
+<ul>
+    <li><b>C:</b> Regularization coefficient</li>
+    <li><b>penalty:</b> Type of regularization (L1 or L2)</li>
+    <li><b>solver:</b> Optimization algorithm</li>
+</ul>
+
+<p>Earlier, we mentioned that selecting the right hyperparameters is a manual experimentation process. However, there are solutions to avoid the trial-and-error approach, namely hyperparameter optimization algorithms. These use an objective and automated method to find the best configuration more efficiently and in a shorter time. It’s worth noting that the disadvantage of using these algorithms is the need for a deeper understanding of them to achieve good performance.</p>
+
+<p>Examples of hyperparameter optimization algorithms:</p>
+<ul>
+    <li><b>Grid Search</b>
+        <ul>
+            <li>Explores all predefined combinations of hyperparameter values.</li>
+            <li>For each combination of hyperparameters, the model is trained and evaluated using a cross-validation technique.</li>
+            <li>Simple to implement and understand but can be costly for large datasets.</li>
+        </ul>
+    </li>
+    <li><b>Random Search</b>
+        <ul>
+            <li>Randomly samples combinations of hyperparameter values.</li>
+            <li>In each iteration, Random Search selects a random set of hyperparameters to be evaluated using a cross-validation technique.</li>
+            <li>It can be more efficient than Grid Search for large datasets but does not guarantee finding the best solution.</li>
+        </ul>
+    </li>
+    <li><b>Bayesian Optimization</b>
+        <ul>
+            <li>Uses Bayesian models to guide the search through the hyperparameter space.</li>
+            <li>Efficient in large search spaces but requires a more complex initial setup.</li>
+        </ul>
+    </li>
+</ul>
+
+<p>As mentioned earlier, the disadvantage of using algorithms is the need for additional knowledge. We won’t go into depth here, but to give an overview of the implementation, I will attach a code snippet for each algorithm presented.</p>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+...
+# Defining the SVM model
+model = SVC()
+
+# Defining the hyperparameter grid
+param_grid = {'C': [0.1, 1, 10, 100], 'gamma': [1, 0.1, 0.01, 0.001], 'kernel': ['rbf', 'linear']}
+
+# Creating the GridSearchCV object
+grid = GridSearchCV(model, param_grid, refit=True, verbose=3)
+
+# Training the model
+grid.fit(X_train, y_train)
+...
+        </code>
+    </pre>
+</div>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+...
+# Defining the Random Forest model
+model = RandomForestClassifier()
+
+# Defining the hyperparameter grid
+param_dist = {"max_depth": [3, None],
+              "max_features": range(1, 11),
+              "min_samples_split": range(2, 11),
+              "bootstrap": [True, False],
+              "criterion": ["gini", "entropy"]}
+
+# Creating the RandomizedSearchCV object
+random_search = RandomizedSearchCV(model, param_distributions=param_dist, n_iter=50, cv=5, verbose=2, random_state=42, n_jobs=-1)
+
+# Training the model
+random_search.fit(X_train, y_train)
+...
+        </code>
+    </pre>
+</div>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+...
+# Defining the SVM model
+model = SVC()
+
+# Defining the hyperparameter search space
+search_space = {'C': (0.1, 10.0, 'log-uniform'),
+                'gamma': (1e-6, 1e+1, 'log-uniform'),
+                'kernel': ['linear', 'poly', 'rbf', 'sigmoid']}
+
+# Creating the BayesSearchCV object
+bayes_search = BayesSearchCV(model, search_space, n_iter=50, cv=5, verbose=2, n_jobs=-1)
+
+# Training the model
+bayes_search.fit(X_train, y_train)
+...
+        </code>
+    </pre>
+</div>
+
+<p>When a hyperparameter optimization algorithm is used, it tries different combinations of hyperparameters to find the best model configuration. After the search is completed, the <strong>best_params_</strong> attribute is used to access this optimal configuration.</p>
+
+<p>For example, in the previous code, after the model has been trained using a hyperparameter search algorithm, we can access the best-found hyperparameters by accessing the <strong>best_params_</strong> attribute. This will return a dictionary with the hyperparameter names and corresponding values:</p>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+...
+print(grid.best_params_) # For Grid Search
+print(random_search.best_params_) # For Random Search
+print(bayes_search.best_params_) # For Bayesian Optimization
+        </code>
+    </pre>
+</div>
+
+<h1 id="obiective-19">Performance Evaluation</h1>
+<div class="accordion">
+    <button class="accordion-btn">Section Contents</button>
+    <div class="panel">
+        <a href="#subsection21">Evaluation Techniques</a>
+        <a href="#subsection22">Evaluation Metrics</a>
+        <a href="#subsection23">Loss Function</a>
+    </div>
+</div>
+
+<p>Performance evaluation of models is the process of measuring how well a model performs in solving a specific problem. There are numerous techniques and metrics used for evaluating model performance in machine learning. These vary depending on the type of problem (classification, regression, clustering, etc.) and the specific objectives of the project.</p>
+
+<b class="subsection-title" id="subsection21">Evaluation Techniques</b>
+
+<p>This section deals with how data is split, trained, and evaluated. Evaluation techniques provide a set of rules for evaluating models, but they do not offer an objective and quantifiable measure of a model's performance. Evaluation metrics complement this process by providing concrete and quantifiable measures of the model's performance.</p>
+
+<ul>
+    <li><strong>Holdout Validation</strong></li>
+    <p>A classic method, already mentioned earlier in this article. Holdout Validation is one of the simplest techniques for evaluating performance. The dataset is split into a training set and a test set, optionally also a validation set. The model is trained on the training set and then evaluated on the test set.</p>
+    The basic steps for Holdout Validation:
+    <ol>
+        <li><strong>Splitting the dataset:</strong> The initial dataset is randomly split into a training set and a test set. A predefined proportion is typically used, such as 70-80% for the training set and 20-30% for the test set.</li>
+        <li><strong>Training the model:</strong> The model is trained using the training set.</li>
+        <li><strong>Performance evaluation:</strong> After the model is trained, it is evaluated using the test set. The model’s performance is measured using specific evaluation metrics, chosen according to the nature of the problem.</li>
+    </ol>
+
+<p>Implementation: The <code>train_test_split()</code> function from <code>sklearn.model_selection</code> is used to split the dataset into training, testing, and validation sets.</p>
+</ul>
+
+<ul>
+<li><strong>Cross-Validation</strong></li>
+
+<p>Cross-Validation (or K-Fold Cross-Validation) is a technique used to evaluate the performance of a model and estimate how well it will perform on new data. 
+<p>It helps identify whether the model is overfitting or underfitting. It is also useful when we have a limited dataset and want to obtain as much information as possible from the available data.</p>
+<p>It’s a method where the dataset is split into smaller subgroups called folds. The model is trained on part of the data and evaluated on the remaining data, and the process is repeated several times, changing the evaluation fold in each iteration.</p>
+
+The basic steps for Cross-Validation:
+<ol>
+    <li><strong>Data splitting:</strong> The dataset is split into k folds (usually between 5 and 10 folds).</li>
+    <li><strong>Training and evaluation:</strong> The model is trained on k-1 folds and evaluated on the remaining fold.</li>
+    <li><strong>Repetition:</strong> This process is repeated k times, with each fold being used once as the evaluation set.</li>
+    <li><strong>Performance metrics calculation:</strong> After all folds have been used as the evaluation set, an overall performance metric is calculated based on the results obtained in each iteration.</li>
+</ol>
+
+<p>Implementation:</p>
+
+<ul>
+    <li><code>KFold()</code> from the <code>scikit-learn</code> library: allows manual control of the process, offering flexibility. However, this makes the process more complicated and harder to manage.</li>
+    <li><code>cross_val_score()</code> from the <code>scikit-learn</code> library: automates the process, also using KFold objects. It simplifies the code and reduces implementation complexity. This method is more recommended due to its simplicity and standardized approach.</li>
+</ul>
+
+<p>Example for cross_val_score():</p>
+</ul>
+
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+    from sklearn.model_selection import cross_val_score
+    from sklearn.datasets import load_iris
+    from sklearn.linear_model import LogisticRegression
+
+    # Load the Iris dataset
+    iris = load_iris()
+    X = iris.data
+    y = iris.target
+
+    # Initialize the model
+    model = LogisticRegression()
+
+    # Define the number of folds for cross-validation
+    num_folds = 5
+
+    # Use cross_val_score to perform K-Fold Cross-Validation and evaluate accuracy
+    scores = cross_val_score(model, X, y, cv=num_folds, scoring='accuracy')
+
+    # Display accuracy scores for each fold
+    print("Accuracy scores:", scores)
+
+    # Calculate the mean accuracy score to get an overall estimate of model performance
+    mean_accuracy = scores.mean()
+    print("Mean Accuracy:", mean_accuracy)
+  </code>
+  </pre>
+</div>
+
+<b class="subsection-title" id="subsection22">Evaluation Metrics</b>
+<p>Evaluation metrics are tools used to measure how accurate and efficient our model is in predicting outcomes.</p>
+<p>It’s important to mention again that without evaluation metrics, evaluation techniques would be incomplete, as we wouldn't have a standardized and objective way to assess and compare the efficiency and accuracy of different models.</p>
+<p>However, evaluation metrics can also be used <b>independently</b>.</p>
+
+<b>Examples of metrics for classification problems (using the <code>sklearn.metrics</code> library):</b>
+<ul>
+    <li><b>Accuracy (<code>accuracy_score()</code>)</b>: Measures the proportion of correct predictions out of the total number of predictions, providing an overall view of the model's performance. It's generally used for evaluating classification models when the dataset is balanced.</li>
+    <li><b>Confusion Matrix (<code>confusion_matrix()</code>)</b>: Provides a structured representation of a classification model's performance, showing the number of correct and incorrect predictions for each class. It’s useful for identifying the types of errors the model makes in classification.</li>
+    <li><b>Precision (<code>precision_score()</code>)</b>: Measures the proportion of correctly identified positive examples out of the total identified as positive. Precision is important in situations where minimizing false positives is crucial. For example, in spam detection, you don't want to miss important emails.</li>
+    <li><b>Recall (<code>recall_score()</code>)</b>: Measures the proportion of correctly identified positive examples out of the total actual positives in the dataset. Recall is important when you don’t want to miss positive examples. For example, in cancer detection, it’s vital to identify as many positive cases as possible, even if it means having more false positives.</li>
+    <li><b>F1 Score (<code>f1_score()</code>)</b>: Measures the performance of a binary classifier by calculating the harmonic mean of Precision and Recall. It’s especially useful when there is an imbalance between the number of positive and negative examples in the dataset.</li>
+    <li><b>AUC-ROC (<code>roc_auc_score()</code>)</b>: Measures a model's ability to distinguish between positive and negative classes. It’s useful for evaluating binary classification models, particularly when the dataset is imbalanced or when the cost of errors is different between positive and negative classes. For example: in cancer diagnosis, the cost of a false negative classification is much higher since misdiagnosing a person with cancer as healthy can have severe consequences for the patient.</li>
+</ul>
+
+<b>Examples of metrics for regression problems (using the sklearn.metrics library):</b>
+<ul>
+    <li><b>Mean Squared Error (<code>mean_squared_error()</code>)</b>: Measures the average squared difference between predicted and actual values. It’s useful for quantifying the errors made by the model.</li>
+    <li><b>Mean Absolute Error (<code>mean_absolute_error()</code>)</b>: Measures the average of the absolute differences between predicted and actual values. It’s more resistant to extreme values (outliers) than Mean Squared Error.</li>
+    <li><b>R-squared (<code>r2_score()</code>)</b>: Measures the proportion of the variance in the dependent variable (the variable we are trying to predict or explain) that can be explained by the regression model. It’s useful for evaluating how well the regression model fits the observed data.</li>
+</ul>
+
+<b>Other evaluation methods:</b>
+<ul>
+    <li><b><code>score()</code></b>: This is a method from the scikit-learn library. It evaluates the performance of a model based on a test dataset. It returns different evaluation metrics depending on the model type and implementation. For example, for classification models, it returns the model's accuracy, and for regression models, it returns R-squared.</li>
+    <li><b><code>evaluate()</code></b>: This is a method from the Keras library. It evaluates the performance of a neural model on a test dataset. It returns a list of evaluation metrics specified during the model compilation stage. For example, if the model was compiled with the metrics ['accuracy', 'precision', 'recall'], then evaluate() will return a list of these metrics calculated for the test dataset, with the order of values in the returned list matching the order in which the metrics were specified during compilation.</li>
+</ul>
+
+<p>In the following code snippet, I will illustrate an example using the Holdout Validation technique and some evaluation metrics:</p>
+<div class="code-snippet">
+    <div class="code-header">
+        <b class="technology">Python</b>
+        <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+    </div>
+    <pre>
+        <code class="language-python">
+    from sklearn.metrics import confusion_matrix, accuracy_score
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.model_selection import train_test_split
+    from sklearn.datasets import load_iris
+
+    # Load the Iris dataset
+    iris = load_iris()
+    X = iris.data
+    y = iris.target
+
+    # Split the dataset into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Train a logistic regression model
+    model = LogisticRegression()
+    model.fit(X_train, y_train)
+
+    # Make predictions on the test set
+    y_pred = model.predict(X_test)
+
+    # Evaluate the model's performance
+    print("Confusion matrix:")
+    print(confusion_matrix(y_test, y_pred))
+
+    print("\n Accuracy:")
+    print(accuracy_score(y_test, y_pred))
+  </code>
+  </pre>
+</div>
+
+<p>Additionally, I want to add a practical example in case you <b>didn’t understand</b> the difference between <b>Precision</b> and <b>Recall</b>.</p>
+<p>Let’s consider a classification case where a model needs to distinguish between spam and non-spam emails.</p>
+<p>Out of a set of 100 emails:</p>
+<ul>
+    <li>30 are spam emails</li>
+    <li>70 are non-spam emails</li>
+</ul>
+<p>For our spam classification model, let’s assume the following predictions:</p>
+<ul>
+    <li>It identifies 25 emails as spam. Of these, 20 are correct, and 5 are incorrectly classified (false positives).</li>
+    <li>The remaining 10 spam emails are not identified by the model (false negatives).</li>
+</ul>
+<p>Now, let's calculate precision and recall:</p>
+<ul>
+    <li>Precision = True Positives / (True Positives + False Positives) = 20 / (20 + 5) = 20 / 25 = 0.8 (80%)</li>
+    <li>Recall = True Positives / (True Positives + False Negatives) = 20 / (20 + 10) = 20 / 30 = 0.67 (67%)</li>
+</ul>
+
+<b class="subsection-title" id="subsection23">Loss Function</b>
+
+<p>First, it is important to understand that the loss function is <b>not a traditional metric</b>, and its purpose differs from the metrics discussed earlier.</p>
+
+<p>The loss (or cost) function is a measure of the discrepancy between the values predicted by the model and the actual values from the training data. The quantified value returned by the function can be considered an <b>assessment of the model's performance</b> in terms of its ability to make accurate predictions on the training data.</p>
+
+<p>From the internal perspective of the training process, the goal is to find the model’s parameters (weights) that minimize the loss function. The lower the value of the loss function, the more accurate the model’s predictions are on the training data.</p>
+
+<p>At the same time, the purpose of the loss function is to indicate the direction the training needs to take to minimize error and achieve better performance.</p>
+
+<b>This process works as follows:</b>
+
+<ul>
+    <li>During training, the model's parameters are <b>iteratively adjusted</b> using optimization algorithms to find the values that minimize the loss function.</li>
+    <li><b>After each training iteration</b>, the loss function is calculated to evaluate the model's performance on the training or validation dataset, and then adjustments are made to improve performance. This continuous, iterative training process is based on the feedback provided by the loss function.</li>
+    <li><b>Training will stop</b> when the loss function stops improving for a certain number of consecutive epochs or after a default number of epochs.</li>
+</ul>
+
+<b>The difference between the loss function and traditional metrics:</b>
+<ul>
+    <li><strong>Purpose:</strong> The loss function is <b>used during model training</b> to <b>guide the optimization process</b> of the parameters in order to reach an optimal solution. On the other hand, evaluation metrics like accuracy, recall, or F1-score are used to assess the overall performance of the model (<b>after it has been trained</b>) on test data.</li>
+    <li><strong>Calculation:</strong> The loss function is often <b>calculated internally</b> within optimization algorithms, such as backpropagation in neural networks, to adjust weights and improve model performance. In contrast, other metrics can be <b>calculated externally</b>, after the model has been trained, and provide additional evaluation of its performance.</li>
+</ul>
+
+<b>What you need to know about the loss function:</b>
+
+<ul>
+    <li>Loss functions are <b>essential</b> in the training process of machine learning models, which is why every model has an appropriate loss function directly integrated.</li>
+    <li>If you do not explicitly specify a loss function when defining the model, the library will use the one <b>set by default</b> for that particular model.</li>
+    <li>Custom loss functions can be <b>defined</b>.</li>
+</ul>
+
+<b>Types of loss functions:</b>
+<p>There are several types of loss functions, and the appropriate choice depends on the problem type and the nature of the data. Many loss functions can be found in the TensorFlow library (modules <code>tf.keras.losses</code>, <code>tf.losses</code>). Examples include:</p>
+<ol>
+    <li>Linear regression:</li>
+    <ul>
+        <li>Loss function: <i>Mean Squared Error (MSE)</i> or <i>Mean Absolute Error (MAE)</i>.</li>
+    </ul>
+    <li>Classification with logistic regression:</li>
+    <ul>
+        <li>Loss function: <i>Cross-Entropy Loss</i> or <i>Log Loss</i>.</li>
+    </ul>
+    <li>Support Vector Machines (SVM):</li>
+    <ul>
+        <li>Loss function: <i>Hinge Loss</i>.</li>
+    </ul>
+    <li>Fully Connected Neural Networks:</li>
+    <ul>
+        <li>Loss functions: <i>MSE</i> for regression, <i>Cross-Entropy Loss</i> for classification.</li>
+    </ul>
+</ol>
+
+<p>As a practical example, let’s revisit the last code we discussed:</p>
+
+<div class="code-snippet">
+  <pre><code class="language-python">
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+from sklearn.metrics import log_loss
+
+# Load the Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train a logistic regression model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Make predictions on the test set
+y_pred = model.predict(X_test)
+
+# Calculate Log Loss for the model’s predictions
+logloss = log_loss(y_test, model.predict_proba(X_test))
+print("Log Loss:", logloss)
+  </code></pre>
+</div>
+
+<p>As mentioned earlier, every model has an integrated loss function. Even if it wasn’t explicitly stated, this code uses the Log Loss function during training.</p>
+
+<p>In other cases, models allow you to choose a different loss function by specifying it as a parameter during definition.</p>
+
+Example 1:
+<div class="code-snippet">
+  <pre><code class="language-python">
+from sklearn import svm
+from sklearn.metrics import hinge_loss
+
+...
+
+# Define and train the SVM model
+# The 'loss' parameter specifies the loss function
+model = svm.SVC(kernel='linear', loss='hinge')
+model.fit(X_train, y_train)
+
+...
+  </code></pre>
+</div>
+
+Example 2:
+<div class="code-snippet">
+  <pre><code class="language-python">
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.losses import categorical_crossentropy
+from tensorflow.keras.optimizers import Adam
+
+...
+
+# Define the model
+model = Sequential([
+    ...
+])
+
+# Compile the model with the categorical_crossentropy loss function
+model.compile(optimizer=Adam(learning_rate=0.001),
+              loss=categorical_crossentropy,
+              metrics=['accuracy'])
+
+...
+  </code></pre>
+</div>
+
+	</main>
+	
+		</div>
+	  </div>
+  </div>
+
+
+
+
+		<div id="myOverlayToc" class="overlay-toc">
+		  <div class="overlay-toc-content">
+			
+			<h4 style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Cuprins</h4>
+			<div id="myOverlayNav">
+			  <!-- The content from the first section's <nav id="toc"> will be inserted here -->
+			</div>
+			<a onclick="closeTOC()" class="toc-close-button"><b>X</b></a>
+		  </div>
+		</div>
+
+
+
+
+<a onclick="openTOC()" id="open-toc" class="float">
+<i class="fa fa-indent" aria-hidden="true"></i>
+</a>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+
+  <script>
+    const accordions = document.querySelectorAll('.accordion-btn');
+    accordions.forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        
+        // Toggle active class to change the arrow direction
+        this.classList.toggle('active');
+      });
+    });
+  </script>
+
+</html>

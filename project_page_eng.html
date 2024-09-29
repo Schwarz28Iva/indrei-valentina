@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Augmented Reality Sudoku Solver</title>
+  <link rel="stylesheet" href="css/style_project.css">
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/project_card.css">
+  <link rel="stylesheet" href="css/table_of_contents.css">
+  <link rel="stylesheet" href="css/overlay_toc.css">
+  <link rel="stylesheet" href="css/images_project.css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <script src="javascript/script_navbar.js"></script>
+  <script src="javascript/toc.js"></script>
+  
+  
+  <link rel="stylesheet" href="prism_library/prism.css" />
+  <script src="prism_library/prism.js"></script>
+
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+
+
+    .figure-container {
+        display: flex;
+        justify-content: center;
+    }
+/*
+    .figure-container > figure {
+        margin: 0;
+    }
+*/
+    @media screen and (max-width: 500px) {
+        .figure-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        figure {
+            width: 100%;
+            //margin-bottom: 20px;
+        }
+    }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+  //vertical-align:middle;
+  //float: left;
+}
+
+figure {
+  //display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+  font-style: oblique;
+  color: #6e6d6d;
+}
+
+@media screen and (max-width: 750px) {
+  img {
+    max-width: 90%;
+  }
+}
+
+figcaption {
+	text-align:center;
+	max-width: 100%;
+}
+
+
+
+.code-snippet {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.code-header {
+  background-color: #f5f5f5;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.technology {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+  .copy-button {
+    padding: 5px 10px;
+    background-color: #86b38f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .copy-button:hover {
+    background-color: #65a372;
+  }
+
+pre {
+  margin: 0;
+  padding: 10px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .code-snippet {
+    font-size: 14px; /* Smaller font for smaller screens */
+    width: 100%; /* Maximize width */
+    margin-left: 0; /* Remove indentation */
+    padding-left: 0;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  ul, ol {
+    padding-left: 20px; /* Reduce the indentation */
+  }
+}
+</style>
+
+
+<script>
+  function copyCode(button) {
+    const code = button.parentNode.nextElementSibling.querySelector('code');
+    const text = code.textContent;
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy code';
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error('Failed to copy code:', error);
+      });
+  }
+</script>
+
+
+</head>
+<body style="height: 100vh;">
+	<header>
+	  <div class="container">
+
+		<div class="logo">
+		  <h4 style="font-size: 24px; margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;" class="animate-charcter">INDREI VALENTINA</h4>
+		</div>
+
+		<nav id="myTopnav">
+		  <a href="home_page.html">HOME</a>
+		  <a href="about_me.html">ABOUT ME</a>
+		  <a href="services_page.html">SERVICES</a>
+		  <a href="projects.html">PROJECTS</a>
+		  <a href="contact_page.html">CONTACT</a>
+		  
+		  <a href="javascript:void(0);" class="icon" onclick="openNav()">
+			<i class="fa fa-bars"></i>
+		  </a>
+		</nav>
+	  </div>
+	  
+	    <!-- Language Switch Button outside the container -->
+  <div class="language-switch-container">
+    <a href="project_page.html" class="language-switch">
+      <img src="https://flagcdn.com/16x12/ro.png" alt="RO flag"> RO
+    </a>
+  </div>	  
+	  
+	</header>
+	  
+	</header>
+	
+	
+	
+	
+	
+  <div class="blog-card first">
+    <div class="meta">
+      <div class="photo" style="background-image: url(photos/ProjectsPage/arss.png)"></div>
+    </div>
+    <div class="description">
+      <h1>Augmented Reality Sudoku Solver</h1>
+      <h2 style="color: #4f4f4f;">Embark on a Thrilling Academic Quest - My bachelor thesis</h2>
+      <p>
+	This article studies various methods of generating and solving through computer
+vision a Sudoku puzzle, presenting step by step the journey of implementing from
+scratch a desktop application that contains all the features that the Sudoku community
+could need.
+	  </p>
+	  			<div class="projcard-tagbox">
+					<span class="projcard-tag">C++</span>
+					<span class="projcard-tag">OpenCV</span>
+					<span class="projcard-tag">Qt</span>
+					<span class="projcard-tag">CNN</span>
+				</div>
+		<!--<i class="fa fa-laptop slowfloat3s"></i>-->
+	</div>
+  </div>
+	
+	
+
+  <div class="row">
+	  <div id="leftcolumn" class="leftcolumn">
+		<div class="card">
+		
+		  <h4 style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Contents</h4>
+		<!--  <div class="fakeimg" style="height:100px;">Image</div> -->
+		  
+		    <nav id="toc"> 
+			</nav>
+		
+		
+		</div>
+		
+	  </div>
+	  
+	  
+	  <div class="rightcolumn" style="margin-bottom: 3.8%;">
+		<div class="card">
+		<!--
+		  <h2>TITLE HEADING</h2>
+		  <h5>Title description, Dec 7, 2017</h5>
+		  <div class="fakeimg" style="height:200px;">Image</div>
+		  <p>Some text..</p>
+		  -->
+		  
+	<main style="word-wrap: break-word; text-align: justify;">
+	
+	<!--
+	<h1 id="objectives-19">Introduction</h1>
+	-->
+	<h1 id="objectives-19">Objectives</h1>
+		<p>The objectives of this paper consist of:</p>
+		<ul>
+			<li>The main goal is to create a useful tool for Sudoku players, the application being usable both in everyday life and at a competitive level.</li>
+			<li>The application should offer all the functionalities that a Sudoku player might need: creating a puzzle, verifying a solved puzzle, providing the solution for an unsolved puzzle.</li>
+			<li>For the application to be used at a competitive level, simplifying the work, providing the ability to print and generate a specified number of puzzles by the user.</li>
+			<li>Generating puzzles with variable difficulty.</li>
+			<li>More functionality than other similar applications on the market.</li>
+			<li>Good execution time. Example: obtaining an execution time of 1 second per generated sudoku, for most difficulty levels.</li>
+			<li>Creating a pleasant and easy-to-use GUI.</li>
+		</ul>
+	
+
+	<h1>Technologies and Tools Used</h1>
+	<h2>Programming Language</h2>
+		<p>The programming language used is C++. C++ is a powerful general-purpose programming language that can be used to create high-performance applications. The language offers programmers a high level of control over system resources and memory.</p>
+		<p>It can be used to develop operating systems, browsers, games, servers, applications, and more. C++ supports different programming modes such as procedural, object-oriented, functional, and data abstraction. This makes C++ powerful and flexible.</p>
+		<p>Unlike other languages, C++ is adaptable and has quickly evolved alongside the needs of programmers and software. Additionally, C++ is versatile, as it has been widely used for so long that it is highly compatible with most other languages on the market.</p>
+		<p>It is an extremely fast and efficient language. Many tools and frameworks rely on the speed and efficiency of C++.</p>
+		<p>In short, it is in high demand today and will remain so due to its numerous advantages:</p>
+		<ul>
+			<li>Reliability</li>
+			<li>Performance</li>
+			<li>Efficiency</li>
+			<li>Versatility/Flexibility</li>
+		</ul>
+		<p>Recent advancements in machine learning and other AI-related topics have been implemented using Python due to its flexibility, rich and excellent AI and ML frameworks, and an active user community. So, in terms of simplicity, Python is definitely much easier to use.</p>
+		<p>Although C++ is not the ideal programming language for Machine Learning, it has some characteristics that make C++ capable enough to compete with modern programming languages like Python. The presented advantages help rank it second in the list of the most used programming languages in Machine Learning or Artificial Intelligence.</p>
+	
+	<h2>Technologies Used</h2>
+		<ul>
+			<li><strong>OpenCV</strong></li>
+		</ul>
+		<p>The first technology that must be mentioned is definitely OpenCV. OpenCV (Open Source Computer Vision Library) is an open-source software library for computer vision and machine learning. It is an excellent and widely used tool in these fields, being usable for complex tasks such as face or object detection for airport security, visualizing the route for autonomous cars, or much simpler tasks like editing an image.</p>
+		<p>There are many reasons why this technology can be considered beginner-friendly:</p>
+		<ul>
+			<li>Unlimited possibilities</li>
+			<li>Free for academic and commercial use</li>
+			<li>Extensive documentation and theoretical and practical works are abundantly available</li>
+			<li>Images are converted into multidimensional matrices, greatly simplifying their manipulation</li>
+		</ul>
+		<p>Additionally, OpenCV is compatible with several programming languages, including C++, Python, and Java. The library is even more powerful because it is designed for computational efficiency and with a strong focus on real-time applications. Written and optimized in C/C++, the library can take advantage of multi-core processing.</p>
+		<p>Currently, it is the largest computer vision library in terms of the vast number of functions it holds. Considering all these aspects, it is justified why the library is widely used in companies, research groups, and government bodies.</p>
+
+
+		<ul>
+			<li><strong>Qt</strong></li>
+		</ul>
+		<p>Qt is a cross-platform framework that contains a comprehensive set of highly intuitive and modular C++ libraries, packed with APIs to simplify application development. Qt produces highly readable, maintainable, reusable code with high performance.</p>
+		<p>Qt is used for developing graphical user interfaces (GUIs) and cross-platform applications that run on all major desktop platforms and most mobile or embedded platforms.</p>
+		<p>The main advantages of the Qt framework are: it is better for creating GUIs (because it is faster than other languages), it is cross-platform, it is directly managed by the CPU, and Qt Designer is very useful and easy to handle.</p>
+
+	<h2>Development Environment</h2>
+		<ul>
+			<li><strong>Qt Creator</strong></li>
+		</ul>
+		<p>The development environment used to bring the application to its final form is <strong>Qt Creator</strong>. The main reason I chose this IDE is its support for creating graphical interfaces, the environment being closely integrated with the Qt framework, a popular tool filled with features for software design and development.</p>
+		<p>It also offers typical IDE features such as debugging, compilation, code autocompletion, profiling, and refactoring. It is also exceptionally fast and intuitive to use. Qt Creator runs on Windows, Linux, and macOS desktop operating systems and allows developers to create software on desktop, mobile, and embedded platforms.</p>
+		<p>It is considered in the industry a useful software development tool because you can build high-quality GUIs and high-performance applications, being powerful and versatile.</p>
+		<p>However, it is important to mention the drawbacks of this development environment: the UI experience can be overwhelming, it requires familiarity with the Qt framework to utilize GUI support, and an initial learning period may be required to take advantage of all its features. Compatibility errors may also occur.</p>
+		<p></p>
+		<p></p>
+
+		<ul>
+			<li><strong>Visual Studio 2019</strong></li>
+		</ul>
+		<p><strong>Microsoft Visual Studio</strong> is an integrated development environment from Microsoft. It is used to develop computer programs, as well as websites, web applications, web services, mobile applications, and games.</p>
+		<p>According to the report published by JetBrains, Microsoft Visual Studio is the most popular C++ IDE for Windows among developers. It is also my main preference.</p>
+		<p>Visual Studio is the most popular choice for good reasons: this complex tool is cross-platform, benefits from GitHub integration, supports many programming languages, has perfect extension support, and is packed with an incredible range of features. It has excellent syntax highlighting, a nice design, a powerful debugging system, and a user-friendly UI designer. Plus, it has a huge community, so documentation, tutorials, and examples are plentiful.</p>
+		<p>That being said, it is easy to understand why all the features of the application were implemented in the Visual Studio 2019 development environment, being then adapted for Qt Creator and modified (where necessary) to work with the graphical interface built in Qt Designer.</p>
+		<p>Currently, the only project where you can create a complex graphical interface on Visual Studio 2019 directly in C++ is CLR (.NET Framework), but it has many bugs, making the developer experience unpleasant and frustrating. Other types of projects that allow UI implementation (such as MFC) are perfect for simple applications that do not require complex graphical elements or multiple pages/screens. The lack of support for a complex GUI is why I had to migrate to Qt Creator in the final stage of application development.</p>
+
+	
+		<h1>Proposed Solution</h1>
+
+		<ul>
+			<li><strong>General Application Structure - Use Cases</strong></li>
+		</ul>
+		
+		<figure id="fig_use_case">
+			<img id="img_use_case" src="imagini/Use_Case.png">
+			<figcaption>Use Case Diagram of the Application</figcaption>
+		</figure>
+		
+		<p>We have <strong>only one type of user</strong>, who has access to all application functionalities.</p>
+		<p>There are 3 use cases:</p>
+		<ul>
+			<li><strong>Augmented Reality Sudoku Solver</strong> - the main functionality of the application. It accesses the webcam, detects the Sudoku, and displays the found solution over the image in the application in real time.</li>
+			<li><strong>Sudoku Puzzle Generator</strong> - generates the number of Sudoku puzzles requested by the user, with the option to print in PDF format.</li>
+			<li><strong>Sudoku Puzzle Answer Checker</strong> - allows verification of a puzzle. The user will show the puzzle, and the application will use the verification algorithm to notify the user if it is correct or not.</li>
+		</ul>
+
+
+		<h2>Augmented Reality Sudoku Solver</h2>
+
+			<p>Creating a Sudoku solver through augmented reality is a complex, certainly attractive problem that requires a bit of creativity but, more importantly, a broader range of knowledge. In addition to problem-solving skills, algorithmic and programming knowledge, but especially computer vision, is needed. For tasks related to computer vision, we use the OpenCV library.</p>
+
+
+			<ul>
+				<li><strong>Activity Diagram - Illustrating Relevant Internal Behavior</strong></li>
+			</ul>
+			
+			<figure id="fig_arss_activitate">
+				<img id="img_arss_activitate" src="imagini/arss_activitate.png">
+				<figcaption>Activity Diagram for Augmented Reality Sudoku Solver</figcaption>
+			</figure>
+
+
+			<p>To streamline the development process, we divide the problem into multiple subproblems, which we solve one by one. Each subproblem represents a step, each complementing the previous one, so that in the end, we have the final functionality.</p>
+
+			<p>That being said, creating an automatic Sudoku puzzle solver is a process consisting of the steps presented in the following diagram:</p>
+
+			<figure id="fig_pasi_ar">
+			  <img id="img_pasi_ar"src="imagini/pasi_ar.png">
+			  <figcaption>Steps for building a Sudoku puzzle solver using augmented reality</figcaption>
+			</figure>
+
+			<p>For each step, we describe in detail the approach and problem-solving method.</p>
+
+			<p><b>Step 1</b></p>
+
+			<p>No separate presentation is needed, as its purpose is only to capture and display the webcam stream. This is possible with the help of the <strong>Video Capture</strong> class from OpenCV. The class provides a C++ API for capturing video from cameras or reading video files and image sequences.</p>
+
+			<p><b>Step 2 - Detect the Sudoku</b></p>
+
+			<p>Now that we have the image, we can begin. The first thing we need to do is implement some image processing operations to obtain an enhanced image and extract some useful information from it.</p>
+
+			<figure id="fig_poza12_ar">
+			  <img src="imagini/poza1.2_ar.jpg">
+			  <figcaption>Results of the processing operations</figcaption>
+			</figure>
+
+			<p>For this, we use a few basic techniques with functions provided by OpenCV. We apply them in this order:</p>
+
+			<ol>
+			  <li>We convert the image from BGR to grayscale using <strong>cv::cvtColor()</strong>. This is generally the first step that needs to be done for any computer vision task. Most of the time, grayscale contains all the relevant information to complete a task. Therefore, reducing the image to grayscale greatly simplifies calculations and removes redundancies.</li>
+			  <li>We apply Gaussian blur using <strong>cv::GaussianBlur()</strong>. This aims to eliminate digital noise.</li>
+			  <li>We apply the <strong>cv::adaptiveThreshold()</strong> function. It is used to separate the desired objects in the foreground image from the background based on the difference in pixel intensity in each region.</li>
+			</ol>
+
+			<p>Now we have a much clearer and simplified image that presents only the important elements for us. Now we can detect the contours in the image using the <strong>cv::findContours()</strong> function with the RETR_TREE parameter to return all the hierarchical contours.</p>
+
+			<p>Now having a vector with the contours of the image, we iterate through it and check for each contour if it meets certain properties:</p>
+
+			<ol>
+			  <li>The contour area is larger than 5000 pixels. The contour area is returned by the <strong>cv::contourArea()</strong> function.</li>
+			  <li>The contour is a square. To find out this information, we use the <strong>cv::arcLength()</strong> and <strong>cv::approxPolyDP()</strong> functions.</li>
+			  <li>It has the largest area among all contours.</li>
+			</ol>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	double area;
+	double maxarea = 0;
+	int p = -1;
+	for (int i = 0; i < contours.size(); i++)
+	{
+		area = contourArea(contours[i], false);
+		if (area > 50000)
+		{
+			double perimeter = arcLength(contours[i], true);
+			approxPolyDP(contours[i], contours[i], 0.01 * perimeter, true);
+			if (area > maxarea && contours[i].size() == 4)
+			{
+				maxarea = area;
+				p = i;
+			}
+		}
+	}
+  </code>
+  </pre>
+</div>
+
+			<p>If a contour that meets all these conditions is found, it means we have just detected a Sudoku. We use the <strong>cv::drawContours()</strong> function to highlight the Sudoku by drawing its outer contour in green.</p>
+
+			<figure id="photo2_ar">
+			  <img src="imagini/poza2_ar.jpg">
+			  <figcaption>Highlighted Sudoku</figcaption>
+			</figure>
+
+			<p><b>Step 3 - Extract Each Cell Separately</b></p>
+
+			<p>Before we can extract the cells, we need to extract the entire puzzle from the image and analyze it separately. To extract it from the image, we need to find the coordinates of the four corners of the square.</p>
+
+			<p>We need to figure out which corner will be mapped to the top-left (coordinate (0,0)), bottom-right (coordinate (450,450)), and so on for the new image. Therefore, we must identify the correct order of the corners; otherwise, we will get rotated images.</p>
+
+			<p>The logic I chose to find those corners was: first, I take the sum of the x and y coordinates. The top-left corner has the smallest sum, and the bottom-right has the largest sum. The y-x difference is minimal in the top-right corner, and the bottom-left is maximal.</p>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	for (int i = 0; i < 4; i++)
+	{
+		sum = contours[p][i].x + contours[p][i].y;
+		diff1 = contours[p][i].x - contours[p][i].y;
+		diff2 = contours[p][i].y - contours[p][i].x;
+		if (diff1 > diffprev)
+		{
+			diffprev = diff1;
+			c = i;
+		}
+		if (diff2 > diffprev2)
+		{
+			diffprev2 = diff2;
+			d = i;
+		}
+		if (sum > prevsum)
+		{
+			prevsum = sum;
+			a = i;
+		}
+		if (sum < prevsum2)
+		{
+			prevsum2 = sum;
+			b = i;
+		}
+	}
+  </code>
+  </pre>
+</div>
+
+
+			<figure id="fig_warpPerspective3" width=280px>
+			  <img src="imagini/warpPerspective3.jpg" width=270px>
+			  <figcaption>Cropped Sudoku</figcaption>
+			</figure>
+			
+			<p id="par1">Thus, we managed to find the corners; we only need to specify where those points should be mapped.</p>
+
+			<p>The next step is to use a geometric transformation to create an image with only the Sudoku grid, transformed so that it is a square. For this, we use the <strong>cv::getperspectiveTransform()</strong> function. The function maps a given point (x, y) from one quadrilateral to a new point (X, Y) in another quadrilateral. Thus, to create an appropriate transformation, we send the 4 corners of the Sudoku grid and the desired location for each in the destination image. The <strong>cv::warpPerspective()</strong> method performs the transformation of the source image.</p>
+
+			<figure id="fig_warpPerspective3_2" width=280px>
+			  <img src="imagini/warpPerspective3.jpg" width=270px>
+			  <figcaption>Cropped Sudoku</figcaption>
+			</figure>
+
+			<p style="clear: right; clear:left;">We obtained a new image that contains only the Sudoku. Now we can begin implementing the extraction of the numbers. First, we need to process the image again. The processing steps are as follows:</p>
+			<ol>
+			  <li><strong>cv::cvtColor()</strong> with the parameter COLOR_BGR2GRAY</li>
+			  <li><strong>cv::threshold()</strong> with the parameter THRESH_BINARY</li>
+			  <li><strong>cv::threshold()</strong> with the parameter THRESH_OTSU</li>
+			  <li><strong>cv::adaptiveThreshold()</strong> with the parameters ADAPTIVE_THRESH_GAUSSIAN_C and THRESH_BINARY_INV</li>
+			</ol>
+
+			<p>We notice that the lines have not completely disappeared. To remove the lines from the image, we use the <strong>cv::HoughLines()</strong> function, which finds the lines in a binary image. After obtaining the lines, we iterate through the resulting vector and use the <strong>cv::line()</strong> function to draw each line in black, thus covering them.</p>
+
+<div class="figure-container">
+    <figure id="fig_poza4_ar">
+        <img src="imagini/poza4_ar.jpg">
+        <figcaption class="figure-caption">Processing Results</figcaption>
+    </figure>
+    <figure id="fig_poza5_ar">
+        <img src="imagini/poza5_ar.jpg">
+        <figcaption class="figure-caption">HoughLines Results</figcaption>
+    </figure>
+</div>
+
+			<p>After all these operations, the resulting image is clear and with minimized details, managing to keep the numbers intact and highlighted. As we have formed a separate image only with the Sudoku, we take the same approach for extracting the numbers. This means that our goal is to obtain each cell in a separate image, meaning we analyze a total of 81 images.</p>
+
+			<p>To obtain a separate image for each cell, I followed the following idea: I will divide the Sudoku image by 9, both in length and width. The image is a square, and all the cells inside are also squares. This means that by dividing the image length by 9 and iterating over it in pieces, we certainly obtain each cell.</p>
+
+			<p>Thus, if we create two iterations starting from 0 to 9 and start from point (x,y) = (0,0) and increment the x and y points accordingly, we easily get the coordinates for each cell. With these coordinates, we can create a <strong>cv::Rect</strong> object containing the region of interest (ROI), which we use to crop the image of the cell from the one with the Sudoku.</p>
+
+			<p><b>Step 4 - Determine if a Number Exists, and If So, Apply OCR</b></p>
+
+		<p>We obtained the image with the cell separately. Now we apply the <strong>cv::findContours()</strong> function with the RETR_EXTERNAL parameter to return all the external hierarchical contours.</p>
+
+		<p>We prepare a 9x9 matrix to store, row by row, as we traverse the image, each resulting value.</p>
+
+		<p>If the size of the resulting contour vector is zero, then it is certain that the cell is empty, meaning we assign it the value 0. If it is greater than zero, this does not necessarily mean that a number is present, as there may be small remnants of the grid, with their contours being returned by the <strong>cv::findContours()</strong> function (example in figure 1.1).</p>
+
+		<p>To eliminate this issue, we calculate the center of mass for each contour found in the image. If the center of mass is located in the central part of the image, it means there is a number (figure 2.2). If the center of mass is not found in the central part, it means the cell is empty, and we assign it the value zero (figure 1.2).</p>
+
+<div style="flex-direction:row;" class="figure-container">
+    <figure style="width: 50%;">
+        <img src="imagini/poza7_ar.jpg" alt="Image with the number of contours greater than zero, but not containing a digit" style="width: 2cm;">
+        <figcaption class="figure-caption">Figure 1.1: Image with the number of contours greater than zero, but not containing a digit</figcaption>
+    </figure>
+    <figure style="width: 50%;">
+        <img src="imagini/poza8_ar.jpg" alt="Center of mass of the contour found in a cell without a digit" style="width: 2cm;">
+        <figcaption class="figure-caption">Figure 1.2: Center of mass of the contour found in a cell without a digit</figcaption>
+    </figure>
+</div>
+
+<div style="flex-direction:row;" class="figure-container">
+    <figure style="width: 50%;">
+        <img src="imagini/poza_celula1_ar.jpg" alt="Image of a cell containing a digit" style="width: 2cm;">
+        <figcaption class="figure-caption">Figure 2.1: Image of a cell containing a digit</figcaption>
+    </figure>
+    <figure style="width: 50%;">
+        <img src="imagini/poza_celula2_ar.jpg" alt="Center of mass of the contour found in a cell with a digit" style="width: 2cm;">
+        <figcaption class="figure-caption">Figure 2.2: Center of mass of the contour found in a cell with a digit</figcaption>
+    </figure>
+</div>
+
+<figure>
+    <img src="imagini/schema_conditie.png">
+    <figcaption>Representation of the condition for the center of mass position. The large square represents the entire cell. The area outlined in green is the valid area.</figcaption>
+</figure>
+
+		<p>If it is concluded that a number exists, we use the detected contour to form another image, but this time with the number as the only and central element. To encompass the contour (the number) in a new image, the <strong>cv::boundingRect()</strong> and <strong>cv::rectangle()</strong> functions are useful. The first function is used to draw an approximate rectangle around the binary image (in our case, around the contour), while the second creates a rectangle in which the result from cv::boundingRect() is saved (figure 3.1). Now we crop the image using the same principles as before (figure 3.2).</p>
+
+		<p>The image with the number is almost ready for prediction. We only need to make minor adjustments to match the dataset on which the CNN was trained:</p>
+
+		<ol>
+		  <li><strong>cv::copyMakeBorder()</strong> with the parameter BORDER_ISOLATED. The function forms a black border around an image. The purpose of this preprocessing is to keep the number centered but not stuck to the edges, as this could reduce prediction accuracy.</li>
+		  <li><strong>cv::resize()</strong>. The function resizes an image. We use it to bring it to the size of 28x28, similar to the dataset.</li>
+		</ol>
+
+		<p>Information about CNN and how to implement it can be found in the <strong>CNN</strong> section.</p>
+
+<div class="figure-container">
+    <figure style="width: 33.33%;">
+        <img src="imagini/poza_celula6_ar.jpg" alt="Image of a cell containing a digit" style="width: 2cm;">
+        <figcaption style="width: 80%; margin-left: 10%;" class="figure-caption">Figure 3.1: The rectangle produced by the cv::boundingRect() function</figcaption>
+    </figure>
+    <figure style="width: 33.33%;">
+        <img src="imagini/poza_celula4_ar.jpg" alt="Center of mass of the contour found in a cell with a digit" style="width: 1.5cm;">
+        <figcaption style="width: 80%; margin-left: 10%;" class="figure-caption">Figure 3.2: The cropped digit from the cell</figcaption>
+    </figure>
+    <figure style="width: 33.33%;">
+        <img src="imagini/celula_finala.jpg" alt="Center of mass of the contour found in a cell with a digit" style="width: 2cm;">
+        <figcaption style="width: 80%; margin-left: 10%;" class="figure-caption">Figure 3.3: The final image, ready for prediction</figcaption>
+    </figure>
+</div>
+
+
+<!-- Aici -->
+<p>To use the model built in Keras for prediction in C++, I used the <strong>frugally-deep</strong> library. Frugally-deep is a small, header-only library written in pure C++, making it very easy to integrate and use.</p>
+
+<p>To use the images loaded with OpenCV as input for the model, we need to follow four steps:</p>
+
+<ol>
+    <li>Load an image using OpenCV</li>
+    <li>Convert it into an <em>fdeep::tensor</em></li>
+    <li>Use it as input for the forward pass in an image classification model</li>
+    <li>Display the class number</li>
+</ol>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	const auto input = fdeep::tensor_from_bytes(digit_box.ptr(),
+		static_cast<std::size_t>(digit_box.rows),
+		static_cast<std::size_t>(digit_box.cols),
+		static_cast<std::size_t>(digit_box.channels()),
+		0.0f, 1.0f);
+
+	const auto result = model.predict_class({ input });
+
+	rec_digits[ii][jj] = result;
+  </code>
+  </pre>
+</div>
+
+
+<p><b>Step 5 - Solving the Sudoku Puzzle</b></p>
+
+<p>Now that we have the puzzle from the image, it needs to be solved. Solving a Sudoku involves many checks, with the possibility that the provided puzzle may be invalid. For a puzzle to be valid, it must adhere to one of the three well-known conditions: no number can repeat on the same row, column, or in the 3x3 grid. A Sudoku puzzle is considered authentic only if there is a unique solution.</p>
+
+<p>Thus, if after solving and verifying the matrix it turns out that there is only one solution, the solving algorithm will return the inverse of the matrix. In our case, the inverse matrix is still a 9x9 matrix, but this time with the value 0 in the places where there were clues and the completed values in the previously empty cells. In other words, it is the matrix with the solution values.</p>
+
+<p><b>Step 6 - Displaying the Solution Using Augmented Reality</b></p>
+
+<p>Now that we have the solution, we can move on to the augmented reality part. The solution will be written on the image obtained at the end of step 2 (<a style="text-decoration: none;" href="#photo2_ar"><i>Highlighted Sudoku</i></a>). To write the solution directly onto the image, we use the <strong>cv::putText()</strong> function. We process the image and the matrix simultaneously, filling the non-zero values at fixed intervals, approximately calculated for an image with a grid size of 600x600 pixels.</p>
+
+<p>The <strong>cv::getPerspectiveTransform</strong> and <strong>cv::warpPerspective</strong> methods are used to map the solution back onto the original image. In this case, the source and destination coordinates are reversed. In the end, this image is merged with the original to produce the final combined result:</p>
+
+		<figure>
+		  <img src="imagini/poze_imbinate.jpg" alt="Result with the solution overlaid">
+		  <figcaption>Result with the solution overlaid</figcaption>
+		</figure>
+
+<p>Since all the operations presented so far happen for each frame, i.e., more than 10 times per second, when a Sudoku is detected and its analysis and prediction begin, the application will run very slowly and lag. For this reason, once a Sudoku with a solution is found, the solution matrix will be saved until no Sudoku is detected for at least 4 seconds. As long as the contour does not disappear for 4 seconds, we assume that each detected Sudoku is the same as the previous one, directly displaying the solution using augmented reality. In this case, steps 3, 4, and 5 will be skipped entirely, making the experience much smoother and higher quality. This solution is undoubtedly one of the best ways to optimize this functionality.</p>
+
+
+<h2>Sudoku Puzzle Generator</h2>
+
+<p>To ensure the completion of the goals pursued, we consider several requirements for the Sudoku generator:</p>
+
+<ul>
+  <li>Variable difficulty: the algorithm must be able to create puzzles with different levels of difficulty.</li>
+  <li>Unique solution: all generated Sudoku puzzles must be authentic, meaning they have a unique solution.</li>
+  <li>Minimizing complexity: all algorithm programs must complete their task in a short time.</li>
+  <li>The ability to download the document in PDF format.</li>
+</ul>
+
+<p>After extensive research and implementation of several methods, we concluded that the simplest and most efficient method for implementing puzzle generation is the <strong>tactical clue elimination method</strong> (the digging-hole method) [5]. The idea behind this method starts with a fully completed valid grid. Then, we eliminate a fixed number of cells (hence the name "digging-hole") carefully chosen and verified through a mechanism or sequence. When the algorithm attempts to delete a cell, it first checks if the resulting grid still offers a unique solution. If not, the algorithm leaves the cell unchanged and moves to the next one.</p>
+
+<p>For estimating the difficulty level of a Sudoku puzzle, we consider the following factors:</p>
+
+<ul>
+  <li>The total number of clues provided</li>
+  <li>The lower limit of clues provided in each row and column</li>
+</ul>
+
+<p>We rate a Sudoku puzzle in five difficulty levels as follows:</p>
+
+<p><strong>Level 1 - Very Easy</strong></p>
+
+<p><strong>Level 2 - Easy</strong></p>
+
+<p><strong>Level 3 - Medium</strong></p>
+
+<p><strong>Level 4 - Hard</strong></p>
+
+<p><strong>Level 5 - Diabolical</strong></p>
+
+<p>The main factor for estimating the difficulty level is determined by the number of empty cells or, in other words, the amount of clues provided. It can easily be deduced that the greater the total number of provided cells in an initial puzzle, the fewer the number of options for digits in each unfilled cell decreases due to the three constraints of the game rules.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Clues Provided</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1 (Very Easy)</td>
+      <td>&ge; 50</td>
+    </tr>
+    <tr>
+      <td>2 (Easy)</td>
+      <td>36-49</td>
+    </tr>
+    <tr>
+      <td>3 (Medium)</td>
+      <td>32-35</td>
+    </tr>
+    <tr>
+      <td>4 (Hard)</td>
+      <td>28-31</td>
+    </tr>
+    <tr>
+      <td>5 (Diabolical)</td>
+      <td>22-27</td>
+    </tr>
+  </tbody>
+  <caption><i>Clue intervals for each difficulty level</i></caption>
+</table>
+
+<p>The positioning of empty cells significantly affects the difficulty level if two puzzles offer the same or a slight difference in clues at the start of a game. The puzzle with clues in groups is classified at a higher level than the one with scattered clue distribution. Based on row and column constraints, we regulate the lower limit of provided cells in each row and column for each difficulty level according to the following table.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Lower Limit Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1 (Very Easy)</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>2 (Easy)</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>3 (Medium)</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>4 (Hard)</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>5 (Diabolical)</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The implementation of this functionality is divided into two major stages:</p>
+
+<ol>
+  <li>Generating a complete Sudoku puzzle.</li>
+  <li>Tactical clue elimination.</li>
+</ol>
+
+<p><b>For the first stage (generating a complete Sudoku puzzle)</b>, we must first ensure that each generated puzzle differs from the previous ones. To do this, we always generate a new seed and shuffle the numbers from 1 to 9 in a vector used to fill the Sudoku grid.</p>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	void my_shuffle(int array[9]) // takes an array as parameter and shuffles its contents
+	{
+		int c;
+		int index;
+		for (int i = 0; i < 9; i++)
+		{
+			c = array[i];
+			index = rand() % 9;
+			array[i] = array[index];
+			array[index] = c;
+		}
+	}
+  </code>
+  </pre>
+</div>
+<p>If the added number does not meet one of the conditions, the algorithm will recursively try the next digit. This process continues until the entire grid is filled.</p>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	void generate_fullBoard(int clues[81], int clueIndex) // generates a completed (solved) sudoku
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			clues[clueIndex] = digits[i];
+			if (partialChecks(clues, clueIndex) == 0)
+				continue;
+			if (clueIndex < 80)
+				generate_fullBoard(clues, clueIndex + 1);
+			if (clueIndex == 80)
+			{
+				if (valid(clues))
+				{
+					print(clues);
+					solution++;
+					return;
+				}
+			}
+			if (solution == 1)
+				return;
+		}
+	}
+  </code>
+  </pre>
+</div>
+		
+<p><b>Backtracking</b> is the most used algorithm in this paper, forming the basis of all three functionalities. With its help, we can solve and generate a complete Sudoku puzzle. It is truly an important tool for solving constraint satisfaction problems. In backtracking, we use recursion to explore all possibilities until we achieve the best result for the problem.</p>
+
+<p><b>The second stage (tactical clue elimination)</b> is a complex one, implementing a separate algorithm for each difficulty level. Basically, the clue elimination will be done depending on the chosen difficulty level, varying the number of clues removed and the method of removing them. Additionally, the structure/aesthetics of the Sudoku puzzle will vary depending on the selected difficulty level due to the different sequences of clue elimination.</p>
+
+<p>The clue elimination sequence determines which cell is first explored by the elimination operation and which cell is next. We have implemented four types of sequences:</p>
+
+<p><b>Sequence 1:</b> From left to right, then top to bottom (Figure (a))</p>
+<p><b>Sequence 2:</b> Following the path of the letter "S" (Figure (b))</p>
+<p><b>Sequence 3:</b> Skipping a cell (Figure (c))</p>
+<p><b>Sequence 4:</b> Global randomization</p>
+
+<figure id="fig_secvente_sapare">
+    <img id="img_secvente_sapare" src="imagini/secvente_sapare.png">
+    <figcaption>Illustration of clue elimination sequences [5]</figcaption>
+</figure>
+		
+<p>With these four sequences, a Sudoku puzzle can be generated at any difficulty level within a tolerable time (1 second), excluding the evil level. Meanwhile, we find that puzzles with the fewest clues can be generated by Sequence 1. However, when creating an evil-level puzzle based on the four sequences, there is a noticeable difference between the results extracted from the average runtime and the success rate.</p>
+
+<p>Thus, considering the feasibility of the methods and the diversity of puzzles produced, we assign these four sequences to the five difficulty levels as follows:</p>
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Sequence Type</th>
+  </tr>
+  <tr>
+    <td>1 (Very Easy)</td>
+    <td>Global randomization</td>
+  </tr>
+  <tr>
+    <td>2 (Easy)</td>
+    <td>Global randomization</td>
+  </tr>
+  <tr>
+    <td>3 (Medium)</td>
+    <td>Skipping a cell</td>
+  </tr>
+  <tr>
+    <td>4 (Difficult)</td>
+    <td>Following the path of the letter "S"</td>
+  </tr>
+  <tr>
+    <td>5 (Evil)</td>
+    <td>From left to right, then top to bottom</td>
+  </tr>
+</table>
+<p>It should be noted that we also have several <strong>restrictions for clue elimination</strong>.</p>
+<p>Upon completing a clue elimination attempt, the remaining confirmed cells can be considered as given data, and the entire grid appears to be a puzzle. Based on the difficulty level values, we have established two restrictions on the amount of data remaining after each elimination operation.</p>
+<p>Both restrictions are determined by the difficulty value entered by the player:</p>
+<ol>
+  <li>it is mandatory to respect the minimum number of clues</li>
+  <li>the remaining cells in each row and column must be more than the lower limit of clues in the rows and columns</li>
+</ol>
+<p>A clue elimination process is proven to be illegal once it has violated any of the two restrictions.</p>
+<p>Both restrictions ensure that the sufficient information involved in a constructed puzzle supports the deduction of human logic.</p>
+<figure id="fig_grila_goala">
+  <img id="img_grila_goala" src="imagini/grila_goala.jpg">
+  <figcaption>Grid model</figcaption>
+</figure>
+<p>In this way, cells will be eliminated until it is no longer possible, that is, until there are no solutions left for the puzzle if the next cells were deleted. The algorithm will also stop if any of the above restrictions are not respected, the minimum number of clues is reached, or the lower limit value is met.</p>
+<p>This is how the final matrix for the Sudoku puzzle was generated. The next step is to create an image that contains this matrix within a grid. For this, we use an image with an empty Sudoku grid, read and stored in a <strong>cv::Mat</strong> type variable. We use the image writing function presented in the Augmented Reality Sudoku Solver part.</p>
+<!--
+<figure>
+  <img src="imagini/grila_goala.jpg" alt="Grid model">
+  <figcaption>Grid model</figcaption>
+</figure>		
+-->	
+
+<p>Now we have the final image. This must be converted appropriately to work with the framework we use, Qt. For this, we convert our <strong>cv::Mat</strong> object to <strong>QImage</strong> and then to <strong>QPixmap</strong> in order to use it with the <strong>drawPixmap()</strong> function. This function belongs to the <strong>QPainter</strong> class, with which we paint on a painting device. In our case, the painting device is an object of the <strong>QPdfWriter</strong> class, which generates PDFs that can be used as a painting device. To label each page with the Sudoku number, I will use the <strong>drawText()</strong> function on the QPainter object.</p>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	cv::Mat current_sudoku = write_on_image(cluesG); // returneaza cv::Mat si eu trebuie sa o convertesc in QPixmap
+	QPixmap pix_sudoku_image = QPixmap::fromImage(QImage((unsigned char*)current_sudoku.data, current_sudoku.cols, current_sudoku.rows, current_sudoku.step, QImage::Format_RGB888));
+	if (start_pdf == 1)
+	{
+		pdfWriter.newPage();
+	}
+	std::string nume = "Sudoku nr. ";
+	nume.append(std::to_string(nr_afisare));
+	painter.drawText(1000, 1000, QString::fromStdString(nume));
+	painter.drawPixmap(QRect(1250, 3000, pdfWriter.logicalDpiX() * 6, pdfWriter.logicalDpiY() * 6), QPixmap(pix_sudoku_image));
+	start_pdf = 1;
+	nr_afisare++;
+  </code>
+  </pre>
+</div>
+
+		<h2>Sudoku Puzzle Answer Checker</h2>
+		<p>This functionality consists of verifying a complete Sudoku puzzle to check if it is correct or not. In addition to verification, there are a few more options to improve the user experience:</p>
+		<ul>
+			<li>Auto-complete</li>
+			<li>Hint</li>
+			<li>Clear</li>
+		</ul>
+		<p><strong>Auto-complete</strong> consists of filling the table with the last Sudoku detected by the webcam. The application will copy the exact contents of the Sudoku from the paper, without returning the solution on the image or in the table. This functionality has the exact same implementation as the one presented in the Augmented Reality Sudoku Solver, except that the goal is only to detect the Sudoku and classify the numbers, stopping at step 4.</p>
+		<p><strong>Hint</strong> will form a vector with 81 elements based on the values filled in the table and will check if there is at least one solution. For this functionality, we do not consider whether there is more than one solution. When we encounter a solution, we iterate through the vector and take the first value found that is missing from the user-submitted table. That value is added to the corresponding cell in the table.</p>
+		<p><strong>Verification</strong> uses the algorithm already implemented several times, both for the Generation part and for the AR part. In fact, this part is simpler because backtracking is no longer needed, as we only need to check the three conditions for a puzzle to be considered a valid Sudoku: each row, column, and block must contain the numbers 1 to 9, without repetitions.</p>
+
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	int valid(int clues[81]) // does the same
+	{
+		int aux[9][9];
+		int k = 0;
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				aux[i][j] = clues[k];
+				k++;
+			}
+		}
+		for (int j = 0; j < 9; j++)
+		{
+			if (check_column(aux, j) == 0)
+				return 0;
+			if (check_line(aux, j) == 0)
+				return 0;
+		}
+		if (check_squares(aux) == 0)
+			return 0;
+		return 1;
+	}
+  </code>
+  </pre>
+</div>
+
+		<p><strong>Clear</strong> is simply used to clear the table. Each value in the vector associated with the table will be reset to zero.</p>
+		<p>To ensure that the user cannot input invalid values, I used a <strong>regex</strong> formula to validate each cell during reading.</p>
+
+		<h2>Convolutional Neural Network (CNN)</h2>
+		<p>Now that we know what a convolutional neural network is, we can start the implementation. For the dataset, we used one found on Kaggle, called the "Printed Digits Dataset". This contains digital digits, which are much more useful for our application than the MNIST dataset.</p>
+		<p>To implement the CNN, we used the Python programming language and the TensorFlow library. The steps for implementation are:</p>
+		<ol>
+			<li>import the libraries</li>
+			<li>add the dataset</li>
+			<li>split the dataset for training and processing</li>
+			<li>process the data</li>
+			<li>create the model</li>
+			<li>compile the model</li>
+			<li>train the model</li>
+			<li>evaluate the model on the test set</li>
+			<li>save the model</li>
+		</ol>
+		<figure>
+			<img src="imagini/cnn5.png" alt="Step 3: Split the dataset for training and processing" style="width: 10cm;">
+			<figcaption>Step 3: Split the dataset for training and processing</figcaption>
+		</figure>
+		<figure>
+			<img src="imagini/cnn1.png" alt="Step 5: Create the model" style="width: 10cm;">
+			<figcaption>Step 5: Create the model</figcaption>
+		</figure>
+		<figure>
+			<img src="imagini/cnn2.png" alt="Step 6: Compile the model" style="width: 10cm;">
+			<figcaption>Step 6: Compile the model</figcaption>
+		</figure>
+		<figure>
+			<img src="imagini/cnn3.png" alt="Step 7: Train the model" style="width: 10cm;">
+			<figcaption>Step 7: Train the model</figcaption>
+		</figure>
+		<figure>
+			<img src="imagini/cnn4.png" alt="Step 8: Evaluate the model on the test set" style="width: 6cm;">
+			<figcaption>Step 8: Evaluate the model on the test set</figcaption>
+		</figure>
+		<figure>
+			<img src="imagini/cnn6.png" alt="Prediction Accuracy" style="width: 5cm;">
+			<figcaption>Prediction Accuracy</figcaption>
+		</figure>
+<h2>User Interface</h2>
+<p>The user interface was built using the Qt framework, more specifically Qt Designer. Qt Designer is the Qt tool for designing and building graphical user interfaces (GUIs) with Qt widgets.</p>
+<p>My objectives for the user interface were to create a pleasant, minimalist, and easy-to-use design.</p>
+<p>The application consists of four screens/pages:</p>
+<ul>
+    <li>Main Menu (Figure 4.1)</li>
+    <li>Augmented Reality Sudoku Solver (Figure 4.2)</li>
+    <li>Sudoku Puzzle Generator (Figure 4.4)</li>
+    <li>Sudoku Puzzle Answer Checker (Figure 4.5)</li>
+</ul>
+<figure>
+    <img src="imagini/app_mainPage.png">
+    <figcaption>Figure 4.1: Main screen</figcaption>
+</figure>
+<p>To create the effect of different screens, I used a <strong>QStackedWidget</strong> object. The QStackedWidget class provides a stack of widgets where only one widget is visible at a time. QStackedWidget can be built and populated with several child widgets ("pages"). In other words, each page listed above is a <strong>QWidget</strong> object, a child of our QStackedWidget object.</p>
+<p>Any text present in the interface that is not part of a button's design was implemented using a <strong>QLabel</strong> object. QLabel is used to display text or an image. No user interaction functionality is provided. Examples in the application include the Sudoku Universe title present on each page, the functionality title, the text next to fields on the Sudoku Puzzle Generator page, and the "windows" where the webcam content is displayed.</p>
+
+<p>All buttons belong to the <strong>QPushButton</strong> class. The push button, or command button, is naturally the most commonly used widget in any graphical user interface. Pressing the button sends a command to the computer to execute an action implemented by the developer in the assigned function.</p>
+<p>For example, the main menu page includes three buttons. Each button has a function assigned to it that tells the application to switch the current page to the one corresponding to the functionality selected by the user. Similarly, the other three pages have a button called "Back", which returns the user to the main menu.</p>
+
+<figure>
+    <img src="imagini/app_arPage.png">
+    <figcaption>Figure 4.2: Interface for the Augmented Reality Sudoku Solver</figcaption>
+</figure>
+
+<p>That being said, analyzing the screenshot above, you can see the graphical elements used for the Augmented Reality Sudoku Solver page:</p>
+<ul>
+    <li>3 QLabel elements. Two for the application title, and one for the functionality title.</li>
+    <li>1 QLabel for displaying the webcam content. If no webcam is detected, the QLabel window will be black.</li>
+    <li>1 QPushButton to return to the application's main menu.</li>
+</ul>
+
+<figure id="fig_qcombobox">
+    <img id="img_qcombobox" src="imagini/qcombobox.png">
+    <figcaption>Figure 4.3: Option list for QComboBox</figcaption>
+</figure>
+
+<p>On the Sudoku Generator page, two new types of classes appear: <strong>QComboBox</strong> and <strong>QLineEdit</strong>.</p>
+<p>A <strong>QComboBox</strong> offers a way to present a list of options to the user in a way that takes up the minimum amount of screen space. A combo box is a selection widget that displays the current item and can display a list of selectable items [12].</p>
+<p>The <strong>QComboBox</strong> element in the application can be seen next to the QLabel with the text "Difficulty level". In Figure <strong>4.3</strong>, you can see the list with the 5 options: very easy, easy, medium, hard, and evil. "Very easy" is the default option.</p>
+
+<p><strong>QLineEdit</strong> allows the user to input and edit a single line of plain text with a useful collection of editing functions [12]. It is used to capture the values entered by the user and send them to the program to perform actions based on them.</p>
+<p>There are two such objects: one next to the QLabel with the text "Number of generated Sudokus" and the other next to the QPushButton labeled "Choose directory".</p>
+
+<figure>
+    <img src="imagini/app_generatorPage.png">
+    <figcaption>Figure 4.4: Interface for the Sudoku Puzzle Generator</figcaption>
+</figure>
+
+<p>The Sudoku Puzzle Answer Checker page (Figure <strong>4.5</strong>) introduces a new class: QGridLayout. <strong>QGridLayout</strong> takes the available space, divides it into rows and columns, and places each widget it manages into the correct cell. Thus, using QGridLayout, I managed to create the table for a Sudoku puzzle. Each cell in the table is a QLineEdit. I created 81 QLineEdit elements, placed them in the QGridLayout in the desired layout, and QGridLayout took care of evenly dividing the row and column sizes. To achieve the desired design, I individually edited the styleSheet of each cell. Qt Style Sheet accepts various properties, pseudo-states, and sub-controls that make it possible to customize the appearance of widgets.</p>
+
+<figure>
+    <img src="imagini/app_checkerPage.png" alt="Interface for the Sudoku Puzzle Answer Checker">
+    <figcaption>Figure 4.5: Interface for the Sudoku Puzzle Answer Checker</figcaption>
+</figure>
+
+<p>Another graphical element used is <strong>QMessageBox</strong>. The QMessageBox class provides a modal dialog for informing the user or for asking a question and receiving an answer [12].</p>
+<p>The application uses these objects to notify the user when a field has not been filled in, has been filled in incorrectly, or to return various results or errors. The type of message sent by the system can be one of three types in our application: critical, information, or question (predefined messages), or correct (custom message). The application is full of such objects, thus ensuring the proper functioning of the application and informing the user of the correct way to use it. In Figure <strong>4.6</strong>, you can see some cases that lead to the creation of a QMessageBox.</p>
+
+<div>
+    <figure style="text-align: center; max-width: 1000px;">
+        <div style="display: inline-block;">
+            <img src="imagini/alert_critical.png" alt="Example 1" width="180px">
+        </div>
+        <div style="display: inline-block;">
+            <img src="imagini/alert_corect.png" alt="Example 2" width="180px">
+        </div>
+        <div style="display: inline-block;">
+            <img src="imagini/alert_information.png" alt="Example 3" width="180px">
+        </div>
+        <div style="display: inline-block;">
+            <img src="imagini/alert_question.png" alt="Example 4" width="180px">
+        </div>
+        <figcaption>Figure 4.6: QMessageBox examples</figcaption>
+    </figure>
+</div>
+<h2>User Interface</h2>
+<p>The application also includes a <strong>minimal help system</strong>, which can be accessed through the horizontal menu by clicking on More and Help. It was created using a <strong>QDialog</strong> object and three <strong>QTextBrowser</strong> objects to display the text.</p>
+<figure>
+  <img src="imagini/app_helpPage.png" alt="Help menu interface">
+  <figcaption>Figure 4.7: Help menu interface</figcaption>
+</figure>
+
+<h1>Qt Creator - Implementation Details</h1>
+
+<p>To implement the application in the Qt Creator environment, you must first <strong>install</strong> the <strong>Qt Creator</strong> IDE on your system. It can be downloaded from the official Qt website.</p>
+<p>Once the installation is complete, <strong>open</strong> the IDE. The application will display the main page, <strong>Welcome</strong>. In the middle of the page, you will see the <strong>Projects</strong> field with the buttons “New” and “Open” next to it. Click the <strong>New</strong> button to create a new project. A new window will open. Follow the steps below to correctly create the project:</p>
+<ol>
+    <li>Make sure that <strong>Application (Qt)</strong> is selected under the Projects category, then select <strong>Qt Widgets Application</strong>. Click <strong>Choose...</strong>.</li>
+    <li>Choose the project name and the directory where the project will be created. Click <strong>Next</strong>.</li>
+    <li>For the Build System, select <strong>qmake</strong>. Click <strong>Next</strong>.</li>
+    <li>Under Details - Class Information, you can leave everything unchanged. Just make sure that <strong>QMainWindow</strong> is selected as the Base class and that the checkbox for the <strong>Generate form</strong> option is checked. Click <strong>Next</strong>.</li>
+    <li>For Translation - Translation File, you can leave everything unchanged. Click <strong>Next</strong>.</li>
+    <li>Under Kits - Kits Selection, select <strong>Desktop Qt 6.2.3 MinGW 64-bit</strong>. Click <strong>Next</strong>.</li>
+    <li>Under Summary - Project Management, you can leave everything unchanged. Click <strong>Finish</strong>.</li>
+</ol>
+<p>The project is now created. The next step is to include the libraries. The external libraries used are <strong>OpenCV</strong> and <strong>frugally-deep</strong>. OpenCV can be downloaded from the official website, and frugally-deep from <a href="https://github.com/Dobiasd/frugally-deep">https://github.com/Dobiasd/frugally-deep</a>. Installation and setup details can be found on the websites and link mentioned.</p>
+
+<p>After the libraries have been installed, you can include them in the project. To add the libraries, right-click on the name of the open project in the left panel, then select <strong>Add Library...</strong>. Another option is to open the generated .pro file, right-click in the code window, and select <strong>Add Library...</strong>. Once you select Add Library, a new window will open. Select <strong>External library</strong> and click <strong>Next</strong>. First, we add the library for OpenCV. For the Include path, provide the path to the <em>include</em> folder located in <em>opencv/build/</em>, then for the Library file, select the opencv_world455.lib file located in the same path as before but within the <em>x64/vc15/lib/</em> folder. There are several other libraries to be included, and these can be manually added to the .pro file. These libraries must also be added to the project folder generated by running the application in Release mode:</p>
+<ul>
+    <li>libopencv_core455.dll</li>
+    <li>libopencv_highgui455.dll</li>
+    <li>libopencv_imgcodecs455.dll</li>
+    <li>libopencv_imgproc455.dll</li>
+    <li>libopencv_features2d455.dll</li>
+    <li>libopencv_calib3d455.dll</li>
+    <li>libopencv_video455.dll</li>
+    <li>libopencv_videoio455.dll</li>
+</ul>
+<p>You should now be able to use OpenCV in the selected project. You will also need to add the frugally-deep library. Follow the exact same steps as before, but now for the Include path, provide the path to the <em>includes</em> folder, formatted according to the steps outlined on GitHub.</p>
+<p>After including the final library, right-click on the project and select <strong>Run qmake</strong>. If you don’t receive any errors, it means that the project setup is complete. The content of the .pro file should look similar to the following screenshot.</p>
+<figure id="fig_fisier_pro">
+    <img id="img_fisier_pro" src="imagini/fisier_pro.png">
+    <figcaption>.pro file, including the libraries</figcaption>
+</figure>
+
+<p>You can now start the implementation. To add classes and headers to your application, right-click on the project, select <strong>Add New...</strong>, and choose the desired file type from the C/C++ category.</p>
+<p>It should be noted that graphical elements cannot be added by directly writing into the XML (.ui) file, which is inevitable. Additionally, adding any GUI element through code (in the .cpp files) will not be visible in Qt Designer. In conclusion, if requirements permit, it’s best to create the graphical interface directly in the Design Window. To open Qt Designer, expand the Forms folder in your project and double-click on the .ui file. Later, to return to the Design Window, you can do so by clicking the <strong>Design</strong> button in the vertical left-side menu.</p>
+<p>Attention! When working in Qt Designer and adding new elements, they are automatically given an object name. Each name must be modified to match the one used in the .cpp files. Object names can be changed in the Design window by selecting the target object. On the right-hand side, at the bottom half of the screen, you can see the window with the object’s properties (Figure 5.1). Look for the <strong>objectName</strong> property and change its value to the correct one.</p>
+<figure>
+    <img src="imagini/objectName.png">
+    <figcaption>Figure 5.1: Object properties window</figcaption>
+</figure>
+<h1>Execution Results - Usage Examples</h1>
+<h2>Augmented Reality Sudoku Solver</h2>
+
+<p>When this functionality is accessed, the application automatically connects to the webcam. The program continuously analyzes the image, and when a Sudoku appears in the frame, its outer contour will be highlighted in green (Figure 6.1). Depending on the prediction and calculation results (whether it has a solution and if it is unique), there are two execution cases:</p>
+<ul>
+    <li>The Sudoku has a solution and it is unique - the solution is projected directly onto the live image from the webcam, with each empty cell filled with the corresponding value (<strong>Figure 6.2 (a)</strong>).</li>
+    <li>The Sudoku has no solution or has more than one solution - two red diagonal lines are drawn on the live image (<strong>Figure 6.2 (b)</strong>).</li>
+</ul>
+<figure>
+    <img src="imagini/executie_ar1.png">
+    <figcaption>Figure 6.1: Sudoku detection result</figcaption>
+</figure>
+
+<div class="figure-container">
+    <figure id="fig_executie_ar3">
+        <img src="imagini/executie_ar3.png">
+        <figcaption class="figure-caption">Figure 6.2: Execution results (a)</figcaption>
+    </figure>
+    <figure id="fig_executie_ar2">
+        <img src="imagini/executie_ar2.png">
+        <figcaption class="figure-caption">Figure 6.2: Execution results (b)</figcaption>
+    </figure>
+</div>
+
+<h2>Sudoku Puzzle Generator</h2>
+
+<p>To generate Sudoku puzzles, there are three important aspects we need to know: the number of puzzles to be generated, the difficulty level (which has "Very easy" as the default option), and the download location for the generated PDF. If any of these fields are not filled, the system will alert the user, and no action will be performed.</p>
+<p>If the user correctly fills in the fields, the generation will take place. For example, let's consider the case with the values and fields selected as in Figure <strong>7.1</strong>.</p>
+<figure id="fig_executie_generator1">
+    <img id="img_executie_generator1" src="imagini/executie_generator1.png">
+    <figcaption>Figure 7.1: Example of field completion</figcaption>
+</figure>
+<p>Once the program successfully generates the PDF, the application will notify the user that the PDF has been generated successfully (<strong>Figure 7.3</strong>).</p>
+<p>If we check, we will find the PDF generated by the application in the directory selected as the download location for the document (<strong>Figure 7.4</strong>).</p>
+<p>We open the PDF to view its contents (<strong>Figure 7.2</strong>).</p>
+<figure>
+    <img src="imagini/executie_generator4.png">
+    <figcaption>Figure 7.2: The first page of the PDF</figcaption>
+</figure>
+
+<p>We can observe that the number of pages in the PDF matches the value entered in the application (<strong>Figure 7.5</strong>). Each page contains a different generated Sudoku puzzle, exactly the number requested by the user.</p>
+
+<div>
+    <figure style="text-align: center; max-width: 1100px;">
+        <div style="display: inline-block;">
+            <img src="imagini/executie_generator2.png" style="max-height:120px;">
+            <figcaption style="width:80%; margin-left:auto; margin-right:auto;">Figure 7.3: The system notifies that the PDF has been generated</figcaption>
+        </div>
+        <div style="display: inline-block;">
+            <img src="imagini/executie_generator3.png" style="max-height:120px;">
+            <figcaption style="width:80%; margin-left:auto; margin-right:auto;">Figure 7.4: Execution result - Generated PDF</figcaption>
+        </div>
+        <div style="display: inline-block;">
+            <img src="imagini/executie_generator5.png" style="max-height:120px;">
+            <figcaption style="width:80%; margin-left:auto; margin-right:auto;">Figure 7.5: Number of pages in the PDF and its location</figcaption>
+        </div>
+    </figure>
+</div>
+<h2>Sudoku Puzzle Answer Checker</h2>
+
+<p>Just like in the Augmented Reality Sudoku Solver, when this functionality is accessed, the application automatically connects to the webcam. However, a major difference between the two functionalities is that this one can be used without connecting to a webcam. The Sudoku table can be manually filled in by the user, with the webcam serving only as a faster way to fill it in for the user. Each cell is editable, allowing the user to correct a wrongly predicted digit if necessary.</p>
+<p>This time, only the outline of a detected Sudoku will appear on the live image. By pressing the "Auto-fill" button, each cell in the table will be filled with the predicted digit. Example in figure 8.1.</p>
+
+<div id="fig_container_checker" class="figure-container">
+    <figure id="fig_executie_checker1">
+        <img id="img_executie_checker1" src="imagini/executie_checker1.png">
+        <figcaption class="figure-caption">Figure 8.1: Auto-fill</figcaption>
+    </figure>
+    <figure id="fig_executie_checker3">
+        <img id="img_executie_checker3" src="imagini/executie_checker3.png">
+        <figcaption class="figure-caption">Figure 8.2: The table was filled using only the "Hint" button</figcaption>
+    </figure>
+</div>
+
+<p>By pressing the "Hint" button, the first empty cell will be filled with the solution, but only if a solution exists. Otherwise, the system will inform the user that the puzzle has no solution. In our case, there is a solution, and the result is visible in figure 8.3.</p>
+<p>When the table is complete, we can press the "Check" button. We are notified through a message whether the matrix is a valid Sudoku or not (<strong>figure 8.4</strong>).</p>
+
+<div style="flex-direction:row;" class="figure-container">
+    <figure style="width: 50%;">
+        <img src="imagini/executie_checker2.png" width=130px>
+        <figcaption class="figure-caption">Figure 8.3: Hint</figcaption>
+    </figure>
+    <figure style="width: 50%;">
+        <img src="imagini/executie_checker4.png" width=200px>
+        <figcaption class="figure-caption">Figure 8.4: Received response</figcaption>
+    </figure>
+</div>
+
+<h1>Conclusions</h1>
+<p>Through this project, I aimed to create an application that includes all the functionalities needed by the Sudoku player community in the most efficient way possible and with the highest success rate. I studied various algorithms and classifiers, and after numerous implementations and tactics, I ended up using the following methods as the final solution, considering them the most optimal:</p>
+<ul>
+    <li>Using a convolutional neural network trained on a dataset of digitally written numbers in different fonts for optical recognition. I achieved a good accuracy of 93% on the dataset.</li>
+    <li>The implementation for detecting and extracting digits is flawless, with 100% correctness.</li>
+    <li>The Sudoku generator algorithm has a 100% success rate, regardless of the selected difficulty level. Moreover, the execution time is excellent: less than a second per puzzle, except for the last level.</li>
+</ul>
+<p>However, to reach these final solutions, I had to overcome several challenges, including:</p>
+<ul>
+    <li>Implementing the CNN and achieving good results on real cases. The decision to use a different dataset than the popular MNIST proved to be the solution to overcome the poor prediction problem. Although MNIST is the most well-known and used dataset, it is not flexible and does not work for digital numbers.</li>
+    <li>Recognizing empty cells and extracting digits proved to be a complicated task due to the details that could easily go unnoticed, leading to incorrect values in the Sudoku matrix.</li>
+    <li>For the puzzle generator, I initially tried random clue deletion globally, without clear, additional limits and conditions. This sometimes led to executions lasting tens of seconds or even failures. The idea of creating clue elimination sequences based on difficulty helped take the generator to a whole new level.</li>
+</ul>
+
+<p>In the end, all the objectives of the project were achieved. All functionalities were completed, managing to achieve both good execution time and a high success rate.</p>
+<p>Overall, we can confidently say that this project is truly fun and challenging. Moreover, the final result is more than satisfactory. Not only did I manage to create an application that has the potential to become a popular product for Sudoku fans, but I also gained a lot of new theoretical and practical knowledge in areas I had never explored before. This project makes us think more about how computer vision can be more useful in our daily lives and how amazing modern technology truly is.</p>
+
+</main>
+
+</div>
+</div>
+</div>
+
+<div id="myOverlayToc" class="overlay-toc">
+  <div class="overlay-toc-content">
+    <h4 style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Contents</h4>
+    <div id="myOverlayNav">
+      <!-- The content from the first section's <nav id="toc"> will be inserted here -->
+    </div>
+    <a onclick="closeTOC()" class="toc-close-button"><b>X</b></a>
+  </div>
+</div>
+
+<a onclick="openTOC()" id="open-toc" class="float">
+<i class="fa fa-indent" aria-hidden="true"></i>
+</a>
+
+</body>
+</html>
+

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About me</title>
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/style_about_me.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/technical.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+   <!-- Bootstrap Soft Skills Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <script src="javascript/script_navbar.js"></script>
+  
+  <style>
+  p {
+		margin-top: 0px;
+		margin-bottom: 7px;
+		line-height: 1.35;
+	}
+
+  h3 {
+		margin-bottom: 3px;
+	}
+
+    h6 {
+	  margin-top: 15px;
+	  margin-bottom: 3px;
+      font-size: 19px;
+      color: #4A90E2;
+    }
+
+    .section-content {
+      position: relative;
+      max-height: 60px; /* Visible height for first 2 lines */
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .section-content::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to bottom, rgba(240, 242, 245, 0) 0%, #f0f2f5 100%);
+      pointer-events: none; /* Makes sure the fading effect doesn't block button click */
+    }
+
+    .section-content.active::after {
+      display: none; /* Remove fade when content is expanded */
+    }
+
+    .read-more {
+	  position: absolute;
+      right: 0;
+      font-size: 18px;
+      color: #007bff;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .read-more::before {
+      content: '\25BC'; /* Downward arrow symbol */
+      font-size: 18px;
+      margin-right: 8px;
+    }
+
+    .read-more.active::before {
+      content: '\25B2'; /* Upward arrow symbol */
+    }
+	
+		/* Stil pentru butonul vizibil doar sub 850px */
+.only-small {
+    display: none; /* Ascundem butonul la rezoluții mari */
+}
+
+/* Vizibilitate pentru butonul `.only-small` sub 850px */
+@media screen and (max-width: 850px) {
+    .only-small {
+        display: inline-block; /* Afișăm butonul sub 850px */
+    }
+}
+
+.conditional-content {
+    /* Implicit, conținutul nu are stilurile aplicate */
+}
+
+@media screen and (max-width: 850px) {
+	.conditional-content {
+      position: relative;
+      max-height: 160px; /* Afișăm mai multe rânduri pentru această secțiune */
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+	
+	.conditional-content::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to bottom, rgba(240, 242, 245, 0) 0%, #f0f2f5 100%);
+      pointer-events: none; /* Makes sure the fading effect doesn't block button click */
+    }
+
+    .conditional-content.active::after {
+      display: none; /* Remove fade when content is expanded */
+    }
+}
+  </style>
+</head>
+
+<body style="margin-bottom: 3%;">
+	<header>
+	  <div class="container">
+
+		<div class="logo">
+		  <h1 class="animate-charcter">INDREI VALENTINA</h1>
+		</div>
+
+		<nav id="myTopnav">
+		  <a href="home_page.html">HOME</a>
+		  <a href="#">ABOUT ME</a>
+		  <a href="services_page.html">SERVICES</a>
+		  <a href="projects.html">PROJECTS</a>
+		  <a href="contact_page.html">CONTACT</a>
+		  
+		  <a href="javascript:void(0);" class="icon" onclick="openNav()">
+			<i class="fa fa-bars"></i>
+		  </a>
+		</nav>
+	  </div>
+	  
+ <!-- Language Switch Button outside the container -->
+  <div class="language-switch-container">
+    <a href="about_me.html" class="language-switch">
+      <img src="https://flagcdn.com/16x12/ro.png" alt="RO flag"> RO
+    </a>
+  </div>
+	  
+	</header>
+	
+	<div class="about-me-panel">
+        <div class="card">
+			<img src="photos/AboutMe/profile.png" alt="Portrait" class="portrait">
+			<div class="text-content">
+			
+				<h6><i>Hello there!</i></h3> 
+				<div class="conditional-content" id="content0">
+				<p> Before we start, I want to thank you for taking the time to read my story. Whether you arrived here because of my articles, out of curiosity, or by chance, I hope you find exactly what you're looking for. And if you're seeking a passionate and dedicated employee or collaborator, I hope to be the person you're looking for.
+				
+				<p> My name is Indrei Valentina Andreea, I'm 24 years old, and I am currently a master's student specializing in Intelligent Software Robotics.
+				
+				<p> My passion for the IT field started at the age of 8, thanks to video games. At 13, I was assisting technology teachers and continued by enrolling in a high school specializing in mathematics and computer science, with an intensive focus on computer science.</p>
+				
+				<p> I further pursued my passion by choosing a bachelor's degree in Computer Science and graduating from it. During my studies, I obtained various accredited certifications and participated in different courses and training programs. After graduation, I focused on personal projects and self-development.</p>
+				</div>
+				<button class="read-more only-small" data-target="content0"></button>
+				
+			</div>
+		</div>
+		
+
+		<div class="additional-text">
+		
+			<h6 id="title1">Interests and Specializations in IT</h3>
+			<div class="section-content" id="content1">
+			<p>Developing complete applications, from idea to final product, brings me great satisfaction. I love the programming process and the logical thinking challenge necessary to turn lines of code into functional solutions. Furthermore, I am passionate about innovation and research. I enjoy environments where I can contribute with ideas and turn them into reality. This keeps me flexible regarding my long-term career.</p>
+			<p style="margin-bottom: 0px;">The specialized topics that intrigue me include Software Engineering and Development, Artificial Intelligence, Machine Learning, and Computer Vision (with fascinating applications such as Augmented Reality). I'm also passionate about Game Design and Development, as well as UI/UX Design, areas where I can combine creativity with logic.</p>
+			</div>
+			<button class="read-more" data-target="content1"></button>
+
+
+
+<!--
+			<h3>Other Passions and Hobbies</h3>
+			<p>Beyond programming and technology, I am an active, sociable, and lively person. 
+			I like understanding how things work deeply, from application development to creating video games. 
+			In addition, I am passionate about fitness, camping, and traveling, activities that help me recharge and inspire me. 
+			Spending time with friends, socializing, creative writing, and reading are other ways I nourish my creativity. 
+			I am fascinated by music and cinematography, and discussions on various topics pique my curiosity and drive me to learn something new constantly.</p>
+		-->	
+
+			<h6 id="title2">Plans and Ambitions</h3>
+			<div class="section-content" id="content2">
+			<p>I don't set strict long-term plans; I prefer to remain flexible and open to the opportunities the future might bring. 
+			In the near future, my primary goal is to pursue my professional passion in a company that offers continuous opportunities for development and professional satisfaction. 
+			At the same time, as a side job, I aim to get involved in research, maybe even build a solid reputation as a freelancer.</p>
+			<p style="margin-bottom: 0px;">On a personal level, my main desire is to find a balance between my career and personal life. 
+			Another personal goal is to write and publish a book, alongside starting a debate club or even launching a podcast. 
+			But most importantly, I want to take care of my family and travel with them.</p>
+			</div>
+			<button class="read-more" data-target="content2"></button>
+
+
+
+			<h6 id="title3">The Website: From Idea to Realization</h3>
+			<div>
+			<p>This website is not just a simple portfolio; it is an expression of my passion for technology. 
+			From the initial concept, to every design detail, and up to the implementation, 
+			every step was done with care and dedication.
+			I like to think it is proof of my desire to excel in my career and bring innovation to everything I do.</p>
+			</div>
+
+
+
+			<h6 id="title4">In Conclusion...</h3>
+			<div>
+			<p>This is just a brief summary of my story and what drives me. If we share common interests or if you'd like to collaborate, don't hesitate to contact me. Thank you again for your time!</p>
+			</div>
+		
+		</div>
+		
+	
+<div class="tabs">
+    <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(event, 'education')">Education</button>
+        <button class="tab-button" onclick="openTab(event, 'certifications')">Training and Certifications</button>
+        <button class="tab-button" onclick="openTab(event, 'technical')">Technical Skills</button>
+        <button class="tab-button" onclick="openTab(event, 'soft')">Soft Skills</button>
+		<button class="tab-button" onclick="openTab(event, 'projects')">Projects and Applications</button>
+    </div>
+    <div id="education" class="tab-content active">
+		<div class="container-about mt-5">
+			<div class="timeline">
+				<div class="timeline-item">
+					<div class="timeline-icon"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">Present</div>
+						<h4 class="timeline-title text-success">Master's in Intelligent Software Robotics</h4>
+						<h5 class="timeline-subtitle">West University of Timișoara, Faculty of Mathematics and Computer Science</h5>
+						<p>Applied research in Computer Science, primarily focused on areas like automation, software robots, neurotechnologies, artificial intelligence, and signal processing.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-icon"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">September 2019 – September 2022</div>
+						<h4 class="timeline-title text-success">Bachelor's in Computer Science</h4>
+						<h5 class="timeline-subtitle">West University of Timișoara, Faculty of Mathematics and Computer Science</h5>
+						<p>I gained essential skills in software application development, from analysis and design to implementation and testing. 
+						My studies included grounding and deepening knowledge in programming, algorithms, data structures, software engineering, database management, web technologies, 
+						GUI development, artificial intelligence, and more.
+						I learned to solve tasks autonomously, identify solutions, manage resources efficiently, and constantly adapt to new requirements and technologies.
+						All these skills prepared me for a professional career in IT and research opportunities.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-icon"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">July 2015 – July 2019</div>
+						<h4 class="timeline-title text-success">Mathematics-Informatics Intensive</h4>
+						<h5 class="timeline-subtitle">"Constantin Diaconovici Loga" National College in Timișoara</h5>
+						<p>I acquired basic knowledge in C/C++ programming, advanced MS Office skills, an introduction to the concept of algorithms and data structures, and the development of logical and mathematical thinking.
+						This knowledge prepared me for further studies in IT at the university level.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div id="certifications" class="tab-content">
+	    <section class="certifications">
+			<ul>
+			  <li>AI-900: Microsoft Azure AI Fundamentals, April 13, 2022</li>
+			  <li>PL-900: Microsoft Power Platform Fundamentals, August 10, 2021</li>
+			  <li>AZ-900: Microsoft Azure Fundamentals, July 21, 2021</li>
+			  <li>LEADERS Explore 2021 - powered by Hella</li>
+			  <li>HPC Summer School at FIS in Novo mesto, Slovenia, September 2020</li>
+			</ul>
+		</section>
+    </div>
+    <div id="technical" class="tab-content">
+				<h3>Key Skills</h3>		
+
+<div class="skills-container">
+    <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <div class="skill-content">
+            <h3>C/C++</h3>
+            <p>I worked predominantly with C++, using the language for desktop application development and problem-solving in various academic projects.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🖼️</div>
+        <div class="skill-content">
+            <h3>Computer Vision</h3>
+            <p>I used OpenCV for image processing and object recognition projects. I have a good theoretical and practical understanding of Computer Vision techniques.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">📱</div>
+        <div class="skill-content">
+            <h3>Qt Framework</h3>
+            <p>I developed desktop applications using Qt for graphical interfaces. Using Qt Widgets, I implemented complex layouts, handled events, and integrated multiple functionalities.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">💾</div>
+        <div class="skill-content">
+            <h3>SQL/MySQL</h3>
+            <p>I used SQL/MySQL for database management in academic projects. I have experience in writing queries, creating and managing tables, and establishing relationships between data.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-content">
+            <h3>Machine Learning</h3>
+            <p>I have solid theoretical knowledge in machine learning, including concepts and methodologies used for data preprocessing, model training, and evaluation.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-content">
+            <h3>HTML & CSS</h3>
+            <p>I have created and styled multiple web pages using HTML and CSS. I have experience developing responsive pages and implementing modern designs, as well as using the Bootstrap framework.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-content">
+            <h3>UI/UX Design</h3>
+            <p>I learned the basic principles of UI/UX design and applied them to my web projects to create intuitive and visually appealing interfaces.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🛠️</div>
+        <div class="skill-content">
+            <h3>Software Modeling and Design</h3>
+            <p>I have experience in software modeling using UML to define and visualize application architecture. I am also familiar with fundamental Design Patterns.</p>
+        </div>
+    </div>
+</div>
+
+
+		<h3>Basic or Intermediate Competencies</h3>
+
+<div style="margin-top: 3px; padding-top: 10px;" class="second-skills-container">
+    <div class="second-skill-card">
+        <p class="skill-title">Programming Languages</p>
+        <p class="technologies">Java, Python</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Web Development</p>
+        <p class="technologies">JavaScript, PHP, JSP, Servlets</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">GUI Frameworks</p>
+        <p class="technologies">Swing, MFC</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Machine Learning</p>
+        <p class="technologies">Scikit-learn Library</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Deep Learning</p>
+        <p class="technologies">Artificial and Convolutional Neural Networks, TensorFlow, and Keras libraries</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Software Testing</p>
+        <p class="technologies">White box and black box testing techniques, Agile testing</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Architectures and Assembly Languages</p>
+        <p class="technologies">x86 Assembly Language</p>
+    </div>
+</div>
+
+    </div>
+    <div id="soft" class="tab-content">
+			<section class="skills-list">
+				<ul>
+					<li><i class="fas fa-lightbulb"></i><b>Problem Solving</b>: The ability to find solutions to complex problems.</li>
+					<li><i class="fas fa-exchange-alt"></i><b>Adaptability</b>: Flexibility in adapting to new challenges.</li>
+					<li><i class="fas fa-graduation-cap"></i><b>Continuous Learning</b>: Constant commitment to education and self-improvement.</li>
+					<li><i class="fas fa-tasks"></i><b>Planning</b>: Creating detailed plans to achieve objectives.</li>
+					<li><i class="fas fa-paint-brush"></i><b>Creativity</b>: Generating innovative solutions and ideas.</li>
+					<li><i class="fas fa-search"></i><b>Attention to Detail</b>: Meticulousness and thoroughness in completing tasks.</li>
+					<li><i class="fas fa-rocket"></i><b>Ambition</b>: Strong motivation to succeed and achieve high goals.</li>
+					<li><i class="fas fa-heart"></i><b>Dedication</b>: Deep commitment to a goal or task.</li>
+					<li><i class="fas fa-user-check"></i><b>Self-awareness</b>: Understanding one's strengths and weaknesses.</li>
+				</ul>
+			</section>
+    </div>
+	<div id="projects" class="tab-content">
+				  <p>I had the opportunity to apply various technologies and gain practical experience by writing projects and developing applications within the faculty, 
+				  in competitions and training, as well as through personal or freelancing projects. 
+				  Some of these can be viewed on <a href="https://github.com/Schwarz28Iva" target="_blank" style="text-decoration:none">Github</a> or in the <a href="file:///C:/Users/Andreea/Desktop/website/WEBSITE/projects.html" style="text-decoration:none">Projects</a> section.</p>
+
+    </div>
+</div>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+
+        // Hide all tab contents and remove animation classes
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("slideInLeft", "slideInRight");
+        }
+
+        // Remove active class from all buttons
+        tabbuttons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].classList.remove("active");
+        }
+
+        // Determine animation direction
+        var activeButton = document.querySelector(".tab-button.active");
+        var direction = activeButton && Array.prototype.indexOf.call(tabbuttons, evt.currentTarget) > Array.prototype.indexOf.call(tabbuttons, activeButton) ? 'slideInRight' : 'slideInLeft';
+
+        // Show the current tab and add animation class
+        var currentTab = document.getElementById(tabName);
+        currentTab.style.display = "block";
+        currentTab.classList.add(direction);
+
+        // Add active class to the current button
+        evt.currentTarget.classList.add("active");
+    }
+	
+//READ MORE
+  const buttons = document.querySelectorAll('.read-more');
+  
+  buttons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetContent = document.getElementById(this.dataset.target);
+      
+      if (targetContent.classList.contains('active')) {
+        // If it's expanded, collapse it back
+        targetContent.classList.remove('active');
+        targetContent.style.maxHeight = '60px'; // Reset to original height
+        this.classList.remove('active');
+      } else {
+        // If it's collapsed, expand it
+        const fullHeight = targetContent.scrollHeight + "px";
+        targetContent.style.maxHeight = fullHeight;
+        targetContent.classList.add('active');
+        this.classList.add('active');
+      }
+    });
+  });
+  
+    // Function to reset styles on larger resolutions
+  function resetStylesOnResize() {
+    if (window.innerWidth > 850) {
+      // Reset styles for all `conditional-content` and `section-content` elements
+      const allContents = document.querySelectorAll('.conditional-content, .section-content');
+      allContents.forEach(content => {
+        content.classList.remove('active');
+        content.style.maxHeight = ''; // Remove any set max-height
+      });
+
+      // Reset the state of buttons
+      buttons.forEach(button => {
+        button.classList.remove('active');
+      });
+    }
+  }
+
+  // Add resize event listener to detect resolution changes
+  window.addEventListener('resize', resetStylesOnResize);
+
+  // Call the function on load to ensure the correct state
+  resetStylesOnResize();
+</script>
+
+
+<!--	
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Your Name. All rights reserved.</p>
+    </div>
+  </footer>	
+-->
+</body>
+</html>

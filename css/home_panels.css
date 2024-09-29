@@ -1,0 +1,130 @@
+/* Body Styles */
+body {
+  /*height: 80vh;*/
+}
+
+/* Responsive Body Height */
+@media (min-width: 1000px) and (max-width: 1200px) {
+  body {
+     height: 90vh;
+  }
+}
+
+@media (min-width: 1201px) {
+  body {
+    /*height: 100vh;*/
+  }
+}
+
+/* Wrap Styles */
+.wrap {
+  transition: all 0.1s linear;
+  background: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.4);
+  height: 455px; /* Static height for wrap */
+}
+
+/* Pane Styles */
+.pane {
+  text-align: center;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  padding: 20px;
+  transition: all 0.1s ease-out;
+  margin: auto;
+}
+
+.pane h2 {
+  font-weight: 300;
+  letter-spacing: 3px;
+  border-bottom: 1px solid #fff;
+  margin: 0 0 0.6em;
+}
+
+.pane img {
+  transition: all 0.13s linear;
+  transform: scale(1);
+  max-width: 100%;
+  max-height: 300px;
+}
+
+.pane:first-child, .pane:last-child {
+  background: #ADA992;
+  transform-style: preserve-3d;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Min-width 601px: Flexbox Layout */
+@media (min-width: 601px) {
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    perspective: 300px;
+  }
+
+  .wrap:hover {
+    perspective: 3000px;
+  }
+}
+
+/* Min-width 601px to Max-width 1300px: Grid Layout */
+@media (min-width: 601px) and (max-width: 1300px) {
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+  }
+
+  /* Margine sus doar pentru primul rând */
+  .pane:nth-child(-n+2) {
+    margin-top: 15px;
+  }
+
+  /* Margine jos doar pentru ultimul rând */
+  .pane:nth-last-child(-n+2) {
+    margin-bottom: 15px;
+  }
+}
+
+
+/* Image Hover Effect for Min-width 450px */
+@media (min-width: 450px) {
+  .pane img:hover {
+    transform: scale(1.05) translateY(-0.6em);
+  }
+}
+
+/* Min-width 601px to Max-width 900px: Pane Adjustments */
+@media (min-width: 601px) and (max-width: 900px) {
+  .wrap {
+   height: auto;
+  } 
+
+  .pane {
+    //margin: 15px 5px;
+  }
+}
+
+/* Min-width 901px to Max-width 1300px: Pane Adjustments */
+@media (min-width: 901px) and (max-width: 1300px) {
+  .wrap {
+   height: auto;
+  } 
+
+  .pane {
+    //margin: 15px auto;
+  }
+}
+
+/* Min-width 1301px to Max-width 1790px: Pane Adjustments */
+@media (min-width: 1301px) and (max-width: 1790px) {
+  .wrap {
+   height: auto;
+  } 
+
+  .pane {
+    margin: 15px 5px;
+  }
+}

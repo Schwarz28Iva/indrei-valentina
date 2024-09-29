@@ -1,0 +1,48 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+/*
+      background: linear-gradient(-45deg, #03a9f4, #6c24f2 29%, white 30% 70%, #6c24f2 71%, #03a9f4);
+*/
+/*
+      background: linear-gradient(-55deg, #03a9f4, #6c24f2 15%, white 48% 52%, #6c24f2 85%, #03a9f4);
+*/
+
+background: linear-gradient(-30deg, #9ddaed, #9f8ce6);
+background-repeat: no-repeat;
+background-attachment: fixed;
+
+
+/*
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+
+#9ddaed, #9f8ce6 20%, white 53%, #9f8ce6 54%, #9ddaed
+background-image: url('C:/Users/Andreea/Desktop/website/WEBSITE/Photos/HomePage/NEW3_.png');
+background-repeat: no-repeat;
+background-position: 1000px 63px;
+background-size: 700px;
+*/
+/*
+background: 
+    url('C:/Users/Andreea/Desktop/website/WEBSITE/Photos/HomePage/NEW3_.png') no-repeat 1000px 63px / 700px,
+    linear-gradient(-30deg, black, black) no-repeat fixed;
+*/
+}
+
+/*
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+*/

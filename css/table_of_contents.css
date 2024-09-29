@@ -1,0 +1,102 @@
+  /* Add CSS styles for the table of contents */
+  #toc {
+    padding: 0px 0px 0px 30px;
+  }
+  #toc ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  #toc ul ul {
+    margin-left: 15px;
+  }
+  #toc li {
+    margin-bottom: 5px;
+  }
+  #toc a {
+    text-decoration: none;
+    color: black;
+  }
+  #toc a.active {
+    font-weight: bold;
+  }
+
+  /* Add indentation for h2 and h3 headings */
+  #toc ul ul li {
+    margin-left: 15px;
+  }
+  #toc ul ul ul li {
+    margin-left: 30px;
+  }
+
+  /* Add arrow list style for active links */
+  #toc a.active::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    transform: rotate(45deg);
+    margin-right: 5px;
+    margin-bottom: 2px;
+  }
+  
+.card h1,.card h2,.card h3 {
+    padding-left: 10px;
+	border-left: 4px solid turquoise;
+}
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+	.card h1 {
+	  font-size: 28px;
+	}
+}
+
+@media screen and (min-width: 501px) and (max-width: 600px) {
+	.card h1 {
+	  font-size: 25px;
+	}
+	.card h2 {
+	  font-size: 21px;
+	}
+}
+
+
+@media screen and (max-width: 500px) {
+	.card h1 {
+	  font-size: 22px;
+	}
+	.card h2 {
+	  font-size: 19px;
+	}
+/*
+	.card p {
+	  font-size: 15px;
+	}
+
+	.card li ul {
+	  font-size: 15px;
+	}
+*/
+}
+
+
+@media screen and (min-width: 1573px) and (max-width: 1716px) {
+  #toc {
+     font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1224px) and (max-width: 1572px) {
+  #toc {
+     font-size: 14px;     
+     padding: 0px 0px 0px 0px;
+  }
+}
+
+@media screen and (max-width: 1223px) {
+  #toc {
+     font-size: 12px;     
+     padding: 0px 0px 0px 0px;
+  }
+}

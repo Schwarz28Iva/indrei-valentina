@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About me</title>
+  <link rel="stylesheet" href="./css/body.css">
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/style_about_me.css">
+  <link rel="stylesheet" href="./css/timeline.css">
+  <link rel="stylesheet" href="./css/technical.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+   <!-- Bootstrap Soft Skills Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <script src="javascript/script_navbar.js"></script>
+  
+  <style>
+  p {
+		margin-top: 0px;
+		margin-bottom: 7px;
+		line-height: 1.35;
+	}
+
+  h3 {
+		margin-bottom: 3px;
+	}
+
+    h6 {
+	  margin-top: 15px;
+	  margin-bottom: 3px;
+      font-size: 19px;
+      color: #4A90E2;
+    }
+
+    .section-content {
+      position: relative;
+      max-height: 60px; /* Visible height for first 2 lines */
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .section-content::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to bottom, rgba(240, 242, 245, 0) 0%, #f0f2f5 100%);
+      pointer-events: none; /* Makes sure the fading effect doesn't block button click */
+    }
+
+    .section-content.active::after {
+      display: none; /* Remove fade when content is expanded */
+    }
+
+    .read-more {
+	  position: absolute;
+      right: 0;
+      //padding-bottom: 10px;
+      font-size: 18px;
+      color: #007bff;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .read-more::before {
+      content: '\25BC'; /* Downward arrow symbol */
+      font-size: 18px;
+      margin-right: 8px;
+    }
+
+    .read-more.active::before {
+      content: '\25B2'; /* Upward arrow symbol */
+    }
+	
+		/* Stil pentru butonul vizibil doar sub 850px */
+.only-small {
+    display: none; /* Ascundem butonul la rezoluții mari */
+}
+
+/* Vizibilitate pentru butonul `.only-small` sub 850px */
+@media screen and (max-width: 850px) {
+    .only-small {
+        display: inline-block; /* Afișăm butonul sub 850px */
+    }
+}
+
+.conditional-content {
+    /* Implicit, conținutul nu are stilurile aplicate */
+}
+
+@media screen and (max-width: 850px) {
+	.conditional-content {
+      position: relative;
+      max-height: 160px; /* Afișăm mai multe rânduri pentru această secțiune */
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+	
+	.conditional-content::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to bottom, rgba(240, 242, 245, 0) 0%, #f0f2f5 100%);
+      pointer-events: none; /* Makes sure the fading effect doesn't block button click */
+    }
+
+    .conditional-content.active::after {
+      display: none; /* Remove fade when content is expanded */
+    }
+}
+  </style>
+</head>
+
+<body style="margin-bottom: 3%;">
+	<header>
+	  <div class="container">
+
+		<div class="logo">
+		  <h1 class="animate-charcter">INDREI VALENTINA</h1>
+		</div>
+
+		<nav id="myTopnav">
+		  <a href="index.html">HOME</a>
+		  <a href="#">ABOUT ME</a>
+		  <a href="services_page.html">SERVICES</a>
+		  <a href="projects.html">PROJECTS</a>
+		  <a href="contact_page.html">CONTACT</a>
+		  
+		  <a href="javascript:void(0);" class="icon" onclick="openNav()">
+			<i class="fa fa-bars"></i>
+		  </a>
+		</nav>
+	  </div>
+	  
+	    <!-- Language Switch Button outside the container -->
+  <div class="language-switch-container">
+    <a href="about_me_eng.html" class="language-switch">
+      <img src="https://flagcdn.com/16x12/gb.png" alt="EN flag"> EN
+    </a>
+  </div>
+	  
+	</header>
+	
+	<div class="about-me-panel">
+        <div class="card">
+			<img src="photos/AboutMe/profile.png" alt="Portrait" class="portrait">
+			<div class="text-content">
+			
+				<h6><i>Hello there!</i></h3> 
+				<div class="conditional-content" id="content0">
+				<p> Înainte de a începe, vreau să îți mulțumesc că ai ales să îmi citești povestea.
+				Indiferent dacă ai ajuns aici datorită articolelor mele, din curiozitate sau doar întâmplător, sper că vei găsi exact ceea ce ai nevoie.
+				Iar dacă ești în căutarea unui angajat sau colaborator pasionat și dedicat, sper să fiu eu persoana pe care o cauți.
+				
+				<p> Numele meu este Indrei Valentina Andreea, am 24 de ani și în prezent sunt studentă la master, specializarea Intelligent Software Robotics.
+				
+				<p> Pasiunea mea pentru domeniul IT a început la vârsta de 8 ani, datorită jocurilor video. 
+				La 13 ani îmi practicam pasiunea ca asistent pentru profesorii de tehnologie și am continuat-o prin înscrierea la un liceu specializat pe matematică-informatică, intensiv informatică.</p>
+				
+				<p> M-am dedicat în continuare prin alegerea unui program de licență în Informatică și absolvirea acestuia. În timpul studiilor am obținut diferite certificări acreditate și am participat la diverse cursuri și traininguri. 
+				După absolvire, m-am concentrat pe proiecte personale și dezvoltare personală.</p>
+				</div>
+				<button class="read-more only-small" data-target="content0"></button>
+			</div>
+		</div>
+		
+
+		<div class="additional-text">
+		
+			<h6 id="title1">Interese și Specializări în IT</h3>
+			<div class="section-content" id="content1">
+			<p>Dezvoltarea de aplicații complete, de la idee la produs final, reprezintă o adevărată sursă de satisfacție. Iubesc procesul de programare și provocarea gândirii logice necesare pentru a transforma linii de cod în soluții funcționale. 
+            În plus, sunt pasionată de inovare și cercetare. Ador un mediu în care pot contribui cu idei și le pot transforma în realitate. Acest fapt mă menține flexibilă în privința carierei mele pe termen lung.</p>
+			<p style="margin-bottom: 0px;">Subiectele de specialitate care mă intrigă sunt Software Engineering și Development, Inteligența Artificială, Machine Learning și Computer Vision (cu aplicații fascinante precum Realitatea Augmentată). Totodată, sunt pasionată de Game Design and Development, dar și de UI/UX Design, domenii în care pot îmbina creativitatea și logica.</p>
+			</div>
+			<button class="read-more" data-target="content1"></button>
+
+
+
+<!--
+			<h3>Alte Pasiuni și Hobby-uri</h3>
+			<p>Dincolo de programare și tehnologie, sunt o persoană activă, sociabilă și plină de viață. 
+			Îmi place să înțeleg cum funcționează lucrurile în profunzime, de la dezvoltarea aplicațiilor până la crearea jocurilor video. 
+			Pe lângă acestea, sunt pasionat(ă) de fitness, camping și călătorii, activități care mă ajută să îmi reîncarc bateriile și să mă inspir. 
+			Petrecerea timpului cu prietenii, socializarea, scrierea creativă și cititul sunt alte modalități prin care îmi hrănesc creativitatea. 
+			Sunt fascinat(ă) de muzică și cinematografie, iar dezbaterile pe diverse subiecte îmi stârnesc curiozitatea și dorința de a învăța mereu ceva nou.</p>
+		-->	
+
+			<h6 id="title2">Planuri și Ambiții</h3>
+			<div class="section-content" id="content2">
+			<p>Nu îmi stabilesc planuri stricte pe termen lung, prefer să rămân flexibilă și deschisă la oportunitățile pe care viitorul le poate aduce. 
+			Pentru viitorul apropiat, obiectivul meu principal este să îmi urmez pasiunea profesională într-o companie care să îmi ofere oportunități continue de dezvoltare și satisfacție profesională. 
+			În paralel, ca side job, îmi doresc să mă implic în cercetare, poate chiar să-mi construiesc o reputație solidă ca freelancer.</p>
+			<p style="margin-bottom: 0px;">Pe plan personal, cel mai mult îmi doresc să găsesc un echilibru între carieră și viața personală. 
+			Un alt obiectiv personal este scrierea și publicarea unei cărți, alături de deschiderea unui club de dezbateri sau chiar lansarea unui podcast. 
+			Dar cel mai important, îmi doresc să am grijă de familia mea și să călătoresc alături de ei.</p>
+			</div>
+			<button class="read-more" data-target="content2"></button>
+
+
+
+			<h6 id="title3">Site-ul: De la Idee la Realizare</h3>
+			<div>
+			<p>Acest site nu este doar un simplu portofoliu, este o expresie a pasiunii mele pentru tehnologie. 
+			De la conceptul inițial, la fiecare detaliu de design și până la implementare, 
+			fiecare pas a fost realizat cu atenție și dedicare.
+			Vreau să cred că este o dovadă a dorinței mele de a excela în carieră și de a aduce inovație în tot ceea ce fac.</p>
+			</div>
+
+
+			<h6 id="title4">În concluzie...</h3>
+			<div>
+			<p>Acesta este doar un scurt rezumat al poveștii mele și al lucrurilor care mă motivează. Dacă împărtășim interese comune sau dacă dorești să colaborăm, nu ezita să mă contactezi. Îți mulțumesc încă o dată pentru timpul acordat!</p>
+			</div>
+		</div>
+		
+	
+<div class="tabs">
+    <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(event, 'educatie')">Educație</button>
+        <button class="tab-button" onclick="openTab(event, 'certificari')">Traininguri și alte certificări</button>
+        <button class="tab-button" onclick="openTab(event, 'technical')">Technical Skills</button>
+        <button class="tab-button" onclick="openTab(event, 'soft')">Soft Skills</button>
+		<button class="tab-button" onclick="openTab(event, 'proiecte')">Proiecte și aplicații</button>
+    </div>
+    <div id="educatie" class="tab-content active">
+		<div class="container-about mt-5">
+			<div class="timeline">
+				<div class="timeline-item">
+					<div class="timeline-icon"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">Prezent</div>
+						<h4 class="timeline-title text-success">Master în Intelligent Software Robotics</h4>
+						<h5 class="timeline-subtitle">Universitatea de Vest din Timișoara, Facultatea de Matematică și Informatică</h5>
+						<p>Cercetare aplicativă în domeniul Informaticii, orientată cu precădere înspre domenii de automatizare, roboți software, neurotehnologii, inteligența artificială și prelucrarea semnalelor.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-icon"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">2019 septembrie – 2022 septembrie</div>
+						<h4 class="timeline-title text-success">Licențiată în Informatică</h4>
+						<h5 class="timeline-subtitle">Universitatea de Vest din Timișoara, Facultatea de Matematică și Informatică</h5>
+						<p>Am dobândit competențe esențiale în dezvoltarea aplicațiilor software, de la analiză și proiectare, la implementare și testare. 
+						Studiile au inclus fundamentarea și aprofundarea cunoștințelor în programare, algoritmi, structuri de date, inginerie software, gestionarea bazelor de date, tehnologii web, 
+						dezvoltarea de interfețe grafice, inteligență artificială și altele.
+						Am învățat să rezolv sarcini autonom, să identific soluții, să gestionez resurse eficient și să mă adaptez constant la noi cerințe și tehnologii.
+						Toate aceste aptitudini m-au pregătit pentru o carieră profesională în domeniul IT și pentru oportunități de cercetare.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-icon"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">2015 iulie – 2019 iulie</div>
+						<h4 class="timeline-title text-success">Matematică-Informatică intensiv informatică</h4>
+						<h5 class="timeline-subtitle">Colegiul Național „Constantin Diaconovici Loga” din Timișoara</h5>
+						<p>Am acumulat cunoștințe de bază în limbajul C/C++, abilități avansate de lucru în MS Office, introducerea și familiarizarea cu conceptul de algoritmi și structuri de date, dezvoltarea gândirii logice și matematice.
+						Aceste cunoștințe m-au pregătit pentru aprofundarea ulterioară în domeniul IT la nivel universitar.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div id="certificari" class="tab-content">
+	    <section class="certifications">
+			<ul>
+			  <li>AI-900: Microsoft Azure AI Fundamentals, 13 aprilie 2022</li>
+			  <li>PL-900: Microsoft Power Platform Fundamentals, 10 august 2021</li>
+			  <li>AZ-900: Microsoft Azure Fundamentals, 21 iulie 2021</li>
+			  <li>LEADERS Explore 2021 - powered by Hella</li>
+			  <li>HPC Summer School at FIS in Novo mesto, Slovenia, septembrie 2020</li>
+			</ul>
+		</section>
+    </div>
+    <div id="technical" class="tab-content">
+				<h3>Aptitudini cheie</h3>		
+
+<div class="skills-container">
+    <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <div class="skill-content">
+            <h3>C/C++</h3>
+            <p>Am lucrat predominant cu C++, folosind limbajul pentru implementarea de aplicații desktop și rezolvarea de probleme în diverse proiecte academice.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🖼️</div>
+        <div class="skill-content">
+            <h3>Computer Vision</h3>
+            <p>Am folosit OpenCV pentru proiecte de procesare a imaginii și recunoaștere de obiecte. Am o bună înțelegere teoretică și practică a tehnicilor de Computer Vision .</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">📱</div>
+        <div class="skill-content">
+            <h3>Qt Framework</h3>
+            <p>Am dezvoltat aplicații desktop folosind Qt pentru interfețe grafice. Folosind Qt Widgets am implementat layout-uri complexe, manipulat evenimente și integrat funcționalități multiple.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">💾</div>
+        <div class="skill-content">
+            <h3>SQL/MySQL</h3>
+            <p>Am utilizat SQL/MySQL pentru gestionarea bazelor de date în proiecte academice. Am experiență în scrierea de interogări, crearea și gestionarea tabelor și relațiilor între date.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-content">
+            <h3>Machine Learning</h3>
+            <p>Am cunoștințe teoretice solide în machine learning, inclusiv concepte și metodologii utilizate pentru preprocesarea datelor, antrenarea și evaluarea modelelor.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-content">
+            <h3>HTML & CSS</h3>
+            <p>Am creat și stilizat multiple pagini web folosind HTML și CSS. Am experiență în dezvoltarea de pagini responsive și implementarea de design-uri moderne, dar și în utilizarea framework-ului Bootstrap.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-content">
+            <h3>UI/UX Design</h3>
+            <p>Am învățat principiile de bază ale designului UI/UX, aplicându-le în proiectele mele web pentru a crea interfețe intuitive și plăcute vizual.</p>
+        </div>
+    </div>
+    <div class="skill-card">
+        <div class="skill-icon">🛠️</div>
+        <div class="skill-content">
+            <h3>Modelare și Design Software</h3>
+            <p>Am experiență în modelarea software utilizând UML pentru a defini și vizualiza arhitectura aplicațiilor. De asemenea, sunt familiarizată cu Design Pattern-urile fundamentale.</p>
+        </div>
+    </div>
+</div>
+
+
+		<h3>Competențe de bază sau intermediare</h3>
+
+<div style="margin-top: 3px; padding-top: 10px;" class="second-skills-container">
+    <div class="second-skill-card">
+        <p class="skill-title">Limbaje de programare</p>
+        <p class="tehnologii">Java, Python</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Dezvoltare Web</p>
+        <p class="tehnologii">JavaScript, PHP, JSP, Servlets</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Framework-uri pentru GUI</p>
+        <p class="tehnologii">Swing, MFC</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Machine Learning</p>
+        <p class="tehnologii">Biblioteca scikit-learn</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Deep Learning</p>
+        <p class="tehnologii">Rețele neuronale artificiale și convoluționale, bibliotecile TensorFlow și Keras</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Testare Software</p>
+        <p class="tehnologii">Tehnici de testare white box și black box, testarea Agile</p>
+    </div>
+    <div class="second-skill-card">
+        <p class="skill-title">Arhitecturi și limbaje de asamblare</p>
+        <p class="tehnologii">x86 assembly language</p>
+    </div>
+</div>
+
+    </div>
+    <div id="soft" class="tab-content">
+			<section class="skills-list">
+				<ul>
+					<li><i class="fas fa-lightbulb"></i><b>Rezolvarea problemelor</b>: Capacitatea de a găsi soluții pentru probleme complexe.</li>
+					<li><i class="fas fa-exchange-alt"></i><b>Adaptabilitate</b>: Flexibilitate în adaptarea la noi provocări.</li>
+					<li><i class="fas fa-graduation-cap"></i><b>Învățare continuă</b>: Angajamentul constant pentru educație și îmbunătățire personală.</li>
+					<li><i class="fas fa-tasks"></i><b>Planificare</b>: Crearea de planuri detaliate pentru atingerea obiectivelor.</li>
+					<li><i class="fas fa-paint-brush"></i><b>Creativitate</b>: Generarea de soluții și idei inovatoare.</li>
+					<li><i class="fas fa-search"></i><b>Atenție la detalii</b>: Meticulozitate și rigurositate în completarea sarcinilor.</li>
+					<li><i class="fas fa-rocket"></i><b>Ambiție</b>: Motivația puternică de a reuși și de a atinge obiective înalte.</li>
+					<li><i class="fas fa-heart"></i><b>Dedicare</b>: Angajamentul profund față de un obiectiv sau o sarcină.</li>
+					<li><i class="fas fa-user-check"></i><b>Autocunoaștere</b>: Înțelegerea propriilor puncte forte și slăbiciuni.</li>
+				</ul>
+			</section>
+    </div>
+	<div id="proiecte" class="tab-content">
+				  <p>Am avut ocazia să aplic diverse tehnologii și să dobândesc experiență practică prin scrierea de proiecte și dezvoltarea de aplicații în cadrul facultății, 
+				  în competiții și trainguri, precum și prin proiecte personale sau de freelancing. 
+				  Unele dintre acestea pot fi vizualizate pe <a href="https://github.com/Schwarz28Iva" target="_blank" style="text-decoration:none">Github</a> sau la secțiunea <a href="file:///C:/Users/Andreea/Desktop/website/WEBSITE/projects.html" style="text-decoration:none">Projects</a>.</p>
+
+    </div>
+</div>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+
+        // Ascunde toate conținuturile taburilor și elimină clasele de animație
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("slideInLeft", "slideInRight");
+        }
+
+        // Elimină clasa activă de la toate butoanele
+        tabbuttons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].classList.remove("active");
+        }
+
+        // Determină direcția animației
+        var activeButton = document.querySelector(".tab-button.active");
+        var direction = activeButton && Array.prototype.indexOf.call(tabbuttons, evt.currentTarget) > Array.prototype.indexOf.call(tabbuttons, activeButton) ? 'slideInRight' : 'slideInLeft';
+
+        // Arată tabul curent și adaugă clasa de animație
+        var currentTab = document.getElementById(tabName);
+        currentTab.style.display = "block";
+        currentTab.classList.add(direction);
+
+        // Adaugă clasa activă la butonul curent
+        evt.currentTarget.classList.add("active");
+    }
+	
+//READ MORE
+  const buttons = document.querySelectorAll('.read-more');
+  
+  buttons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetContent = document.getElementById(this.dataset.target);
+      
+      if (targetContent.classList.contains('active')) {
+        // If it's expanded, collapse it back
+        targetContent.classList.remove('active');
+        targetContent.style.maxHeight = '60px'; // Reset to original height
+        this.classList.remove('active');
+      } else {
+        // If it's collapsed, expand it
+        const fullHeight = targetContent.scrollHeight + "px";
+        targetContent.style.maxHeight = fullHeight;
+        targetContent.classList.add('active');
+        this.classList.add('active');
+      }
+    });
+  });
+  
+    // Funcție pentru resetarea stilurilor la rezoluții mari
+  function resetStylesOnResize() {
+    if (window.innerWidth > 850) {
+      // Resetăm stilurile pentru toate elementele `conditional-content` și `section-content`
+      const allContents = document.querySelectorAll('.conditional-content, .section-content');
+      allContents.forEach(content => {
+        content.classList.remove('active');
+        content.style.maxHeight = ''; // Elimină orice max-height setat
+      });
+
+      // Resetăm starea butoanelor
+      buttons.forEach(button => {
+        button.classList.remove('active');
+      });
+    }
+  }
+
+  // Adăugăm evenimentul resize pentru a detecta schimbările de rezoluție
+  window.addEventListener('resize', resetStylesOnResize);
+
+  // Apelăm funcția la încărcare pentru a asigura starea corectă
+  resetStylesOnResize();
+</script>
+
+
+<!--	
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Your Name. All rights reserved.</p>
+    </div>
+  </footer>	
+-->
+</body>
+</html>

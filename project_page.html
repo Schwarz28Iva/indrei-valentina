@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Augmented Reality Sudoku Solver</title>
+  <link rel="stylesheet" href="css/style_project.css">
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/project_card.css">
+  <link rel="stylesheet" href="css/table_of_contents.css">
+  <link rel="stylesheet" href="css/overlay_toc.css">
+  <link rel="stylesheet" href="css/images_project.css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <script src="javascript/script_navbar.js"></script>
+  <script src="javascript/toc.js"></script>
+  
+  
+  <link rel="stylesheet" href="prism_library/prism.css" />
+  <script src="prism_library/prism.js"></script>
+
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+
+
+    .figure-container {
+        display: flex;
+        justify-content: center;
+    }
+/*
+    .figure-container > figure {
+        margin: 0;
+    }
+*/
+    @media screen and (max-width: 500px) {
+        .figure-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        figure {
+            width: 100%;
+            //margin-bottom: 20px;
+        }
+    }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+  //vertical-align:middle;
+  //float: left;
+}
+
+figure {
+  //display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+  font-style: oblique;
+  color: #6e6d6d;
+}
+
+@media screen and (max-width: 750px) {
+  img {
+    max-width: 90%;
+  }
+}
+
+figcaption {
+	text-align:center;
+	max-width: 100%;
+}
+
+
+
+.code-snippet {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.code-header {
+  background-color: #f5f5f5;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.technology {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+  .copy-button {
+    padding: 5px 10px;
+    background-color: #86B2EC;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .copy-button:hover {
+    background-color: #65A3FF;
+  }
+
+pre {
+  margin: 0;
+  padding: 10px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .code-snippet {
+    font-size: 14px; /* Smaller font for smaller screens */
+    width: 100%; /* Maximize width */
+    margin-left: 0; /* Remove indentation */
+    padding-left: 0;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  ul, ol {
+    padding-left: 20px; /* Reduce the indentation */
+  }
+}
+
+</style>
+
+
+<script>
+  function copyCode(button) {
+    const code = button.parentNode.nextElementSibling.querySelector('code');
+    const text = code.textContent;
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy code';
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error('Failed to copy code:', error);
+      });
+  }
+</script>
+
+
+</head>
+<body style="height: 100vh;">
+	<header>
+	  <div class="container">
+
+		<div class="logo">
+		  <h4 style="font-size: 24px; margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;" class="animate-charcter">INDREI VALENTINA</h4>
+		</div>
+
+		<nav id="myTopnav">
+		  <a href="home_page.html">HOME</a>
+		  <a href="about_me.html">ABOUT ME</a>
+		  <a href="services_page.html">SERVICES</a>
+		  <a href="projects.html">PROJECTS</a>
+		  <a href="contact_page.html">CONTACT</a>
+		  
+		  <a href="javascript:void(0);" class="icon" onclick="openNav()">
+			<i class="fa fa-bars"></i>
+		  </a>
+		</nav>
+	  </div>
+	  
+	    <!-- Language Switch Button outside the container -->
+  <div class="language-switch-container">
+    <a href="project_page_eng.html" class="language-switch">
+      <img src="https://flagcdn.com/16x12/gb.png" alt="EN flag"> EN
+    </a>
+  </div>	  
+	  
+	</header>
+	
+	
+	
+	
+	
+  <div class="blog-card first">
+    <div class="meta">
+      <div class="photo" style="background-image: url(photos/ProjectsPage/arss.png)"></div>
+    </div>
+    <div class="description">
+      <h1>Augmented Reality Sudoku Solver</h1>
+      <h2 style="color: #4f4f4f;">Embark on a Thrilling Academic Quest - My bachelor thesis</h2>
+      <p>
+	This article studies various methods of generating and solving through computer
+vision a Sudoku puzzle, presenting step by step the journey of implementing from
+scratch a desktop application that contains all the features that the Sudoku community
+could need.
+	  </p>
+	  			<div class="projcard-tagbox">
+					<span class="projcard-tag">C++</span>
+					<span class="projcard-tag">OpenCV</span>
+					<span class="projcard-tag">Qt</span>
+					<span class="projcard-tag">CNN</span>
+				</div>
+		<!--<i class="fa fa-laptop slowfloat3s"></i>-->
+	</div>
+  </div>
+	
+	
+	
+
+  <div class="row">
+	  <div id="leftcolumn" class="leftcolumn">
+		<div class="card">
+		
+		  <h4 style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Cuprins</h4>
+		<!--  <div class="fakeimg" style="height:100px;">Image</div> -->
+		  
+		    <nav id="toc"> 
+			</nav>
+		
+		
+		</div>
+		
+	  </div>
+	  
+	  
+	  <div class="rightcolumn" style="margin-bottom: 3.8%;">
+		<div class="card">
+		<!--
+		  <h2>TITLE HEADING</h2>
+		  <h5>Title description, Dec 7, 2017</h5>
+		  <div class="fakeimg" style="height:200px;">Image</div>
+		  <p>Some text..</p>
+		  -->
+		  
+	<main style="word-wrap: break-word; text-align: justify;">
+	
+	<!--
+	<h1 id="obiective-19">Introducere</h1>
+	-->
+	<h1 id="obiective-19">Obiectivele urmărite</h1>
+		<p>Obiectivele acestei lucrări constau în:</p>
+		<ul>
+			<li>obiectivul principal este de a realiza o unealtă de folos pentru jucătorii de Sudoku, aplicația putând fi folosită atât în viața de zi cu zi, cât și la nivel competitiv.</li>
+			<li>aplicația să ofere toate funcționalitățile de care un jucător Sudoku ar avea nevoie: crearea unui puzzle, verificarea unui puzzle rezolvat, oferirea soluției pentru un puzzle nerezolvat</li>
+			<li>pentru ca aplicația să fie folosită și la nivel competitiv, pentru ușurarea muncii, oferirea posibilității de printare și generare a unui număr de puzzle-uri specificat de către utilizator</li>
+			<li>generare de puzzle-uri cu dificultate variabilă</li>
+			<li>mai multă funcționalitate decât alte aplicații asemănătoare de pe piață</li>
+			<li>timp de execuție bun. Exemplu: obținerea unui timp de execuție de 1 secundă per sudoku generat, pentru majoritatea nivelelor de dificultate</li>
+			<li>realizarea unui GUI plăcut și ușor de folosit</li>
+		</ul>
+	
+
+	<h1>Tehnologii și instrumente folosite</h1>
+	<h2>Limbajul de programare</h2>
+		<p>Limbajul de programare folosit este C++. C++ este un limbaj de programare puternic cu scop general, care poate fi folosit pentru a crea aplicații de înaltă performanță. Limbajul oferă programatorilor un nivel ridicat de control asupra resurselor sistemului și memoriei.</p>
+		<p>Poate fi folosit pentru a dezvolta sisteme de operare, browsere, jocuri, servere, aplicații și așa mai departe. C++ acceptă diferite moduri de programare, cum ar fi procedurală, orientată pe obiecte, funcțională, abstractizare a datelor. Acest lucru face ca C++ să fie puternic și flexibil.</p>
+		<p>Spre deosebire de alte limbaje, C++ este adaptabil și s-a adaptat rapid alături de nevoile programatorilor și de software. În plus, C++ este versatil, deoarece a fost utilizat pe scară largă atât de mult timp încât este foarte compatibil cu majoritatea celorlalte limbaje de pe piață.</p>
+		<p>Este un limbaj extrem de rapid și eficient. Multe instrumente și framework-uri se bazează pe viteza și eficiența C++.</p>
+		<p>Pe scurt, este foarte solicitat în prezent și va rămâne la mare căutare datorită numeroaselor avantaje:</p>
+		<ul>
+			<li>fiabilitate</li>
+			<li>performanță</li>
+			<li>eficiență</li>
+			<li>versatilitate/flexibilitate</li>
+		</ul>
+		<p>Progresele recente în învățarea automată și alte subiecte legate de inteligența artificială au fost implementate folosind Python datorită flexibilității, suportului bogat și excelent de framework-uri AI și ML, precum și existența unei comunități active de utilizatori. Deci în ceea ce privește simplitatea, Python este cu siguranță mult mai ușor de utilizat.</p>
+		<p>Deși C++ nu este limbajul de programare ideal pentru Machine Learning, are câteva caracteristici care fac C++ suficient de capabil pentru a concura cu limbaje de programare moderne precum Python. Avantajele prezentate îl ajută să se clasifice pe locul 2 în topul celor mai utilizate limbaje de programare utilizate în Machine Learning sau Inteligență Artificială.</p>
+	
+	<h2>Tehnologii utilizate</h2>
+		<ul>
+			<li><strong>OpenCV</strong></li>
+		</ul>
+		<p>Prima tehnologie care trebuie menționată este, cu siguranță, OpenCV. OpenCV (Open Source Computer Vision Library) este o bibliotecă software open source pentru computer vision și învățare automată. Este un instrunemt excelent și foarte des utilizat în aceste domenii, putând fi folosit atât pentru sarcini complexe, precum detectarea feței sau a obiectelor pentru securitate în aeroport, vizualizarea traseului pentru mașinile autonome sau sarcini mult mai simple ca editarea unei imagini.</p>
+		<p>Sunt foarte multe motive pentru care această tehnologie poate fi considerată prietenoasă cu începătorii:</p>
+		<ul>
+			<li>posibilități nemărginite</li>
+			<li>gratuitatea pentru uz academic și comercial</li>
+			<li>documentația foarte detaliată și lucrările teoretice și practice prezente în abundență</li>
+			<li>imaginile sunt convertite în matrice multidimensionale, ceea ce simplifică foarte mult manipularea lor</li>
+		</ul>
+		<p>De asemenea, OpenCV este compatibil cu mai multe limbaje de programare, inclusiv C++, Python sau Java. Biblioteca este cu atât mai puternică deoarece a fost proiectată special pentru eficiență computațională și cu un accent puternic pe aplicațiile în timp real. Scrisă și optimizată în C/C++, biblioteca poate profita de procesarea multi-core.</p>
+		<p>În prezent, este cea mai mare bibliotecă de computer vision în ceea ce privește numărul mare de funcții pe care le deține. Ținând cont de toate aceste aspecte, se justifică de ce biblioteca este utilizată pe scară largă în companii, grupuri de cercetare și de către organismele guvernamentale.</p>
+
+
+		<ul>
+			<li><strong>Qt</strong></li>
+		</ul>
+		<p>Qt este un framekwork multiplatformă care conține un set cuprinzător de librării C++ extrem de intuitive și modulare și este plin cu API-uri pentru a simplifica dezvoltarea aplicațiilor. Qt produce cod foarte lizibil, ușor de întreținut și reutilizabil, cu performanță ridicată.</p>
+		<p>Qt este folosit pentru dezvoltarea de interfețe grafice de utilizator (GUI) și aplicații multiplatformă care rulează pe toate platformele desktop majore și pe majoritatea platformelor mobile sau încorporate (embedded).</p>
+		<p>Principalele avantaje ale framework-ului Qt sunt: este mai bun pentru crearea de interfețe grafice (deoarece este mai rapid decât alte limbaje), este multiplatformă, este gestionat direct de CPU, Qt Designer este foarte util și ușor de manevrat.</p>
+
+	<h2>Mediul de dezvoltare</h2>
+		<ul>
+			<li><strong>Qt Creator</strong></li>
+		</ul>
+		<p>Mediul de dezvoltare folosit pentru a duce aplicația la forma finală este <strong>Qt Creator</strong>. Principalul motiv pentru care am ales acest IDE este suportul pentru crearea de interfețe grafice, mediul fiind strâns integrat cu framework-ul Qt, un instrument popular și plin de feature-uri pentru proiectare și dezvoltare de aplicații software.</p>
+		<p>De asemenea, oferă și caracteristicile tipice IDE, cum ar fi debugging, compilare, completare automată a codului, profilare și refactorizare. Este, de asemenea, excepțional de rapid și intuitiv de utilizat. Qt Creator rulează pe sistemele de operare desktop Windows, Linux și macOS și permite dezvoltatorilor să creeze software pe platforme desktop, mobile și embedded.</p>
+		<p>Este considerată în industrie o unealtă de dezvoltare software utilă, deoarece poți construi interfețe grafice de înaltă calitate și aplicații de înaltă performanță, fiind puternic și versatil.</p>
+		<p>Cu toate acestea, este importantă menționarea și dezavantajelor acestui mediu de dezvoltare: experiența UI poate fi copleșitoare, necesită familiarizare cu framework-ul Qt pentru a putea utiliza suportul pentru GUI, poate fi necesară o perioadă de învățare inițială pentru a beneficia de toate funcționalitățile sale, pot apărea erori de compatibilitate.</p>
+		<p></p>
+		<p></p>
+
+		<ul>
+			<li><strong>Visual Studio 2019</strong></li>
+		</ul>
+		<p><strong>Microsoft Visual Studio</strong> este un mediu de dezvoltare integrat de la Microsoft. Este folosit pentru a dezvolta programe de calculator, precum și site-uri web, aplicații web, servicii web, aplicații mobile și jocuri.</p>
+		<p>Conform raportului publicat de JetBrains, Microsoft Visual Studio este cel mai popular C++ IDE pentru Windows printre developeri. De asemenea, este și preferința mea principală.</p>
+		<p>Visual Studio este cea mai populară alegere din motive întemeiate: acest instrument complex este multiplatformă, beneficiază de integrare Github, acceptă multe limbaje de programare, suport perfect pentru extensii și este dotat cu o gamă incredibilă de funcționalități. Are o evidențiere excelentă a sintaxelor, un design plăcut, sistem puternic de debugging și un designer de interfață de utilizare ușor de utilizat. În plus, are o comunitate uriașă, așa că nu lipsesc documentațiile, tutorialele și exemplele.</p>
+		<p>Acestea fiind spuse, se poate înțelege de ce toate feature-urile aplicației au fost implementate în mediul de dezvoltare Visual Studio 2019, fiind apoi adaptate pentru Qt Creator și modificate (în funcție de caz) pentru a funcționa cu interfața grafică construită în Qt Designer.</p>
+		<p>În prezent, singurul proiect cu care poți crea o interfață grafică complexă pe Visual Studio 2019 direct în C++ este CLR (.NET Framework), dar care prezintă multe bug-uri, transformând experiența ca developer neplăcută și frustrantă. Celelalte tipuri de proiecte care permit implementarea de UI (exemplu MFC) sunt perfecte pentru aplicații simple, care nu necesită elemente grafice complexe sau mai multe pagini/ecrane. Lipsa suportului pentru un GUI complex este motivul pentru care a trebuit să migrez către Qt Creator în etapa finală de dezvoltare a aplicației.</p>
+
+	
+		<h1>Soluția propusă</h1>
+
+		<ul>
+			<li><strong>Structura generală a aplicației - Cazurile de utilizare</strong></li>
+		</ul>
+		
+		<!--
+		<div>
+			<img src="imagini/Use_Case.png" alt="Diagrama cazurilor de utilizare ale aplicației" style="width: 9.5cm;">
+			<p>Diagrama cazurilor de utilizare ale aplicației</p>
+		</div>
+		-->
+		<figure id="fig_use_case">
+			<img id="img_use_case" src="imagini/Use_Case.png">
+			<figcaption>Diagrama cazurilor de utilizare ale aplicației</figcaption>
+		</figure>
+		
+		<p>Avem <strong>un singur tip de utilizator</strong>, acesta având acces la toate funcționalitățile aplicației.</p>
+		<p>Există 3 cazuri de utilizare:</p>
+		<ul>
+			<li><strong>Augmented Reality Sudoku Solver</strong> - funcționalitatea principală a aplicației. Accesează camera web, detectează Sudoku-ul și afișează soluția găsită peste imaginea din aplicație în timp real.</li>
+			<li><strong>Sudoku Puzzle Generator</strong> - generează numărul de puzzle-uri Sudoku cerut de către utilizator, cu posibilitatea de printare în format PDF.</li>
+			<li><strong>Sudoku Puzzle Answer Checker</strong> - permite verificarea unui puzzle. Utilizatorul va arăta puzzle-ul, iar aplicația va utiliza algoritmul de verificare și va anunța utilizatorul dacă este corect sau nu.</li>
+		</ul>
+
+
+		<h2>Augmented Reality Sudoku Solver</h2>
+
+			<p>Crearea unui rezolvator Sudoku prin realitate augmentată este o problemă complexă, cu siguranță atractivă, care necesită puțină creativitate, dar mai ales o arie mai largă de cunoștiințe. Pe lângă abilități de rezolvare a problemelor, este nevoie de cunoștiințe de algoritmică și programare, dar mai ales, computer vision. Pentru sarcinile care țin de computer vision, folosim librăria OpenCV.</p>
+
+
+			<ul>
+				<li><strong>Diagrama de activitate - ilustrarea comportamentului intern relevant</strong></li>
+			</ul>
+			
+			<figure id="fig_arss_activitate">
+				<img id="img_arss_activitate" src="imagini/arss_activitate.png">
+				<figcaption>Diagrama de activitate pentru Augmented Reality Sudoku Solver</figcaption>
+			</figure>
+
+
+			<p>Pentru a eficientiza procesul de dezvoltare, divizăm problema în mai multe subproblemele, pe care le rezolvăm pe rând. Fiecare subproblemă reprezintă un pas, fiecare venind în completarea celei de dinainte, astfel ajungând la sfârșit să avem funcționalitatea finalizată.</p>
+
+			<p>Acestea fiind spuse, crearea unui rezolvator automat de puzzle-uri Sudoku este un proces format din pașii prezentați în următoarea diagramă:</p>
+
+			<figure id="fig_pasi_ar">
+			  <img id="img_pasi_ar"src="imagini/pasi_ar.png">
+			  <figcaption>Pași pentru construirea unui rezolvator de puzzle Sudoku care utilizează realitatea augmentată</figcaption>
+			</figure>
+
+			<p>Pentru fiecare pas descriem în detaliu modul de abordare și rezolvare a problemei.</p>
+
+			<p><b>Pasul 1</b></p>
+
+			<p>Nu are nevoie de o prezentare separată, scopul acestuia fiind doar de a captura și afișa fluxul camerei web. Acest lucru este posibil cu ajutorul clasei <strong>Video Capture</strong> din OpenCV. Clasa oferă C++ API pentru captarea video de la camere sau pentru citirea fișierelor video și secvențe de imagini.</p>
+
+			<p><b>Pasul 2 - Detectăm Sudoku-ul</b></p>
+
+			<p>Acum că avem imaginea, putem începe. Primul lucru pe care trebuie să îl facem este să implementăm câteva operații de procesare a imaginii pentru a obține o imagine îmbunătățită și pentru a extrage câteva informații utile din ea.</p>
+
+			<figure id="fig_poza12_ar">
+			  <img src="imagini/poza1.2_ar.jpg">
+			  <figcaption>Rezultatele operațiilor de procesare</figcaption>
+			</figure>
+
+			<p>Pentru asta utilizăm câteva tehnici de bază folosind funcții oferite de OpenCV. Le aplicăm în această ordine:</p>
+
+			<ol>
+			  <li>Convertim imaginea din BGR în tonuri de gri folosind <strong>cv::cvtColor()</strong>. Acesta este, în general, primul pas care trebuie făcut pentru orice sarcină în computer vision. De cele mai multe ori, tonul de gri are toate informațiile relevante pentru a finaliza o anumită sarcină. Prin urmare, reducerea imaginii la tonuri de gri simplifică foarte mult calculele și elimină redundanțele.</li>
+			  <li>Aplicăm blur Gaussian folosind <strong>cv::GaussianBlur()</strong>. Aceasta are scopul de a elimina zgomotul digital.</li>
+			  <li>Aplicăm funcția <strong>cv::adaptiveThreshold()</strong>. Este folosită pentru a separa obiectele dorite din imaginea din prim-plan de cele din fundal pe baza diferenței de intensitate a pixelilor din fiecare regiune.</li>
+			</ol>
+<!--
+			<figure style="float:right; margin-left:20px; margin-bottom:20px;">
+			  <img src="imagini/poza1.2_ar.jpg">
+			  <figcaption>Rezultatele operațiilor de procesare</figcaption>
+			</figure>
+-->
+			<p>Acum avem o imagine mult mai clară și simplificată, care prezintă doar elementele importante pentru noi. Acum putem detecta contururile din imagine folosind funcția <strong>cv::findContours()</strong> alături de parametrul RETR_TREE pentru a ne returna toate contururile ierarhizate.</p>
+
+			<p>Având acum un vector cu contururile imaginii, îl parcurgem și verificăm pentru fiecare contur dacă respectă anumite proprietăți:</p>
+
+			<ol>
+			  <li>Aria conturului este mai mare de 5000 pixeli. Aria conturul este returnată de funcția <strong>cv::contourArea()</strong>.</li>
+			  <li>Conturul este un pătrat. Pentru a afla această informație utilizăm funcțiile <strong>cv::arcLenght()</strong> și <strong>cv::approxPolyDP()</strong>.</li>
+			  <li>Are cea mai mare arie dintre toate contururile.</li>
+			</ol>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	double area;
+	double maxarea = 0;
+	int p = -1;
+	for (int i = 0; i < contours.size(); i++)
+	{
+		area = contourArea(contours[i], false);
+		if (area > 50000)
+		{
+			double perimeter = arcLength(contours[i], true);
+			approxPolyDP(contours[i], contours[i], 0.01 * perimeter, true);
+			if (area > maxarea && contours[i].size() == 4)
+			{
+				maxarea = area;
+				p = i;
+			}
+		}
+	}
+  </code>
+  </pre>
+</div>
+
+			<p>Dacă a fost întâlnit un contur care respectă toate aceste condiții, înseamnă că tocmai am detectat un Sudoku. Folosim funcția <strong>cv::drawContours()</strong> pentru a evidenția Sudoku-ul, desenând conturul exterior al acestuia cu culoarea verde.</p>
+
+			<figure id="poza2_ar">
+			  <img src="imagini/poza2_ar.jpg">
+			  <figcaption>Sudoku-ul evidențiat</figcaption>
+			</figure>
+
+			<p><b>Pasul 3 - Extragem fiecare celulă separat</b></p>
+
+			<p>Înainte de a putea să extragem celulele, trebuie să extragem întreg puzzle-ul din imagine și să îl analizăm separat. Pentru a-l extrage din imagine trebuie să aflăm coordonatele celor patru colțuri are pătratului.</p>
+
+			<p>Trebuie să găsim care colț va fi mapat în partea din stânga sus (coordonata (0,0)), dreapta jos (coordonata (450,450)) ș.a.m.d. pentru noua imagine. Prin urmare trebuie să identificăm ordinea corectă a colțurilor, altfel obținem imagini rotite.</p>
+
+			<p>Logica pe care am ales-o pentru a găsi colțurile respective a fost: mai întâi iau suma coordonatelor x și y. Colțul sus-stânga are cea mai mică sumă, iar jos-dreapta are suma maximă. Diferența y-x este minimă în colțul sus-dreapta, iar jos-stânga este maximă.</p>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	for (int i = 0; i < 4; i++)
+	{
+		sum = contours[p][i].x + contours[p][i].y;
+		diff1 = contours[p][i].x - contours[p][i].y;
+		diff2 = contours[p][i].y - contours[p][i].x;
+		if (diff1 > diffprev)
+		{
+			diffprev = diff1;
+			c = i;
+		}
+		if (diff2 > diffprev2)
+		{
+			diffprev2 = diff2;
+			d = i;
+		}
+		if (sum > prevsum)
+		{
+			prevsum = sum;
+			a = i;
+		}
+		if (sum < prevsum2)
+		{
+			prevsum2 = sum;
+			b = i;
+		}
+	}
+  </code>
+  </pre>
+</div>
+
+
+			<figure id="fig_warpPerspective3" width=280px>
+			  <img src="imagini/warpPerspective3.jpg" width=270px>
+			  <figcaption>Sudoku cropat</figcaption>
+			</figure>
+			
+			<p id="par1">Astfel am reușit să găsim colțurile, urmând doar să specificăm unde trebuie mapate acele puncte.</p>
+
+			<p>Următorul pas este să folosim o transformare geometrică pentru a crea o imagine doar cu grila Sudoku, transformată astfel încât să fie un pătrat. Pentru asta utilizăm funcția <strong>cv::getperspectiveTransform()</strong>. Funcția mapează un punct dat (x, y) dintr-un patrulater la un nou punct (X ,Y) dintr-un alt patrulater. Astfel, pentru a crea o transformare adecvată, trimitem cele 4 vârfuri ale grilei Sudoku și locația dorită pentru fiecare din imaginea de destinație. Metoda <strong>cv::warpPerspective()</strong> realizează transformarea imaginii sursă.</p>
+
+<!--
+			<figure>
+			  <img src="imagini/warpPerspective3.jpg">
+			  <figcaption>Sudoku cropat</figcaption>
+			</figure>
+-->
+
+			<figure id="fig_warpPerspective3_2" width=280px>
+			  <img src="imagini/warpPerspective3.jpg" width=270px>
+			  <figcaption>Sudoku cropat</figcaption>
+			</figure>
+
+			<p style="clear: right; clear:left;" >Am obținut o nouă poză care conține doar Sudoku-ul. Acum putem începe implementarea pentru extragerea cifrelor. Prima dată trebuie să procesăm iar imaginea. Pașii pentru procesare sunt următorii:</p>
+			<ol>
+			  <li><strong>cv::cvtColor()</strong> cu parametrul COLOR_BGR2GRAY</li>
+			  <li><strong>cv::threshold()</strong> cu parametrul THRESH_BINARY</li>
+			  <li><strong>cv::threshold()</strong> cu parametrul THRESH_OTSU</li>
+			  <li><strong>cv::adaptiveThreshold()</strong> cu parametrii ADAPTIVE_THRESH_GAUSSIAN_C și THRESH_BINARY_INV</li>
+			</ol>
+
+			<p>Observăm că liniile nu au dispărut în totalitate. Pentru a elimina și liniile din imagine utilizăm funcția <strong>cv::HoughLines()</strong>, aceasta găsind liniile dintr-o imagine binară. După ce obținem liniile, parcurgem vectorul obținut și desenăm cu ajutorul funcției <strong>cv::line()</strong> fiecare linie cu culoarea negru, astfel astupându-le.</p>
+
+<!--
+<div>
+    <figure style="text-align: center; max-width: 800px;">
+        <div style="display: inline-block;">
+            <img src="imagini/poza4_ar.jpg">
+            <figcaption>Rezultate procesare</figcaption>
+        </div>
+        <div style="display: inline-block;">
+            <img src="imagini/poza5_ar.jpg">
+            <figcaption>Rezultate HoughLines</figcaption>
+        </div>
+    </figure>
+</div>
+-->
+
+<div class="figure-container">
+    <figure id="fig_poza4_ar">
+        <img src="imagini/poza4_ar.jpg">
+        <figcaption class="figure-caption">Rezultate procesare</figcaption>
+    </figure>
+    <figure id="fig_poza5_ar">
+        <img src="imagini/poza5_ar.jpg">
+        <figcaption class="figure-caption">Rezultate HoughLines</figcaption>
+    </figure>
+</div>
+
+			<p>După toate aceste operații, imaginea rezultată este una clară și cu detalii minimizate, reușind să păstrăm cifrele intacte și evidențiate. Așa cum am format o imagine separată doar cu Sudoku-ul, mergem pe aceeași abordare și pentru extragerea cifrelor. Asta înseamnă că scopul nostru este să obținem fiecare celulă într-o poză separată, adică analizăm un total de 81 de poze.</p>
+
+			<p>Pentru a obține o poză separată cu fiecare celulă am urmat următoarea idee: voi împărții imaginea cu Sudoku-ul la 9, atât pe lungime, cât și pe lățime. Poza este un patrat, iar toate celule din interior sunt tot pătrate. Înseamnă că prin împărțirea lungimii imaginii la 9 și parcurgerea acesteia pe bucăți obținem cu siguranță fiecare celulă.</p>
+
+			<p>Astfel, dacă creăm două iterații începând de la 0 până la 9 și pornim din punctul (x,y) = (0,0) și incrementăm poziția punctul x și y în mod corespunzător, atunci obținem foarte ușor coordonatele pentru fiecare celulă. Cu aceste coordonate putem crea un obiect de tip <strong>cv::Rect</strong> care conține regiunea de interes (ROI), pe care îl folosim pentru a cropa poza cu celula din cea cu Sudoku-ul.</p>
+
+			<p><b>Pasul 4 - Determinăm dacă există cifră, și dacă da, aplicăm OCR</b></p>
+
+		<p>Am obținut poza cu celula separat. Acum aplicăm funcția <strong>cv::findContours()</strong> alături de parametrul RETR_EXTERNAL pentru a ne returna toate contururile externe ierarhizate.</p>
+
+		<p>Pregătim o matrice de 9x9 pentru a stoca, pe rând, deodată cu parcurgerea imaginii, fiecare valoare rezultată.</p>
+
+		<p>Dacă mărimea vectorului de contururi rezultat este zero, atunci este sigur că celula este goală, adică îi atribuim valoarea 0. Dacă este mai mare de zero, asta nu înseamnă neapărat că este prezent un număr, deoarece este posibil ca mici urme ale grilei să fi rămas, conturul acestora fiind returnat de funcția <strong>cv::findContours()</strong> (exemplu în figura 1.1).</p>
+
+		<p>Pentru a elimina această problemă, calculăm centrul de masă pentru fiecare contur găsit în poză. Dacă centrul de masă se află în partea centrală a imaginii, înseamnă că este un număr (figura 2.2). Dacă nu este întâlnit centrul de masă în partea centrală, înseamnă că celula este goală și îi atribuim valoarea zero (figura 1.2).</p>
+
+<div style="flex-direction:row;" class="figure-container">
+    <figure style="width: 50%;">
+        <img src="imagini/poza7_ar.jpg" alt="Poză cu numărul de contururi mai mare ca zero, dar care nu conține o cifră" style="width: 2cm;">
+        <figcaption class="figure-caption">Figura 1.1: Poză cu numărul de contururi mai mare ca zero, dar care nu conține o cifră</figcaption>
+    </figure>
+    <figure style="width: 50%;">
+        <img src="imagini/poza8_ar.jpg" alt="Centrul de masă al conturului întâlnit într-o celulă fără cifră" style="width: 2cm;">
+        <figcaption class="figure-caption">Figura 1.2: Centrul de masă al conturului întâlnit într-o celulă fără cifră</figcaption>
+    </figure>
+</div>
+
+<div style="flex-direction:row;" class="figure-container">
+    <figure style="width: 50%;">
+        <img src="imagini/poza_celula1_ar.jpg" alt="Poza unei celule care conține cifră" style="width: 2cm;">
+        <figcaption class="figure-caption">Figura 2.1: Poza unei celule care conține cifră</figcaption>
+    </figure>
+    <figure style="width: 50%;">
+        <img src="imagini/poza_celula2_ar.jpg" alt="Centrul de masă al conturului întâlnit într-o celulă cu cifră" style="width: 2cm;">
+        <figcaption class="figure-caption">Figura 2.2: Centrul de masă al conturului întâlnit într-o celulă cu cifră</figcaption>
+    </figure>
+</div>
+
+<figure>
+    <img src="imagini/schema_conditie.png">
+    <figcaption>Reprezentarea condiției pentru poziția centrului de masă. Pătratul mare reprezintă întreaga celulă. Zona conturată cu verde este zona validă.</figcaption>
+</figure>
+
+		<p>Dacă s-a ajuns la concluzia că un număr există, atunci ne folosim de conturul depistat pentru a forma iar altă imagine, dar de data asta având cifra ca element unic și central. Pentru a cuprinde conturul (cifra) într-o nouă poză, funcțiile <strong>cv::boundingRect()</strong> și <strong>cv::rectangle()</strong> sunt de folos. Prima funcție este folosită pentru a desena un dreptunghi aproximativ în jurul imaginii binare (în cazul nostru, în jurul conturului), în timp ce a doua formează un dreptunghi în care se salvează rezultatul de la cv::boundingRect() (figura 3.1). Acum cropăm imaginea folosind exact aceleași principii ca mai devreme (figura 3.2).</p>
+
+		<p>Poza cu cifra este aproape pregătită pentru predicție. Trebuie să mai facem mici modificări pentru a se potrivi cu setul de date pe care CNN-ul a fost antrenat:</p>
+
+		<ol>
+		  <li><strong>cv::copyMakeBorder()</strong> cu parametrul BORDER_ISOLATED. Funcția formează un chenar negru în jurul unei imagini. Scopul acestei prelucrări este pentru ca cifra să rămână centrată, dar nu lipită de extremități, acest lucru putând scădea acuratețea predicției.</li>
+		  <li><strong>cv::resize()</strong>. Funcția redimensionează o imagine. O folosim pentru a o aduce la dimensiunea 28x28, asemenea setului de date.</li>
+		</ol>
+
+		<p>Informații despre CNN și modul de implementare se pot găsi la secțiunea <strong>CNN</strong>.</p>
+
+<div class="figure-container">
+    <figure style="width: 33.33%;">
+        <img src="imagini/poza_celula6_ar.jpg" alt="Poza unei celule care conține cifră" style="width: 2cm;">
+        <figcaption style="width: 80%; margin-left: 10%;" class="figure-caption">Figura 3.1: Dreptunghiul rezultat de funcția cv::boundingRect()</figcaption>
+    </figure>
+    <figure style="width: 33.33%;">
+        <img src="imagini/poza_celula4_ar.jpg" alt="Centrul de masă al conturului întâlnit într-o celulă cu cifră" style="width: 1.5cm;">
+        <figcaption style="width: 80%; margin-left: 10%;" class="figure-caption">Figura 3.2: Cifra cropată din celulă</figcaption>
+    </figure>
+	<figure style="width: 33.33%;">
+        <img src="imagini/celula_finala.jpg" alt="Centrul de masă al conturului întâlnit într-o celulă cu cifră" style="width: 2cm;">
+        <figcaption style="width: 80%; margin-left: 10%;" class="figure-caption">Figura 3.3: Poza finală, gata pentru predicție</figcaption>
+    </figure>
+</div>
+
+<p>Pentru a putea folosi modelul construit în Keras pentru predicție în C++, am folosit librăria <strong>frugally-deep</strong>. Frugally-deep este o mică bibliotecă header-only scrisă în C++ pur, foarte ușor de integrat și utilizat.</p>
+
+<p>Pentru a putea folosi imaginile încărcate cu OpenCV ca intrare pentru un model trebuie să urmăm patru pași:</p>
+
+<ol>
+    <li>încărcăm o imagine folosind OpenCV</li>
+    <li>o convertim într-un fdeep::tensor</li>
+    <li>îl utilizăm ca intrare pentru tehnica forward pass pe un model de clasificare a imaginii</li>
+    <li>afișăm numărul clasei</li>
+</ol>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	const auto input = fdeep::tensor_from_bytes(digit_box.ptr(),
+		static_cast<std::size_t>(digit_box.rows),
+		static_cast<std::size_t>(digit_box.cols),
+		static_cast<std::size_t>(digit_box.channels()),
+		0.0f, 1.0f);
+
+	const auto result = model.predict_class({ input });
+
+	rec_digits[ii][jj] = result;
+  </code>
+  </pre>
+</div>
+
+<p>Astfel, am obținut și valoarea cifrelor din celulele completate. Când ajungem la sfârșitul iterației asupra imaginii cu Sudoku-ul, avem o matrice de 9x9 completată cu valori cuprinse în intervalul [0,9], 0 reprezentând celulele goale.</p>
+
+
+
+		<p><b>Pasul 5 - Rezolvăm puzzle-ul Sudoku</b></p>
+
+		<p>Acum că avem puzzle-ul din imagine, acesta trebuie rezolvat. Rezolvarea unui Sudoku înseamnă foarte multe verificări, existând posibilitatea ca puzzle-ul furnizat să fie invalid. Ca un puzzle să fie invalid nu trebuie doar să nu respecte una din cele trei condiții ultra-cunoscute: să nu se repete vreun număr pe linia, coloana sau pătratul lui. Un puzzle Sudoku este considerat autentic doar dacă există o singură soluție.</p>
+
+		<p>Astfel, dacă în urma rezolvării și verificării matricii rezultă că există o singură soluție, atunci algoritmul de rezolvare a Sudoku-ului va returna inversa matricii. În problema noastră, inversa matricii reprezintă tot o matrice de 9x9, dar de data asta cu valoarea 0 în locurile unde aveam indicii și valoarea completată în fostele celule goale. Altfel spus, e matricea cu valorile soluției.</p>
+
+		<p><b>Pasul 6 - Afișăm soluția folosind realitatea augmentată</b></p>
+
+		<p>Avem soluția, deci putem să trecem la partea de realitate augmentată. Soluția va fi scrisă pe imaginea rezultată la sfârșitul pasului 2 (figura <i><a style="text-decoration: none;" href="#poza2_ar">Sudoku evidențiat</a></i>). Pentru a scrie soluția direct pe imagine folosim funcția <strong>cv::putText()</strong>. Parcurgem poza și matricea în același timp, completând valorile diferite de zero la intervale fixe și calculate aproximativ pentru o imagine cu o grilă de mărimea 600x600.</p>
+
+		<p>Metoda <strong>cv::getPerspectiveTransform</strong> și <strong>cv::warpPerspective</strong> sunt folosite pentru a proiecta poza rezultată înapoi pe imaginea originală, doar că de această dată coordonatele sursă și destinație sunt inversate. În cele din urmă, această imagine este îmbinată cu originalul pentru a da soluția. Iată imaginea finală îmbinată:</p>
+
+		<figure>
+		  <img src="imagini/poze_imbinate.jpg" alt="Sudoku cu soluția suprapusă">
+		  <figcaption>Sudoku cu soluția suprapusă</figcaption>
+		</figure>
+
+		<p>Deoarece toate operațiile prezentate până acum se întâmplă pentru fiecare frame, adică de mai mult de 10 ori pe secundă, în momentul în care este detectat un Sudoku și începe analiza și predicția acestuia, aplicația va funcționa foarte greu și sacadat. Din acest motiv, în momentul în care a fost găsit un Sudoku care are o soluție, matricea soluției va fi salvată până când nu mai este detectat un Sudoku pentru un minim de 4 secunde. Atâta timp cât conturul nu dispare total pentru 4 secunde, presupunem că fiecare Sudoku detectat este la fel ca cel de mai devreme, afișând direct soluția prin realitatea augmentată. În acest caz, nu se va mai trece deloc prin pașii 3, 4, 5, făcând experiența mult mai fluentă și calitativă. Această soluție este cu siguranță una dintre cele mai bune modalități de a eficientiza această funcționalitate.</p>
+
+	
+		<h2>Sudoku Puzzle Generator</h2>
+
+		<p>Pentru a asigura îndeplinirea obiectivelor urmărite considerăm anumite cerințe pentru generatorul Sudoku:</p>
+
+		<ul>
+		  <li>Dificultate variabilă: algoritmul trebuie să poată crea puzzle-uri cu diferite niveluri de dificultate.</li>
+		  <li>Soluție unică: toate puzzle-urile Sudoku generate trebuie să fie autentice, adică să aibă o soluție unică.</li>
+		  <li>Minimizarea complexității: programele tuturor algoritmilor trebuie să își termine treaba într-un timp scurt.</li>
+		  <li>Posibilitatea de descărcare a documentului în format PDF.</li>
+		</ul>
+
+		<p>După mai mult timp de informare amănunțită și implementarea mai multor metode, am ajuns la concluzia că cea mai simplă și eficientă metodă pentru implementarea generării de puzzle-uri este <strong>metoda eliminatului tactic de indicii</strong> (the digging-hole method) [5]. Ideea acestei metode începe cu o grilă validă completă. Urmează ca apoi să eliminăm un număr fix de celule (de aici și numele „metoda săpatului”) atent alese și verificate printr-un mecanism sau secvență. Atunci când algoritmul dorește încercarea de ștergere a unei celule, acesta verifică prima dată dacă modelul grilei rezultate oferă tot o soluție unică. Dacă nu, algoritmul va lăsa celula neschimbată și va încerca la următoarea.</p>
+
+		<p>Pentru estimarea gradului de dificultate al unui puzzle Sudoku ținem cont de următorii factori:</p>
+
+		<ul>
+		  <li>numărul total de indicii date</li>
+		  <li>limita inferioară a indiciilor date din fiecare rând și coloană</li>
+		</ul>
+
+		<p>Notăm un puzzle Sudoku în cinci niveluri de dificultate, după cum urmează:</p>
+
+		<p><strong>Level 1 - Foarte ușor</strong></p>
+
+		<p><strong>Level 2 - Ușor</strong></p>
+
+		<p><strong>Level 3 - Mediu</strong></p>
+
+		<p><strong>Level 4 - Dificil</strong></p>
+
+		<p><strong>Level 5 - Malefic</strong></p>
+
+		<p>Principalul factor de estimare al nivelului de dificultate este determinat de cantitatea de celule goale sau altfel spus, de cantitatea de indicii date. Poate fi ușor dedus faptul că cu cât cantitatea totală de celule date într-un puzzle inițial este mai mare, cu atât numărul de opțiuni de cifre din fiecare celulă necompletată scade prin cele trei constrângeri din regulile jocului. Astfel, scalăm moderat intervalele numărului de indicii pentru fiecare nivel de dificultate, valorile orientative alese fiind prezentate în tabelul următor.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Level</th>
+            <th>Indicii date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1 (Foarte ușor)</td>
+            <td>&ge; 50</td>
+        </tr>
+        <tr>
+            <td>2 (Ușor)</td>
+            <td>36-49</td>
+        </tr>
+        <tr>
+            <td>3 (Mediu)</td>
+            <td>32-35</td>
+        </tr>
+        <tr>
+            <td>4 (Dificil)</td>
+            <td>28-31</td>
+        </tr>
+        <tr>
+            <td>5 (Malefic)</td>
+            <td>22-27</td>
+        </tr>
+    </tbody>
+    <caption><i>Intervalele numărului de indicii pentru fiecare nivel de dificultate</i></caption>
+</table>
+
+
+		<p>Poziționarea celulelor goale afectează în mod semnificativ nivelul de dificultate dacă două puzzle-uri oferă date în aceeași cantitate sau în ușoară diferență la începutul unui joc. Puzzle-ul cu date în grupuri este clasificat la un nivel superior decât cel cu date în distribuție împrăștiată. Pe baza constrângerilor de rând și coloană, reglementăm limita inferioară a celulelor date din fiecare rând și coloană pentru fiecare nivel de dificultate conform următorului tabel.</p>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th>Level</th>
+			  <th>Valoarea limitei inferioare</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td>1 (Foarte ușor)</td>
+			  <td>5</td>
+			</tr>
+			<tr>
+			  <td>2 (Ușor)</td>
+			  <td>4</td>
+			</tr>
+			<tr>
+			  <td>3 (Mediu)</td>
+			  <td>3</td>
+			</tr>
+			<tr>
+			  <td>4 (Dificil)</td>
+			  <td>2</td>
+			</tr>
+			<tr>
+			  <td>5 (Malefic)</td>
+			  <td>0</td>
+			</tr>
+		  </tbody>
+		</table>
+
+		<p>Implementarea acestei funcționalități se împarte în două etape majore:</p>
+
+		<ol>
+		  <li>Generarea unui puzzle Sudoku complet.</li>
+		  <li>Eliminarea tactică de indicii.</li>
+		</ol>
+
+<p><b>Pentru prima etapă (generarea unui puzzle Sudoku complet)</b> trebuie să ne asigurăm, în primul rând, că fiecare puzzle generat diferă de cele generate precedent. Pentru asta generăm mereu un nou seed și amestecăm random într-un vector cele 9 cifre folosite pentru completarea Sudokului (de la 1 la 9).</p>
+ 
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	void my_shuffle(int array[9]) // takes an array as parameter and shuffles its contents
+	{
+		int c;
+		int index;
+		for (int i = 0; i < 9; i++)
+		{
+			c = array[i];
+			index = rand() % 9;
+			array[i] = array[index];
+			array[index] = c;
+		}
+	}
+  </code>
+  </pre>
+</div>
+
+<p>După ce garantăm diversitatea puzzle-urilor putem trece la generarea efectivă a grilei. Pentru asta ne folosim de vectorul menționat mai sus și adăugăm, pe rând, câte un număr din vector în matricea corespunzătoare Sudoku-lui. După fiecare inserare în matrice, chemăm o funcție de verificare a grilei completate parțial. Această funcție va verifica respectarea celor trei reguli de completare a unui Sudoku: în cadrul unui rând, coloană sau pătrat din grilă fiecare cifră trebuie să existe o singură dată. </p>
+
+<p>Dacă numărul adăugat nu respectă una din condiții, atunci algoritmul va încerca, în mod recursiv, mai departe cu următoarea cifră. Acest proces continuă până când toată grila este completată. <p>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	void generate_fullBoard(int clues[81], int clueIndex) // generates a completed (solved) sudoku
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			clues[clueIndex] = digits[i];
+			if (partialChecks(clues, clueIndex) == 0)
+				continue;
+			if (clueIndex < 80)
+				generate_fullBoard(clues, clueIndex + 1);
+			if (clueIndex == 80)
+			{
+				if (valid(clues))
+				{
+					print(clues);
+					solution++;
+					return;
+				}
+			}
+			if (solution == 1)
+				return;
+		}
+	}
+  </code>
+  </pre>
+</div>
+		
+		
+<p><b>Backtracking</b> este cel mai folosit algoritm în această lucrare, stând la baza tuturor celor trei funcționalități. Cu ajutorul lui putem rezolva și genera un Sudoku complet. Este un instrument cu adevărat important pentru rezolvarea problemelor de satisfacție a constrângerilor. În backtracking, folosim recursivitatea pentru a explora toate posibilitățile până când obținem cel mai bun rezultat pentru problemă.</p>
+<p><b>Etapa a doua (eliminarea tactică de indicii)</b> este una complexă, implementând câte un algoritm pentru fiecare nivel de dificultate. Practic, eliminarea indiciilor va fi făcută în funcție de nivelul de dificultate ales, variind numărul de indicii șterse și modul de ștergere a acestora. De asemenea, și structura/estetica Sudoku-lui va varia în funcție de nivelul de dificultate ales datorită secvenței diferite de eliminare a indiciilor.</p>
+<p>Secvența de eliminare a indiciilor stabilește care celulă este mai întâi explorată de operația de eliminare și care celulă este următoarea. Avem implementate patru tipuri de secvențe:</p>
+<p><b>Secvența 1:</b> De la stânga la dreapta apoi de sus în jos (Figura (a))</p>
+<p><b>Secvența 2:</b> Plimbându-ne de-a lungul literei „S” (Figura (b))</p>
+<p><b>Secvența 3:</b> Sărim o celulă (Figura (c))</p>
+<p><b>Secvența 4:</b> Randomizare la nivel global</p>
+<figure id="fig_secvente_sapare">
+    <img id="img_secvente_sapare" src="imagini/secvente_sapare.png">
+    <figcaption>Ilustrarea secvențelor de eliminare de indicii [5]</figcaption>
+</figure>
+		
+<p>Cu aceste patru secvențe un puzzle Sudoku poate fi generat la orice nivel de dificultate într-un timp tolerabil (1s), excluzând nivelul malefic. Între timp, constatăm că puzzle-urile cu cele mai puține date pot fi generate de Secvența 1. Cu toate acestea, când facem un puzzle de nivel malefic pe baza celor patru secvențe există o diferență evidentă între rezultatele care sunt extrase din timpul mediu de rulare și rata de succes.</p>
+<p>Astfel, luând în considerare fezabilitatea metodelor și diversitatea puzzle-urilor produse, atribuim aceste patru secvențe celor cinci niveluri de dificultate astfel:</p>
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Tipul secvenței</th>
+  </tr>
+  <tr>
+    <td>1 (Foarte ușor)</td>
+    <td>Randomizare la nivel global</td>
+  </tr>
+  <tr>
+    <td>2 (Ușor)</td>
+    <td>Randomizare la nivel global</td>
+  </tr>
+  <tr>
+    <td>3 (Mediu)</td>
+    <td>Sărim o celulă</td>
+  </tr>
+  <tr>
+    <td>4 (Dificil)</td>
+    <td>Plimbându-ne de-a lungul literei „S”</td>
+  </tr>
+  <tr>
+    <td>5 (Malefic)</td>
+    <td>De la stânga la dreapta apoi de sus în jos</td>
+  </tr>
+</table>		
+
+<p>Trebuie menționat că avem și câteva <strong>restricții pentru eliminarea indiciilor</strong>.</p>
+<p>La finalizarea unei încercări de eliminare, restul celulelor confirmate pot fi considerate date și întreaga grilă pare a fi un puzzle. Pe baza valorilor nivelului de dificultate, am stabilit două restricții privind cantitatea de date rămase după fiecare operațiune de eliminare.</p>
+<p>Ambele restricții sunt determinate de valoarea de dificultate introdusă de jucător:</p>
+<ol>
+  <li>este obligatoriu să fie respectat numărul minim de indicii</li>
+  <li>celulele rămase în fiecare rând și coloană trebuie să fie mai multe decât limita inferioară a indiciilor din rânduri și coloane</li>
+</ol>
+<p>Un proces de eliminare a unui indiciu se dovedește a fi ilegal odată ce a încălcat oricare dintre cele două restricții.</p>
+<p>Ambele restricții garantează că informațiile suficiente implicate într-un puzzle construit sunt de sprijin pentru deducerea logicii umane.</p>
+			<figure id="fig_grila_goala">
+			  <img id="img_grila_goala" src="imagini/grila_goala.jpg">
+			  <figcaption>Modelul grilei</figcaption>
+			</figure>
+<p>În acest mod se vor elimina celule până când nu mai este posibil, adică până în momentul în care nu mai există soluții pentru puzzle dacă celulele următoare ar fi șterse. De asemenea, algoritmul se va opri dacă una din restricțiile de mai sus nu este respectată, s-a atins numărul minim de indicii sau valoarea limitei inferioare.</p>
+<p>În acest mod s-a generat matricea finală pentru puzzle-ul Sudoku. Următorul pas este să creăm o imagine care să conțină această matrice în interiorul unei grile. Pentru asta utilizăm o poză cu o grilă de Sudoku goală, citită și stocată într-o variabilă de tipul <strong>cv::Mat</strong>. Utilizăm funcția de scriere pe imagine prezentată și la partea de Augmented Reality Sudoku Solver.</p>
+<!--
+<figure>
+  <img src="imagini/grila_goala.jpg" alt="Modelul grilei">
+  <figcaption>Modelul grilei</figcaption>
+</figure>		
+	-->	
+
+		
+<p>Acum avem imaginea finală. Aceasta trebuie convertită într-un mod corespunzător pentru a funcționa cu framework-ul folosit de noi, Qt. Pentru asta, convertim obiectul nostru de tip cv::Mat în <strong>QImage</strong> și mai poi în <strong>QPixmap</strong> pentru a-l utiliza cu funcția <strong>drawPixmap()</strong>. Funcția aparține clasei <strong>QPainter</strong>, cu ajutorul căreia pictăm pe un dispozitiv de pictură. În cazul nostru, dispozitivul de pictură este un obiect al clasei <strong>QPdfWriter</strong>, clasă care generează PDF-uri care pot fi folosite ca dispozitiv de pictură. Pentru a putea nota pe fiecare pagină numărul Sudoku-ului, voi utiliza funcția <strong>drawText()</strong> asupra obiectului de tip QPainter.</p>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	cv::Mat current_sudoku = write_on_image(cluesG); // returneaza cv::Mat si eu trebuie sa o convertesc in QPixmap
+	QPixmap pix_sudoku_image = QPixmap::fromImage(QImage((unsigned char*)current_sudoku.data, current_sudoku.cols, current_sudoku.rows, current_sudoku.step, QImage::Format_RGB888));
+	if (start_pdf == 1)
+	{
+		pdfWriter.newPage();
+	}
+	std::string nume = "Sudoku nr. ";
+	nume.append(std::to_string(nr_afisare));
+	painter.drawText(1000, 1000, QString::fromStdString(nume));
+	painter.drawPixmap(QRect(1250, 3000, pdfWriter.logicalDpiX() * 6, pdfWriter.logicalDpiY() * 6), QPixmap(pix_sudoku_image));
+	start_pdf = 1;
+	nr_afisare++;
+  </code>
+  </pre>
+</div>
+		
+
+		<h2>Sudoku Puzzle Answer Checker</h2>
+			<p>Această funcționalitate constă în verificarea unui Sudoku complet, dacă este corect sau nu. Pe lângă verificare, mai există câteva opțiuni pentru ușurarea experienței de utilizare:</p>
+			<ul>
+				<li>Completare automată</li>
+				<li>Indiciu</li>
+				<li>Ștergere</li>
+			</ul>
+			<p><strong>Completarea automată</strong> constă în completarea tabelului cu ultimul Sudoku detectat pe camera web. Aplicația va copia conținutul exact al Sudoku-ului de pe foaie, fără returnarea soluției pe imagine sau în tabel. Această funcționalitate are exact aceeași implementare ca cea prezentată la Augmented Reality Sudoku Solver, doar că scopul este doar de a detecta Sudoku-ul și de a clasifica numerele, implementarea oprindu-se la pasul 4.</p>
+			<p><strong>Indiciu</strong> va forma un vector cu 81 de elemente format din valorile completate în tabel și va verifica dacă există măcar o soluție. Pentru această funcționalitate nu ținem cont dacă există mai mult de o soluție. În momentul în care întâlnim o soluție, parcurgem vectorul și luăm prima valoare întâlnită care este necompletată în tabelul trimis de utilizator. Acea valoare o adăugăm în tabel în celula destinată.</p>
+			<p><strong>Verificare</strong> se folosește de algoritmul deja implementat de mai multe ori atât pentru partea de Generare, cât și pentru partea de AR. Ba chiar această parte este mai simplă, deoarece nu mai avem nevoie de backtracking, fiind nevoie doar să verificăm cele trei condiții pentru ca un puzzle să fie considerat Sudoku: fiecare rând, coloană și bloc trebuie să conțină numerele de la 1 la 9, fără repetări.</p>
+
+<div class="code-snippet">
+  <div class="code-header">
+    <span class="technology">C++</span>
+    <button class="copy-button" onclick="copyCode(this)"><i style="margin-right:5px;" class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+  </div>
+  <pre class="line-numbers">
+  <code class="language-cpp">
+	int valid(int clues[81]) // does the same
+	{
+		int aux[9][9];
+		int k = 0;
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				aux[i][j] = clues[k];
+				k++;
+			}
+		}
+		for (int j = 0; j < 9; j++)
+		{
+			if (check_column(aux, j) == 0)
+				return 0;
+			if (check_line(aux, j) == 0)
+				return 0;
+		}
+		if (check_squares(aux) == 0)
+			return 0;
+		return 1;
+	}
+  </code>
+  </pre>
+</div>
+
+			<p><strong>Ștergere</strong> are scopul doar de a elibera tabelul. Fiecare valoare din vectorul asociat tabelului va fi egalată cu zero.</p>
+			<p>Pentru a mă asigura că nu au cum să fie introduse valori greșite de către utilizator, am folosit o formulă <strong>regex</strong> pentru verificarea fiecărei celule în momentul citirii.</p>
+
+
+
+
+		<h2>Rețeaua neuronală convoluțională (CNN)</h2>
+			<p>Acum știm ce este o rețea neuronală convoluțională, deci putem începe implementarea. Ca și set de date am folosit unul găsit pe Kaggle, numit „Printed Digits Dataset”. Acesta conține cifre digitale, fiind mult mai folositor pentru aplicația noastră decât setul de date MNIST.</p>
+			<p>Pentru a implementa CNN-ul am folosit limbajul de programare Python și biblioteca TensorFlow. Pașii pentru implementare sunt:</p>
+			<ol>
+				<li>importăm librăriile</li>
+				<li>adăugăm setul de date</li>
+				<li>împărțim setul de date pentru antrenare și procesare</li>
+				<li>prelucrăm datele</li>
+				<li>creăm modelul</li>
+				<li>compilăm modelul</li>
+				<li>antrenăm modelul</li>
+				<li>evaluăm modelul pe setul de testare</li>
+				<li>salvăm modelul</li>
+			</ol>
+			<figure>
+			  <img src="imagini/cnn5.png" alt="Pasul 3: Împărțim setul de date pentru antrenare și procesare" style="width: 10cm;">
+			  <figcaption>Pasul 3: Împărțim setul de date pentru antrenare și procesare</figcaption>
+			</figure>
+			<figure>
+			  <img src="imagini/cnn1.png" alt="Pasul 5: Creăm modelul" style="width: 10cm;">
+			  <figcaption>Pasul 5: Creăm modelul</figcaption>
+			</figure>
+			<figure>
+			  <img src="imagini/cnn2.png" alt="Pasul 6: Compilăm modelul" style="width: 10cm;">
+			  <figcaption>Pasul 6: Compilăm modelul</figcaption>
+			</figure>
+			<figure>
+			  <img src="imagini/cnn3.png" alt="Pasul 7: Antrenăm modelul" style="width: 10cm;">
+			  <figcaption>Pasul 7: Antrenăm modelul</figcaption>
+			</figure>
+			<figure>
+			  <img src="imagini/cnn4.png" alt="Pasul 8: Evaluăm modelul pe setul de date" style="width: 6cm;">
+			  <figcaption>Pasul 8: Evaluăm modelul pe setul de date</figcaption>
+			</figure>
+			<figure>
+			  <img src="imagini/cnn6.png" alt="Acuratețea predicției" style="width: 5cm;">
+			  <figcaption>Acuratețea predicției</figcaption>
+			</figure>
+		
+
+	<h2>Interfața utilizator</h2>
+		<p>Interfața utilizator a fost realizată cu ajutorul framework-ului Qt, mai exact Qt Designer. Qt Designer este instrumentul Qt pentru proiectarea și construirea de interfețe grafice cu utilizatorul (GUI) cu widget-uri Qt.</p>
+		<p>Obiectivele mele pentru interfața utilizator au fost realizarea un design plăcut, minimalist și ușor de folosit.</p>
+		<p>Aplicația cuprinde patru ecrane/pagini:</p>
+		<ul>
+			<li>Meniul principal (figura 4.1)</li>
+			<li>Augmented Reality Sudoku Solver (figura 4.2)</li>
+			<li>Sudoku Puzzle Generator (figura 4.4)</li>
+			<li>Sudoku Puzzle Answer Checker (figura 4.5)</li>
+		</ul>
+		<figure>
+			  <img src="imagini/app_mainPage.png">
+			  <figcaption>Figura 4.1: Ecranul principal</figcaption>
+		</figure>
+		<p>Pentru a realiza efectul de ecrane diferite, am folosit un obiect de tip <strong>QStackedWidget</strong>. Clasa QStackedWidget oferă o stivă de widget-uri în care doar un widget este vizibil la un moment dat. QStackedWidget poate fi construit și populat cu un număr de widget-uri copil ("pagini"). Altfel spus, fiecare pagină prezentată mai sus este un obiect de tip <strong>QWidget</strong>, copil al obiectului nostru de tip QStackedWidget.</p>
+		<p>Orice text prezent în interfața aplicației, care nu face parte din designul unui buton, a fost realizat cu ajutorul unui obiect de tip <strong>QLabel</strong>. QLabel este folosit pentru afișarea textului sau a unei imagini. Nu este furnizată nicio funcție de interacțiune cu utilizatorul. Exemple în cadrul aplicației: titlul Sudoku Universe prezent pe fiecare pagină, titlul funcționalității, textul alăturat câmpurilor de pe pagina Sudoku Puzzle Generator, dar și „ferestrele” unde se afișează conținutul camerei web.</p>
+			
+	<p>Toate butoanele existente aparțin clasei <strong>QPushButton</strong>. Butonul de apăsare sau butonul de comandă este, în mod firesc, cel mai des folosit widget în orice interfață grafică de utilizator. Prin apăsarea butonului se trimite o comandă computerului să efectueze o acțiune implementată de developer în cadrul funcției atribuite.</p>
+<p>Spre exemplu, pagina meniului principal cuprinde trei butoane. Fiecare buton are o funcție atribuită care îi transmite aplicației să schimbe pagina curentă cu cea corespunzătoare funcționalității selectate de utilizator. La fel, celelalte trei pagini au un buton numit „Înapoi”, care trimit utilizatorul înapoi la meniul principal.</p>
+
+		<figure>
+			  <img src="imagini/app_arPage.png">
+			  <figcaption>Figura 4.2: Interfața pentru Augmented Reality Sudoku Solver</figcaption>
+		</figure>
+
+<p>Acestea fiind spuse, analizând captura de ecran de mai sus, se pot observa elementele grafice folosite pentru pagina Augmented Reality Sudoku Solver:</p>
+<ul>
+    <li>3 QLabel. Două pentru titlul aplicației, unul pentru titlul funcționalității.</li>
+    <li>1 QLabel pentru afișarea conținutului camerei web. Dacă nu este depistată o cameră web, atunci fereastra QLabel-ului va fi neagră.</li>
+    <li>1 QPushButton pentru a ne întoarce la meniul aplicației.</li>
+</ul>
+
+			<figure id="fig_qcombobox">
+			  <img id="img_qcombobox" src="imagini/qcombobox.png">
+			  <figcaption>Figura 4.3: Lista opțiunilor pentru QComboBox</figcaption>
+			</figure>
+
+<p>În cadrul paginii Sudoku Generator apar două tipuri noi de clase: <strong>QComboBox</strong> și <strong>QLineEdit</strong>.</p>
+<p>Un <strong>QComboBox</strong> oferă un mijloc de a prezenta o listă de opțiuni pentru utilizator într-un mod care ocupă cantitatea minimă de spațiu pe ecran. Un combobox este un widget de selecție care afișează elementul curent și poate afișa o listă de elemente selectabile [12].</p>
+<p>Elementul aplicației <strong>QComboBox</strong> poate fi observat în dreptul QLabel-ului cu textul „Nivelul de dificultate”. În figura <strong>4.3</strong> se poate observa lista cu cele 5 opțiuni: foarte usor, ușor, mediu, dificil, malefic. „Foarte ușor” este opțiunea default.</p>
+				
+<p><strong>QLineEdit</strong> permite utilizatorului să introducă și să editeze o singură linie de text simplu cu o colecție utilă de funcții de editare [12]. Este folosit pentru a lua valorile completate de utilizator și a le trimite către program pentru a realiza acțiuni pe baza acestora.</p>
+<p>Sunt prezente două astfel de obiecte: unul în dreptul QLabel-ului cu textul „Numărul de Sudoku-uri generate”, iar al doilea în dreptul elementului QPushButton „Alege directorul”.</p>
+			<figure>
+			  <img src="imagini/app_generatorPage.png">
+			  <figcaption>Figura 4.4: Interfața pentru Sudoku Puzzle Generator</figcaption>
+		</figure>
+		
+<p>Pagina pentru Sudoku Puzzle Answer Checker (figura <strong>4.5</strong>) aduce o singură clasă nouă: QGridLayout. <strong>QGridLayout</strong> ia spațiul pus la dispoziție, îl împarte în rânduri și coloane și pune fiecare widget pe care îl gestionează în celula corectă. Astfel, folosind QGridLayout, am reușit să creez tabelul pentru un puzzle Sudoku. Fiecare celulă din tabel este un QLineEdit. Am creat 81 de elemente QLineEdit, le-am introdus în QGridLayout în forma dorită de mine, iar QGridLayout s-a ocupat de împărțirea dimensiunii liniilor și coloanelor în mod egal. Pentru a obține respectivul design, am editat individual styleSheet-ul fiecărei celule. Qt Style Sheet acceptă diverse proprietăți, pseudo-stări și controale secundare care fac posibilă personalizarea aspectului widget-urilor.</p>
+<figure>
+  <img src="imagini/app_checkerPage.png" alt="Interfața pentru Sudoku Puzzle Answer Checker">
+  <figcaption>Figura 4.5: Interfața pentru Sudoku Puzzle Answer Checker</figcaption>
+</figure>
+<p>Alt element grafic folosit este <strong>QMessageBox</strong>. Clasa QMessageBox oferă un dialog modal pentru informarea utilizatorului sau pentru adresarea unei întrebări și primirea unui răspuns [12].</p>
+<p>Aplicația se folosește de aceste obiecte pentru a anunța utilizatorul atunci când un câmp nu a fost completat, a fost completat greșit sau pentru a returna diverse rezultate sau erori. Tipul mesajului transmis de sistem poate fi de trei tipuri în aplicația noastră: critical, information, question (mesaje predefinite) sau corect (mesaj personalizat). Aplicația este plină de astfel de obiecte, în acest fel asigurând funcționarea corectă a aplicației și informând utilizatorul de modul corect de utilizare a acesteia. În figura <strong>4.6</strong> se pot observa câteva cazuri care duc la crearea unui QMessageBox.</p>
+
+
+<div>
+    <figure style="text-align: center; max-width: 1000px;">
+		<div style="display: inline-block;">
+			<img src="imagini/alert_critical.png" alt="Exemplu 1" width="180px">
+		</div>
+		<div style="display: inline-block;">
+			<img src="imagini/alert_corect.png" alt="Exemplu 2" width="180px">
+		</div>
+	    <div style="display: inline-block;">
+			<img src="imagini/alert_information.png" alt="Exemplu 3" width="180px">
+	    </div>
+	    <div style="display: inline-block;">
+			<img src="imagini/alert_question.png" alt="Exemplu 4" width="180px">
+		</div>
+	  <figcaption>Figura 4.6: Exemple QMessageBox</figcaption>
+    </figure>
+</div>
+
+
+<p>Aplicația conține și un <strong>sistem de help minimal</strong>, care poate fi accesat prin meniul orizontal, dând click pe More și Help. A fost format prin utilizarea unui obiect de tip <strong>QDialog</strong> și trei <strong>QTextBrowser</strong> pentru afișarea textului.</p>
+<figure>
+  <img src="imagini/app_helpPage.png" alt="Interfața pentru meniul de help">
+  <figcaption>Figura 4.7: Interfața pentru meniul de help</figcaption>
+</figure>
+
+		
+			<h1> Qt Creator - Detalii de implementare</h1>
+
+<p>Pentru a implementa aplicația în mediul Qt Creator, prima dată trebuie să <strong>instalați</strong> pe sistemul dumneavoastră IDE-ul <strong>Qt Creator</strong>. Acesta poate fi descărcat de pe site-ul oficial Qt.</p>
+<p>După ce instalarea e gata, <strong>deschideți</strong> IDE-ul. Aplicația va afișa pagina principală, <strong>Welcome</strong>. În mijlocul paginii poate fi observat câmpul <strong>Projects</strong> cu butoanele alăturate „New” și „Open”. Apăsați butonul <strong>New</strong> pentru a crea un nou proiect. O fereastră nouă se va deschide. Urmați următorii pași pentru a crea corect proiectul:</p>
+<ol>
+    <li>Asigurați-vă că la categoria Projects este selectat <strong>Application (Qt)</strong>, după care selectați <strong>Qt Widgets Application</strong>. Click <strong>Choose...</strong>.</li>
+    <li>Alegeți numele proiectului și directorul în care proiectul se va crea. Click <strong>Next</strong>.</li>
+    <li>La Build System selectați <strong>qmake</strong>. Click <strong>Next</strong>.</li>
+    <li>La Details - Class Information puteți lăsa totul neschimbat. Doar să vă asigurați că aveți selectat <strong>QMainWindow</strong> pentru Base class și că check-box-ul pentru opțiunea <strong>Generate form</strong> este bifat. Click <strong>Next</strong>.</li>
+    <li>La Translation - Translation File puteți lăsa totul neschimbat. Click <strong>Next</strong>.</li>
+    <li>La Kits - Kits Selection selectați <strong>Desktop Qt 6.2.3 MinGW 64-bit</strong>. Click <strong>Next</strong>.</li>
+    <li>La Summary - Project Management puteți lăsa totul neschimbat. Click <strong>Finish</strong>.</li>
+</ol>
+<p>Proiectul este acum creat. Următorul pas este includerea librăriilor. Librăriile externe folosite sunt <strong>OpenCV</strong> și <strong>frugally-deep</strong>. OpenCV poate fi descărcat de pe site-ul oficial, iar frugally-deep de pe <a href="https://github.com/Dobiasd/frugally-deep">https://github.com/Dobiasd/frugally-deep</a>. Detaliile de instalare și setare a sistemului pot fi găsite pe site-urile și link-ul menționat.</p>
+
+
+<p>După ce librăriile au fost instalate, puteți să le includeți în proiect. Pentru a adăuga librăriile trebuie să dați click dreapta pe numele proiectului deschis și extins în partea stângă și după să selectați <strong>Add Library...</strong>. Altă opțiune este să deschideți fișierul .pro generat și să dați click dreapta în fereastra cu codul și să selectați <strong>Add Library...</strong>. După ce selectați Add Library se va deschide o nouă fereastră. Selectați <strong>External library</strong> și click <strong>Next</strong>.  Prima dată adăugăm librăria pentru OpenCV. La Include path trimiteți calea către folder-ul <em>include</em> aflat în <em>opencv/build/</em>, după care la Library file selectăm fișierul opencv_world455.lib aflat în continuarea path-ului selectat mai devreme către include: <em>x64/vc15/lib/</em>. Mai avem de inclus câteva librării, iar pe acestea le scriem manual în fișierul .pro. Aceste librării vor trebui adăugate și în folder-ul proiectului rezultat prin rularea aplicației în modul Release:</p>
+<ul>
+    <li>libopencv_core455.dll</li>
+    <li>libopencv_highgui455.dll</li>
+    <li>libopencv_imgcodecs455.dll</li>
+    <li>libopencv_imgproc455.dll</li>
+    <li>libopencv_features2d455.dll</li>
+    <li>libopencv_calib3d455.dll</li>
+    <li>libopencv_video455.dll</li>
+    <li>libopencv_videoio455.dll</li>
+</ul>
+<p>Acum ar trebui să puteți utiliza OpenCV în proiectul selectat. Trebuie să mai adăugați librăria frugally-deep. Urmăm exact aceeași pași ca mai devreme, doar că acum la Include path veți trimite calea către folder-ul <em>includes</em>, format conform pașilor prezentați pe Github.</p>
+<p>După ce ați inclus și ultima librărie, trebuie să dați click dreapta pe proiect și selectați <strong>Run qmake</strong>. Dacă nu primiți vreo eroare, înseamnă că setarea proiectului este gata. Conținutul fișierului .pro ar trebui să fie asemănător cu screenshot-ul următor.</p>
+<figure id="fig_fisier_pro">
+    <img id="img_fisier_pro" src="imagini/fisier_pro.png">
+    <figcaption>Fișierul .pro, includerea librăriilor</figcaption>
+</figure>
+
+
+
+<p>Puteți începe implementarea. Pentru a adăuga clase și headere aplicației voastre trebuie să dați click dreapta pe proiect, selectați <strong>Add New...</strong> și alegeți tipul de fișier dorit din categoria C/C++.</p>
+<p>Trebuie menționat că elementele grafice nu pot fi adăugate prin scriere direct în fișierul XML (.ui), acesta fiind inevitabil. Iar adăugarea oricărui element GUI prin cod (în fișierele .cpp) nu este vizibilă în Qt Designer. În concluzie, dacă cerințele permit, cel mai bine este ca interfața grafică să fie formată direct în Design Window. Pentru a deschide Qt Designer, extindeți folder-ul Forms din proiectul dumneavoastră și apăsați dublu-click pe fișierul .ui. Ulterior, pentru a reveni la fereastra de Design, puteți face asta apăsând direct butonul <strong>Design</strong> din meniul prezent în extremitatea stângă, pe verticală.</p>
+<p>Atenție! Când lucrați în Qt Designer și adăugați elemente noi, acestea primesc automat un nume de obiect. Fiecare nume trebuie modificat și potrivit cu cel folosit în fișierele .cpp. Numele obiectelor pot fi schimbate în fereastra de Design, selectând obiectul țintă. În partea dreaptă, jumătatea de jos, se poate observa fereastra cu proprietățile obiectului (figura 5.1). Căutați proprietatea <strong>objectName</strong> și schimbați valoarea în cea corectă.</p>
+<figure>
+    <img src="imagini/objectName.png">
+    <figcaption>Figura 5.1: Fereastra cu proprietățile obiectului</figcaption>
+</figure>
+
+
+		
+		
+		
+
+
+<h1>Rezultate execuție - exemple de utilizare</h1>
+<h2>Augmented Reality Sudoku Solver</h2>
+
+<p>În momentul în care această funcționalitate este accesată, aplicația se conectează automat la camera web. Programul analizează constant imaginea, iar în momentul în care un Sudoku apare în cadru, conturul exterior al acestuia va fi evidențiat cu verde (figura 6.1). În funcție de rezultatul predicției și al calculului (dacă are soluție și este unică sau nu) există două cazuri ale execuției:</p>
+<ul>
+    <li>Sudoku-ul are soluție și este unică - soluția este proiectată direct pe imaginea live a camerei web, fiecare celulă goală fiind completată cu valoarea corespunzătoare (<strong>figura 6.2 (a)</strong>)</li>
+    <li>Sudoku-ul nu are soluție sau are mai mult de o soluție - pe imaginea live sunt desenate două linii diagonale roșii (<strong>figura 6.2 (b)</strong>)</li>
+</ul>
+<figure>
+    <img src="imagini/executie_ar1.png">
+    <figcaption>Figura 6.1: Rezultatul detectării Sudoku-ului</figcaption>
+</figure>
+
+<div class="figure-container">
+    <figure id="fig_executie_ar3">
+        <img src="imagini/executie_ar3.png">
+        <figcaption class="figure-caption">Figura 6.2: Rezultate execuție (a)</figcaption>
+    </figure>
+    <figure id="fig_executie_ar2">
+        <img src="imagini/executie_ar2.png">
+        <figcaption class="figure-caption">Figura 6.2: Rezultate execuție (b)</figcaption>
+    </figure>
+</div>
+
+
+
+<h2>Sudoku Puzzle Generator</h2>
+
+<p>Pentru a putea genera Sudoku-uri trebuie să știm trei aspecte importante: numărul de puzzle-uri care trebuie generate, nivelul de dificultate (care are ca variantă default „Foarte ușor”) și locația de descărcare a PDF-ului generat. Dacă unul din câmpuri nu e completat, atunci sistemul va avertiza utilizatorul și nu se va întâmpla vreo acțiune.</p>
+<p>Dacă utilizatorul completează corect câmpurile, atunci generarea va avea loc. Spre exemplu, să considerăm cazul cu valorile și câmpurile selectate ca în figura <strong>7.1</strong>.</p>
+<figure id="fig_executie_generator1">
+    <img id="img_executie_generator1" src="imagini/executie_generator1.png">
+    <figcaption>Figura 7.1: Exemplu de completare a câmpurilor</figcaption>
+</figure>
+<p>După ce programul a reușit generarea PDF-ului, aplicația va anunța utilizatorul că PDF-ul a fost generat cu succes (<strong>figura 7.3</strong>).</p>
+<p>Dacă verificăm, găsim PDF-ul generat de aplicație în directorul selectat ca și locație a descărcării documentului (<strong>figura 7.4</strong>).</p>
+<p>Deschidem PDF-ul pentru a vizualiza conținutul (<strong>figura 7.2</strong>).</p>
+<figure>
+    <img src="imagini/executie_generator4.png">
+    <figcaption>Figura 7.2: Prima pagină din PDF</figcaption>
+</figure>
+
+
+<p>Putem observa că numărul de pagini al PDF-ului coincide cu valoarea completată în interiorul aplicației (<strong>figura 7.5</strong>). Pe fiecare pagină se află alt Sudoku generat, adică exact numărul cerut de utilizator.</p>
+
+<div>
+    <figure style="text-align: center; max-width: 1100px;">
+		<div style="display: inline-block;">
+			<img src="imagini/executie_generator2.png" style="max-height:120px;">
+			<figcaption style="width:80%; margin-left:auto; margin-right:auto;">Figura 7.3: Sistemul anunță că PDF-ul a fost generat</figcaption>
+		</div>
+		<div style="display: inline-block;">
+			<img src="imagini/executie_generator3.png" style="max-height:120px;">
+			<figcaption style="width:80%; margin-left:auto; margin-right:auto;">Figura 7.4: Rezultatul execuției - PDF-ul generat</figcaption>
+		</div>
+	    <div style="display: inline-block;">
+			<img src="imagini/executie_generator5.png" style="max-height:120px;">
+			<figcaption style="width:80%; margin-left:auto; margin-right:auto;">Figura 7.5: Numărul de pagini al PDF-ului și locația acestuia</figcaption>
+	    </div>
+    </figure>
+</div>
+
+
+
+<h2>Sudoku Puzzle Answer Checker</h2>
+	
+	<p>La fel ca și la Augmented Reality Sudoku Solver, în momentul în care această funcționalitate este accesată, aplicația se conectează automat la camera web. Totuși, o diferență majoră între cele două funcționalități este că aceasta poate fi utilizată și fără conectarea la o cameră web. Tabelul pentru Sudoku poate fi completat manual de utilizator, scopul camerei web fiind doar de a ușura completarea pentru utilizator, fiind o soluție mult mai rapidă. Fiecare celulă este editabilă, utilizatorul putând astfel să corecteze, dacă e cazul, o cifră prezisă greșit.</p>
+<p>De data aceasta, pe imaginea live va apărea doar conturului unui Sudoku detectat. Prin apăsarea butonului „Completare automată” fiecare celulă din tabel va fi completată cu cifra prezisă. Exemplu figura 8.1.</p>
+
+<div id="fig_container_checker" class="figure-container">
+    <figure id="fig_executie_checker1">
+        <img id="img_executie_checker1" src="imagini/executie_checker1.png">
+        <figcaption class="figure-caption">Figura 8.1: Completare automată</figcaption>
+    </figure>
+    <figure id="fig_executie_checker3">
+        <img id="img_executie_checker3" src="imagini/executie_checker3.png">
+        <figcaption class="figure-caption">Figura 8.2: Tabelul a fost completat doar prin utilizarea butonului „Indiciu”</figcaption>
+    </figure>
+</div>
+
+
+<p>Prin apăsarea butonului „Indiciu” va fi completată prima celulă goală cu soluția, dar doar dacă există o soluție. Altfel, sistemul va informa utilizatorul că puzzle-ul nu are soluție. În cazul nostru există soluție, rezultatul execuției fiind vizibil în figura 8.3.</p>
+<p>Când tabelul este complet, putem apăsa pe butonul „Verificare”. Suntem anunțați printr-un mesaj dacă matricea formată este sau nu un Sudoku (<strong>figura 8.4</strong>).</p>
+	
+	<div style="flex-direction:row;" class="figure-container">
+    <figure style="width: 50%;">
+        <img src="imagini/executie_checker2.png" width=130px>
+        <figcaption class="figure-caption">Figura 8.3: Indiciu</figcaption>
+    </figure>
+    <figure style="width: 50%;">
+        <img src="imagini/executie_checker4.png" width=200px>
+        <figcaption class="figure-caption">Figura 8.4: Răspunsul primit</figcaption>
+    </figure>
+</div>
+
+<h1>Concluzii</h1>
+<p>Prin această lucrare am încercat să creez o aplicație care să cuprindă toate funcționalitățile necesare de către comunitatea jucătorilor de Sudoku, într-o variantă cât mai eficientă a lor și cu o rată de succes cât mai mare. Am studiat algoritmi și clasificatori diferiți, iar în urma numeroaselor implementări și tactici încercate am ajuns să folosesc ca soluție finală următoarele metode, considerându-le cea mai optimă soluție:</p>
+<ul>
+    <li>folosirea unei rețele neuronale convoluționale antrenate pe un set de date format din cifre scrise digital, în diferite fonturi, pentru partea de recunoaștere optică. Am obținut o acuratețe destul de bună, 93% pe setul de date.</li>
+    <li>implementarea pentru detectarea și extragerea cifrelor este impecabilă, având o corectitudine de 100%.</li>
+    <li>algoritmul de generare de Sudoku-uri are un procentaj de 100% succes, indiferent de nivelul de dificultate ales. De asemenea, timpul de execuție este enorm de bun: mai puțin de o secundă per puzzle, cu excepția ultimului nivel.</li>
+</ul>
+<p>Totuși, pentru a ajunge la aceste soluții finale a trebuit să depășesc numeroase dificultăți, câteva dintre ele fiind:</p>
+<ul>
+    <li>implementarea CNN-ului și obținerea unor rezultate bune pe cazuri reale. Decizia de a folosi un set de date diferit de popularul MNIST s-a dovedit să fie soluția pentru a depăși problema predicției slabe. Deși MNIST este cel mai cunoscut și utilizat set de date, acesta nu este flexibil și nu funcționează pentru cifrele digitale.</li>
+    <li>recunoașterea celulelor goale și extragerea cifrelor s-a dovedit să fie o sarcină complicată din cauza detaliilor care treceau foarte ușor neobservate și ajungeau să strecoare valori greșite în matricea Sudoku-ului.</li>
+    <li>pentru generatorul de puzzle-uri am încercat inițial ștergerea de indicii prin randomizare globală, fără limite și condiții suplimentare clar stabilite. Acest lucru ducea uneori la execuții care durau zeci de secunde sau care chiar eșuau. Întâlnirea ideei de creare a unor secvențe de eliminare în funcție de dificultate m-au ajutat să duc generatorul la un total alt nivel.</li>
+</ul>
+
+
+<p>Într-un final, toate obiectivele lucrării au fost atinse. Toate funcționalitățile au fost finalizate, reușind să obțin atât un timp de execuție bun, cât și o rată mare de succes.</p>
+<p>Per total, putem spune cu siguranță că acest proiect este cu adevărat distractiv și provocator. De asemenea, rezultatul final este mai mult decât satisfăcător. Nu doar că am reușit să realizez o aplicație care are potențialul de a ajunge un produs popular pentru fanii Sudoku, dar am reușit să dobândesc și multe cunoștințe noi, teoretice și practice, în domenii total neatinse de mine înainte. Acest proiect ne face să ne gândim mai mult la modul în care viziunea computerizată poate fi mai utilă pentru viața noastră de zi cu zi și cât de uimitoare este de fapt tehnologia actuală.</p>
+	
+	</main>
+	
+		</div>
+	  </div>
+  </div>
+
+
+
+
+		<div id="myOverlayToc" class="overlay-toc">
+		  <div class="overlay-toc-content">
+			
+			<h4 style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Cuprins</h4>
+			<div id="myOverlayNav">
+			  <!-- The content from the first section's <nav id="toc"> will be inserted here -->
+			</div>
+			<a onclick="closeTOC()" class="toc-close-button"><b>X</b></a>
+		  </div>
+		</div>
+
+
+
+
+<a onclick="openTOC()" id="open-toc" class="float">
+<i class="fa fa-indent" aria-hidden="true"></i>
+</a>
+
+</body>
+</html>

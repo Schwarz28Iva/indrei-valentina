@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Machine Learning: A Student's Notes</title>
+  <link rel="stylesheet" href="css/style_project.css">
+  <link rel="stylesheet" href="css/body.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/project_card.css">
+  <link rel="stylesheet" href="css/table_of_contents.css">
+  <link rel="stylesheet" href="css/overlay_toc.css">
+  <link rel="stylesheet" href="css/images_blog.css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <script src="javascript/script_navbar.js"></script>
+  <script src="javascript/toc.js"></script>
+ 
+  
+  <link rel="stylesheet" href="prism_library/prism.css" />
+  <script src="prism_library/prism.js"></script>
+
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+
+
+    .figure-container {
+        display: flex;
+        justify-content: center;
+    }
+/*
+    .figure-container > figure {
+        margin: 0;
+    }
+*/
+    @media screen and (max-width: 500px) {
+        .figure-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        figure {
+            width: 100%;
+            //margin-bottom: 20px;
+        }
+    }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+  //vertical-align:middle;
+  //float: left;
+}
+
+figure {
+  //display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+  font-style: oblique;
+  color: #6e6d6d;
+}
+
+@media screen and (max-width: 750px) {
+  img {
+    max-width: 90%;
+  }
+}
+
+figcaption {
+	text-align:center;
+	max-width: 100%;
+}
+
+
+
+.code-snippet {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.code-header {
+  background-color: #f5f5f5;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.technology {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+  .copy-button {
+    padding: 5px 10px;
+    background-color: #86B2EC;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .copy-button:hover {
+    background-color: #65A3FF;
+  }
+
+pre {
+  margin: 0;
+  padding: 10px;
+}
+
+
+
+
+    .accordion-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      position: relative;
+	  font-family: 'Roboto', sans-serif;
+    }
+
+    .accordion-btn::after {
+      content: '\25BC'; /* Săgeata în jos */
+      font-size: 12px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .accordion-btn.active::after {
+      content: '\25B2'; /* Săgeata în sus */
+    }
+
+    .panel {
+      display: none;
+      background-color: #f1f1f1;
+      overflow: hidden;
+    }
+
+    .panel a {
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      color: #444;
+    }
+
+    .panel a:hover {
+      background-color: #d5f1ff;
+    }
+	
+
+
+  .mathjax-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+@media only screen and (max-width: 600px) {
+  .mathjax-container {
+    font-size: 80%;
+  }
+} 
+ 
+.subsection-title {
+  font-size: 20px;
+  scroll-margin-top: 80px;
+  font-weight: bold;
+  //border-bottom: 2px solid turquoise;
+}
+
+.subsection-title:after {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    width: 200px; 
+    border-bottom: 2px solid turquoise;
+}
+
+@media screen and (max-width: 750px) {
+	.subsection-title:after {
+		width: 150px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.subsection-title {
+		font-size: 18px;
+	}
+}
+
+
+@media only screen and (max-width: 600px) {
+  .code-snippet {
+    font-size: 14px; /* Smaller font for smaller screens */
+    width: 100%; /* Maximize width */
+    margin-left: 0; /* Remove indentation */
+    padding-left: 0;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  ul, ol {
+    padding-left: 20px; /* Reduce the indentation */
+  }
+}
+
+</style>
+
+
+<script>
+  function copyCode(button) {
+    const code = button.parentNode.nextElementSibling.querySelector('code');
+    const text = code.textContent;
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy code';
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error('Failed to copy code:', error);
+      });
+  }
+</script>
+
+
+</head>
+<body style="height: 100vh;">
+	<header>
+	  <div class="container">
+
+		<div class="logo">
+		  <h4 style="font-size: 24px; margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;" class="animate-charcter">INDREI VALENTINA</h4>
+		</div>
+
+		<nav id="myTopnav">
+		  <a href="home_page.html">HOME</a>
+		  <a href="about_me.html">ABOUT ME</a>
+		  <a href="services_page.html">SERVICES</a>
+		  <a href="projects.html">PROJECTS</a>
+		  <a href="contact_page.html">CONTACT</a>
+		  
+		  <a href="javascript:void(0);" class="icon" onclick="openNav()">
+			<i class="fa fa-bars"></i>
+		  </a>
+		</nav>
+	  </div>
+	  
+	  
+	    <!-- Language Switch Button outside the container -->
+  <div class="language-switch-container">
+    <a href="blog_page_eng.html" class="language-switch">
+      <img src="https://flagcdn.com/16x12/gb.png" alt="EN flag"> EN
+    </a>
+  </div>	
+	  
+	  
+	</header>
+	
+	
+	
+	
+	
+  <div class="blog-card first">
+    <div class="meta">
+      <div class="photo" style="background-image: url(photos/ProjectsPage/blog.jpg)"></div>
+    </div>
+    <div class="description">
+      <h1>Machine Learning: A Student's Notes</h1>
+      <h2 style="color: #4f4f4f;">A Comprehensive Guide for Beginners</h1>
+      <p>
+	  What began as a messy collection of personal notes eventually grew as I mentored other students.
+	  I soon realized it had the potential to evolve into a comprehensive guide.
+	  This article is the result of refining and expanding those notes for a broader audience, 
+	  who most likely have the same questions I struggled with when I started.
+	  </p>
+	</div>
+  </div>
+	
+	
+	
+
+  <div class="row">
+	  <div id="leftcolumn" class="leftcolumn">
+		<div class="card">
+		
+		  <h4 style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Cuprins</h4>
+		  
+		    <nav id="toc"> 
+			</nav>
+		
+		
+		</div>
+		
+	  </div>
+	  
+	  
+	  <div class="rightcolumn" style="margin-bottom: 3.8%;">
+		<div class="card">
+		  
+	<main style="word-wrap: break-word; text-align: justify;">
+	
+		<figure id="fig_image12">
+			<img id="img_image12" src="imagini_blog/image12.png">
+			<figcaption>Legătura dintre subdomeniile/conceptele întâlnite</figcaption>
+		</figure>
+	
+	  <h1 id="obiective-19">Ce este învățarea automată?</h1>
+        <p><strong>Învățarea automată (ML)</strong> este o ramură a <strong>inteligenței artificiale (AI)</strong> care se concentrează pe utilizarea datelor și a algoritmilor pentru a imita modul în care oamenii învață, îmbunătățindu-i treptat acuratețea. Prin învățarea automată, aplicațiile software devin mai precise la prezicerea rezultatelor fără a fi programate în mod explicit pentru a face acest lucru. Funcționează prin explorarea datelor și identificarea tiparelor și implică o intervenție umană minimă. Se poate spune că computerele învață să gândească într-un mod similar cu modul în care o fac oamenii: învățând și îmbunătățind rezultatele ca urmare a experiențelor trecute.</p>
+
+        <p>Când vorbim despre <strong>date</strong> în contextul învățării automate, ne referim la materialele brute și informațiile pe care algoritmii le utilizează pentru a învăța și a lua decizii. Aceste date pot fi structurate sau nestructurate și pot proveni dintr-o varietate de surse, inclusiv texte, imagini, sunete sau date numerice. De asemenea, datele pot fi prelucrate și transformate pentru a fi utilizate în cadrul algoritmilor de învățare automată.</p>
+
+        <p>Pentru a avea sens și utilitate, datele sunt adesea însoțite de <strong>etichete</strong> sau de informații suplimentare care indică semnificația sau clasificarea fiecărei înregistrări. Aceste etichete sunt esențiale pentru antrenarea și evaluarea <strong>modelelor</strong> de învățare automată, deoarece oferă puncte de referință pentru corectitudinea predicțiilor și clasificărilor efectuate de către algoritmi.</p>
+
+        <p>În concluzie, datele și etichetele reprezintă pilonii de bază ai învățării automate, furnizând materia primă și contextul necesar pentru construirea și antrenarea modelelor capabile să ofere rezultate precise și relevante.</p>
+	
+	
+	    <h1 id="obiective-19">Definiții și Concepte Importante</h1>
+        <p><b>Setul de Date:</b> Reprezintă colecția de informații utilizate pentru antrenarea, validarea și testarea modelelor de învățare automată. Un set de date constă din exemple și etichete asociate acestora. Setul de date se împarte, în general, în două categorii:</p>
+        <ul>
+            <li><b>Set de Antrenare:</b> Subset de date folosit pentru a antrena modelul.</li>
+            <li><b>Set de Testare:</b> Subset separat de date folosit pentru a evalua performanța modelului.</li>
+            <li><b>Set de Validare (opțional):</b> Subset utilizat pentru ajustarea parametrilor modelului și pentru monitorizarea performanței acestuia în timpul antrenării.</li>
+        </ul>
+        <p><b>Etichete:</b> Sunt informațiile asociate fiecărui exemplu din setul de date, indicând răspunsul dorit. În învățarea supervizată, mașina învață să facă predicții în funcție de etichetele furnizate.</p>
+        <p><b>Model:</b> Un model de învățare automată este rezultatul antrenării algoritmului pe un set de date. Modelul este capabil să facă predicții pe baza noilor date.</p>
+        <p>Haideți să înțelegem cum se aplică conceptele de set de date, etichete și model într-un scenariu practic de învățare automată.</p>
+
+
+    <b style="font-size:18px">Exemplu: Detectarea Fraudelor în Tranzacțiile Financiare</b>
+        <ol>
+            <li>
+                <b>Setul de Date:</b>
+                <ul>
+                    <li>Setul nostru de date constă dintr-un istoric de tranzacții financiare efectuate de utilizatori.</li>
+                    <li>Fiecare înregistrare în setul de date conține informații despre tranzacție, cum ar fi suma, locația, ora, tipul de tranzacție etc.</li>
+                </ul>
+            </li>
+            <li>
+                <b>Etichete:</b>
+                <ul>
+                    <li>Fiecare tranzacție din setul nostru de date este etichetată ca "frauduloasă" sau "non-frauduloasă".</li>
+                    <li>Etichetele sunt atribuite pe baza investigațiilor și validărilor ulterioare efectuate de experți sau sisteme de detecție a fraudei.</li>
+                </ul>
+            </li>
+            <li>
+                <b>Setul de Antrenare:</b>
+                <ul>
+                    <li>Subsetul nostru de antrenare conține o parte din istoricul tranzacțiilor, împreună cu etichetele corespunzătoare.</li>
+                    <li>Acest set de date este utilizat pentru a antrena modelul să identifice tipare și semnale care ar putea indica o tranzacție frauduloasă.</li>
+                </ul>
+            </li>
+            <li>
+                <b>Setul de Testare:</b>
+                <ul>
+                    <li>Subsetul nostru de testare conține o altă parte din istoricul tranzacțiilor, împreună cu etichetele corespunzătoare.</li>
+                    <li>Aceste date sunt utilizate pentru a evalua performanța modelului în detectarea corectă a tranzacțiilor frauduloase pe date noi.</li>
+                </ul>
+            </li>
+            <li>
+                <b>Model:</b>
+                <ul>
+                    <li>Modelul nostru de învățare automată este un algoritm care învață să distingă între tranzacțiile frauduloase și cele non-frauduloase pe baza caracteristicilor și tiparelor identificate în setul de antrenare.</li>
+                    <li>Acest model poate fi construit folosind diverse tehnici (precum arbori de decizie, random forest sau învățare profundă).</li>
+                    <li>După antrenare, modelul este capabil să primească detalii despre o tranzacție și să determine dacă aceasta este probabil să fie frauduloasă sau nu, pe baza cunoștințelor dobândite în timpul antrenării.</li>
+                </ul>
+            </li>
+        </ol>
+
+
+        <p>Chiar dacă am discutat despre seturi de date, etichete și modele, trebuie să ne amintim că calitatea datelor pe care le folosim și modul în care le pregătim vor influența direct rezultatele pe care le obținem. Astfel, pentru a implementa cu succes exemple precum detectarea fraudelor în tranzacțiile financiare, este esențial să ne ocupăm, în primul rând, de <b>preprocesarea datelor</b> în mod corespunzător.</p>
+        <p><b>Preprocesarea datelor</b> reprezintă un pas critic necesar înainte de a introduce datele în algoritmii de învățare automată, contribuind la crearea unor modele mai precise și mai robuste. Această etapă implică aplicarea unor proceduri precum curățarea, standardizarea, normalizarea și transformarea datelor, care au ca rezultat eliminarea zgomotului și a inconsistențelor din seturile noastre de date. Prin aceste operațiuni, ne asigurăm că datele sunt pregătite în mod corespunzător și pot fi utilizate eficient în modelele noastre de învățare automată.</p>
+
+	
+	<h1 id="obiective-19">Cum se implementează un proiect în ML?</h1>
+    <p>În acest moment, avem bazele necesare pentru a înțelege procesul de implementare a unui proiect de machine learning. Voi structura procesul de implementare într-o serie de etape bine definite, destinat să acționeze ca șablon în conceperea proiectelor viitoare.</p>
+    <ol>
+        <li>
+            <b>Definirea problemei</b>
+            <p>Putem considera primul pas definirea problemei. Este important să înțelegem clar problema pe care dorim să o rezolvăm. Trebuie stabilite obiectivele, identificarea resurselor necesare și disponibile, metode de rezolvare a problemei etc.</p>
+        </li>
+        <li>
+            <b>Colectarea și pregătirea datelor</b>
+            <p>Începem cu identificarea și localizarea surselor de date relevante pentru problema pe care dorim să o rezolvăm. Sursele de date pot include: baze de date existente, seturi de date publice, surse de date online sau date colectate intern. Odată ce datele sunt colectate, următorul pas este preprocesarea lor. Asigurați-vă că datele sunt pregătite în mod corespunzător. Pasul de finalizare a etapei constă în împărțirea setului de date în seturi de antrenare, testare și, eventual, validare.</p>
+        </li>
+        <li>
+            <b>Alegerea algoritmului potrivit</b>
+            <p>Alegerea algoritmului potrivit presupune înțelegerea naturii problemei și explorarea diferiților algoritmi disponibili, adaptându-i la caracteristicile și cerințele setului de date. Este esențial să selectăm un algoritm care se potrivește cel mai bine tipului de problemă, dimensiunii și complexității datelor, având în vedere resursele disponibile și performanța dorită.</p>
+        </li>
+        <li>
+            <b>Antrenarea modelului</b>
+            <p>Utilizați datele de antrenament în algoritmul ales pentru a instrui modelul. Acest lucru implică ajustarea parametrilor algoritmului pentru a minimiza eroarea sau pentru a maximiza performanța modelului, în funcție de metricile relevante. În timpul antrenării, este benefic să monitorizăm performanța modelului pe setul de validare pentru a evita overfitting-ul și pentru a ajusta parametrii modelului în consecință.</p>
+        </li>
+        <li>
+            <b>Evaluarea performanței modelului</b>
+            <p>Modelul antrenat este aplicat pe setul de testare pentru a evalua performanța sa pe date noi și nevăzute. Acest lucru ne oferă o evaluare obiectivă a capacității modelului de a generaliza la date noi. După se poate realiza o evaluare suplimentară prin utilizarea unor metrici de performanță, cum ar fi acuratețea, precizia, amplitudinea de recuperare, sau alte metrici specifice problemei <i>(exemplu R-squared pentru regresie și AUC/curbele ROC pentru clasificare)</i>. Aceste metrici oferă informații detaliate despre performanța și capacitatea modelului de a rezolva problema dată.</p>
+        </li>
+        <li>
+            <b>Optimizarea modelului</b>
+            <p>Cel mai probabil nu veți reuși să obțineți rezultatele dorite din prima încercare. Nu vă descurajați! Optimizarea modelului este un proces iterativ, plin de provocări și oportunități de învățare. Încercările repetate și ajustările sunt o parte definitorie a acestui proces. Pentru a face față cu succes acestor provocări, este important să rămâneți deschiși la experimentare și să fiți perseverenți în căutarea soluțiilor.</p>
+            <p>În funcție de performanța modelului, puteți ajusta hiperparametrii, schimba algoritmul sau chiar utiliza tehnici diferite de preprocesare pentru a îmbunătăți performanța acestuia.</p>
+            <p><b>CONCLUZIA:</b> Putem spune că pașii 3, 4, 5, posibil chiar și 2, fac parte dintr-un ciclu repetitiv de tip do-while care se va opri când modelul atinge o performanță satisfăcătoare.</p>
+            <p><b>Atenție!</b> Nu înseamnă că trebuie mereu să reparcurgeți toți pașii. Problema nu pornește mereu de la preprocesarea datelor sau de la algoritmul ales. Uneori doar cea mai mică schimbare a unui parametru în etapa de antrenare a modelului poate să fie soluția. Pașii se reimplementează, în ordine, de la punctul de modificare.</p>
+        </li>
+        <li>
+            <b>Utilizarea modelului</b>
+            <p>Modelul este gata de utilizare. Dacă este cazul, implementați modelul în producție pentru a fi utilizat în aplicații reale. Asigurați-vă că modelul este integrat corespunzător în infrastructura existentă și că funcționează așa cum era de așteptat. Nu uitați că este indicată monitorizarea și mentenanța regulată a modelului pentru a menține sau îmbunătăți performanța.</p>
+        </li>
+    </ol>
+
+		<figure id="fig_image13">
+			<img id="img_image13" src="imagini_blog/image13.png">
+		</figure>
+	
+        <p>Pașii anteriori constituie o explicație mai detaliată a procesului de implementare având ca scop formarea unor bune practici. Memorarea acestora poate fi ușurată prin sintetizarea acestora în 4 idei principale:</p>
+        <ol><b>
+            <li>Preprocesarea datelor</li>
+            <li>Antrenarea modelului</li>
+            <li>Testarea modelului</li>
+            <li>Utilizarea modelului</li>
+        </b></ol>
+
+	
+	 <h1 id="obiective-19">Overfitting și Underfitting</h1>
+    <p>În procesul de implementare a unui proiect de machine learning, toți acei pași au ca scop dezvoltarea unui model eficient. Cu toate acestea, tot pot apărea anumite aspecte care să influențeze performanța modelului chiar și după parcurgerea tuturor etapelor în mod corespunzător. Acest lucru subliniază importanța înțelegerii fenomenelor precum <b>overfitting</b> și <b>underfitting</b>, care pot afecta semnificativ performanța modelului și necesită o atenție deosebită pentru a le gestiona eficient.</p>
+    <p>Overfitting și underfitting sunt două concepte importante în învățarea automată și sunt strâns legate de performanța unui model. Echilibrarea între overfitting și underfitting este importantă pentru dezvoltarea unui model de învățare automată eficient și precis.</p>
+
+    <b style="font-size:18px">Overfitting</b>
+    <ul>
+        <li>În cel mai simplu mod spus, înseamnă că modelul se potrivește prea bine cu setul de antrenare, dar nu generalizează bine la date noi.</li>
+        <li>Overfitting apare atunci când un model de învățare automată este prea complex pentru datele de antrenare. În această situație, modelul învață și memorează zgomotul și variabilitatea din setul de antrenare, în loc să identifice și să învețe corelațiile semnificative.</li>
+        <li><i>Exemplu: Modelul a învățat să numere pisici doar din poze mari și clare, iar când vede poze mai mici sau neclare, greșește mult. S-a specializat prea mult și nu poate generaliza la toate situațiile.</i></li>
+        <li><b>Soluție:</b> Simplificarea modelului sau utilizarea de tehnici de regularizare pentru a împiedica modelul să învețe zgomotul din date și să se concentreze pe modelele de bază.</li>
+    </ul>
+
+    <b style="font-size:18px">Underfitting</b>
+    <ul>
+        <li>În cel mai simplu mod spus, înseamnă că modelul nu se potrivește suficient de bine cu setul de antrenare și nu generalizează corect.</li>
+        <li>Underfitting apare atunci când un model de învățare automată este prea simplu pentru a captura corelațiile din datele de antrenare. În esență, modelul nu poate să învețe suficient de mult despre datele de antrenare pentru a face predicții precise.</li>
+        <li><i>Exemplu: Modelul a învățat să numere pisici doar din poze simple alb-negru, iar când vede poze colorate și complicate, nu poate identifica corect. Nu a învățat suficient de mult pentru a face față situațiilor reale.</i></li>
+        <li><b>Soluție:</b> Creșterea complexității modelului sau adăugarea mai multor date și caracteristici relevante și diverse pentru a permite modelului să captureze corelațiile din date mai bine.</li>
+    </ul>
+	
+	<h1 id="obiective-19">Tipuri de învățare automată</h1>
+	  <div class="accordion">
+		<button class="accordion-btn">Cuprins Secțiune</button>
+		<div class="panel">
+		  <a href="#subsection1">Învățare supervizată</a>
+		  <a href="#subsection2">Învățare nesupervizată</a>
+		  <a href="#subsection3">Învățare semi-supervizată</a>
+		  <a href="#subsection4">Învățare prin consolidare</a>
+		</div>
+	  </div>
+	
+    <p>În machine learning, algoritmii de antrenare/învățare sunt clasificați în diferite tipuri de învățare în funcție de modul în care aceștia își extrag cunoștințele din datele de antrenament și cum le utilizează pentru a face predicții sau pentru a lua decizii în viitor. Cunoștințele acumulate până acum ne vor ajuta să putem înțelege diferențele dintre tipurile de învățare și cum influențează acestea performanța algoritmilor.</p>
+    
+    <p><b>Principalele tipuri de învățare automată:</b></p>
+    <ol><b>
+        <li>Învățare supervizată</li>
+        <li>Învățare nesupervizată</li>
+        <li>Învățare semi-supervizată</li>
+        <li>Învățare prin consolidare (Reinforcement Learning)</li>
+    </b></ol>
+    
+    <p>Prin explorarea lor putem obține o perspectivă mai amplă asupra modului în care algoritmii procesează informațiile și cum pot fi aplicați în diverse domenii. Ba chiar acestui capitol merită să i se aloce un timp de studiu mai generos. Cunoașterea detaliată și diferențierea tipurilor de învățare în machine learning este esențială pentru selectarea corectă a algoritmilor în diverse scenarii.</p>
+
+    <b class="subsection-title" id="subsection1">Învățare supervizată</b>
+    <ul>
+        <li><b>Definiție:</b> Algoritmul este antrenat cu ajutorul unui set de date etichetat, care conține exemple de intrări împreună cu rezultatele dorite asociate acestora.  Scopul este să învețe relațiile între intrările și ieșirile cunoscute, astfel încât să poată face predicții corecte pe date noi.</li>
+        <li><b>Exemplu:</b> Antrenarea unui algoritm să recunoască cifre scrise de mână. Setul de date de antrenare conține imagini cu cifre și etichete corespunzătoare pentru fiecare cifră. Algoritmul învață să facă corectă corespondență între caracteristicile din imaginile de antrenament și cifrele corespunzătoare. Alte exemple: recunoașterea fețelor, clasificarea email-urilor ca spam sau non-spam, diagnoza medicală pe baza imaginilor.</li>
+        <li><b>Caracteristicile setului de date:</b> Folosește seturi de date etichetate, în care fiecare exemplu are o intrare și o ieșire corespunzătoare (cunoscută).</li>
+        <li><b>Obiectiv:</b> Algoritmul este antrenat să învețe corelațiile dintre datele de intrare și rezultatele corespunzătoare, astfel încât să poată face predicții precise pentru datele noi.</li>
+        <li><b>Domenii de aplicare:</b> Este larg utilizată în clasificare și regresie.</li>
+        <li><b>Avantaje:</b>
+            <ul>
+                <li><b>Precizie Mare:</b> Modelul poate face predicții precise pe date noi similare cu exemplele din setul de antrenament.</li>
+                <li><b>Aplicabilitate Largă:</b> Potrivită pentru o gamă variată de probleme.</li>
+            </ul>
+        </li>
+        <li><b>Dezavantaje:</b>
+            <ul>
+                <li><b>Necesitatea Datelor Etichetate:</b> Necesită un set mare de date etichetate, ceea ce poate fi costisitor sau dificil în unele domenii.</li>
+                <li><b>Predispunere la Overfitting:</b> Poate avea tendința de a se supra-antrena pe setul de antrenament și să nu generalizeze bine pe date noi care conțin șabloane nemaiîntâlnite.</li>
+            </ul>
+        </li>
+        <li><b>Observații:</b> Modelul este dependent de calitatea și acuratețea datelor etichetate disponibile pentru antrenament.</li>
+        <li><b>Exemple de algoritmi:</b>
+            <ul>
+                <li>Regresie:
+                    <ul>
+                        <li>Linear Regression</li>
+                    </ul>
+                </li>
+                <li>Clasificare:
+                    <ul>
+                        <li>Naive Bayes</li>
+                    </ul>
+                </li>
+                <li>Ambele:
+                    <ul>
+                        <li>Support Vector Machine (SVM)</li>
+                        <li>Decision Tree</li>
+                        <li>Random Forest</li>
+                        <li>K-Nearest Neighbors (KNN)</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <b class="subsection-title" id="subsection2">Învățare nesupervizată</b>
+    <ul>
+        <li><b>Definiție:</b> Algoritmul este expus la date fără etichete. Scopul este să descopere structuri, modele sau relații ascunse în date, fără a avea informații prealabile despre rezultatele dorite.</li>
+        <li><b>Exemplu:</b> Clustering-ul documentelor într-o bibliotecă digitală pe baza similarităților dintre conținutul lor. Algoritmul identifică grupuri de documente care au caracteristici comune, facilitând astfel organizarea și gestionarea informațiilor. Posibile grupuri identificate: tegnologie, arte, știri etc. Alte exemple: segmentarea piețelor în marketing, gruparea automată a documentelor și analiza datelor în explorarea descoperirilor noi.</li>
+        <li><b>Caracteristicile setului de date:</b> Se bazează pe seturi de date neetichetate, fără a avea cunoștințe prealabile despre ieșirea dorită.</li>
+        <li><b>Obiectiv:</b> Algoritmii trebuie să descopere singuri structurile și relațiile din seturile de date neetichetate.</li>
+        <li><b>Domenii de aplicare:</b> Utilizată pentru clusterizare, segmentare, reducerea dimensionalității, analiza datelor.</li>
+        <li><b>Avantaje:</b>
+            <ul>
+                <li><b>Nu Necesită Date Etichetate:</b> Costurile pentru antrenare sunt reduse și pregătirea datelor este simplificată, fiind ideal pentru seturi de date mari și nestructurate.</li>
+                <li><b>Descoperirea de Structuri Ascunse:</b> Poate identifica modele și relații care pot fi neobservate sau subestimate de către oameni, sau care pot fi prea complexe pentru a fi detectate manual. Această capacitate este deosebit de utilă în cercetare și în explorarea datelor în diverse domenii.</li>
+            </ul>
+        </li>
+        <li><b>Dezavantaje:</b>
+            <ul>
+                <li><b>Interpretare Subiectivă:</b> Interpretarea grupurilor sau a structurilor descoperite poate fi subiectivă și depinde de perspectiva utilizatorului.</li>
+                <li><b>Dificultăți în Evaluare:</b> Evaluarea performanței poate fi mai dificilă decât în învățarea supervizată, deoarece nu există etichete clare.</li>
+            </ul>
+        </li>
+	    <li><b>Observații:</b>
+            <ul>
+                <li>Algoritmii de clustering pot organiza documentele în grupuri pe baza similarităților lor, dar nu generează în mod automat titluri sau cuvinte cheie pentru fiecare grup. Este responsabilitatea utilizatorului să interpreteze rezultatele clustering-ului și să ofere titluri sau cuvinte cheie relevante pentru fiecare cluster.</li>
+                <li>Învățarea nesupervizată este utilizată în scopuri de cercetare, cum ar fi gruparea sau detectarea anomaliilor și nu este destinată predicției.</li>
+            </ul>
+        </li>
+        <li><b>Exemple de algoritmi:</b>
+            <ul>
+                <li>Clustering:
+                    <ul>
+                        <li>K-Means</li>
+                        <li>Hierarchical Clustering</li>
+                    </ul>
+                </li>
+                <li>Reducerea dimensionalității:
+                    <ul>
+                        <li>Principal Component Analysis (PCA)</li>
+                    </ul>
+                </li>
+                <li>Asociere:
+                    <ul>
+                        <li>Apriori</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <b class="subsection-title" id="subsection3">Învățare semi-supervizată</b>
+    <ul>
+        <li><b>Definiție:</b> Această abordare combină elemente din învățarea supervizată și nesupervizată, folosind un set de date parțial etichetat.</li>
+        <li><b>Exemplu:</b> Dorim gruparea unui set de date ce conține imagini cu diverse animale, dar doar imaginile cu câini și pisici sunt etichetate. Modelul învață din aceste etichete pentru a face distincții generale între specii, aplicând cunoștințele pe datele neetichetate și încercând să grupeze celelalte specii de animale în funcție de similarități identificate. Alte exemple: recunoașterea vocii, traducerea automată și analiza sentimentelor.</li>
+        <li><b>Caracteristicile setului de date:</b> Combinație între cele două, folosind atât date etichetate, cât și neetichetate în procesul de instruire.</li>
+        <li><b>Obiectiv:</b> Algoritmul încearcă să capitalizeze pe informațiile limitate oferite de datele etichetate și să îmbunătățească performanța generală a modelului.</li>
+        <li><b>Domenii de aplicare:</b> Utilizată când avem un amestec de date etichetate și neetichetate și dorim să beneficiem de ambele tipuri de informații pentru antrenarea modelelor.</li>
+        <li><b>Avantaje:</b>
+            <ul>
+                <li><b>Eficientizarea Procesului de Etichetare:</b> Este utilă atunci când etichetarea completă a datelor este costisitoare sau consumatoare de timp.</li>
+                <li><b>Performanță Superioară:</b>  Poate obține adesea o acuratețe mai mare decât învățarea supervizată în cazul problemelor cu date etichetate limitate, deoarece abilitatea de a utiliza datele neetichetate pentru a îmbunătăți algoritmii de învățare supervizată reduc riscul de supra-antrenare (overfitting) și promovează o generalizare mai bună a modelului.</li>
+            </ul>
+        </li>
+        <li><b>Dezavantaje:</b>
+            <ul>
+                <li><b>Dependență de Calitatea Datelor Etichetate:</b> Performanța modelului depinde în continuare de calitatea datelor etichetate disponibile.</li>
+                <li><b>Complexitate Suplimentară:</b> În gestionarea datelor etichetate și neetichetate, poate adăuga complexitate în antrenarea și evaluarea modelului.</li>
+            </ul>
+        </li>
+		<li><b>Observații:</b> Este importantă selecția adecvată a datelor etichetate pentru a maximiza performanța modelului și pentru a evita introducerea unui bias.</li>
+        <li><b>Exemple de algoritmi:</b>
+            <ul>
+                <li>Clasificare:
+                    <ul>
+                        <li>Label Propagation</li>
+                        <li>Semi-Supervised SVM</li>
+                    </ul>
+                </li>
+                <li>Clustering:
+                    <ul>
+                        <li>Semi-Supervised K-Means</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <b class="subsection-title" id="subsection4">Învățare prin consolidare</b>
+    <ul>
+        <li><b>Definiție:</b> Implică luarea deciziilor într-un mediu interactiv și obținerea de recompense sau penalizări în funcție de acțiunile luate. Scopul este ca agentul să descopere strategii optime pentru a obține cele mai bune rezultate.</li>
+        <li><b>Exemplu:</b> Învățarea unui algoritm de inteligență artificială să conducă un vehicul autonom. Algoritmul primește recompense pozitive pentru acțiuni precum menținerea unei viteze constante și respectarea regulilor de circulație, în timp ce primește penalizări pentru acțiuni nesigure sau nerespectarea regulilor. Alte exemple: jocuri de strategie, controlul robotic, optimizarea resurselor în rețelele electrice.</li>
+        <li><b>Caracteristicile setului de date:</b> Nu are seturi de date etichetate în mod tradițional, folosind un sistem decizional de tip recompensă-penalizare.</li>
+        <li><b>Obiectiv:</b> Agentul învață să maximizeze recompensele și să minimizeze penalizările prin explorarea și adaptarea comportamentului său în funcție de răspunsurile mediului.</li>
+        <li><b>Domenii de aplicare:</b> Potrivită pentru probleme care implică adaptarea la medii în schimbare, date noi în timp real sau luarea de decizii secvențiale.</li>
+        <li><b>Avantaje:</b>
+            <ul>
+                <li><b>Abordare Orientată pe Rezultate:</b> Agentul învață să maximizeze recompensele, ceea ce poate duce la dezvoltarea de strategii eficiente.</li>
+                <li><b>Optimizarea Performanței în Timp:</b> Agenții pot să-și îmbunătățească continuu abilitățile și să-și ajusteze strategiile pentru a obține rezultate mai bune pe măsură ce acumulează experiență.</li>
+            </ul>
+        </li>
+        <li><b>Dezavantaje:</b>
+            <ul>
+                <li><b>Probleme în Definirea Recompenselor:</b> Definirea unui sistem de recompense adecvat poate fi dificilă și poate influența performanța modelului, fiind astfel impractic pentru probleme simple.</li>
+                <li><b>Cerințe Ridicate de Resurse:</b> Pot necesita resurse computaționale semnificative și timp extins de antrenament.</li>
+            </ul>
+        </li>
+		<li><b>Observații:</b> Este predispus la exploatarea sistemului de recompense. Acest lucru se referă la situația în care agentul învață să maximizeze recompensele într-un mod care nu corespunde cu obiectivele sau valorile dorite de proiectanții sistemului.</li>
+        <li><b>Exemple de algoritmi:</b>
+            <ul>
+                <li>Value-based:
+                    <ul>
+                        <li>Q-Learning</li>
+                        <li>Deep Q-Networks (DQN)</li>
+                    </ul>
+                </li>
+                <li>Policy-based:
+                    <ul>
+                        <li>Policy Gradient</li>
+                        <li>SARSA</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+	
+	<p>Pentru o vizualizare mai eficientă a diferențelor între tipurile de învățare automată, voi adăuga un tabel cu informațiile prezentate mai sus.</p>
+	
+		<figure id="fig_image6">
+			<img id="img_image6" src="imagini_blog/tabel.png">
+		</figure>
+	
+	
+	 <h1 id="obiective-19">Librării pentru Machine Learning</h1>
+    <p>În machine learning, librăriile sunt instrumente esențiale care facilitează dezvoltarea, implementarea și utilizarea algoritmilor de învățare automată. Acestea sunt esențiale pentru a reduce timpul și efortul necesare pentru a implementa algoritmi de machine learning, oferind funcții predefinite și structuri de date optimizate. Iată câteva dintre cele mai populare librării folosite în machine learning:</p>
+    
+    <ol>
+        <li><b>Scikit-learn (sklearn)</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Implementarea algoritmilor de învățare automată.</li>
+                <li><b>Oferă:</b> Varietate largă de algoritmi de învățare automată, inclusiv clasificare, regresie, clusterizare și altele.</li>
+                <li><b>Descriere:</b> Interfață simplă și consistentă ușor de învățat și utilizat, potrivită pentru începători și experți.</li>
+            </ul>
+        </li>
+        <li><b>TensorFlow</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Construirea și antrenarea rețelelor neuronale artificiale în aplicații de amploare.</li>
+                <li><b>Oferă:</b> Ecosistem puternic de instrumente și resurse pentru dezvoltarea, antrenarea și implementarea modelelor de deep learning.</li>
+                <li><b>Descriere:</b> Flexibil și scalabil. Poate fi utilizat pentru o varietate largă de aplicații, de la recunoașterea imaginilor la prelucrarea limbajului natural.</li>
+            </ul>
+        </li>
+        <li><b>PyTorch</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Construirea și antrenarea rețelelor neuronale artificiale, cu accent pe cercetare.</li>
+                <li><b>Oferă:</b> Flux de lucru dinamic, permițând utilizatorilor să definească și să modifice modele în timp real.</li>
+                <li><b>Descriere:</b> Sintaxă simplă și flexibilă. Se bazează pe conceptul de tensori, ușurând lucrul cu date multidimensionale și construirea de modele complexe de rețele neuronale. Acest lucru facilitează experimentarea și prototiparea eficientă.</li>
+            </ul>
+        </li>
+        <li><b>Keras</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Construirea și antrenarea rapidă a rețelelor neuronale artificiale, cu accent pe ușurința în utilizare și abordarea simplificată a designului modelului.</li>
+                <li><b>Oferă:</b> Compatibilitate cu alte librării populare de deep learning, precum TensorFlow. Permite utilizarea funcționalităților acestor librării într-un mediu familiar și ușor de utilizat.</li>
+                <li><b>Descriere:</b> Ușor de utilizat și nivel ridicat de abstractizare. Permite utilizatorilor să construiască și să antreneze rețele neuronale cu un minim de cod.</li>
+            </ul>
+        </li>
+        <li><b>Pandas</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Prelucrarea și analiza datelor.</li>
+                <li><b>Oferă:</b> Structuri de date flexibile și puternice, pentru manipularea eficientă a datelor.</li>
+                <li><b>Descriere:</b> Nu este exclusiv pentru machine learning, dar este esențial pentru prelucrarea și analiza datelor.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <p>Pe lângă aceste librării, în funcție de direcția specifică în care doriți să vă îndreptați, ar putea fi benefic să explorați și alte librării specializate în domeniul de interes. Iată câteva dintre ele:</p>
+
+    <ol>
+        <li><b>NumPy</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Calculul științific.</li>
+                <li><b>Oferă:</b> Suport pentru lucrul cu matrice și tablouri multidimensionale.</li>
+            </ul>
+        </li>
+        <li><b>Matplotlib</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Vizualizarea datelor.</li>
+                <li><b>Oferă:</b> Funcționalități de bază pentru crearea de grafice și diagrame.</li>
+            </ul>
+        </li>
+        <li><b>SciPy</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Calculul științific avansat.</li>
+                <li><b>Oferă:</b> Funcționalități suplimentare pentru calculul științific, inclusiv optimizare, statistici, integrare numerică și altele.</li>
+            </ul>
+        </li>
+        <li><b>NLTK (Natural Language Toolkit)</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Prelucrarea limbajului natural.</li>
+                <li><b>Oferă:</b> Set larg de instrumente și resurse pentru lucrul cu texte și analiza limbajului natural.</li>
+            </ul>
+        </li>
+        <li><b>OpenCV</b>
+            <ul>
+                <li><b>Folosită pentru:</b> Prelucrarea imaginilor.</li>
+                <li><b>Oferă:</b> Unelte și funcționalități pentru manipularea și analiza imaginilor.</li>
+            </ul>
+        </li>
+    </ol>
+	
+	
+	<h1 id="obiective-19">Funcții de bază</h1>
+	  <div class="accordion">
+		<button class="accordion-btn">Cuprins Secțiune</button>
+		<div class="panel">
+		  <a href="#subsection11">Funcții esențiale pentru construirea unui proiect</a>
+		  <a href="#subsection12">Funcții pentru Analiza Datelor cu Pandas</a>
+		  <a href="#subsection13">Funcții pentru Vizualizarea Datelor cu Matplotlib</a>
+		</div>
+	  </div>
+	
+    <p>Fiind acum familiari cu conceptele fundamentale din machine learning, putem să ne îndreptăm către partea practică. Voi începe prin prezentarea funcțiilor de bază ce pot fi considerate (aproape) indispensabile pentru orice proiect în ML.</p>
+    
+        <b class="subsection-title" id="subsection11">Funcții esențiale pentru construirea unui proiect</b>
+            <ul>
+                <li><b>Încărcarea setului de date</b>
+                    <p>Folosind funcții precum <code>pd.read_csv()</code>, <code>pd.read_excel()</code>, <code>pd.read_sql()</code>, <code>pd.read_json()</code>, pentru a încărca datele într-o structură de date utilizabilă (de exemplu, DataFrame în pandas).</p>
+
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <b class="technology">Python</b>
+                            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+                        </div>
+                        <pre>
+                            <code class="language-python">
+import pandas as pd
+
+# Încărcarea setului de date dintr-un fișier CSV
+data = pd.read_csv('dataset.csv')
+
+# Afișarea primelor câteva rânduri ale setului de date
+print(data.head())
+                            </code>
+                        </pre>
+                    </div>
+
+                </li>
+
+                <li><b>Împărțirea setului de date</b>
+                    <p>Utilizând <code>train_test_split()</code> pentru a împărți setul de date în seturi de antrenare și de testare. Puteți opta, de asemenea, pentru o împărțire în set de antrenare, validare și testare.</p>
+
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <b class="technology">Python</b>
+                            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+                        </div>
+                        <pre>
+                            <code class="language-python">
+from sklearn.model_selection import train_test_split
+
+# Împărțirea setului de date în seturi de antrenare și testare
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Afișarea dimensiunilor seturilor de antrenare și testare
+print("Dimensiuni set antrenare:", X_train.shape, y_train.shape)
+print("Dimensiuni set testare:", X_test.shape, y_test.shape)
+                            </code>
+                        </pre>
+                    </div>
+
+                </li>
+
+                <li><b>Antrenarea modelului</b>
+                    <p>Folosind metoda <code>fit()</code> pentru a antrena modelul pe datele de antrenare. Aici putem menționa și <code>fit_transform()</code>, care se ocupă simultan de antrenarea și transformarea datelor (trebuie menționat un preprocesor de date compatibil).</p>
+
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <b class="technology">Python</b>
+                            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+                        </div>
+                        <pre>
+                            <code class="language-python">
+from sklearn.linear_model import LogisticRegression
+
+# Inițializarea modelului Logistic Regression
+model = LogisticRegression()
+
+# Antrenarea modelului pe setul de date de antrenare
+model.fit(X_train, y_train)
+                            </code>
+                        </pre>
+                    </div>
+
+                </li>
+
+                <li><b>Predicția folosind modelul</b>
+                    <p>Utilizând metoda <code>predict()</code> sau <code>predict_proba()</code> pentru a face predicții pe baza datelor de intrare.</p>
+
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <b class="technology">Python</b>
+                            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+                        </div>
+                        <pre>
+                            <code class="language-python">
+# Predicția pe setul de date de testare
+y_pred = model.predict(X_test)
+
+# Afișarea predicțiilor
+print(y_pred)
+                            </code>
+                        </pre>
+                    </div>
+
+                </li>
+
+                <li><b>Salvarea modelului</b>
+                    <p>Folosind <code>joblib.dump()</code> sau <code>pickle.dump()</code> pentru a salva modelul într-un fișier specificat pentru utilizarea ulterioară.</p>
+
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <b class="technology">Python</b>
+                            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+                        </div>
+                        <pre>
+                            <code class="language-python">
+import joblib
+
+# Salvarea modelului într-un fișier
+joblib.dump(model, 'model.pkl')
+                            </code>
+                        </pre>
+                    </div>
+
+                </li>
+
+                <li><b>Încărcarea modelului</b>
+                    <p>Utilizând <code>joblib.load()</code> sau <code>pickle.load()</code> pentru a încărca modelul din fișierul respectiv.</p>
+
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <b class="technology">Python</b>
+                            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+                        </div>
+                        <pre>
+                            <code class="language-python">
+# Încărcarea modelului din fișier
+loaded_model = joblib.load('model.pkl')
+                            </code>
+                        </pre>
+                    </div>
+
+                </li>
+            </ul>
+
+        <b class="subsection-title" id="subsection12">Funcții pentru Analiza Datelor cu Pandas</b>
+            <ul>
+                <li><code>head()</code>: Afișează primele câteva rânduri din DataFrame.</li>
+                <li><code>tail()</code>: Afișează ultimele câteva rânduri din DataFrame.</li>
+				<li><code>info()</code>: Oferă informații despre DataFrame, inclusiv tipurile de date și numărul de valori nenule.</li>
+				<li><code>describe()</code>: Oferă statistici de bază pentru fiecare coloană numerică din DataFrame.</li>
+				<li><code>shape</code>: Returnează o tuplă care indică numărul de rânduri și coloane din DataFrame.</li>
+				<li><code>columns</code>: Returnează lista de nume ale coloanelor din DataFrame.</li>
+				<li><code>index</code>: Returnează etichetele rândurilor din DataFrame.</li>
+				<li><code>dtypes</code>: Returnează tipurile de date ale fiecărei coloane din DataFrame.</li>
+				<li><code>isnull()</code>: Returnează o mască booleană care indică dacă valorile sunt nule.</li>
+				<li><code>sum()</code>: Calculează suma valorilor pentru fiecare coloană.</li>
+				<li><code>mean()</code>: Calculează media valorilor pentru fiecare coloană.</li>
+				<li><code>median()</code>: Calculează mediana valorilor pentru fiecare coloană.</li>
+				<li><code>unique()</code>: Returnează valorile unice dintr-o serie.</li>
+				<li><code>value_counts()</code>: Calculează numărul de apariții ale fiecărei valori dintr-o serie.</li>
+				<li><code>groupby()</code>: Permite gruparea datelor în funcție de anumite criterii.</li>
+				<li><code>pivot_table()</code>: Creează o tabelă pivot dintr-un DataFrame.</li>
+				<li><code>corr()</code>: Calculează matricea de corelație între coloanele numerice.</li>
+				<li><code>plot()</code>: Permite vizualizarea datelor sub formă de grafice folosind Matplotlib sau alte biblioteci de vizualizare.</li>
+				<li><code>nunique()</code>: Calculează numărul de valori unice pentru fiecare coloană din DataFrame.</li>
+				<li><code>sample()</code>: Returnează o selecție aleatoare de rânduri din DataFrame.</li>
+            </ul>
+
+         <div class="code-snippet">
+        <div class="code-header">
+            <b class="technology">Python</b>
+            <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+        </div>
+        <pre>
+            <code class="language-python">
+import pandas as pd
+
+# Crearea unui DataFrame de exemplu
+data = {'A': [1, 2, 3, 4, 5],
+        'B': ['a', 'b', 'c', 'd', 'e'],
+        'C': [True, False, True, False, True]}
+
+df = pd.DataFrame(data)
+
+# Setul de date arată așa
+#    A   B   C
+# 0  1   a  True
+# 1  2   b  False
+# 2  3   c  True
+# 3  4   d  False
+# 4  5   e  True
+
+
+# Utilizarea metodei shape pentru a obține dimensiunile DataFrame-ului
+print("Dimensiuni DataFrame:", df.shape)  # (5, 3)
+
+# Utilizarea metodei columns pentru a obține lista de nume ale coloanelor DataFrame-ului
+print("Numele coloanelor:", df.columns)  # Index(['A', 'B', 'C'], dtype='object')
+
+# Utilizarea metodei index pentru a obține etichetele rândurilor DataFrame-ului
+print("Etichetele rândurilor:", df.index)  # RangeIndex(start=0, stop=5, step=1)
+
+# Utilizarea metodei dtypes pentru a obține tipurile de date ale fiecărei coloane din DataFrame
+print("Tipurile de date ale coloanelor:")
+print(df.dtypes)
+            </code>
+        </pre>
+    </div>
+
+        <b class="subsection-title" id="subsection13">Funcții pentru Vizualizarea Datelor cu Matplotlib</b>
+    <ul>
+        <li><b>Crearea unui grafic de linie:</b> Graficele de linie sunt utile pentru a observa tendințe și schimbări în datele dvs. De exemplu, să presupunem că avem date despre temperatura într-o zi în funcție de oră.</li>
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Exemplu: orele dintr-o zi
+ore = [0, 3, 6, 9, 12, 15, 18, 21, 24]
+
+# Temperaturile asociate fiecărei ore
+temperatura = [6, 6, 8, 10, 10, 14, 16, 14, 10]
+
+# Crearea graficului de linie
+plt.plot(ore, temperatura)
+
+# Adăugarea etichetelor și a titlului
+plt.xlabel('Ora din zi')
+plt.ylabel('Temperatură (°C)')
+plt.title('Temperatură în funcție de ora din zi')
+
+# Afișarea graficului
+plt.show()
+
+                </code>
+            </pre>
+        </div>
+
+		<figure id="fig_image6">
+			<img id="img_image6" src="imagini_blog/image8.png">
+		</figure>
+		
+        <li><b>Crearea unui grafic de dispersie:</b> Graficele de dispersie sunt utile pentru a observa relațiile între două variabile. De exemplu, să presupunem că avem date despre greutatea și înălțimea unor persoane.</li>
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Datele de exemplu
+height = [160, 165, 170, 175, 180]
+weight = [60, 65, 70, 75, 80]
+
+# Crearea graficului de dispersie
+plt.scatter(height, weight)
+
+# Adăugarea etichetelor și a titlului
+plt.xlabel('Înălțime (cm)')
+plt.ylabel('Greutate (kg)')
+plt.title('Relația între înălțime și greutate')
+
+# Afișarea graficului
+plt.show()
+                </code>
+            </pre>
+        </div>
+		
+		<figure id="fig_image6">
+			<img id="img_image6" src="imagini_blog/image1.png">
+		</figure>
+		
+        <li><b>Crearea unei histograme:</b> Histograma este folosită pentru a prezenta distribuția unei singure variabile. De exemplu, să presupunem că avem date despre vârsta unor persoane.</li>
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Datele de exemplu
+ages = [22, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]
+
+# Crearea histogramei
+plt.hist(ages, bins=5, edgecolor='black')
+
+# Adăugarea etichetelor și a titlului
+plt.xlabel('Vârstă')
+plt.ylabel('Număr de persoane')
+plt.title('Distribuția vârstei')
+
+# Afișarea graficului
+plt.show()
+                </code>
+            </pre>
+        </div>
+		
+		<figure id="fig_image6">
+			<img id="img_image6" src="imagini_blog/image3.png">
+		</figure>
+		
+        <li><b>Crearea unui grafic de bare:</b> Graficele de bare sunt utile pentru a compara cantități între diferite categorii. De exemplu, să presupunem că avem date despre numărul de vânzări pentru diferite produse într-un anumit interval de timp.</li>
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Produsele și numărul lor de vânzări într-o anumită perioadă
+produse = ['Laptop', 'Telefon', 'Tabletă', 'Televizor', 'Cameră foto']
+vanzari = [300, 500, 200, 400, 250]  # numărul de vânzări pentru fiecare produs
+
+# Crearea graficului de bare
+plt.bar(produse, vanzari, color='skyblue')
+
+# Adăugarea etichetelor și a titlului
+plt.xlabel('Produse')
+plt.ylabel('Număr de vânzări')
+plt.title('Numărul de vânzări pentru diferite produse')
+
+# Afișarea graficului
+plt.show()
+                </code>
+            </pre>
+        </div>
+		
+		<figure id="fig_image6">
+			<img id="img_image6" src="imagini_blog/image9.png">
+		</figure>
+		
+        <li><b>Crearea unui grafic de sectoare (pie chart):</b> Graficele de sectoare sunt utile pentru a arăta proporțiile unei cantități între diferite categorii. De exemplu, reprezentarea procentelor de piață ale diferitelor companii dintr-o industrie.</li>
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Companiile și procentele lor de piață
+companii = ['Apple', 'Samsung', 'Huawei', 'Xiaomi', 'Google']
+procente = [40, 25, 15, 10, 10]  # procentele de piață pentru fiecare companie
+
+# Crearea graficului de sectoare
+plt.pie(procente, labels=companii, autopct='%1.1f%%', startangle=140)
+
+# Adăugarea titlului
+plt.title('Procente de piață ale companiilor din industrie')
+
+# Afișarea graficului
+plt.show()
+                </code>
+            </pre>
+        </div>
+		
+		<figure id="fig_image6">
+			<img id="img_image6" src="imagini_blog/image11.png">
+		</figure>
+		
+        <li><b>Adăugarea de legende:</b> Legendele sunt utile pentru a clarifica graficele cu mai multe serii de date sau pentru a identifica diferitele categorii într-un grafic.</li>
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import matplotlib.pyplot as plt
+
+# Datele de exemplu
+x = [1, 2, 3, 4, 5]
+y1 = [10, 15, 13, 18, 16]
+y2 = [8, 12, 11, 16, 14]
+
+# Crearea graficului de linie pentru două serii de date
+plt.plot(x, y1, label='Serie 1')
+plt.plot(x, y2, label='Serie 2')
+
+# Adăugarea legendei
+plt.legend()
+
+# Adăugarea etichetelor și a titlului
+plt.xlabel('Timp')
+plt.ylabel('Valori')
+plt.title('Două serii de date')
+
+# Afișarea graficului
+plt.show()
+                </code>
+            </pre>
+        </div>
+		
+		<figure id="fig_image6">
+			<img id="img_image6" src="imagini_blog/image6.png">
+		</figure>
+
+        <li>Este de ajutor să știți că Matplotlib mai permite:
+            <ul>
+                <li>personalizarea aspectului graficelor</li>
+                <li>salvarea și exportarea graficelor</li>
+                <li>lucrul cu subgrafice (subplots)</li>
+            </ul>
+        </li>
+    </ul>
+
+
+	<h1 id="obiective-19">Operațiuni de preprocesare a datelor</h1>
+	  <div class="accordion">
+		<button class="accordion-btn">Cuprins Secțiune</button>
+		<div class="panel">
+		  <a href="#subsection31">Curățarea datelor</a>
+		  <a href="#subsection32">Tratarea outlier-ilor</a>
+		  <a href="#subsection33">Redimensionarea datelor</a>
+		  <a href="#subsection34">Codificarea variabilelor categorice</a>
+		  <a href="#subsection35">Extragerea caracteristicilor</a>
+		  <a href="#subsection36">Eșantionarea datelor</a>
+		</div>
+	  </div>
+	
+	<p class="subsection-title" id="subsection31">1. Curățarea datelor</p>
+    <ul>
+        <li>Curățarea datelor implică identificarea și tratarea diverselor probleme de calitate a datelor care ar putea distorsiona rezultatele modelului.</li>
+        <li>Aceasta poate include: eliminarea sau înlocuirea valorilor lipsă, corectarea erorilor și inconsistențelor, eliminarea duplicatelor.</li>
+        <li>Exemple de funcții:
+            <ul>
+                <li><code>isnull()</code>: Verifică dacă există valori nule în DataFrame.</li>
+                <li><code>fillna()</code>: Completează valorile lipsă cu o anumită valoare sau o statistică calculată (cum ar fi media). Similară este și funcția <code>SimpleImputer()</code> din modulul <code>sklearn.preprocessing</code> din librăria scikit-learn.</li>
+                <li><code>dropna()</code>: Elimină rândurile sau coloanele care conțin valori nule.</li>
+                <li><code>duplicated()</code>: Identifică rândurile duplicate în DataFrame.</li>
+                <li><code>drop_duplicates()</code>: Elimină rândurile duplicate din DataFrame.</li>
+                <li><code>replace()</code>: Înlocuirea valorilor în DataFrame.</li>
+                <li><code>drop()</code>: Eliminarea rândurilor sau coloanelor din DataFrame.</li>
+                <li><code>interpolate()</code>: Estimează valorile lipsă într-o serie de date pe baza valorilor cunoscute din aceeași serie.</li>
+            </ul>
+        </li>
+    </ul>
+	
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import pandas as pd
+import numpy as np
+
+# Creare DataFrame de exemplu cu valori nule și duplicate
+data = pd.DataFrame({
+    'A': [1, 2, np.nan, 4, 5],
+    'B': ['a', 'b', 'c', 'd', 'a']
+})
+
+# Setul de date arată așa
+#      A    B
+# 0  1.0    a
+# 1  2.0    b
+# 2  NaN    c
+# 3  4.0    d
+# 4  5.0    a
+
+# isnull(): Verifică dacă există valori nule în DataFrame.
+print(data.isnull())
+
+# fillna(): Completează valorile lipsă cu o anumită valoare sau o statistică calculată
+data_filled = data.fillna(0)  # Umple valorile lipsă cu 0
+print(data_filled)
+
+# dropna(): Elimină rândurile sau coloanele care conțin valori nule.
+data_dropped = data.dropna()  # Elimină rândurile care conțin valori nule
+print(data_dropped)
+
+# duplicated(): Identifică rândurile duplicate în DataFrame.
+print(data.duplicated())
+
+# drop_duplicates(): Elimină rândurile duplicate din DataFrame.
+data_no_duplicates = data.drop_duplicates()
+print(data_no_duplicates)
+
+# replace(): Înlocuirea valorilor în DataFrame.
+data_replaced = data.replace({'a': 'x', 'b': 'y'})
+print(data_replaced)
+
+# drop(): Eliminarea rândurilor sau coloanelor din DataFrame.
+data_dropped_rows = data.drop(index=[1, 3])  # Elimină rândurile cu indicii 1 și 3
+data_dropped_columns = data.drop(columns=['A'])  # Elimină coloana 'A'
+print(data_dropped_rows)
+print(data_dropped_columns)
+
+# interpolate(): Această metodă este utilizată pentru a estimarea valorilor lipsă dintr-o serie de date, bazându-ne pe valorile cunoscute din aceeași serie.
+data_interpolated = data.interpolate(method='linear') # Completează valorile lipsă
+print(data_interpolated)
+
+                </code>
+            </pre>
+        </div>
+	
+	<p>Rezultatele funcțiilor:</p>
+	
+        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+# DataFrame-ul inițial
+     A    B
+0  1.0    a
+1  2.0    b
+2  NaN    c
+3  4.0    d
+4  5.0    a
+
+# isnull(): Verifică dacă există valori nule în DataFrame.
+False      False
+False      False
+True       False
+False      False
+False      False
+
+# fillna(): Completează valorile lipsă cu o anumită valoare sau o statistică calculată
+     A  B
+0  1.0  a
+1  2.0  b
+2  0.0  c
+3  4.0  d
+4  5.0  a
+
+# dropna(): Elimină rândurile sau coloanele care conțin valori nule.
+     A  B
+0  1.0  a
+1  2.0  b
+3  4.0  d
+4  5.0  a
+
+# duplicated(): Identifică rândurile duplicate în DataFrame.
+0    False
+1    False
+2    False
+3    False
+4    False
+dtype: bool
+
+# drop_duplicates(): Elimină rândurile duplicate din DataFrame.
+     A  B
+0  1.0  a
+1  2.0  b
+2  NaN  c
+3  4.0  d
+4  5.0  a
+
+# replace(): Înlocuirea valorilor în DataFrame.
+     A  B
+0  1.0  x
+1  2.0  y
+2  NaN  c
+3  4.0  d
+4  5.0  x
+
+# drop(): Eliminarea rândurilor sau coloanelor din DataFrame.
+     A  B
+0  1.0  a
+2  NaN  c
+4  5.0  a
+   B
+0  a
+1  b
+2  c
+3  d
+4  a
+
+# interpolate(): Această metodă este utilizată pentru a estimarea valorilor lipsă dintr-o serie de date, bazându-ne pe valorile cunoscute din aceeași serie.
+     A  B
+0  1.0  a
+1  2.0  b
+2  3.0  c
+3  4.0  d
+4  5.0  a
+                </code>
+            </pre>
+        </div>	
+	
+	<b class="subsection-title" id="subsection32">2. Tratarea outlier-ilor</b>
+    <ul>
+        <li>Tratarea outlier-ilor poate fi considerată o parte a procesului de curățare a datelor.</li>
+        <li>Un outlier este o valoare care este extrem de diferită de celelalte valori din setul de date și care poate distorsiona analiza sau modelele.</li>
+        <li>Operațiunea poate include eliminarea lor din setul de date, transformarea lor în valori mai realiste sau utilizarea de tehnici specifice de analiză a outlier-ilor.</li>
+        <li>Cele mai utilizate metode de tratare a outlier-ilor sunt IQR și Z-score.</li>
+    </ul>
+	
+	<p>Interquartile Range (IQR) este o măsură a dispersiei datelor care este definită ca diferența dintre valoarea mediană a jumătății superioare (quartilul 75%) și valoarea mediană a jumătății inferioare (quartilul 25%) a unui set de date. Practic, IQR este diferența dintre Q3 și Q1. În această metodă, un punct de date este considerat un outlier dacă este situat la o distanță mai mare de 1.5 * IQR sau 3 * IQR. Aceste valori, 1.5 și 3, sunt utilizate ca praguri standard. Regula de 1.5 * IQR este utilizată pentru a identifica outlier-i “ușori” sau “moderați”, iar regula de 3 * IQR este utilizată pentru a identifica outlier-i “extremi”. Valorile care sunt mai mici decât limita inferioară (Q1 - prag_ales * IQR) sau mai mari decât limita superioară (Q3 + prag_ales * IQR) sunt considerați potențiali outliers.</p>
+	
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+# Identificarea outlier-ilor într-o coloană și eliminarea lor
+Q1 = data['age'].quantile(0.25)
+Q3 = data['age'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+data = data[(data['age'] >= lower_bound) & (data['age'] <= upper_bound)]
+                </code>
+            </pre>
+        </div>
+	
+	<p>Z-score este o măsură a numărului de deviații standard pe care o valoare o are față de media unui set de date. Această metodă este explicată în detaliu la subiectul următor, standardizarea. Un punct de date este considerat outlier dacă Z-score-ul său este mai mare decât 3 sau mai mic decât -3.</p>
+	
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+import pandas as pd
+import numpy as np
+from scipy.stats import zscore
+
+# Creare DataFrame de exemplu
+data = pd.DataFrame({
+    'A': [1, 2, 2, 3, 4, 5, 6, 100],  # Ultima valoare (100) este un outlier
+    'B': [10, 20, 30, 40, 50, 60, 70, 80]
+})
+
+# Calcularea Z-score-ului
+data['Z_A'] = zscore(data['A'])
+
+# Identificarea outlier-ilor (valori cu Z-score mai mare de 3 sau mai mic de -3)
+outliers = data[np.abs(data['Z_A']) > 3]
+
+print(data)
+print(outliers)
+                </code>
+            </pre>
+        </div>	
+
+	<b class="subsection-title" id="subsection33">3. Redimensionarea datelor</b>
+    <ul>
+        <li>Redimensionarea (sau scalarea datelor) asigură că toate caracteristicile au aceeași magnitudine sau variază în aceleași intervale, astfel încât să faciliteze compararea sau analiza acestora.</li>
+        <li>Uneori, datele pot necesita redimensionare sau transformări pentru a se potrivi cerințelor specifice ale algoritmilor sau pentru a optimiza performanța acestora.</li>
+        <li>Acest proces implică ajustarea dimensiunilor datelor pentru a le aduce într-un anumit interval sau într-o formă compatibilă cu algoritmul de învățare automată pe care îl veți folosi. În esență, asigură aducerea datelor la o scară comună sau la o formă standard.</li>
+    </ul>
+
+    <b>a) Standardizarea</b>
+    <ul>
+        <li>Cea mai comună metodă este <strong>Z-Score</strong>, menționată mai devreme. Z-score se poate ocupa de standardizarea datelor și de identificarea outlier-ilor în același timp.</li>
+        <li>Această metodă presupune transformarea datelor astfel încât să aibă o medie de zero și o deviație standard de unu. Altfel spus, presupune centrarea datelor în jurul valorii zero și redimensionarea lor astfel încât să aibă o variație comună (aceeași scală/dispersie), menținând forma distribuției.</li>
+        <li>Este utilă atunci când distribuția datelor este normală sau aproximativ normală (în formă de clopot), pentru algoritmi care necesită date la aceeași scară și date cu unități de măsură diferite.</li>
+    </ul>
+	
+<div class="code-snippet">
+        <div class="code-header">
+            <b>Formula pentru standardizare</b>
+        </div>
+    <pre>
+    <code class="language-math">
+                z = (x - μ) / σ
+                unde:
+                - x este valoarea originală,
+                - μ este media valorilor,
+                - σ este deviația standard a valorilor.
+    </code>
+    </pre>
+</div>
+
+    <ul>
+        <li><strong>Media de zero:</strong> Media (sau media aritmetică) reprezintă suma tuturor valorilor împărțită la numărul total de valori. Atunci când aplicăm standardizarea și dorim ca media să fie zero, înseamnă că valoarea medie a caracteristicii va fi redusă la zero prin ajustarea fiecărei valori.</li>
+        <li><strong>Deviație standard de unu:</strong> Deviația standard măsoară dispersia sau variabilitatea datelor. O deviație standard de unu înseamnă că dispersia datelor este ajustată astfel încât majoritatea datelor să cadă în intervalul de la -1 la 1, iar variabilitatea să fie în jurul acestui interval.</li>
+		<li><i><strong>Exemplu:</strong>
+			<p>Presupunem că avem următorul set de date, reprezentând numărul de ore pe săptămână pe care diferiți tineri le petrec jucându-se pe calculator: [10,8,12,7,9]. Prima dată calculăm media aritmetică, aceasta fiind 9.2. Acum ajustăm setul de date la media de zero astfel: scădem media (9.2) din fiecare valoare din setul de date, rezultând [0.8,-1.2,2.8,-2.2,-0.2]. Acest lucru înseamnă că media valorilor este acum zero.</p>
+			
+			<p>Urmează să calculăm deviația standard folosind următoarea formulă:</p>
+			<p>$$ \sigma = \sqrt{\frac{\sum{(x_i - \mu)^2}}{N}} $$</p>
+			<p><i>unde \( \sigma \) reprezintă deviația standard, \( x_i \) sunt valorile individuale din setul de date, \( \mu \) reprezintă media setului de date, iar \( N \) reprezintă numărul total de valori din setul de date.</i></p>
+
+			Prin urmare, deviația standard pentru setul de date inițial este aproximativ 1.836.
+
+			<div class="mathjax-container">
+			  <p>$$Media(\mu) = \frac{(10 + 8 + 12 + 7 + 9)}{5} = 9.2 $$</p>
+			  <p>$$DeviatiaStandard(\sigma) = \sqrt{\frac{(10 - 9.2)^2 + (8 - 9.2)^2 + (12 - 9.2)^2 + (7 - 9.2)^2 + (9 - 9.2)^2}{5}} \approx 1.72 $$</p>
+			</div>
+
+			<p>Apoi, aplicăm formula de standardizare pentru fiecare valoare. După standardizare, valorile vor fi: [0.47, -0.70, 1.63, -1.28, -0.12].</p>
+		</i></li>
+	</ul>
+
+<b>b) Normalizarea</b>
+<ul>
+    <li>Normalizarea ajustează <strong>scala</strong> datelor pentru a se încadra într-un interval specific, cum ar fi intervalul [0, 1] sau [-1, 1], menținând proporțiile relative între valori. Cea mai comună metodă este <strong>MinMax Scaling</strong>.</li>
+    <li>Este utilă atunci când amplitudinea valorilor dintr-o caracteristică este variabilă (nu au o distribuție normală) sau când există valori extreme. Într-un mod mult mai simplificat, putem spune că este utilă atunci când avem intervale largi și în probleme care se bazează pe intervale specifice.</li>
+</ul>
+	
+<div class="code-snippet">
+    <div class="code-header">
+       <b>Formula pentru normalizare</b>
+    </div>
+	<pre>
+    <code class="language-math">
+    x' = (x - min(x)) / (max(x) - min(x))
+    unde:
+    x = este valoarea originală,
+    min(x) = este valoarea minimă din setul de date,
+    max(x) = este valoarea maximă din setul de date.
+    </code>
+    </pre>
+</div>
+
+<ul>
+    <li><i><strong>Exemplu:</strong> Să zicem că avem salariile unor angajați, care variază între 30,000 și 100,000 de dolari. Dacă cineva câștigă 70,000 de dolari, valoarea normalizată va fi:</i></li>
+</ul>
+
+<div class="code-snippet">
+    <pre>
+    <code class="language-math">
+    x' = (70,000 - 30,000) / (100,000 - 30,000) = 70,000 / 40,000 ≈ 0.57
+    </code>
+    </pre>
+</div>
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
+# Standardizarea datelor folosind o funcție dintr-o bibliotecă diferită pentru metoda Z-score
+scaler = StandardScaler()
+data_scaled = scaler.fit_transform(data)
+
+# Normalizarea datelor
+scaler = MinMaxScaler()
+data_normalized = scaler.fit_transform(data)
+                </code>
+            </pre>
+        </div>	
+
+<b class="subsection-title" id="subsection34">4. Codificarea variabilelor categorice</b>
+<ul>
+    <li>Constă în transformarea variabilelor categorice (non-numerice) într-o formă numerică pentru a putea fi înțelese și procesate de algoritmi, algoritmii de învățare automată lucrând în general cu date numerice.</li>
+    <li>Variabilele categorice sunt caracteristici ale datelor care pot să ia valori discrete și non-numerice, precum genul unei persoane sau tipul unei mașini.</li>
+    <li>Metodele cele mai comune sunt <strong>Label Encoding</strong> și <strong>One-Hot Encoding</strong>.</li>
+</ul>
+
+<b>a) Label Encoding</b>
+<ul>
+    <li>Fiecare valoare unică dintr-o variabilă categorică este înlocuită cu un număr întreg.</li>
+    <li>Metoda aceasta poate crea o ordine artificială între categorii.</li>
+    <li><i><strong>Exemplu:</strong> Avem un set de date cu variabila categorică "culoare": "roșu", "albastru", "verde". În urma algoritmului "roșu" devine 0, "albastru" devine 1, "verde" devine 2.</i></li>
+</ul>
+
+<b>b) One-Hot Encoding</b>
+<ul>
+    <li>Pentru fiecare valoare unică dintr-o variabilă categorică, se creează o nouă variabilă binară (0 sau 1). Astfel, pentru fiecare înregistrare de date, doar una dintre variabilele binare este activată (1) pentru a indica valoarea categorică a acelei înregistrări.</li>
+    <li>Această metodă elimină presupunerile despre ordinea relațională între categorii.</li>
+    <li><i><strong>Exemplu:</strong> Folosim același set de date "culoare": "roșu", "albastru", "verde". În urma algoritmului "roșu" devine [1, 0, 0], "albastru" devine [0, 1, 0], "verde" devine [0, 0, 1].</i></li>
+</ul>
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+# Label Encoding pentru o variabilă categorică
+label_encoder = LabelEncoder()
+data['gender_encoded'] = label_encoder.fit_transform(data['gender'])
+
+# One-Hot Encoding pentru variabile categorice
+data_encoded = pd.get_dummies(data, columns=['education', 'occupation'])
+                </code>
+            </pre>
+        </div>	
+
+<b class="subsection-title" id="subsection35">5. Extragerea caracteristicilor</b>
+<ul>
+    <li>Se rezumă la <strong>identificarea și selectarea</strong> caracteristicilor relevante din setul de date.</li>
+    <li>Caracteristicile sunt trăsături sau atribute ale datelor care descriu elementele într-un set de date. Acestea pot fi diverse, cum ar fi lungimea, lățimea, culoarea sau orice alt atribut relevant al datelor.</li>
+    <li>Prin selectarea și transformarea datelor într-un mod adecvat, putem elimina zgomotul, putem reduce dimensiunea datelor și putem evidenția informațiile relevante, ceea ce duce la modele mai precise și mai eficiente.</li>
+</ul>
+
+<b>Exemple de metode:</b>
+<ul>
+    <li><strong>SelectKBest:</strong> Selectează cele mai bune caracteristici pe baza unui test statistic.</li>
+    <li><strong>SelectFromModel:</strong> Selectează caracteristici importante pe baza unui model (de exemplu, un model liniar cu coeficienți).</li>
+    <li><strong>RFE (Recursive Feature Elimination):</strong> Selectează caracteristici relevante eliminându-le recursiv pe cele mai puțin importante.</li>
+    <li><strong>PCA (Principal Component Analysis):</strong> Reduce dimensionalitatea datelor și este folosit pentru extragerea caracteristicilor.</li>
+</ul>
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+from sklearn.feature_selection import SelectKBest, f_classif
+
+# Selectarea celor mai bune 5 caracteristici folosind testul ANOVA
+selector = SelectKBest(score_func=f_classif, k=5)
+X_selected = selector.fit_transform(X, y)
+                </code>
+            </pre>
+        </div>	
+
+
+<b class="subsection-title" id="subsection36">6. Eșantionarea datelor</b>
+<ul>
+    <li>Eșantionarea datelor este procesul de selecție a unei submulțimi (sau mai multe) dintr-un set de date mai mare. Această submulțime este utilizată pentru a antrena, valida sau testa modelele de învățare automată.</li>
+    <li>Ajută la obținerea unor modele mai generalizate (se comportă mai bine pe date noi), corectarea dezechilibrelor (cantitate disproporționată de exemple pentru anumite clase sau categorii) și la reducerea dimensiunii setului de date.</li>
+</ul>
+
+<b>Metodele de eșantionare principale sunt:</b>
+<ul>
+    <li><strong>Eșantionare aleatoare simplă:</strong> Selectează exemple aleatorii din întregul set de date, fără nicio preferință pentru anumite exemple.</li>
+    <li><strong>Eșantionare stratificată:</strong> Se asigură că proporțiile relative ale claselor sau a altor categorii importante sunt păstrate în eșantionul rezultat. Aceasta este utilă atunci când setul de date este dezechilibrat.</li>
+</ul>
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+from sklearn.model_selection import train_test_split, StratifiedShuffleSplit
+
+# Esantionare aleatoare simplă
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Esantionare stratificată
+stratified_split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+for train_index, test_index in stratified_split.split(X, y):
+    X_train, X_test = X[train_index], X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+                </code>
+            </pre>
+        </div>	
+
+	<h1 id="obiective-19">Parametri și hiperparametri</h1>
+	  <div class="accordion">
+		<button class="accordion-btn">Cuprins Secțiune</button>
+		<div class="panel">
+		  <a href="#subsection41">Parametri</a>
+		  <a href="#subsection42">Hiperparametri</a>
+		</div>
+	  </div>
+
+    <p>Optimizarea unui model de învățare automată constă în procesul de ajustare a <b>parametrilor și hiperparametrilor</b>, cu scopul de a găsi acei parametri/hiperparametri care fac ca modelul să prezică corect cât mai multe date de antrenament și, în același timp, să generalizeze bine pentru datele noi. Alegerea unui algoritm de optimizare potrivit depinde de tipul problemei și de natura datelor.</p>
+
+	<p>Parametrii și hiperparametrii sunt două concepte distincte în contextul învățării automate.</p>
+
+    <b class="subsection-title" id="subsection41">Parametri</b>
+    <p>Parametrii sunt variabilele interne care sunt ajustate în timpul procesului de antrenare al modelului. Acestea sunt caracteristicile pe care modelul le învață din datele de antrenare pentru a face predicții sau clasificări.</p>
+    <p>Exemple de parametrii:</p>
+    <ul>
+        <li>Într-o regresie liniară, parametrii sunt coeficienții determinați în timpul antrenării modelului și reprezintă ponderile asociate fiecărei caracteristici de intrare.</li>
+        <li>Într-o rețea neuronală, parametrii sunt greutățile asociate cu fiecare conexiune între neuroni, alături de bias-urile asociate cu fiecare neuron.</li>
+        <li>Într-o clasificare probabilistică, parametrii sunt probabilitățile asociate cu diferitele clase sau categorii de ieșire.</li>
+    </ul>
+    <p>Există mai mulți algoritmi de optimizare a parametrilor, dar cel mai important de menționat este <b>Gradient Descent</b>, care este unul dintre cei mai utilizați și versatili algoritmi de optimizare a parametrilor. Principiul fundamental constă în utilizarea gradientului funcției de cost pentru a ghida ajustarea parametrilor unui model matematic în direcția care minimizează funcția de cost.</p>
+    <p>Gradientul funcției de cost indică direcția în care crește funcția de cost cel mai rapid. Prin urmare, în algoritmii de optimizare bazați pe gradient, se ajustează parametrii modelului în direcția opusă a gradientului funcției de cost pentru a încerca să minimizeze funcția de cost.</p>
+
+    <p><b>Există trei tipuri principale de Gradient Descent:</b></p>
+    <ul>
+        <li><b>Batch Gradient Descent (BGD)</b>
+            <ul>
+                <li>Calculează gradientul funcției de cost folosind toate exemplele din setul de date de antrenare la fiecare iterație și actualizează parametrii modelului.</li>
+                <li>Ajunge la minimul global al funcției de cost în mod precis și stabil.</li>
+                <li>Poate fi mai lent în comparație cu SGD și Mini BGD, datorită necesității de a calcula gradientul pentru întregul set de date la fiecare iterație.</li>
+                <li>Recomandat pentru seturi de date mici și medii.</li>
+            </ul>
+        </li>
+        <li><b>Stochastic Gradient Descent (SGD)</b>
+            <ul>
+                <li>Gradientul funcției de cost este calculat pentru un exemplu de antrenare ales aleatoriu la fiecare iterație. Parametrii modelului sunt actualizați folosind gradientul calculat pentru fiecare exemplu individual.</li>
+                <li>Acest proces poate ajunge la o soluție satisfăcătoare sau la un minim al funcției de cost mai rapid (duce la o convergență mai rapidă a modelului).</li>
+                <li>Poate fi mai imprevizibil și mai fluctuant decât BGD, deoarece actualizările parametrilor sunt efectuate pe baza gradientului calculat pentru un singur exemplu de antrenare la fiecare iterație.</li>
+                <li>Potrivit pentru seturi de date mari.</li>
+            </ul>
+        </li>
+        <li><b>Mini-Batch Gradient Descent</b>
+            <ul>
+                <li>Setul de date de antrenare este împărțit în loturi mici (mini-batch-uri) de dimensiuni fixe. În fiecare iterație, selectăm un mini-batch aleator din setul de date de antrenare. Calculăm funcția de cost pentru acest mini-batch și gradientul funcției de cost în raport cu parametrii modelului. Actualizăm apoi parametrii modelului folosind gradientul calculat pentru mini-batch-ul respectiv.</li>
+                <li>O combinație între eficiența BGD și agilitatea SGD.</li>
+                <li>Trebuie menționat că dimensiunea mini-batch-ului poate influența performanța algoritmului și ar trebui să fie aleasă în mod corespunzător.</li>
+                <li>Potrivit pentru seturi de date de dimensiuni medii și mari, fără a necesita resurse atât de mari ca în cazul BGD.</li>
+            </ul>
+        </li>
+    </ul>
+ <p>Majoritatea modelelor au un algoritm de optimizare a parametrilor implicit selectat, dintre care unele modele permit alegerea algoritmului de către utilizator. Între timp, există modele care nu implică algoritmi de optimizare a parametrilor în sensul tradițional. În unele cazuri, implementarea manuală a algoritmilor de optimizare poate fi o opțiune, dar nu este întotdeauna practică sau fezabilă. Este important să consultați documentația specifică a modelului sau a bibliotecii pe care o utilizați pentru a înțelege ce este posibil și cum se poate face.</p>
+    <b class="subsection-title" id="subsection42">Hiperparametri</b>
+    <p>Hiperparametrii sunt variabilele externe care controlează procesul de antrenare în sine. Nu sunt direct ajustați în timpul antrenamentului, ci trebuie setați manual înainte de începerea antrenamentului. Aceștia influențează comportamentul și performanța modelului.</p>
+
+    <p><i>Atenție!</i> Procesul de optimizare a hiperparametrilor este o activitate de încercare și eroare care implică experimentarea cu diferite combinații de valori și evaluarea performanței modelului rezultat pe un set de date de validare.</p>
+    
+    <p>Iată câțiva hiperparametri comuni și rolurile lor:</p>
+    <ul>
+        <li><b>Rata de învățare (learning rate):</b> Rata de învățare controlează cât de mult sunt ajustați parametrii modelului în fiecare pas (iterație) al antrenării.</li>
+        <li><b>Numărul de epoci:</b> O epocă reprezintă un singur pas al antrenării în care întregul set de date de antrenare este folosit o dată pentru a actualiza parametrii modelului. Numărul de epoci determină câte iterații ale antrenării vor fi realizate.</li>
+        <li><b>Dimensiunea lotului (batch size):</b> Este numărul de exemple de antrenament utilizate într-o singură iterație de antrenament. Alegerea dimensiunii lotului poate afecta viteza de antrenare și stabilitatea modelului.</li>
+        <li><b>Arhitectura modelului:</b> Hiperparametrii legați de arhitectura modelului pot include numărul de straturi ascunse, numărul de neuroni în fiecare strat, tipul activării, etc.</li>
+        <li><b>Regularizare:</b> Hiperparametrii de regularizare, cum ar fi factorul de regularizare L1 sau L2, sunt utilizați pentru a preveni supraantrenarea modelului.</li>
+        <li><b>Funcția de pierdere (loss function):</b> Este o funcție utilizată pentru a evalua cât de bine se potrivește modelul cu datele de antrenare. Alegerea funcției de pierdere este un hiperparametru important, deoarece determină ce modele sunt preferate în timpul antrenamentului.</li>
+    </ul>
+
+    <p>Primii patru parametrii sunt specifici rețelelor neuronale. Îi vom prezenta mai în detaliu în alt articol.</p>
+
+    <p>Exemplu de utilizare a hiperparametrilor:</p>
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+# Definirea modelului de regresie logistică
+model = LogisticRegression(C=1.0, penalty='l2', solver='liblinear')
+                </code>
+            </pre>
+        </div>	
+		
+	În acest exemplu, hiperparametrii pentru regresia logistică includ:
+  <ul>
+        <li><b>C:</b> Coeficientul de regularizare</li>
+        <li><b>penalty:</b> Tipul de regularizare (L1 sau L2)</li>
+        <li><b>solver:</b> Algoritmul de optimizare</li>
+    </ul>
+<p>  Mai devreme am specificat faptul că selectarea hiperparametrilor potriviți este un proces de experimentare manuală. Totuși, există soluții pentru a evita activitatea de încercare și eroare, și anume algoritmii de optimizare a hiperparametrilor. Aceștia folosesc o metodă obiectivă și automată pentru a găsi cea mai bună configurație într-un mod mai eficient și într-un timp mai scurt. Trebuie menționat că dezavantajul utilizării algoritmilor este necesitatea unei înțelegeri destul de aprofundate a acestora pentru a obține performanțe bune.</p>
+
+    <p>Exemple de algoritmi de optimizare a hiperparametrilor:</p>
+    <ul>
+        <li><b>Grid Search</b>
+            <ul>
+                <li>Explorează toate combinațiile predefinite de valori ale hiperparametrilor.</li>
+                <li>Pentru fiecare combinație de hiperparametri, modelul este antrenat și evaluat folosind o tehnică de validare încrucișată.</li>
+				<li>Simplu de implementat și de înțeles, dar poate fi costisitor pentru seturi mari de date.</li>
+            </ul>
+        </li>
+        <li><b>Random Search</b>
+            <ul>
+                <li>Esantionează aleatoriu combinații de valori ale hiperparametrilor.</li>
+                <li>În fiecare iterație, Random Search selectează aleatoriu un set de hiperparametri pentru a fi evaluat folosind o tehnică de validare încrucișată.</li>
+				<li>Poate fi mai eficient decât Grid Search pentru seturi de date mari, dar nu garantează găsirea celei mai bune soluții.</li>
+            </ul>
+        </li>
+        <li><b>Bayesian Optimization</b>
+            <ul>
+                <li>Utilizează modele bayesiene pentru a ghida căutarea în spațiul de căutare a hiperparametrilor.</li>
+                <li>Eficient în spații de căutare mari, dar necesită o configurare inițială mai complexă.</li>
+            </ul>
+        </li>
+    </ul>
+  <p>Așa cum am specificat mai devreme, dezavantajul utilizării algoritmilor este necesitatea de cunoștințe suplimentare. Nu le vom aprofunda în acest moment, dar pentru a putea avea o imagine asupra modului de implementare, voi atașa câte o secvență de cod pentru fiecare algoritm prezentat.</p>
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+...
+# Definirea modelului SVM
+model = SVC()
+
+# Definirea grilei de căutare a hiperparametrilor
+param_grid = {'C': [0.1, 1, 10, 100], 'gamma': [1, 0.1, 0.01, 0.001], 'kernel': ['rbf', 'linear']}
+
+# Crearea obiectului GridSearchCV
+grid = GridSearchCV(model, param_grid, refit=True, verbose=3)
+
+# Antrenarea modelului
+grid.fit(X_train, y_train)
+...
+                </code>
+            </pre>
+        </div>	
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+...
+# Definirea modelului Random Forest
+model = RandomForestClassifier()
+
+# Definirea grilei de căutare a hiperparametrilor
+param_dist = {"max_depth": [3, None],
+              "max_features": range(1, 11),
+              "min_samples_split": range(2, 11),
+              "bootstrap": [True, False],
+              "criterion": ["gini", "entropy"]}
+
+# Crearea obiectului RandomizedSearchCV
+random_search = RandomizedSearchCV(model, param_distributions=param_dist, n_iter=50, cv=5, verbose=2, random_state=42, n_jobs=-1)
+
+# Antrenarea modelului
+random_search.fit(X_train, y_train)
+...
+                </code>
+            </pre>
+        </div>	
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+...
+# Definirea modelului SVM
+model = SVC()
+
+# Definirea spațiului de căutare a hiperparametrilor
+search_space = {'C': (0.1, 10.0, 'log-uniform'),
+                'gamma': (1e-6, 1e+1, 'log-uniform'),
+                'kernel': ['linear', 'poly', 'rbf', 'sigmoid']}
+
+# Crearea obiectului BayesSearchCV
+bayes_search = BayesSearchCV(model, search_space, n_iter=50, cv=5, verbose=2, n_jobs=-1)
+
+# Antrenarea modelului
+bayes_search.fit(X_train, y_train)
+...
+                </code>
+            </pre>
+        </div>	
+		
+<p>Când un algoritm de optimizare a hiperparametrilor este folosit, el încearcă diferite combinații de hiperparametri pentru a găsi cea mai bună configurație a modelului. După ce căutarea este finalizată, atributul <strong>best_params_</strong> este utilizat pentru a accesa această configurație optimă.</p>
+
+<p>De exemplu, în codul anterior, după ce modelul a fost antrenat folosind un algoritm de căutare a hiperparametrilor, putem accesa cei mai buni hiperparametri găsiți prin accesarea atributului <strong>best_params_</strong>. Acesta va returna un dicționar cu numele hiperparametrilor și valorile corespunzătoare:</p>
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+...
+print(grid.best_params_) # Pentru Grid Search
+print(random_search.best_params_) # Pentru Random Search
+print(bayes_search.best_params_) # Pentru Bayesian Optimization
+                </code>
+            </pre>
+        </div>	
+
+
+	<h1 id="obiective-19">Evaluarea performanței</h1>
+	  <div class="accordion">
+		<button class="accordion-btn">Cuprins Secțiune</button>
+		<div class="panel">
+		  <a href="#subsection21">Tehnici de evaluare</a>
+		  <a href="#subsection22">Metrici de evaluare</a>
+		  <a href="#subsection23">Funcția de Pierdere (Loss Function)</a>
+		</div>
+	  </div>
+
+<p>Evaluarea performanței modelelor este procesul de măsurare a cât de bine un model se comportă în rezolvarea unei anumite probleme. Există numeroase tehnici și metrici utilizate pentru evaluarea performanței modelelor în machine learning. Acestea variază în funcție de tipul problemei (clasificare, regresie, clusterizare etc.) și de obiectivele specifice ale proiectului.</p>
+
+<b class="subsection-title" id="subsection21">Tehnici de evaluare</b>
+
+<p>Se ocupă de modul în care datele sunt împărțite, antrenate și evaluate. Tehnicile de evaluare pun la dispoziție un set de reguli pentru a evalua modelele, dar nu oferă o măsură obiectivă și cuantificabilă a performanței unui model. Metricile de evaluare completează acest proces oferind măsuri concrete și cuantificabile ale performanței modelului.</p>
+
+<ul>
+    <li><strong>Holdout Validation</strong></li>
+    <p>O metodă clasică, deja întâlnită de noi în acest articol. Holdout Validation este una dintre cele mai simple tehnici de evaluare a performanței. Setul de date este împărțit într-un set de antrenare și un set de testare, opțional și unul de validare. Modelul este antrenat pe setul de antrenare și apoi evaluat pe setul de testare.</p>
+    Pașii de bază pentru Holdout Validation:
+	<ol>
+        <li><strong>Împărțirea setului de date:</strong> Setul de date inițial este împărțit în mod aleatoriu într-un set de antrenare și un set de testare. De obicei, se utilizează o proporție predefinită, cum ar fi 70-80% pentru setul de antrenare și 20-30% pentru setul de testare.</li>
+        <li><strong>Antrenarea modelului:</strong> Modelul este antrenat folosind setul de antrenare.</li>
+        <li><strong>Evaluarea performanței:</strong> După ce modelul este antrenat, este evaluat utilizând setul de testare. Performanța modelului este măsurată utilizând metrici de evaluare specifice, alese în funcție de natura problemei.</li>
+    </ol>
+
+<p>Implementare: funcția <code>train_test_split()</code> din <code>sklearn.model_selection</code> este utilizată pentru a împărți setul de date în seturi de antrenare, testare și validare.</p>
+</ul>
+
+<ul>
+<li><strong>Cross-Validation</strong></li>
+
+<p>Cross-Validation (sau K-Fold Cross-Validation) este o tehnică utilizată pentru a evalua performanța unui model și pentru a estima cât de bine se va comporta pe date noi. 
+<p>Aceasta ne ajută să identificăm dacă modelul este overfitting sau underfitting. De asemenea, este util atunci când avem un set de date limitat și dorim să obținem cât mai multă informație din datele disponibile.</p>
+<p>Este o metodă prin care setul de date este împărțit în subgrupuri mai mici, numite fold-uri. Modelul este antrenat pe o parte a datelor și evaluat pe restul datelor, procesul fiind repetat de mai multe ori, schimbând fold-ul de evaluare în fiecare iterație.</p>
+
+Pașii de bază pentru Cross-Validation:
+<ol>
+    <li><strong>Împărțirea datelor:</strong> Setul de date este împărțit în k fold-uri (de obicei, între 5 și 10 fold-uri).</li>
+    <li><strong>Antrenarea și evaluarea:</strong> Modelul este antrenat pe k-1 fold-uri și evaluat pe fold-ul rămas.</li>
+    <li><strong>Repetare:</strong> Acest proces este repetat de k ori, fiecare fold fiind utilizat o dată ca set de evaluare.</li>
+    <li><strong>Calcularea metricilor de performanță:</strong> După ce toate fold-urile au fost folosite ca set de evaluare, se calculează o metrica globală de performanță pe baza rezultatelor obținute în fiecare iterație.</li>
+</ol>
+
+<p>Implementare:</p>
+
+<ul>
+    <li><code>KFold()</code> din biblioteca <code>scikit-learn</code>: permite controlarea manuală a procesului, ceea ce oferă flexibilitate. Totuși, acest fapt face procesul mai complicat și mai dificil de gestionat.</li>
+    <li><code>cross_val_score()</code> din biblioteca <code>scikit-learn</code>: automatizează procesul, folosind tot obiecte de tip KFold. Simplifică codul și reduce complexitatea implementării. Această metodă este mai recomandată datorită simplității și abordării standardizate.</li>
+</ul>
+
+<p>Exemplu pentru cross_val_score():</p>
+</ul>
+
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+    from sklearn.model_selection import cross_val_score
+    from sklearn.datasets import load_iris
+    from sklearn.linear_model import LogisticRegression
+
+    # Încărcați setul de date Iris
+    iris = load_iris()
+    X = iris.data
+    y = iris.target
+
+    # Inițializați modelul
+    model = LogisticRegression()
+
+    # Definiți numărul de folduri pentru cross-validation
+    num_folds = 5
+
+    # Folosiți cross_val_score pentru a efectua K-Fold Cross-Validation și a evalua acuratețea
+    scores = cross_val_score(model, X, y, cv=num_folds, scoring='accuracy')
+
+    # Afișați scorurile de acuratețe pentru fiecare fold
+    print("Accuracy scores:", scores)
+
+    # Calculați media scorurilor de acuratețe pentru a obține o estimare generală a performanței modelului
+    mean_accuracy = scores.mean()
+    print("Mean Accuracy:", mean_accuracy)
+  </code>
+  </pre>
+</div>
+<b class="subsection-title" id="subsection22">Metrici de evaluare</b>
+<p>Metricile de evaluare a performanței sunt instrumente folosite pentru a măsura cât de precis și eficient este modelul nostru în predicția rezultatelor.</p>
+<p>Țin să menționez iar că fără metrici de evaluare, tehnicile de evaluare ar fi incomplete, deoarece nu am avea modalitatea de a evalua și de a compara eficiența și acuratețea diferitelor modele într-un mod standardizat și obiectiv.</p>
+<p>În schimb, metricile de evaluare pot fi utilizate și <b>independent</b>.</p>
+
+<b>Exemple de metrici pentru probleme de clasificare (biblioteca <code>sklearn.metrics</code>):</b>
+<ul>
+    <li><b>Accuracy (<code>accuracy_score()</code>)</b>: Măsoară proporția predicțiilor corecte în raport cu numărul total de predicții și oferă o perspectivă generală asupra performanței modelului. Se folosește în general pentru evaluarea performanței modelelor de clasificare atunci când setul de date este echilibrat.</li>
+    <li><b>Confusion Matrix (<code>confusion_matrix()</code>)</b>: Oferă o reprezentare structurată a performanței unui model de clasificare, evidențiind numărul de predicții corecte și incorecte pentru fiecare clasă. Este utilă pentru a identifica tipurile de erori pe care le face modelul în clasificare.</li>
+    <li><b>Precision (<code>precision_score()</code>)</b>: Măsoară proporția de exemple pozitive identificate corect din totalul de exemple identificate ca pozitive. Precisionul este important în situațiile în care este crucial să minimizezi numărul de fals pozitive. De exemplu, în detecția de spam, nu vrei să ratezi e-mailurile importante.</li>
+    <li><b>Recall (<code>recall_score()</code>)</b>: Măsoară proporția de exemple pozitive identificate corect din totalul de exemple pozitive din setul de date. Recall-ul este important atunci când nu vrei să ratezi exemplele pozitive. De exemplu, în detectarea cancerului, este vital să identifici cât mai multe cazuri pozitive chiar dacă asta înseamnă că vei avea un număr mai mare de fals pozitive.</li>
+    <li><b>F1 Score (<code>f1_score()</code>)</b>: Măsoară performanța unui clasificator binar, fiind media armonică dintre Precision și Recall. Se folosește în special atunci când există un dezechilibru între numărul de exemple pozitive și negative în setul de date.</li>
+    <li><b>AUC-ROC (<code>roc_auc_score()</code>)</b>: Măsoară capacitatea unui model de a distinge între clasele pozitive și cele negative. Este utilă pentru evaluarea modelelor de clasificare binară, în special în situațiile în care setul de date este dezechilibrat sau când costul erorii este diferit între clasele pozitive și cele negative. De exemplu: în diagnosticarea cancerului, costul unei greșeli de clasificare fals negativ este mult mai mare, deoarece o diagnosticare greșită a unei persoane cu cancer drept sănătoasă poate avea consecințe grave pentru pacient.</li>
+</ul>
+
+<b>Exemple de metrici pentru probleme de regresie (biblioteca sklearn.metrics):</b>
+<ul>
+    <li><b>Mean Squared Error (<code>mean_squared_error()</code>)</b>: Măsoară media pătrată a diferenței dintre valorile prezise și valorile reale. Este utilă pentru cuantificarea erorilor modelului.</li>
+    <li><b>Mean Absolute Error (<code>mean_absolute_error()</code>)</b>: Măsoară media valorilor absolute ale diferenței dintre valorile prezise și valorile reale. Este o metrică mai rezistentă la valori extreme (outliers) decât Mean Squared Error.</li>
+    <li><b>R-squared (<code>r2_score()</code>)</b>: Măsoară proporția variației variabilei dependente (variabila pe care încercăm să o prezicem sau să o explicăm în funcție de alte variabile) care poate fi explicată de modelul de regresie. Este utilă pentru a evalua calitatea ajustării modelului de regresie la datele observate.</li>
+</ul>
+
+<b>Alte metode de evaluare:</b>
+<ul>
+    <li><b><code>score()</code></b>: Este o metodă din biblioteca scikit-learn. Evaluează performanța modelului pe baza unui set de date de testare. Returnează diferite metrici de evaluare, în funcție de tipul de model și de implementare. Spre exemplu: pentru modelele de clasificare returnează acuratețea modelului, iar pentru modelele de regresie returnează R-squared.</li>
+    <li><b><code>evaluate()</code></b>: Este o metodă din biblioteca Keras. Evaluează performanța unui model neural pe un set de date de testare. Returnează o listă cu metricile de evaluare specificate în etapa de compilare a modelului. Spre exemplu: dacă a fost compilat modelul cu metricile ['accuracy', 'precision', 'recall'], atunci evaluate() va returna o listă cu aceste metrici calculate pentru setul de date de testare, iar ordinea valorilor din lista returnată va corespunde exact cu ordinea în care au fost specificate metricile în momentul compilării.</li>
+</ul>
+
+<p>În următoarea secvență de cod voi ilustra un exemplu care utilizează tehnica Holdout Validation și câteva metrici de evaluare:</p>
+	        <div class="code-snippet">
+            <div class="code-header">
+                <b class="technology">Python</b>
+                <button class="copy-button" onclick="copyCode(this)"><i class="fa fa-files-o" aria-hidden="true"></i>Copy code</button>
+            </div>
+            <pre>
+                <code class="language-python">
+	from sklearn.metrics import confusion_matrix, accuracy_score
+	from sklearn.linear_model import LogisticRegression
+	from sklearn.model_selection import train_test_split
+	from sklearn.datasets import load_iris
+
+	# Încărcăm setul de date Iris
+	iris = load_iris()
+	X = iris.data
+	y = iris.target
+
+	# Divizăm setul de date în set de antrenare și de testare
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+	# Antrenăm un model de logistic regression
+	model = LogisticRegression()
+	model.fit(X_train, y_train)
+
+	# Facem predicții pe setul de testare
+	y_pred = model.predict(X_test)
+
+	# Evaluăm performanța modelului
+	print("Confusion matrix:")
+	print(confusion_matrix(y_test, y_pred))
+
+	print("\n Accuracy:")
+	print(accuracy_score(y_test, y_pred))
+  </code>
+  </pre>
+</div>
+
+<p>Suplimentar, vreau să adaug un exemplu practic în cazul în care <b>nu ați înțeles</b> diferența dintre <b>Precision</b> și <b>Recall</b>.</p>
+<p>Să luăm în considerare un caz de clasificare în care un model trebuie să distingă între e-mailurile spam și cele non-spam.</p>
+<p>Dintr-un set de 100 de e-mailuri:</p>
+<ul>
+    <li>30 sunt e-mailuri spam</li>
+    <li>70 sunt e-mailuri non-spam</li>
+</ul>
+<p>Pentru modelul nostru de clasificare al spamului, să presupunem că avem următoarele predicții:</p>
+<ul>
+    <li>Identifică 25 de e-mailuri ca fiind spam. Dintre acestea, 20 sunt corecte și 5 sunt clasificate incorect (false positives).</li>
+    <li>Restul de 10 e-mailuri spam nu sunt identificate de model (false negatives).</li>
+</ul>
+<p>Acum, calculăm precisionul și recall-ul:</p>
+<ul>
+    <li>Precision = True Positives / (True Positives + False Positives) = 20 / (20 + 5) = 20 / 25 = 0.8 (80%)</li>
+    <li>Recall = True Positives / (True Positives + False Negatives) = 20 / (20 + 10) = 20 / 30 = 0.67 (67%)</li>
+</ul>
+<b class="subsection-title" id="subsection23">Funcția de Pierdere (Loss Function)</b>
+
+<p>În primul rând, trebuie înțeles faptul că funcția de pierdere <b>nu este o metrică tradițională</b> și scopul este unul diferit spre deosebire de metricile prezentate mai devreme.</p>
+
+<p>Funcția de pierdere (sau cost) este o măsură a discrepanței între valorile prezise de model și valorile reale ale datelor de antrenare. Valoarea cuantificată returnată de funcție poate fi considerată o <b>evaluare a performanței</b> modelului în ceea ce privește capacitatea sa de a face predicții precise pentru datele de antrenare.</p>
+
+<p>Din perspectiva procesului intern al antrenamentului, scopul este de a găsi parametrii (ponderile) modelului care minimizează funcția de pierdere. Cu cât valoarea funcției de pierdere este mai mică, cu atât modelul face predicții mai precise pe datele de antrenament.</p>
+
+<p>Între timp, funcția de pierdere are <b>scopul</b> de a indica direcția în care trebuie să meargă antrenamentul pentru a minimiza eroarea și a ajunge la o performanță mai bună.</p>
+
+<b>Procesul funcționează astfel:</b>
+
+<ul>
+    <li>În timpul antrenamentului, parametrii modelului sunt <b>ajustați iterativ</b> folosind algoritmi de optimizare pentru a găsi valorile care minimizează funcția de pierdere.</li>
+    <li><b>După fiecare iterație a antrenamentului</b>, funcția de pierdere este calculată pentru a evalua performanța modelului pe setul de date de antrenare sau de validare, iar apoi sunt făcute ajustări pentru a îmbunătăți performanța. Acest proces de antrenament continuu și iterativ se bazează pe feedback-ul furnizat de funcția de pierdere.</li>
+    <li><b>Antrenamentul se va opri</b> atunci când funcția de pierdere încetează să se îmbunătățească pentru un anumit număr de epoci consecutive sau după un număr implicit de epoci.</li>
+</ul>
+
+<b>Diferența dintre funcția de pierdere și metricile tradiționale:</b>
+<ul>
+    <li><strong>Scopul:</strong> Funcția de pierdere este <b>folosită în timpul antrenării modelului</b> pentru a <b>ghida procesul de optimizare</b> a parametrilor cu scopul de a ajunge la o soluție optimă. În schimb, metricile de evaluare, cum ar fi accuracy, recall sau F1-score, sunt utilizate pentru a evalua performanța generală a modelului (<b>după ce a fost antrenat</b>) pe datele de testare.</li>
+    <li><strong>Calculul:</strong> Funcția de pierdere este adesea <b>calculată intern</b> în cadrul algoritmilor de optimizare, cum ar fi algoritmul backpropagation în rețelele neuronale, pentru a ajusta ponderile și a îmbunătăți performanța modelului. Pe de altă parte, alte metrici pot fi <b>calculate extern</b>, după ce modelul a fost antrenat, și pot oferi o evaluare suplimentară asupra performanței.</li>
+</ul>
+
+<b>Ce trebuie să știți suplimentar despre funcția de pierdere:</b>
+
+<ul>
+    <li>Funcțiile de pierdere sunt <b>indispensabile</b> în procesul de antrenare al modelelor de învățare automată, motiv pentru care fiecare model are o funcție de pierdere adecvată direct integrată.</li>
+    <li>Dacă nu specificați explicit o funcție de pierdere în momentul definirii modelului, biblioteca o va folosi pe cea definită <b>implicit</b> pentru modelul respectiv.</li>
+    <li>Pot fi definite funcții de pierdere <b>personalizate</b>.</li>
+</ul>
+
+<b>Tipuri de funcții de pierdere:</b>
+<p>Există mai multe tipuri de funcții de pierdere, iar alegerea potrivită a acesteia depinde de tipul problemei și de natura datelor. Multe funcții de pierdere sunt găsite în biblioteca TensorFlow (modulele <code>tf.keras.losses</code>, <code>tf.losses</code>). Exemple:</p>
+<ol>
+    <li>Regresia liniară:</li>
+    <ul>
+        <li>Funcție de pierdere: <i>Mean Squared Error (MSE)</i> sau <i>Mean Absolute Error (MAE)</i>.</li>
+    </ul>
+    <li>Clasificarea cu regresia logistică:</li>
+    <ul>
+        <li>Funcție de pierdere: <i>Cross-Entropy Loss</i> sau <i>Log Loss</i>.</li>
+    </ul>
+    <li>Support Vector Machines - SVM:</li>
+    <ul>
+        <li>Funcție de pierdere: <i>Hinge Loss</i>.</li>
+    </ul>
+    <li>Fully Connected Neural Networks:</li>
+    <ul>
+        <li>Funcții de pierdere: <i>MSE</i> pentru regresie, <i>Cross-Entropy Loss</i> pentru clasificare.</li>
+    </ul>
+</ol>
+
+<p>Ca și exemplu practic, vom revedea ultimul cod parcus:</p>
+
+<div class="code-snippet">
+  <pre><code class="language-python">
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+from sklearn.metrics import log_loss
+
+# Încărcăm setul de date Iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Divizăm setul de date în set de antrenare și de testare
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Antrenăm un model de logistic regression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Facem predicții pe setul de testare
+y_pred = model.predict(X_test)
+
+# Calcularea Log Loss pentru predicțiile modelului
+logloss = log_loss(y_test, model.predict_proba(X_test))
+print("Log Loss:", logloss)
+  </code></pre>
+</div>
+
+
+<p>Așa cum am menționat mai devreme, fiecare model are o funcție de pierdere integrată. Chiar dacă aceasta nu a fost explicit menționată, această secvență de cod folosește în timpul antrenării funcția de pierdere Log Loss.</p>
+
+<p>În alte cazuri, modelele permit selectarea altei funcții de pierdere prin menționarea acesteia ca parametru în momentul definirii.</p>
+
+Exemplu 1:
+<div class="code-snippet">
+  <pre><code class="language-python">
+from sklearn import svm
+from sklearn.metrics import hinge_loss
+
+...
+
+# Definirea și antrenarea modelului SVM
+# Parametrul loss specifică funcția de pierdere
+model = svm.SVC(kernel='linear', loss='hinge')
+model.fit(X_train, y_train)
+
+...
+  </code></pre>
+</div>
+
+Exemplu 2:
+<div class="code-snippet">
+  <pre><code class="language-python">
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.losses import categorical_crossentropy
+from tensorflow.keras.optimizers import Adam
+
+...
+
+# Definim modelul
+model = Sequential([
+    ...
+])
+
+# Compilăm modelul cu funcția de pierdere categorical_crossentropy
+model.compile(optimizer=Adam(learning_rate=0.001),
+              loss=categorical_crossentropy,
+              metrics=['accuracy'])
+
+...
+  </code></pre>
+</div>
+
+	</main>
+	
+		</div>
+	  </div>
+  </div>
+
+
+
+
+		<div id="myOverlayToc" class="overlay-toc">
+		  <div class="overlay-toc-content">
+			
+			<h4 style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Cuprins</h4>
+			<div id="myOverlayNav">
+			  <!-- The content from the first section's <nav id="toc"> will be inserted here -->
+			</div>
+			<a onclick="closeTOC()" class="toc-close-button"><b>X</b></a>
+		  </div>
+		</div>
+
+
+
+
+<a onclick="openTOC()" id="open-toc" class="float">
+<i class="fa fa-indent" aria-hidden="true"></i>
+</a>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+
+  <script>
+    const accordions = document.querySelectorAll('.accordion-btn');
+    accordions.forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        
+        // Toggle active class to change the arrow direction
+        this.classList.toggle('active');
+      });
+    });
+  </script>
+
+</html>

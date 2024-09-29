@@ -1,0 +1,108 @@
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.popout {
+  font-family: Futura, sans-serif;
+  font-weight: 900;
+}
+
+/* Font sizes for different screen sizes */
+@media (min-width: 1226px) {
+  .popout {
+    /*font-size: 76px;*/
+font-size: 70px;
+  }
+}
+
+@media (max-width: 1225px) {
+  .popout {
+    font-size: 6vw;
+  }
+}
+
+@keyframes ani {
+  0% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: 0em 0em 0 lightblue;
+    color: black;
+  }
+  30% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: 0em 0em 0 lightblue;
+    color: black;
+  }
+  70% {
+    transform: translate3d(0.08em, -0.08em, 0);
+    text-shadow: -0.08em 0.08em lightblue;
+    color: black;
+  }
+  100% {
+    transform: translate3d(0.08em, -0.08em, 0);
+    text-shadow: -0.08em 0.08em lightblue;
+    color: black;
+  }
+}
+
+.popout span {
+  position: relative;
+  display: inline-block;
+  animation-name: ani;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+}
+
+.popout span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.popout span:nth-child(2) {
+  animation-delay: -0.2667s;
+}
+
+.popout span:nth-child(3) {
+  animation-delay: -0.9333s;
+}
+
+.popout span:nth-child(4) {
+  animation-delay: -1.0s;
+}
+
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.job-title{
+  color:white; 
+  font-family: Roboto Mono,Sans-serif;
+  margin-top: 0px;
+}
+
+/* Font sizes for different screen sizes */
+@media (min-width: 800px) {
+  .job-title {
+    /*font-size: 24px;*/
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+  /* Adjust font sizes for medium screens */
+  .job-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Adjust font sizes for small screens */
+  .job-title {
+    font-size: 15px;
+  }
+}
