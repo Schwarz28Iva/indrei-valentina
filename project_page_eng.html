@@ -503,7 +503,7 @@ could need.
 
 
 			<figure id="fig_warpPerspective3" width=280px>
-			  <img src="imagini/warpPerspective3.jpg" width=270px>
+			  <img src="imagini/warpperspective3.jpg" width=270px>
 			  <figcaption>Cropped Sudoku</figcaption>
 			</figure>
 			
@@ -512,7 +512,7 @@ could need.
 			<p>The next step is to use a geometric transformation to create an image with only the Sudoku grid, transformed so that it is a square. For this, we use the <strong>cv::getperspectiveTransform()</strong> function. The function maps a given point (x, y) from one quadrilateral to a new point (X, Y) in another quadrilateral. Thus, to create an appropriate transformation, we send the 4 corners of the Sudoku grid and the desired location for each in the destination image. The <strong>cv::warpPerspective()</strong> method performs the transformation of the source image.</p>
 
 			<figure id="fig_warpPerspective3_2" width=280px>
-			  <img src="imagini/warpPerspective3.jpg" width=270px>
+			  <img src="imagini/warpperspective3.jpg" width=270px>
 			  <figcaption>Cropped Sudoku</figcaption>
 			</figure>
 
