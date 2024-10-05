@@ -19,12 +19,6 @@
 
 	
   <script src="./javascript/script_navbar.js"></script>
-
-<style>
-:root {
-  color-scheme: light only;
-}
-</style>
 </head>
 
 <body>
@@ -99,13 +93,29 @@
   </div>
 </div>
 
-    <!-- avoiding chrome force dark mode -->
-    <script>
-      var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if(isDarkMode){
-        document.write(`<meta name="color-scheme" content="dark Only"><\/meta>`);
-      }
-    </script>
+<script>
+    // Functia pentru a verifica daca este Samsung Browser
+    function isSamsungBrowser() {
+        return /SamsungBrowser/.test(navigator.userAgent);
+    }
+
+    // Functia pentru a verifica daca dark mode este activat
+    function isDarkMode() {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    // Verifică și afișează un alert dacă este Samsung Browser sau dark mode
+    function checkBrowserAndDarkMode() {
+        if (isSamsungBrowser()) {
+            alert("Te rog să dezactivezi dark mode pentru a avea o experiență optimă pe această pagină.");
+        } else if (isDarkMode()) {
+            alert("Dark mode este activat. Te rog să-l dezactivezi pentru o experiență optimă.");
+        }
+    }
+
+    // Execută funcția la încărcarea paginii
+    window.onload = checkBrowserAndDarkMode;
+</script>
 	
 </body>
 </html>
