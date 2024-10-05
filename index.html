@@ -92,34 +92,6 @@
     <img src="./photos/homepage/contact_final.png">
   </div>
 </div>
-
-<script>
-    // Functia pentru a verifica daca este Samsung Browser
-    function isSamsungBrowser() {
-        return /SamsungBrowser/.test(navigator.userAgent);
-    }
-
-    // Functia pentru a verifica daca dark mode este activat
-    function isDarkMode() {
-        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-
-    // Functia pentru a verifica si afisa alerta
-    function checkBrowserAndDarkMode() {
-        // Verifica daca alerta a fost deja afisata
-        if (localStorage.getItem('alertShown') !== 'true') {
-            // Verifica daca este Samsung Browser sau dark mode este activat
-            if (isSamsungBrowser() || isDarkMode()) {
-                alert("Te rog să dezactivezi dark mode pentru a avea o experiență optimă pe această pagină.");
-                // Salveaza in localStorage ca alerta a fost afisata
-                localStorage.setItem('alertShown', 'true');
-            }
-        }
-    }
-
-    // Execută funcția la încărcarea paginii
-    window.onload = checkBrowserAndDarkMode;
-</script>
 	
 </body>
 </html>
