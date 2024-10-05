@@ -104,12 +104,16 @@
         return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
-    // Verifică și afișează un alert dacă este Samsung Browser sau dark mode
+    // Functia pentru a verifica si afisa alerta
     function checkBrowserAndDarkMode() {
-        if (isSamsungBrowser()) {
-            alert("Te rog să dezactivezi dark mode pentru a avea o experiență optimă pe această pagină.");
-        } else if (isDarkMode()) {
-            alert("Dark mode este activat. Te rog să-l dezactivezi pentru o experiență optimă.");
+        // Verifica daca alerta a fost deja afisata
+        if (localStorage.getItem('alertShown') !== 'true') {
+            // Verifica daca este Samsung Browser sau dark mode este activat
+            if (isSamsungBrowser() || isDarkMode()) {
+                alert("Te rog să dezactivezi dark mode pentru a avea o experiență optimă pe această pagină.");
+                // Salveaza in localStorage ca alerta a fost afisata
+                localStorage.setItem('alertShown', 'true');
+            }
         }
     }
 
