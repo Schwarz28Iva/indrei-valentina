@@ -6,13 +6,15 @@ function isColorDark(color) {
 
 function checkForDarkModeByExtensions() {
     let headerStyle = window.getComputedStyle(document.querySelector('header'));
+    let bodyTextColor = window.getComputedStyle(document.body).color;
 
     const expectedHeader = 'rgb(255, 255, 255)'; // #ffffff
+    const expectedTextColor = 'rgb(0, 0, 0)'; // #000000
 
-    // Dacă header-ul este foarte întunecat
-    if (isColorDark(headerStyle.backgroundColor)) {
+    // Verificăm dacă header-ul este întunecat sau textul din body nu mai este negru
+    if (isColorDark(headerStyle.backgroundColor) || bodyTextColor !== expectedTextColor) {
         if (!sessionStorage.getItem('alertShown')) {
-            alert("TEST 10.");
+            alert("ULTIMUL TEST ?!");
             sessionStorage.setItem('alertShown', 'true');
         }
     }
