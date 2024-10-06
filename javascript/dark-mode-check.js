@@ -1,26 +1,31 @@
 function checkColors() {
-    // Ia culorile calculate pentru fundal și text
+    // Folosim getComputedStyle pentru a obține culorile calculate
     let bodyStyle = window.getComputedStyle(document.body);
+    let headerStyle = window.getComputedStyle(document.querySelector('header'));
+
     let backgroundColor = bodyStyle.backgroundColor;
-    let textColor = bodyStyle.color;
+    let headerBackgroundColor = headerStyle.backgroundColor;
 
-    // Verificăm dacă background-ul este foarte întunecat și textul este tot întunecat
-    if (isDarkColor(backgroundColor) && isDarkColor(textColor)) {
-        alert("Please disable dark mode to have an optimal experience on this page.");
+    // Culorile constante așteptate
+    const expectedGradient = 'linear-gradient(-30deg, rgb(157, 218, 237), rgb(159, 140, 230))';
+    const expectedHeaderColor = 'rgb(255, 255, 255)'; // echivalent #ffffff
+
+    // Verificăm dacă fundalul sau headerul au fost schimbate drastic
+    if (backgroundColor !== expectedGradient || headerBackgroundColor !== expectedHeaderColor) {
+        // Verificăm dacă alerta a fost afișată deja în această sesiune
+        if (!sessionStorage.getItem('alertShown')) {
+            alert("Se pare că dark mode-ul browserului tău afectează culorile site-ului. Te rog să dezactivezi dark mode pentru o experiență mai bună.");
+            // Marcăm alerta ca afișată în această sesiune
+            sessionStorage.setItem('alertShown', 'true');
+        }
     }
 }
 
-// Funcție care verifică dacă o culoare este întunecată (exemplu pentru culori RGB)
-function isDarkColor(color) {
-    // Extrage componentele RGB din valoarea de culoare
-    let rgb = color.match(/\d+/g);
-
-    if (rgb) {
-        // Calculează luminozitatea culorii pe baza componentelor RGB
-        let luminance = (0.299 * rgb[0]) + (0.587 * rgb[1]) + (0.114 * rgb[2]);
-        return luminance < 128;  // O valoare de luminozitate mai mică decât 128 este considerată întunecată
+// Asigurăm că alerta se afișează doar dacă e pe dark mode și nu s-a afișat deja
+function checkDarkModeAndColors() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        checkColors();
     }
-    return false;
 }
 
-document.addEventListener('DOMContentLoaded', checkColors);
+document.addEventListener('DOMContentLoaded', checkDarkModeAndColors);
