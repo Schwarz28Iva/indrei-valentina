@@ -1,31 +1,30 @@
-function checkColors() {
-    // Folosim getComputedStyle pentru a obține culorile calculate
+function checkColorsForExtensions() {
     let bodyStyle = window.getComputedStyle(document.body);
     let headerStyle = window.getComputedStyle(document.querySelector('header'));
 
     let backgroundColor = bodyStyle.backgroundColor;
     let headerBackgroundColor = headerStyle.backgroundColor;
 
-    // Culorile constante așteptate
-    const expectedGradient = 'linear-gradient(-30deg, rgb(157, 218, 237), rgb(159, 140, 230))';
-    const expectedHeaderColor = 'rgb(255, 255, 255)'; // echivalent #ffffff
+    // Culori așteptate în light mode
+    const expectedBackgroundColor = 'rgb(255, 255, 255)'; // echivalent #ffffff pentru background
+    const expectedHeaderColor = 'rgb(255, 255, 255)'; // echivalent #ffffff pentru header
 
-    // Verificăm dacă fundalul sau headerul au fost schimbate drastic
-    if (backgroundColor !== expectedGradient || headerBackgroundColor !== expectedHeaderColor) {
-        // Verificăm dacă alerta a fost afișată deja în această sesiune
+    // Culoarea corpului paginii și a header-ului este foarte închisă (semn al unui mod întunecat aplicat de extensie)
+    const darkBackgroundThreshold = 100; // Valoare arbitrară pentru RGB, sub care considerăm că e foarte întunecat
+
+    let bgRgb = bodyStyle.backgroundColor.match(/\d+/g).map(Number);
+    let headerRgb = headerStyle.backgroundColor.match(/\d+/g).map(Number);
+
+    // Dacă fundalul și headerul sunt mult mai închise decât culorile așteptate
+    if ((bgRgb[0] < darkBackgroundThreshold && bgRgb[1] < darkBackgroundThreshold && bgRgb[2] < darkBackgroundThreshold) ||
+        (headerRgb[0] < darkBackgroundThreshold && headerRgb[1] < darkBackgroundThreshold && headerRgb[2] < darkBackgroundThreshold)) {
+
+        // Verificăm dacă alerta a fost deja afișată în sesiune
         if (!sessionStorage.getItem('alertShown')) {
-            alert("Se pare că dark mode-ul browserului tău afectează culorile site-ului. Te rog să dezactivezi dark mode pentru o experiență mai bună.");
-            // Marcăm alerta ca afișată în această sesiune
+            alert("Se pare că folosești o extensie care forțează modul dark. Culorile paginii ar putea să nu fie afișate corect.");
             sessionStorage.setItem('alertShown', 'true');
         }
     }
 }
 
-// Asigurăm că alerta se afișează doar dacă e pe dark mode și nu s-a afișat deja
-function checkDarkModeAndColors() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        checkColors();
-    }
-}
-
-document.addEventListener('DOMContentLoaded', checkDarkModeAndColors);
+document.addEventListener('DOMContentLoaded', checkColorsForExtensions);
